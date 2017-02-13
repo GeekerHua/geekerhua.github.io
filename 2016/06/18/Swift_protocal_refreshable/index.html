@@ -1,0 +1,658 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>Swift Protocal实战1(Refreshable) | GeekerHua的Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="GeekerHua">
+    
+
+    
+    <meta name="description" content="在app的开发中，出现最多的一个情况就是显示一个列表来展示数据，就像刷微博一样，要能够上拉加载更多，下拉进行刷新。但在实际开发过程中，需要考虑的情况会更多。我们使用header来表示下拉刷新控件，使用footer来表示上拉加载控件。
+
+在不考虑缓存的情况下单数据源tableView需要考虑以下注意点
+首次进入这个页面，没有数据需要进行首次数据加载
+首次加载过程中不能显示footer
+下拉刷新需要">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Swift Protocal实战1(Refreshable)">
+<meta property="og:url" content="geekerhua.com/2016/06/18/Swift_protocal_refreshable/index.html">
+<meta property="og:site_name" content="GeekerHua的Blog">
+<meta property="og:description" content="在app的开发中，出现最多的一个情况就是显示一个列表来展示数据，就像刷微博一样，要能够上拉加载更多，下拉进行刷新。但在实际开发过程中，需要考虑的情况会更多。我们使用header来表示下拉刷新控件，使用footer来表示上拉加载控件。
+
+在不考虑缓存的情况下单数据源tableView需要考虑以下注意点
+首次进入这个页面，没有数据需要进行首次数据加载
+首次加载过程中不能显示footer
+下拉刷新需要">
+<meta property="og:updated_time" content="2017-02-13T05:21:48.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Swift Protocal实战1(Refreshable)">
+<meta name="twitter:description" content="在app的开发中，出现最多的一个情况就是显示一个列表来展示数据，就像刷微博一样，要能够上拉加载更多，下拉进行刷新。但在实际开发过程中，需要考虑的情况会更多。我们使用header来表示下拉刷新控件，使用footer来表示上拉加载控件。
+
+在不考虑缓存的情况下单数据源tableView需要考虑以下注意点
+首次进入这个页面，没有数据需要进行首次数据加载
+首次加载过程中不能显示footer
+下拉刷新需要">
+<meta name="twitter:creator" content="@GeekerHua">
+
+    
+    <link rel="alternative" href="/atom.xml" title="GeekerHua的Blog" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.png" alt="GeekerHua的Blog" title="GeekerHua的Blog"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="GeekerHua的Blog">GeekerHua的Blog</a></h1>
+				<h2 class="blog-motto">爱生活，爱自由</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">首页</a></li>
+					
+						<li><a href="/archives">归档</a></li>
+					
+						<li><a href="/categories">分类</a></li>
+					
+						<li><a href="/tags">标签</a></li>
+					
+						<li><a href="/about">关于我</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="hidden" name="q" value="site:geekerhua.com">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2016/06/18/Swift_protocal_refreshable/" title="Swift Protocal实战1(Refreshable)" itemprop="url">Swift Protocal实战1(Refreshable)</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="GeekerHua" target="_blank" itemprop="author">GeekerHua</a>
+		
+  <p class="article-time">
+    <time datetime="2016-06-18T13:57:21.000Z" itemprop="datePublished"> Published 2016-06-18</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#在不考虑缓存的情况下单数据源tableView需要考虑以下注意点"><span class="toc-number">1.</span> <span class="toc-text">在不考虑缓存的情况下单数据源tableView需要考虑以下注意点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#如果是多数据源的tableView则需要考虑的更多"><span class="toc-number">2.</span> <span class="toc-text">如果是多数据源的tableView则需要考虑的更多</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#控制器使用代码"><span class="toc-number">3.</span> <span class="toc-text">控制器使用代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#代码中能看到的协议中定义的内容如下"><span class="toc-number">4.</span> <span class="toc-text">代码中能看到的协议中定义的内容如下</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#让我们先看看Refreshable这个协议里是怎么写的"><span class="toc-number">5.</span> <span class="toc-text">让我们先看看Refreshable这个协议里是怎么写的</span></a></li></ol>
+		
+		</div>
+		
+		<blockquote>
+<p>在app的开发中，出现最多的一个情况就是显示一个列表来展示数据，就像刷微博一样，要能够上拉加载更多，下拉进行刷新。但在实际开发过程中，需要考虑的情况会更多。我们使用<code>header</code>来表示下拉刷新控件，使用<code>footer</code>来表示上拉加载控件。</p>
+</blockquote>
+<h2 id="在不考虑缓存的情况下单数据源tableView需要考虑以下注意点"><a href="#在不考虑缓存的情况下单数据源tableView需要考虑以下注意点" class="headerlink" title="在不考虑缓存的情况下单数据源tableView需要考虑以下注意点"></a>在不考虑缓存的情况下单数据源tableView需要考虑以下注意点</h2><ol>
+<li>首次进入这个页面，没有数据需要进行首次数据加载</li>
+<li>首次加载过程中不能显示footer</li>
+<li>下拉刷新需要用返回的结果覆盖数据源的数据</li>
+<li>下拉刷新后需要还原footer的状态(变更为可以加载更多)</li>
+<li>上拉加载成功后需要根据返回数据数量来判断是否还有更多数据，没有更多数据需要修改footer的状态为<code>没有更多数据了</code>，并禁止上拉刷新功能。</li>
+<li>首次加载数据如果没有网络连接或者加载失败，需要显示一个失败页面，点击失败页面能够重新进行网络请求获取数据。</li>
+<li>每次进行下拉刷新都需要将当前page设为<code>1</code></li>
+<li>每次进行上拉加载前都需要将当前page进行<code>+1</code>操作</li>
+<li>每次上拉加载失败都需要将当前page进行<code>-1</code>操作，以还原防止，下次上拉加载page多加了的问题</li>
+</ol>
+<h2 id="如果是多数据源的tableView则需要考虑的更多"><a href="#如果是多数据源的tableView则需要考虑的更多" class="headerlink" title="如果是多数据源的tableView则需要考虑的更多"></a>如果是多数据源的tableView则需要考虑的更多</h2><ol>
+<li>首先就是不同数据源的page记录，每个数据源都需要对应一个自己的page</li>
+<li>每个数据源都需要记录是否还有更多数据可供加载</li>
+<li>甚至每个数据源拥有各自的没数据的文字提示</li>
+<li>实际项目中，为了一些效果，还需要记录当前数据源是否处于加载数据状态，以此来显示某些加载页面。</li>
+<li>可能还会有一个个性化的定制需求</li>
+</ol>
+<blockquote>
+<p>综上所述，仅仅是一个控制器的数据加载逻辑就有这么多，如果有很多这样类似的页面，每次都要考虑这么多问题，难免会有不少疏忽，而且要实现这些功能会产生大量的重复代码，这肯定是我们不希望看到的。</p>
+</blockquote>
+<p>分析上述需求我们发现，实际上通常我们所接触的<code>tableView</code>大体上也就需要注意这么多问题，而且为了整个工程的统一性，一般情况所有的处理也是采用同一套逻辑，因此我们完全可以把这些逻辑统一起来，使用一个<code>Protocol</code>来实现这些逻辑。得益于Swift强大的<code>Protocol Extention</code> 大部分情况我们只需要在合适的关键点调用几个方法就可以了，所有的逻辑默认都已经实现了。<code>Controller</code>中的代码更少了，不相关的逻辑都封装好了，逻辑更加简洁了。</p>
+<h2 id="控制器使用代码"><a href="#控制器使用代码" class="headerlink" title="控制器使用代码"></a>控制器使用代码</h2><figure class="highlight swift"><table><tr><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">PYMyOrderListController</span>: <span class="title">PYBaseViewController</span>, <span class="title">Refreshable</span> </span>&#123;</div><div class="line">    <span class="keyword">internal</span> <span class="keyword">var</span> refreshStatus: [(page: <span class="type">Int</span>, isLoading: <span class="type">Bool</span>, noMoreData: <span class="type">Bool</span>, noMoreTitle: <span class="type">String</span>)] = [(<span class="number">1</span>,<span class="literal">false</span>,<span class="literal">false</span>,<span class="string">"没有更多订单了"</span>)]     <span class="comment">// 定义每个数据源需要的四个属性，分别是当前页码，是否被正在加载中，是否没有更多数据可供加载了。没有数据可供加载的footer文字</span></div><div class="line">    <span class="keyword">internal</span> <span class="keyword">var</span> currentIndex = <span class="number">0</span>       <span class="comment">// 当前现实的数据源索引</span></div><div class="line">    <span class="keyword">internal</span> <span class="keyword">var</span> refreshTable: <span class="type">UITableView</span> = <span class="type">UITableView</span>()      <span class="comment">// 当前tableView</span></div><div class="line">   </div><div class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">viewDidLoad</span><span class="params">()</span></span> &#123;</div><div class="line">         view.addSubview(tableView)</div><div class="line">         tableView.snp_makeConstraints &#123; (make) <span class="keyword">in</span></div><div class="line">                     make.<span class="keyword">left</span>.<span class="keyword">right</span>.bottom.equalTo(<span class="number">0</span>)</div><div class="line">                     make.top.equalTo(segementView.snp_bottom)</div><div class="line">             &#125;</div><div class="line">         refreshTable = tableView       <span class="comment">// 赋值当前tableView</span></div><div class="line">         setupRefreshHeader()           <span class="comment">//初始化下拉刷新控件</span></div><div class="line">         setupRefreshFooter()           <span class="comment">// 初始化上拉加载控件</span></div><div class="line">     &#125;    </div><div class="line">        <span class="comment">///  加载数据的方法</span></div><div class="line">        <span class="comment">///</span></div><div class="line">        <span class="comment">///  - parameter isRefresh: 是否是下拉刷新</span></div><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">refreshData</span><span class="params">(isRefresh: Bool)</span></span> &#123;    </div><div class="line">        refreshStatus[currentIndex].isLoading = <span class="literal">true</span>        <span class="comment">// 修改当前数据源的加载状态为正在加载</span></div><div class="line">        <span class="keyword">let</span> indexItem = currentIndex</div><div class="line">        <span class="keyword">let</span> url = <span class="type">URL_OrderList</span> + <span class="string">"/\(type)/\(PageCount)"</span> + <span class="string">"/\(refreshStatus[currentIndex].page).json"</span></div><div class="line">        <span class="keyword">let</span> request = <span class="type">PYNetWorkTools</span>.<span class="type">GET</span>(url, hudType: .<span class="type">None</span>, failer: &#123; [<span class="keyword">weak</span> <span class="keyword">self</span>] (failerTuples) <span class="keyword">in</span></div><div class="line">            <span class="keyword">guard</span> <span class="keyword">self</span> != <span class="literal">nil</span> <span class="keyword">else</span>&#123; <span class="keyword">return</span> &#125;</div><div class="line">            <span class="keyword">self</span>?.loadFailer(failerTuples)      <span class="comment">// 加载失败的方法</span></div><div class="line">        &#125;) &#123;[<span class="keyword">weak</span> <span class="keyword">self</span>] (response, jsonResult) <span class="keyword">in</span></div><div class="line">            <span class="keyword">guard</span> <span class="keyword">self</span> != <span class="literal">nil</span> <span class="keyword">else</span>&#123; <span class="keyword">return</span> &#125;</div><div class="line">            <span class="keyword">self</span>?.tableView.hiddenNoNetPlace()</div><div class="line">            <span class="keyword">let</span> array = <span class="type">PYOrderListModel</span>.modelArray(jsonResult)</div><div class="line">            <span class="keyword">if</span> isRefresh &#123;</div><div class="line">                <span class="keyword">self</span>?.totalArray[indexItem] = array</div><div class="line">            &#125; <span class="keyword">else</span> &#123;</div><div class="line">                <span class="keyword">self</span>?.totalArray[indexItem] += array</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">self</span>?.loadSuccess(array.<span class="built_in">count</span> &lt; <span class="type">PageCount</span>)      <span class="comment">// 加载成功的方法，并传递一个是否还有更多数据的返回值</span></div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span> request != <span class="literal">nil</span> &#123;</div><div class="line">            requests.append(request!)</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>以上这些代码就可以实现上述所有的功能，怎么样，是不是很有魅力呢？实例中使用了<code>Refreshable</code>协议，这套协议可以用在<code>UIViewController</code>和<code>UITableViewController</code>中，其中的<code>refreshTable</code>就是为了适配<code>UIViewController</code>所增加的一个属性，否则连这个属性都不用写了。</p>
+<h2 id="代码中能看到的协议中定义的内容如下"><a href="#代码中能看到的协议中定义的内容如下" class="headerlink" title="代码中能看到的协议中定义的内容如下"></a>代码中能看到的协议中定义的内容如下</h2><ul>
+<li><p>属性</p>
+<ul>
+<li>refreshStatus</li>
+<li>currentInidex</li>
+<li>refreshTable</li>
+</ul>
+</li>
+<li><p>方法</p>
+<ul>
+<li>refreshData(isRefresh: Bool)</li>
+<li>setupRefreshHeader()</li>
+<li>setupRefreshFooter()</li>
+<li>loadFailer(failerTuples: FailerTuples)</li>
+<li>loadSuccess(noMoreData: Bool?)</li>
+</ul>
+</li>
+</ul>
+<h2 id="让我们先看看Refreshable这个协议里是怎么写的"><a href="#让我们先看看Refreshable这个协议里是怎么写的" class="headerlink" title="让我们先看看Refreshable这个协议里是怎么写的"></a>让我们先看看<code>Refreshable</code>这个协议里是怎么写的</h2><figure class="highlight swift"><table><tr><td class="code"><pre><div class="line"><span class="comment">///  刷新协议</span></div><div class="line"><span class="class"><span class="keyword">protocol</span> <span class="title">Refreshable</span> </span>&#123;</div><div class="line">    <span class="comment">///  刷新数据的方法，必须实现，调用这个方法来执行下拉刷新和上拉加载</span></div><div class="line">    <span class="comment">///</span></div><div class="line">    <span class="comment">///  - parameter isRefresh: 是否是下拉刷新</span></div><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">refreshData</span><span class="params">(isRefresh: Bool)</span></span></div><div class="line">    </div><div class="line">    <span class="comment">/// 刷新状态的四个参数，分别是，当前页码，是否正在加载中，是否没有更多数据了，没有更多数据的footer显示文字</span></div><div class="line">    <span class="keyword">var</span> refreshStatus: [(page: <span class="type">Int</span>, isLoading: <span class="type">Bool</span>, noMoreData: <span class="type">Bool</span>, noMoreTitle: <span class="type">String</span>)] &#123;<span class="keyword">set</span> <span class="keyword">get</span>&#125;</div><div class="line">    </div><div class="line">    <span class="comment">/// 当前数据源的索引号</span></div><div class="line">    <span class="keyword">var</span> currentIndex: <span class="type">Int</span> &#123;<span class="keyword">set</span> <span class="keyword">get</span>&#125;</div><div class="line">    </div><div class="line">    <span class="comment">/// 需要处理的tableView</span></div><div class="line">    <span class="keyword">var</span> refreshTable: <span class="type">UITableView</span> &#123;<span class="keyword">get</span> <span class="keyword">set</span>&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// MARK: - 遵守这个协议的是控制器</span></div><div class="line"><span class="class"><span class="keyword">extension</span> <span class="title">Refreshable</span> <span class="title">where</span> <span class="title">Self</span>: <span class="title">UIViewController</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="comment">///  加载数据失败调用此方法</span></div><div class="line">    <span class="comment">///</span></div><div class="line">    <span class="comment">///  - parameter failerTuples: 失败原因</span></div><div class="line">    <span class="keyword">mutating</span> <span class="function"><span class="keyword">func</span> <span class="title">loadFailer</span><span class="params">(failerTuples: <span class="params">(type: NetFailerType, desc: String?)</span></span></span>?) &#123;</div><div class="line">        refreshStatus[currentIndex].page -= <span class="number">1</span></div><div class="line">        <span class="keyword">if</span> refreshStatus[currentIndex].page &lt; <span class="number">0</span> &#123;</div><div class="line">            refreshStatus[currentIndex].page = <span class="number">0</span></div><div class="line">        &#125;</div><div class="line">        refreshStatus[currentIndex].isLoading = <span class="literal">false</span></div><div class="line">        refreshFooter()</div><div class="line">        <span class="keyword">if</span> refreshTable.mj_header != <span class="literal">nil</span> &#123;</div><div class="line">            refreshTable.mj_header.endRefreshing()</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        <span class="keyword">if</span> failerTuples?.type == <span class="type">NetFailerType</span>.<span class="type">NoNet</span> &#123;</div><div class="line">            <span class="keyword">if</span> refreshTable.visibleCells.isEmpty &#123;</div><div class="line">                refreshTable.showNoNetPlace(&#123; [<span class="keyword">weak</span> <span class="keyword">self</span>] <span class="keyword">in</span></div><div class="line">                    <span class="keyword">guard</span> <span class="keyword">self</span> != <span class="literal">nil</span> <span class="keyword">else</span> &#123; <span class="keyword">return</span> &#125;</div><div class="line">                    <span class="keyword">self</span>?.refreshData(<span class="literal">true</span>)</div><div class="line">                    &#125;)</div><div class="line">            &#125; <span class="keyword">else</span> &#123;</div><div class="line">                showToast(failerTuples?.type.rawValue ?? <span class="string">""</span>)</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        refreshTable.reloadData()</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="comment">///  加载数据成功调用此方法</span></div><div class="line">    <span class="comment">///</span></div><div class="line">    <span class="comment">///  - parameter noMoreData: 是否没有更多数据了</span></div><div class="line">    <span class="keyword">mutating</span> <span class="function"><span class="keyword">func</span> <span class="title">loadSuccess</span><span class="params">(noMoreData: Bool?)</span></span> &#123;</div><div class="line">        refreshStatus[currentIndex].isLoading = <span class="literal">false</span></div><div class="line">        <span class="keyword">if</span> <span class="keyword">let</span> noMoreData = noMoreData <span class="keyword">where</span> refreshTable.mj_footer != <span class="literal">nil</span> &#123;</div><div class="line">            refreshStatus[currentIndex].noMoreData = noMoreData</div><div class="line">            refreshTable.mj_footer.hidden = <span class="literal">false</span></div><div class="line">            refreshFooter()</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span> refreshTable.mj_header != <span class="literal">nil</span> &#123;</div><div class="line">            refreshTable.mj_header.endRefreshing()</div><div class="line">        &#125;</div><div class="line">        refreshTable.reloadData()</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="comment">///  初始化下拉刷新控件</span></div><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">setupRefreshHeader</span><span class="params">()</span></span> &#123;</div><div class="line">        <span class="keyword">let</span> header = <span class="type">MJRefreshNormalHeader</span> &#123;[<span class="keyword">weak</span> <span class="keyword">self</span>] () -&gt; <span class="type">Void</span> <span class="keyword">in</span></div><div class="line">            <span class="keyword">guard</span> <span class="keyword">self</span> != <span class="literal">nil</span> <span class="keyword">else</span> &#123; <span class="keyword">return</span> &#125;</div><div class="line">            <span class="keyword">self</span>?.refreshTable.mj_footer.resetNoMoreData()</div><div class="line">            <span class="keyword">self</span>?.refreshStatus[<span class="keyword">self</span>!.currentIndex].page = <span class="number">1</span></div><div class="line">            <span class="keyword">self</span>?.refreshData(<span class="literal">true</span>)</div><div class="line">            <span class="keyword">self</span>?.refreshStatus[<span class="keyword">self</span>!.currentIndex].isLoading = <span class="literal">true</span></div><div class="line">        &#125;</div><div class="line">        refreshTable.mj_header = header</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="comment">///  初始化上拉加载控件</span></div><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">setupRefreshFooter</span><span class="params">()</span></span> &#123;</div><div class="line">        <span class="keyword">let</span> footer = <span class="type">MJRefreshBackStateFooter</span> &#123;[<span class="keyword">weak</span> <span class="keyword">self</span>] () -&gt; <span class="type">Void</span> <span class="keyword">in</span></div><div class="line">            <span class="keyword">guard</span> <span class="keyword">self</span> != <span class="literal">nil</span> <span class="keyword">else</span> &#123; <span class="keyword">return</span> &#125;</div><div class="line">            <span class="keyword">self</span>?.refreshStatus[<span class="keyword">self</span>!.currentIndex].page += <span class="number">1</span></div><div class="line">            <span class="keyword">self</span>?.refreshData(<span class="literal">false</span>)</div><div class="line">            <span class="keyword">self</span>?.refreshStatus[<span class="keyword">self</span>!.currentIndex].isLoading = <span class="literal">true</span></div><div class="line">        &#125;</div><div class="line">        footer.hidden = <span class="literal">true</span></div><div class="line">        refreshTable.mj_footer = footer</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="comment">///  刷新上拉加载控件，用来重置上拉刷新控件状态，控制能够刷新以及显示类型</span></div><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">refreshFooter</span><span class="params">()</span></span> &#123;</div><div class="line">        <span class="keyword">if</span> refreshTable.mj_footer != <span class="literal">nil</span> &#123;</div><div class="line">            <span class="keyword">if</span> refreshStatus[currentIndex].noMoreData &#123;</div><div class="line">                refreshTable.mj_footer.endRefreshingWithNoMoreData()</div><div class="line">            &#125; <span class="keyword">else</span> &#123;</div><div class="line">                refreshTable.mj_footer.endRefreshing()</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>整个协议简洁明了，没有一句废话。就把众多需要的功能及注意点都涵盖了。该协议具有以下特点。</p>
+<ul>
+<li>支持<code>UITableViewController</code>以及<code>UIViewcontroller</code>的刷新处理。</li>
+<li>支持多数据源的切换加载。</li>
+</ul>
+<p>这两个特性已经涵盖了日常开发中常见的所有情况。当然你也可以只添加上拉加载，不添加下拉刷新功能，总之，这些都随便。</p>
+<blockquote>
+<p><a href="https://github.com/GeekerHua/Refreshable" target="_blank" rel="external">源码在这</a></p>
+</blockquote>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/Swift/">Swift</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/Swift/">Swift</a><a href="/tags/protocal/">protocal</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="geekerhua.com/2016/06/18/Swift_protocal_refreshable/" data-title="Swift Protocal实战1(Refreshable) | GeekerHua的Blog" data-tsina="null" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2016/11/15/procrastination/" title="戒了吧拖延症">
+  <strong>上一篇：</strong><br/>
+  <span>
+  戒了吧拖延症</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2016/06/02/Git_workflow/"  title="Git与Git工作流">
+ <strong>下一篇：</strong><br/> 
+ <span>Git与Git工作流
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+<section id="comments" class="comment">
+	<div class="ds-thread" data-thread-key="2016/06/18/Swift_protocal_refreshable/" data-title="Swift Protocal实战1(Refreshable)" data-url="geekerhua.com/2016/06/18/Swift_protocal_refreshable/"></div>
+</section>
+
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contents</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#在不考虑缓存的情况下单数据源tableView需要考虑以下注意点"><span class="toc-number">1.</span> <span class="toc-text">在不考虑缓存的情况下单数据源tableView需要考虑以下注意点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#如果是多数据源的tableView则需要考虑的更多"><span class="toc-number">2.</span> <span class="toc-text">如果是多数据源的tableView则需要考虑的更多</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#控制器使用代码"><span class="toc-number">3.</span> <span class="toc-text">控制器使用代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#代码中能看到的协议中定义的内容如下"><span class="toc-number">4.</span> <span class="toc-text">代码中能看到的协议中定义的内容如下</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#让我们先看看Refreshable这个协议里是怎么写的"><span class="toc-number">5.</span> <span class="toc-text">让我们先看看Refreshable这个协议里是怎么写的</span></a></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">Categories</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/Linux/" title="Linux">Linux<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Other/" title="Other">Other<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Python/" title="Python">Python<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Reading/" title="Reading">Reading<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Speak/" title="Speak">Speak<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Swift/" title="Swift">Swift<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/工具/" title="工具">工具<sup>1</sup></a></li>
+		  
+		
+		  
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">Tags</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/Shell/" title="Shell">Shell<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/环境配置/" title="环境配置">环境配置<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Linux/" title="Linux">Linux<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/git/" title="git">git<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Python/" title="Python">Python<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/other/" title="other">other<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/interview/" title="interview">interview<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/成长/" title="成长">成长<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Swift/" title="Swift">Swift<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/protocal/" title="protocal">protocal<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/读书笔记/" title="读书笔记">读书笔记<sup>1</sup></a></li>
+			
+		
+			
+		
+			
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">Links</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="https://coderq.com" target="_blank" title="一个面向程序员交流分享的新一代社区">码农圈</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://yanshinian.com" target="_blank" title="上善若水，水善利萬物而不爭">言十年的博客</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://swift.gg" target="_blank" title="走心的Swift翻译组">SwiftGG</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://scp.net.cn" target="_blank" title="西二三旗的垃圾桶">BB4BB</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS</a>
+</div>
+
+  
+  <div class="tagcloudlist">
+    <p class="asidetitle">Tag Cloud</p>
+    <div class="tagcloudlist clearfix">
+       <a href="/tags/Linux/" style="font-size: 15px;">Linux</a> <a href="/tags/Python/" style="font-size: 10px;">Python</a> <a href="/tags/Shell/" style="font-size: 20px;">Shell</a> <a href="/tags/Swift/" style="font-size: 10px;">Swift</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/interview/" style="font-size: 10px;">interview</a> <a href="/tags/other/" style="font-size: 10px;">other</a> <a href="/tags/protocal/" style="font-size: 10px;">protocal</a> <a href="/tags/成长/" style="font-size: 10px;">成长</a> <a href="/tags/环境配置/" style="font-size: 15px;">环境配置</a> <a href="/tags/读书笔记/" style="font-size: 10px;">读书笔记</a>
+    </div>
+  </div>
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> 没有梦想就没有未来 <br/>
+			Without dreams, we have no future.</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		<a href="http://weibo.com/geekerhua" target="_blank" class="icon-weibo" title="微博"></a>
+		
+		
+		<a href="https://github.com/geekerhua" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		
+		<a href="https://twitter.com/GeekerHua" target="_blank" class="icon-twitter" title="twitter"></a>
+		
+		
+		<a href="https://www.facebook.com/100014141115493" target="_blank" class="icon-facebook" title="facebook"></a>
+		
+		
+		<a href="https://www.linkedin.com/in/振华-杭-35b122126" target="_blank" class="icon-linkedin" title="linkedin"></a>
+		
+		
+		
+		<a href="http://www.zhihu.com/people/hang-zhen-hua-82" target="_blank" class="icon-zhihu" title="知乎"></a>
+		
+		
+		
+		<a href="mailto:geekerhua@sina.com" target="_blank" class="icon-email" title="Email Me"></a>
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2017 
+		
+		<a href="/about" target="_blank" title="GeekerHua">GeekerHua</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"geekerhua"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script> 
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+<script>
+(function(){
+    var bp = document.createElement('script');
+    bp.src = '//push.zhanzhang.baidu.com/push.js';
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+<!-- Analytics Begin -->
+
+
+
+
+
+<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1259417518'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s23.cnzz.com/z_stat.php%3Fid%3D1259417518' type='text/javascript'%3E%3C/script%3E"));</script>
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="Back to Top"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>

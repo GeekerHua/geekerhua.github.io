@@ -1,0 +1,1537 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>GeekerHua的Blog</title>
+  <subtitle>爱生活，爱自由</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="geekerhua.com/"/>
+  <updated>2017-02-13T05:34:59.000Z</updated>
+  <id>geekerhua.com/</id>
+  
+  <author>
+    <name>GeekerHua</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>pyenv管理多版本python</title>
+    <link href="geekerhua.com/2017/02/06/Python_environment/"/>
+    <id>geekerhua.com/2017/02/06/Python_environment/</id>
+    <published>2017-02-06T05:46:28.000Z</published>
+    <updated>2017-02-13T05:34:59.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>在工作中不同项目对Python的版本有着不同的要求，Python2与Python3的差异，是的很多时候我们要同时使用者两种环境来做对比。众所周知，ipython的交互性设计能带来很大的方便。最理想的状态下就是能够随时切换Python的版本，且Python2与Python3能够并存，并且都能拥有自己的ipython和自己的pip包管理工具。</p>
+<p>对于mac电脑来说，会自带Python2，该Python在<code>/usr/bin/python</code>，这个Python可以使用，安装插件，但无法删除。mac的很多功能都依赖与Python，因此，不建议对这个Python进行修改，安装包等操作。如果一不小心，出现问题，系统就会崩溃。</p>
+<p>对于已经从Python官网上下载并安装的情况，最好把这个Python进行删除。</p>
+<h3 id="删除Python官网下载的Python"><a href="#删除Python官网下载的Python" class="headerlink" title="删除Python官网下载的Python"></a>删除Python官网下载的Python</h3><pre><code>1    删除Python框架
+2    sudo rm -rf /Library/Frameworks/Python.framework/Versions/x.x
+3    删除Python程序
+4    sudo rm -rf “/Applications/Python x.x”
+5    删除/usr/local/bin目录下的Python连接
+</code></pre><blockquote>
+<p>x.x为Python的版本号</p>
+</blockquote>
+<h3 id="mac自带Python安装pip"><a href="#mac自带Python安装pip" class="headerlink" title="mac自带Python安装pip"></a>mac自带Python安装pip</h3><p>mac自带的Python是没有安装pip的，已不建议安装。如果需要安装，<br>mac里面Python自带easy_install的，最快的应该就是在terminal里面执行<code>sudo easy_install pip</code>，网络好几秒就ok。运行完可以用pip help测试一下是否安装成功，成功安装后，直接pip install numpy或者其他包就可以了。</p>
+<h2 id="pyenv（最正规的好用的多版本管理工具）"><a href="#pyenv（最正规的好用的多版本管理工具）" class="headerlink" title="pyenv（最正规的好用的多版本管理工具）"></a><a href="https://github.com/yyuu/pyenv/" target="_blank" rel="external">pyenv</a>（最正规的好用的多版本管理工具）</h2><blockquote>
+<p><a href="http://www.jianshu.com/p/a23448208d9a" target="_blank" rel="external">参考</a><br>这个pyenv会管理不同版本的Python，可以随时切换全局的Python版本，可以Python2与Python3并存，并且能够指定项目的Python版本。</p>
+</blockquote>
+<ol>
+<li><p>安装pyenv</p>
+ <figure class="highlight zsh"><table><tr><td class="code"><pre><div class="line">$ brew install pyenv</div></pre></td></tr></table></figure>
+</li>
+<li><p>添加到环境变量</p>
+ <figure class="highlight zsh"><table><tr><td class="code"><pre><div class="line">$ <span class="built_in">echo</span> <span class="string">'eval "$(pyenv init -)"'</span> &gt;&gt; ~/.zshrc</div></pre></td></tr></table></figure>
+<blockquote>
+<p>如果用的是bash，则将<code>.zshrc</code>修改为<code>.bashrc</code></p>
+</blockquote>
+</li>
+<li><p>应用zsh(bash)设置</p>
+ <figure class="highlight zsh"><table><tr><td class="code"><pre><div class="line">$ <span class="built_in">source</span> ~/.zshrc</div><div class="line">$ <span class="built_in">exec</span> <span class="variable">$SHELL</span> <span class="_">-l</span>     <span class="comment"># 输入命令重启 Shell,然后就可以重启pyenv</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>安装python</p>
+<figure class="highlight zsh"><table><tr><td class="code"><pre><div class="line">$ pyenv install 3.6.0	<span class="comment"># 安装3.6.0版本</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>重建索引</p>
+ <figure class="highlight zsh"><table><tr><td class="code"><pre><div class="line">$ pyenv <span class="built_in">rehash</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>设置全局pyhon版本</p>
+ <figure class="highlight zsh"><table><tr><td class="code"><pre><div class="line">$ pyenv global 2.7.13 3.6.0</div></pre></td></tr></table></figure>
+</li>
+<li><p>指定项目python版本</p>
+ <figure class="highlight zsh"><table><tr><td class="code"><pre><div class="line">$ pyenv <span class="built_in">local</span> 3.5.2</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<blockquote>
+<p>装好后，如需使用python3的pip，则使用pip3，使用python2的pip，则使用pip或pip2.ipython同理。</p>
+<p>pyenv管理的python位于<code>~/.pyenv/versions/</code>中，并且全都在<code>~/.pyenv/shims/</code>中以软连接的形式存在，因此，无论版本怎么切换，<code>which python</code>的结果都应该是<code>~/.pyenv/shims/ipython</code></p>
+</blockquote>
+<h4 id="其他命令"><a href="#其他命令" class="headerlink" title="其他命令"></a>其他命令</h4><figure class="highlight zsh"><table><tr><td class="code"><pre><div class="line">$ pyenv version			<span class="comment"># 查看当前生效python版本</span></div><div class="line">$ pyenv versions		<span class="comment"># 查看已安装版本</span></div><div class="line">$ pyenv install --list	<span class="comment"># 查看可用版本</span></div></pre></td></tr></table></figure>
+<hr>
+<h4 id="安装常见问题"><a href="#安装常见问题" class="headerlink" title="安装常见问题"></a>安装常见问题</h4><ol>
+<li>安装时出现<code>zipimport.ZipImportError: can&#39;t decompress data; zlib not available</code>错误<a href="https://github.com/yyuu/pyenv/wiki/Common-build-problems" target="_blank" rel="external">官方的解释</a></li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">解决方法1：</div><div class="line">$ brew install readline xz</div><div class="line">$ CFLAGS=&quot;-I$(xcrun --show-sdk-path)/usr/include&quot; </div><div class="line"></div><div class="line">解决方法2：</div><div class="line">1、安装依赖zlib、zlib-devel</div><div class="line">2、重新编译安装Python</div><div class="line"></div><div class="line">	1	./configure </div><div class="line">	2	编辑Modules/Setup文件 </div><div class="line">	3	找到下面这句，去掉注释 </div><div class="line">	4	#zlib zlibmodule.c -I$(prefix)/include -L$(exec_prefix)/lib -lz </div><div class="line">	5	重新编译安装：make &amp; make install</div></pre></td></tr></table></figure>
+<h2 id="sublime支持python3直接运行并显示中文"><a href="#sublime支持python3直接运行并显示中文" class="headerlink" title="sublime支持python3直接运行并显示中文"></a>sublime支持python3直接运行并显示中文</h2><p>新建编译环境,输入以下内容<br><figure class="highlight json"><table><tr><td class="code"><pre><div class="line">&#123;</div><div class="line">    <span class="attr">"cmd"</span>: [<span class="string">"$ which python3 的路径"</span>, <span class="string">"-u"</span>, <span class="string">"$file"</span>],  </div><div class="line">    <span class="attr">"env"</span>: &#123; <span class="attr">"PYTHONIOENCODING"</span>: <span class="string">"utf8"</span> &#125;   # 使Python3支持中文</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>选择新建的编译环境进行编译。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;在工作中不同项目对Python的版本有着不同的要求，Python2与Python3的差异，是的很多时候我们要同时使用者两种环境来做对比。众所周知，ipython的交互性设计能带来很大的方便。最理想的状态下就是能够随时切换Python的版本，且Python2与Python3能
+    
+    </summary>
+    
+      <category term="Python" scheme="geekerhua.com/categories/Python/"/>
+    
+    
+      <category term="Python" scheme="geekerhua.com/tags/Python/"/>
+    
+      <category term="环境配置" scheme="geekerhua.com/tags/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Linux命令基础</title>
+    <link href="geekerhua.com/2017/01/13/Linux_foundation/"/>
+    <id>geekerhua.com/2017/01/13/Linux_foundation/</id>
+    <published>2017-01-13T11:58:22.000Z</published>
+    <updated>2017-02-13T05:21:48.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="基础命令"><a href="#基础命令" class="headerlink" title="基础命令"></a>基础命令</h1><h2 id="一些常用快捷键"><a href="#一些常用快捷键" class="headerlink" title="一些常用快捷键"></a>一些常用快捷键</h2><table>
+<thead>
+<tr>
+<th>按键</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ctrl+c</td>
+<td>结束当前任务</td>
+</tr>
+<tr>
+<td>Ctrl+d</td>
+<td>键盘输入结束或退出终端</td>
+</tr>
+<tr>
+<td>Ctrl+s</td>
+<td>暂停当前程序，暂停后按下任意键恢复运行</td>
+</tr>
+<tr>
+<td>Ctrl+z</td>
+<td>将当前程序放到后台运行，恢复到前台为命令fg，jobs查看当前后台任务</td>
+</tr>
+<tr>
+<td>Ctrl+a</td>
+<td>将光标移至输入行头，相当于Home键</td>
+</tr>
+<tr>
+<td>Ctrl+e</td>
+<td>将光标移至输入行末，相当于End键</td>
+</tr>
+<tr>
+<td>Ctrl+k</td>
+<td>删除从光标所在位置到行末</td>
+</tr>
+<tr>
+<td>Ctrl+u</td>
+<td>删除当前行内容</td>
+</tr>
+<tr>
+<td>Alt+Backspace</td>
+<td>向前删除一个单词</td>
+</tr>
+<tr>
+<td>Shift+PgUp</td>
+<td>将终端显示向上滚动</td>
+</tr>
+<tr>
+<td>Shift+PgDn</td>
+<td>将终端显示向下滚动</td>
+</tr>
+</tbody>
+</table>
+<h2 id="通配符"><a href="#通配符" class="headerlink" title="通配符"></a>通配符</h2><blockquote>
+<p>$ touch love_{1..10}_linux.txt<br>一次创建多个文件</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>字符</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>*</td>
+<td>匹配 0 或多个字符</td>
+</tr>
+<tr>
+<td>?</td>
+<td>匹配任意一个字符</td>
+</tr>
+<tr>
+<td>[list]</td>
+<td>匹配 list 中的任意单一字符</td>
+</tr>
+<tr>
+<td>[!list]</td>
+<td>匹配 除list 中的任意单一字符以外的字符</td>
+</tr>
+<tr>
+<td>[c1-c2]</td>
+<td>匹配 c1-c2 中的任意单一字符 如：[0-9] [a-z]</td>
+</tr>
+<tr>
+<td>{string1,string2,…}</td>
+<td>匹配 sring1 或 string2 (或更多)其一字符串</td>
+</tr>
+<tr>
+<td>{c1..c2}</td>
+<td>匹配 c1-c2 中全部字符 如{1..10}</td>
+</tr>
+</tbody>
+</table>
+<h2 id="man命令"><a href="#man命令" class="headerlink" title="man命令"></a>man命令</h2><blockquote>
+<p>在 Linux 环境中，如果你遇到困难，可以使用man 命令，它是Manual page的缩写。<br>通常情况下，man 手册里面的内容都是英文的，这就要求你有一定的英文基础。man 手册的内容很多，涉及了 Linux 使用过程中的方方面面，为了便于查找，是做了分册（分区段）处理的，在Research UNIX、BSD、OS X 和 Linux 中，手册通常被分为8个区段</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>区段</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>一般命令</td>
+</tr>
+<tr>
+<td>2</td>
+<td>系统调用</td>
+</tr>
+<tr>
+<td>3</td>
+<td>库函数，涵盖了C标准函数库</td>
+</tr>
+<tr>
+<td>4</td>
+<td>特殊文件（通常是/dev中的设备）和驱动程序</td>
+</tr>
+<tr>
+<td>5</td>
+<td>文件格式和约定</td>
+</tr>
+<tr>
+<td>6</td>
+<td>游戏和屏保</td>
+</tr>
+<tr>
+<td>7</td>
+<td>杂项</td>
+</tr>
+<tr>
+<td>8</td>
+<td>系统管理命令和守护进程</td>
+</tr>
+</tbody>
+</table>
+<p>要查看相应区段的内容，就在 man 后面加上相应区段的数字即可，如：<br><figure class="highlight zsh"><table><tr><td class="code"><pre><div class="line">$ man 1 ls</div></pre></td></tr></table></figure></p>
+<hr>
+<h1 id="文件操作"><a href="#文件操作" class="headerlink" title="文件操作"></a>文件操作</h1><h2 id="查看文件"><a href="#查看文件" class="headerlink" title="查看文件"></a>查看文件</h2><h3 id="使用cat-tac和nl命令查看文件"><a href="#使用cat-tac和nl命令查看文件" class="headerlink" title="使用cat,tac和nl命令查看文件"></a>使用cat,tac和nl命令查看文件</h3><p>使用cat,tac和nl命令查看文件。使用cat,tac和nl命令查看文件。<br><figure class="highlight zsh"><table><tr><td class="code"><pre><div class="line">$ cat -n passwd</div></pre></td></tr></table></figure></p>
+<p><code>nl</code>命令，添加行号并打印，这是个比cat -n更专业的行号打印命令。<br>这里简单列举它的常用的几个参数：</p>
+<figure class="highlight zsh"><table><tr><td class="code"><pre><div class="line">-b : 指定添加行号的方式，主要有两种：</div><div class="line">    -b a:表示无论是否为空行，同样列出行号(<span class="string">"cat -n"</span>就是这种方式)</div><div class="line">    -b t:只列出非空行的编号并列出（默认为这种方式）</div><div class="line">-n : 设置行号的样式，主要有三种：</div><div class="line">    -n ln:在行号字段最左端显示</div><div class="line">    -n rn:在行号字段最右边显示，且不加 0</div><div class="line">    -n rz:在行号字段最右边显示，且加 0</div><div class="line">-w : 行号字段占用的位数(默认为 6 位)</div></pre></td></tr></table></figure>
+<h3 id="使用more和less命令分页查看文件"><a href="#使用more和less命令分页查看文件" class="headerlink" title="使用more和less命令分页查看文件"></a>使用more和less命令分页查看文件</h3><p>more 是简单地分页查看工具<br>less 是more和vi的结合体，功能强大</p>
+<h3 id="使用head和tail命令查看文件"><a href="#使用head和tail命令查看文件" class="headerlink" title="使用head和tail命令查看文件"></a>使用head和tail命令查看文件</h3><p>更直接的只看一行， 加上-n参数，后面紧跟行数：<br><figure class="highlight zsh"><table><tr><td class="code"><pre><div class="line">$ tail -n 1 /etc/passwd</div></pre></td></tr></table></figure></p>
+<blockquote>
+<p>关于tail命令，不得不提的还有它一个很牛的参数-f，这个参数可以实现不停地读取某个文件的内容并显示。这可让我们动态查看日志起到实时监视的作用。</p>
+</blockquote>
+<hr>
+<h1 id="环境变量"><a href="#环境变量" class="headerlink" title="环境变量"></a>环境变量</h1><blockquote>
+<p>PATH环境变量是Linux下程序执行的搜索路径，通常全局环境变量使用大写。环境变量仅在当前线程内有效。</p>
+</blockquote>
+<h2 id="查看PATH"><a href="#查看PATH" class="headerlink" title="查看PATH"></a>查看PATH</h2><figure class="highlight zsh"><table><tr><td class="code"><pre><div class="line">$ <span class="built_in">echo</span> PATH</div></pre></td></tr></table></figure>
+<h2 id="添加值"><a href="#添加值" class="headerlink" title="添加值"></a>添加值</h2><figure class="highlight zsh"><table><tr><td class="code"><pre><div class="line">$ PATH=<span class="variable">$PATH</span>:/home/shiyanlou/mybin</div></pre></td></tr></table></figure>
+<h2 id="添加到zsh自启动执行"><a href="#添加到zsh自启动执行" class="headerlink" title="添加到zsh自启动执行"></a>添加到zsh自启动执行</h2><blockquote>
+<p>zsh的配置文件为.zshrc，bash的配置文件为.bashrc</p>
+</blockquote>
+<figure class="highlight zsh"><table><tr><td class="code"><pre><div class="line">$ <span class="built_in">echo</span> <span class="string">"PATH=<span class="variable">$PATH</span>:/home/shiyanlou/mybin"</span> &gt;&gt; .zshrc</div></pre></td></tr></table></figure>
+<h2 id="变量修改"><a href="#变量修改" class="headerlink" title="变量修改"></a>变量修改</h2><table>
+<thead>
+<tr>
+<th>变量设置方式</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>${变量名#匹配字串}</td>
+<td>从头向后开始匹配，删除符合匹配字串的最短数据</td>
+</tr>
+<tr>
+<td>${变量名##匹配字串}</td>
+<td>从头向后开始匹配，删除符合匹配字串的最长数据</td>
+</tr>
+<tr>
+<td>${变量名%匹配字串}</td>
+<td>从尾向前开始匹配，删除符合匹配字串的最短数据</td>
+</tr>
+<tr>
+<td>${变量名%%匹配字串}</td>
+<td>从尾向前开始匹配，删除符合匹配字串的最长数据</td>
+</tr>
+<tr>
+<td>${变量名/旧的字串/新的字串}</td>
+<td>将符合旧字串的第一个字串替换为新的字串</td>
+</tr>
+<tr>
+<td>${变量名//旧的字串/新的字串}</td>
+<td>将符合旧字串的全部字串替换为新的字串</td>
+</tr>
+</tbody>
+</table>
+<h2 id="删除变量"><a href="#删除变量" class="headerlink" title="删除变量"></a>删除变量</h2><figure class="highlight zsh"><table><tr><td class="code"><pre><div class="line">$ <span class="built_in">unset</span> path</div></pre></td></tr></table></figure>
+<h2 id="环境变量修改立刻生效"><a href="#环境变量修改立刻生效" class="headerlink" title="环境变量修改立刻生效"></a>环境变量修改立刻生效</h2><figure class="highlight zsh"><table><tr><td class="code"><pre><div class="line">$ <span class="built_in">source</span> .zshrc</div><div class="line">-----</div><div class="line">$ . ./.zshrc		<span class="comment"># 第一个点后边必须跟绝对路径</span></div></pre></td></tr></table></figure>
+<hr>
+<h1 id="文件搜索"><a href="#文件搜索" class="headerlink" title="文件搜索"></a>文件搜索</h1><h2 id="whereis"><a href="#whereis" class="headerlink" title="whereis"></a>whereis</h2><p>whereis只能搜索二进制文件(-b)，man帮助文件(-m)和源代码文件(-s)。如果想要获得更全面的搜索结果可以使用locate命令。</p>
+<h2 id="locate"><a href="#locate" class="headerlink" title="locate"></a>locate</h2><p>它可以用来查找指定目录下的不同文件类型，如查找 /etc 下所有以 sh 开头的文件：<br><figure class="highlight zsh"><table><tr><td class="code"><pre><div class="line">$ locate /etc/sh</div></pre></td></tr></table></figure></p>
+<blockquote>
+<p>注意,它不只是在 etc 目录下查找并会自动递归子目录进行查找</p>
+</blockquote>
+<p>查找 /usr/share/ 下所有 jpg 文件：<br><figure class="highlight zsh"><table><tr><td class="code"><pre><div class="line">$ locate /usr/share/\*.jpg</div></pre></td></tr></table></figure></p>
+<blockquote>
+<p>注意要添加*号前面的反斜杠转义，否则会无法找到</p>
+</blockquote>
+<p>如果想只统计数目可以加上-c参数，-i参数可以忽略大小写进行查找，whereis 的-b,-m，-s同样可以是使用。</p>
+<h2 id="which"><a href="#which" class="headerlink" title="which"></a>which</h2><p>which本身是 Shell 内建的一个命令，我们通常使用which来确定是否安装了某个指定的软件，因为它只从PATH环境变量指定的路径中去搜索命令：<br><figure class="highlight zsh"><table><tr><td class="code"><pre><div class="line">$ <span class="built_in">which</span> ls</div></pre></td></tr></table></figure></p>
+<h2 id="find"><a href="#find" class="headerlink" title="find"></a>find</h2><p>find应该是这几个命令中最强大的了，它不但可以通过文件类型、文件名进行查找而且可以根据文件的属性（如文件的时间戳，文件的权限等）进行搜索。find命令强大到，要把它将明白至少需要单独好几节课程才行，我们这里只介绍一些常用的内容。</p>
+<p>在指定目录下搜索指定文件名的文件：<br><figure class="highlight zsh"><table><tr><td class="code"><pre><div class="line">$ find /etc/ -name interfaces</div></pre></td></tr></table></figure></p>
+<blockquote>
+<p>注意 find 命令的路径是作为第一个参数的， 基本命令格式为 find [path] [option] [action]</p>
+</blockquote>
+<p>与时间相关的命令参数：</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>-atime</code></td>
+<td>最后访问时间</td>
+</tr>
+<tr>
+<td><code>-ctime</code></td>
+<td>创建时间</td>
+</tr>
+<tr>
+<td><code>-mtime</code></td>
+<td>最后修改时间</td>
+</tr>
+</tbody>
+</table>
+<p>下面以-mtime参数举例：<br>    •    <code>-mtime n</code>: n 为数字，表示为在n天之前的”一天之内“修改过的文件<br>    •    <code>-mtime +n</code>: 列出在n天之前（不包含n天本身）被修改过的文件<br>    •    <code>-mtime -n</code>: 列出在n天之内（包含n天本身）被修改过的文件<br>    •    <code>newer file</code>: file为一个已存在的文件，列出比file还要新的文件名</p>
+<hr>
+<h1 id="文件系统操作及磁盘管理"><a href="#文件系统操作及磁盘管理" class="headerlink" title="文件系统操作及磁盘管理"></a>文件系统操作及磁盘管理</h1><h2 id="df"><a href="#df" class="headerlink" title="df"></a>df</h2><p>查看磁盘情况<br><figure class="highlight zsh"><table><tr><td class="code"><pre><div class="line">$ df -h		<span class="comment">#以大小形式显示，而不是block块形式</span></div></pre></td></tr></table></figure></p>
+<h2 id="du"><a href="#du" class="headerlink" title="du"></a>du</h2><p>查看文件夹大小<br><figure class="highlight zsh"><table><tr><td class="code"><pre><div class="line"><span class="comment"># 只查看1级目录的信息</span></div><div class="line">$ du -h <span class="_">-d</span> 0 ~</div></pre></td></tr></table></figure></p>
+<hr>
+<h1 id="帮助命令"><a href="#帮助命令" class="headerlink" title="帮助命令"></a>帮助命令</h1><h2 id="使用type可以判断命令类型，是内部命令，还是其他的"><a href="#使用type可以判断命令类型，是内部命令，还是其他的" class="headerlink" title="使用type可以判断命令类型，是内部命令，还是其他的"></a>使用type可以判断命令类型，是内部命令，还是其他的</h2><ul>
+<li>type ls</li>
+<li>type vim</li>
+<li>type ls</li>
+</ul>
+<h2 id="help"><a href="#help" class="headerlink" title="help"></a>help</h2><blockquote>
+<p>zsh没有help命令，help命令用来显示shell内建命令的简要帮助信息。</p>
+</blockquote>
+<p>外部命令也可以使用help命令<br><figure class="highlight zsh"><table><tr><td class="code"><pre><div class="line">ls --help</div></pre></td></tr></table></figure></p>
+<h2 id="man"><a href="#man" class="headerlink" title="man"></a>man</h2><p>man 手册中一共有这么几个章节</p>
+<table>
+<thead>
+<tr>
+<th>章节数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Standard commands （标准命令）</td>
+</tr>
+<tr>
+<td>2</td>
+<td>System calls （系统调用）</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Library functions （库函数）</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Special devices （设备说明）</td>
+</tr>
+<tr>
+<td>5</td>
+<td>File formats （文件格式）</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Games and toys （游戏和娱乐）</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Miscellaneous （杂项）</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Administrative Commands （管理员命令）</td>
+</tr>
+<tr>
+<td>9</td>
+<td>其他（Linux特定的）， 用来存放内核例行程序的文档。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="info"><a href="#info" class="headerlink" title="info"></a>info</h2><blockquote>
+<p>如果man命令显示的信息还不够，可以用info命令。但zsh没有这个命令</p>
+</blockquote>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;基础命令&quot;&gt;&lt;a href=&quot;#基础命令&quot; class=&quot;headerlink&quot; title=&quot;基础命令&quot;&gt;&lt;/a&gt;基础命令&lt;/h1&gt;&lt;h2 id=&quot;一些常用快捷键&quot;&gt;&lt;a href=&quot;#一些常用快捷键&quot; class=&quot;headerlink&quot; title=&quot;一些常
+    
+    </summary>
+    
+      <category term="Linux" scheme="geekerhua.com/categories/Linux/"/>
+    
+    
+      <category term="Shell" scheme="geekerhua.com/tags/Shell/"/>
+    
+      <category term="Linux" scheme="geekerhua.com/tags/Linux/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>mac开发环境配置</title>
+    <link href="geekerhua.com/2017/01/12/mac_develop_environment/"/>
+    <id>geekerhua.com/2017/01/12/mac_develop_environment/</id>
+    <published>2017-01-12T12:18:28.000Z</published>
+    <updated>2017-02-13T05:21:48.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="Homebrew"><a href="#Homebrew" class="headerlink" title="Homebrew"></a><a href="http://brew.sh/index_zh-cn.html" target="_blank" rel="external">Homebrew</a></h1><blockquote>
+<p>Shell神器,OS X 不可或缺的套件管理器。<code>Homebrew</code>较之于<code>Shell</code>,好比<code>CocoaPod</code>较之于<code>Xcode</code>。这么说,<code>Homebrew</code>的定位就应该相当明确了吧！</p>
+</blockquote>
+<figure class="highlight ruby"><table><tr><td class="code"><pre><div class="line"><span class="comment"># 安装</span></div><div class="line">ruby -e <span class="string">"$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"</span></div></pre></td></tr></table></figure>
+<figure class="highlight ruby"><table><tr><td class="code"><pre><div class="line"><span class="comment"># 卸载</span></div><div class="line"> ruby -e <span class="string">"$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/uninstall)"</span></div></pre></td></tr></table></figure>
+<ul>
+<li>更新已安装的package<ul>
+<li>先更新brew：$ <code>brew update</code></li>
+<li>更新所有package：$ <code>brew upgarde</code></li>
+</ul>
+</li>
+<li>Homebrew下载的package存放的路径在哪里？<ul>
+<li><code>/Library/Caches/Homebrew/</code></li>
+</ul>
+</li>
+</ul>
+<p>Homebrew 可以很方便的安装需要的套件,方法如下：$ <code>brew install wget</code>。是不是很简单？</p>
+<p>Homebrew 使 OS X 更完美。使用 gem 来安装 gems、用 brew 来搞定那些依赖包。</p>
+<blockquote>
+<p>Tips: 如果安装过程中提示错误,提示先卸载,但执行卸载命令又卸载不掉,说明有曾经安装失败过,有残留。解决方式删除<code>/usr/local</code>文件夹即可。</p>
+</blockquote>
+<p><img src="http://7xtibb.com2.z0.glb.qiniucdn.com/2016-06-06-Shell_Homebrew安装失败.png" alt="Shell_Homebrew安装失败"></p>
+<h2 id="优秀的命令工具"><a href="#优秀的命令工具" class="headerlink" title="优秀的命令工具"></a>优秀的命令工具</h2><h3 id="1-htop"><a href="#1-htop" class="headerlink" title="1.htop"></a>1.htop</h3><blockquote>
+<p>带颜色的top工具，能够显示内存和CPU使用情况</p>
+</blockquote>
+<figure class="highlight zsh"><table><tr><td class="code"><pre><div class="line">brew install htop</div></pre></td></tr></table></figure>
+<h3 id="2-rew-cask"><a href="#2-rew-cask" class="headerlink" title="2.rew cask"></a>2.<a href="https://caskroom.github.io" target="_blank" rel="external">rew cask</a></h3><blockquote>
+<p>一个基于终端的软件安装工具<br><figure class="highlight zsh"><table><tr><td class="code"><pre><div class="line">brew tap caskroom/cask</div></pre></td></tr></table></figure></p>
+</blockquote>
+<ul>
+<li>安装软件(比如安装chrom)<figure class="highlight zsh"><table><tr><td class="code"><pre><div class="line">brew cask install google-chrome</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="3-tree"><a href="#3-tree" class="headerlink" title="3.tree"></a>3.tree</h3><blockquote>
+<p>tree可以显示目录树,类似于ubuntu中的tree。</p>
+</blockquote>
+<figure class="highlight zsh"><table><tr><td class="code"><pre><div class="line">brew install tree</div></pre></td></tr></table></figure>
+<blockquote>
+<p>tree命令在mac下并不太好用，中文显示乱码有个解决方法如下，这是一个自己写的tree功能，支持中文显示</p>
+</blockquote>
+<figure class="highlight zsh"><table><tr><td class="code"><pre><div class="line"><span class="built_in">alias</span> tree=<span class="string">"find . -print | sed -e 's;[^/]*/;|____;g;s;____|; |;g'"</span></div></pre></td></tr></table></figure>
+<h3 id="4-wget"><a href="#4-wget" class="headerlink" title="4.wget"></a>4.<a href="http://baike.baidu.com/link?url=_4E-kuBinS_AItjdR3vsisJTYpRsOCav7kEUifcKfUsLGMAML6kPVKJK0tVd5tOhLP13C_BnTzI7yFHFENwiKq" target="_blank" rel="external">wget</a></h3><blockquote>
+<p>wget是一个从网络上自动下载文件的自由工具，支持通过HTTP、HTTPS、FTP三个最常见的TCP/IP协议下载，并可以使用HTTP代理。wget名称的由来是“World Wide Web”与“get”的结合。</p>
+</blockquote>
+<figure class="highlight zsh"><table><tr><td class="code"><pre><div class="line">brew install wget</div></pre></td></tr></table></figure>
+<hr>
+<h1 id="xcode-selected"><a href="#xcode-selected" class="headerlink" title="xcode-selected"></a>xcode-selected</h1><blockquote>
+<p>Mac下很多工具都需要xcode-selected支持，比如git。<br>如果没有安装的话，在终端输入<code>git</code>，会提示安装xcode commond line 工具。安装即可。</p>
+</blockquote>
+<hr>
+<h1 id="zsh"><a href="#zsh" class="headerlink" title="zsh"></a>zsh</h1><blockquote>
+<p>Linux及Mac默认的shell是Bash，但功能最强大的shell确实zsh，mac自带zsh，只是没有设置为默认shell，且shell配置复杂。使用oh-my-zsh进行配置,简单又强大.配合iTerm 2一同使用,简单又强大。</p>
+</blockquote>
+<ul>
+<li><p>安装</p>
+<figure class="highlight zsh"><table><tr><td class="code"><pre><div class="line">git <span class="built_in">clone</span> git://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh</div></pre></td></tr></table></figure>
+</li>
+<li></li>
+<li><p>创建备份</p>
+<figure class="highlight zsh"><table><tr><td class="code"><pre><div class="line">cp ~/.zshrc ~/.zshrc.orig</div><div class="line">cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc</div></pre></td></tr></table></figure>
+</li>
+<li><p>把 zsh 设置成默认的 shell</p>
+<figure class="highlight zsh"><table><tr><td class="code"><pre><div class="line">chsh <span class="_">-s</span> /bin/zsh</div></pre></td></tr></table></figure>
+</li>
+<li><p>重启zsh</p>
+</li>
+</ul>
+<hr>
+<h1 id="ruby升级"><a href="#ruby升级" class="headerlink" title="ruby升级"></a>ruby升级</h1><blockquote>
+<p>rvm是什么？为什么要安装rvm呢，因为rvm可以让你拥有多个版本的Ruby，并且可以在多个版本之间自由切换。</p>
+</blockquote>
+<p>第一步安装rvm<br><figure class="highlight ruby"><table><tr><td class="code"><pre><div class="line">$ curl -L get.rvm.io <span class="params">| bash -s stable</span></div><div class="line">$ source ~/.rvm/scripts/rvm</div></pre></td></tr></table></figure></p>
+<ul>
+<li>等待终端加载完毕,后输入：<figure class="highlight ruby"><table><tr><td class="code"><pre><div class="line">rvm -v</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>如果能显示版本好则安装成功了。<br>第二步：安装ruby</p>
+<ul>
+<li><p>列出ruby可安装的版本信息</p>
+<figure class="highlight ruby"><table><tr><td class="code"><pre><div class="line">rvm list known</div></pre></td></tr></table></figure>
+</li>
+<li><p>安装一个ruby版本</p>
+<figure class="highlight ruby"><table><tr><td class="code"><pre><div class="line">rvm install <span class="number">2.1</span>.<span class="number">4</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>如果想设置为默认版本，可以用这条命令来完成<br><figure class="highlight ruby"><table><tr><td class="code"><pre><div class="line">rvm use <span class="number">2.1</span>.<span class="number">4</span> --default</div></pre></td></tr></table></figure></p>
+<ul>
+<li><p>查看已安装的ruby</p>
+<figure class="highlight ruby"><table><tr><td class="code"><pre><div class="line">rvm list</div></pre></td></tr></table></figure>
+</li>
+<li><p>卸载一个已安装ruby版本</p>
+<figure class="highlight ruby"><table><tr><td class="code"><pre><div class="line">rvm remove <span class="number">2.1</span>.<span class="number">4</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+<hr>
+<h1 id="CocoaPods"><a href="#CocoaPods" class="headerlink" title="CocoaPods"></a>CocoaPods</h1><blockquote>
+<p>CocoaPods是Xcode的包管理工具，主要用在OC中，Swift中也能应用。帮助开发者管理iOS第三方框架的工具</p>
+</blockquote>
+<ul>
+<li><ol>
+<li>查看当前的ruby源: <code>gem source -l</code></li>
+</ol>
+</li>
+<li><ol>
+<li>修改ruby源<ul>
+<li>删除旧源: gem sources –remove <a href="https://rubygems.org/" target="_blank" rel="external">https://rubygems.org/</a></li>
+<li>添加新源:  <a href="https://gems.ruby-china.org/" target="_blank" rel="external">https://gems.ruby-china.org/</a></li>
+<li>查看新源: gem source -l</li>
+</ul>
+</li>
+</ol>
+</li>
+<li>3.安装CocoaPods: sudo gem install cocoapods (可能需要等待较长时间)</li>
+<li><p>4.利用CocoaPods管理第三方框架</p>
+<ul>
+<li>打开Xcode新建项目</li>
+<li>利用终端进入新项目的根路径</li>
+<li>新建Podfile文件: vim Podfile, 在这个文件中描述需要依赖的第三方框架<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">platform :ios, &apos;8.0&apos;</div><div class="line">pod &apos;UIView+AutoLayout&apos;, &apos;~&gt; 2.0&apos;</div><div class="line">pod &apos;MJExtension&apos;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>5.解析Podfile文件</p>
+<ul>
+<li>建议先更新远程的框架信息: pod setup</li>
+<li>开始解析Podfile文件: pod install (可能需要等待较长时间)<ul>
+<li>pod install 换成pod install –verbose –no-repo-update这个命令，前面的命令被墙了 ,pod update 同理</li>
+</ul>
+</li>
+<li>如果需要更新框架: pod update</li>
+</ul>
+</li>
+<li>6.其它用法<ul>
+<li>使用pod search 关键词可以搜索支持CocoaPods的第三方框架 (并不是所有第三方框架都支持CocoaPods)</li>
+<li>建议在进行pod search、pod update、pod install之前都先进行pod setup</li>
+<li>如果在使用CocoaPods过程中遇到了莫名其妙的错误（比如NoMethodError），大部分原因是mac上的Ruby环境不是最新的。可以考虑更新Ruby环境: sudo gem update</li>
+</ul>
+</li>
+<li>直接在终端添加新依赖  $  pod ‘SVProgressHUD’, ‘~&gt; 1.1.2’ &gt; Podfile</li>
+</ul>
+<hr>
+<h1 id="vim"><a href="#vim" class="headerlink" title="vim"></a>vim</h1><blockquote>
+<p>vim号称编辑器之神，拥有强大的功能和众多的插件。</p>
+</blockquote>
+<h2 id="中文帮助文件"><a href="#中文帮助文件" class="headerlink" title="中文帮助文件"></a><a href="http://sourceforge.net/projects/vimcdoc/files/latest/download" target="_blank" rel="external">中文帮助文件</a></h2><ul>
+<li>安装<a href="http://sourceforge.net/projects/vimcdoc/files/latest/download" target="_blank" rel="external">http://sourceforge.net/projects/vimcdoc/files/latest/download</a></li>
+<li><p>解压后进入文件夹,执行 <code>sudo ./vimcdoc.sh -i</code> #安装</p>
+<blockquote>
+<p>vim中文文档不会覆盖原英文文档，安装后vim默认使用中文文档。若想使用英文文档，可在vim中执行以下命令：</p>
+</blockquote>
+<ul>
+<li><p>:set helplang=en  回车之后 :help 就是英文的help。</p>
+<blockquote>
+<p>同理，使用以下命令可重新使用中文文档：</p>
+</blockquote>
+</li>
+<li><p>:set helplang=cn 回车之后 :help 就是中文的help。</p>
+</li>
+</ul>
+</li>
+<li>在解包之后的文件夹中使用以下命令可以卸载vim中文文档：<ul>
+<li>$sudo ./vimcdoc.sh -u</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h1 id="sublime-text3"><a href="#sublime-text3" class="headerlink" title="sublime text3"></a>sublime text3</h1><h2 id="Package-Control"><a href="#Package-Control" class="headerlink" title="Package Control"></a><a href="https://sublime.wbond.net/packages/Package%20Control" target="_blank" rel="external">Package Control</a></h2><blockquote>
+<p>提到 Sublime Text，就不得不说 Package Control，就像 Linux 下的 apt-get 和 yum 一样，它是 Sublime Text 的包管理器，你用它可以轻松地找到你想要的插件和管理已有插件。</p>
+</blockquote>
+<ul>
+<li>使用<code>control</code> + <code>~</code>打开控制台，将从官网<a href="https://sublime.wbond.net/installation#st3" target="_blank" rel="external">复制代码</a>粘贴到控制台并执行。</li>
+<li>安装代码如下<pre><code>import urllib.request,os,hashlib; h = &apos;2915d1851351e5ee549c20394736b442&apos; + &apos;8bc59f460fa1548d1514676163dafc88&apos;; pf = &apos;Package Control.sublime-package&apos;; ipp = sublime.installed\_packages\_path(); urllib.request.install\_opener( urllib.request.build\_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( &apos;http://packagecontrol.io/&apos; + pf.replace(&apos; &apos;, &apos;%20&apos;)).read(); dh = hashlib.sha256(by).hexdigest(); print(&apos;Error validating download (got %s instead of %s), please try manual install&apos; % (dh, h)) if dh != h else open(os.path.join( ipp, pf), &apos;wb&apos; ).write(by)
+</code></pre><h3 id="Package-Control-常用命令"><a href="#Package-Control-常用命令" class="headerlink" title="Package Control 常用命令"></a>Package Control 常用命令</h3></li>
+<li>激活<code>cmd+shift+P</code></li>
+<li>安装插件 ->  Package Control: Install Package xxx</li>
+<li>显示所有已安装的插件 -> List Packages </li>
+<li>移除一个指定的插件 -> Remove Packages </li>
+<li>更新一个指定的插件 -> Upgrade Package </li>
+<li>更新所有已安装的插件 -> Upgrade/Overwrite All Packages </li>
+</ul>
+<h2 id="常用插件"><a href="#常用插件" class="headerlink" title="常用插件"></a>常用插件</h2><h3 id="javascript"><a href="#javascript" class="headerlink" title="javascript"></a>javascript</h3><ul>
+<li><p><a href="http://docs.emmet.io" target="_blank" rel="external">emmet</a></p>
+<blockquote>
+<p><a href="http://docs.emmet.io/cheat-sheet/" target="_blank" rel="external">速查表</a><br><a href="http://docs.emmet.io/" target="_blank" rel="external">官方文档</a></p>
+</blockquote>
+<ul>
+<li>安装<ul>
+<li>按Ctrl+Shift+P命令板</li>
+<li>输入install然后选择install Package，然后输入emmet找到 Emmet Css Snippets，点击就可以自动完成安装。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Better Completion<ul>
+<li>自动补全Bootstrap 、JQuery、Less等<h3 id="Python"><a href="#Python" class="headerlink" title="Python"></a>Python</h3></li>
+</ul>
+</li>
+<li>SubLimener<ul>
+<li>编码规范</li>
+</ul>
+</li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;Homebrew&quot;&gt;&lt;a href=&quot;#Homebrew&quot; class=&quot;headerlink&quot; title=&quot;Homebrew&quot;&gt;&lt;/a&gt;&lt;a href=&quot;http://brew.sh/index_zh-cn.html&quot; target=&quot;_blank&quot; rel=
+    
+    </summary>
+    
+      <category term="Other" scheme="geekerhua.com/categories/Other/"/>
+    
+    
+      <category term="环境配置" scheme="geekerhua.com/tags/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/"/>
+    
+      <category term="Shell" scheme="geekerhua.com/tags/Shell/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>信息爆炸的时代，该怎么有效获取信息</title>
+    <link href="geekerhua.com/2017/01/08/infomation/"/>
+    <id>geekerhua.com/2017/01/08/infomation/</id>
+    <published>2017-01-08T10:00:00.000Z</published>
+    <updated>2017-02-13T05:21:48.000Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote>
+<p>如今社会是一个信息爆炸的时代，我们有多种多样的渠道可以获取信息，但又有读不完的信息。如何最低成本获取到有价值的信息显得尤为重要，因此对信息渠道进行筛选和入口统一显得尤为重要。RSS已死，RSS永生。</p>
+</blockquote>
+<h2 id="过去的我的信息获取渠道及方式"><a href="#过去的我的信息获取渠道及方式" class="headerlink" title="过去的我的信息获取渠道及方式"></a>过去的我的信息获取渠道及方式</h2><ul>
+<li>电视，据统计，目前一年产生的电视节目，可供我们从现在看到2040年。但电视节目充满了夸张的广告，且电视的信息属于被动输入，无法主动选择。我个人看电视，觉得最有价值的就是看广告，能够欣赏广告词设计及画面</li>
+<li>报纸，传统的报纸已经存在很多年了，虽然现在报纸发行量明显减少，但不可否认为我们传达了大量的信息。现在的报纸由于受到网络信息的冲击，不再具有时效性，很多报纸充斥着大量的广告。</li>
+<li>杂志，作为跨越报纸与多媒体的产物，信息量更大的杂志也曾风靡一时，融合图片、文字，甚至还带有多媒体光盘。不过众多杂志也都纷纷停刊。也有不少杂志依旧存在。</li>
+<li>论坛，论坛拥有顽强的生命力，开创了粉丝间的互动，我们第一次获取到了和我们一样平常人的信息，而不是所有的信息都来自官方。</li>
+<li>微信公众号, 微信的兴起，开创了知识获取的新渠道，普通人也能够成为知识分享者，知识获取的方式更加简单，便捷。很多人通过些公众号文章来锻炼自己地写作能力，记录自己。随时随地、碎片化阅读，为公众号的传播提供了便利。每天一条新的消息，用不了几分钟就读完了。貌似还不错。</li>
+<li>RSS 一项古老的技术，能够订阅一些网站、博客的文章，定期或者及时进行更新，并能够对文章进行分类和标记。在Google Reader退出后，逐渐冷淡。</li>
+<li>博客、微博：博客和微博属于相似的形式，只不过一个是基于PC端，一个是基于移动端。一个是基于长文本，一个是基于短文本。每个人都应该有属于自己的博客，用来树立自己的形象。自己搭建博客的成本真的是越来越低了。</li>
+<li>垂直网站： 垂直网站专注于他所专注的领域，不想各大门户网站，充斥着各种类型的信息，用户所关心的往往是极个别的领域。因此垂直网站是一个很好的项目，我们关注我们所关心的领域，并随时查看相应的垂直网站，能够获取到新鲜及时的信息。</li>
+<li>《今日头条》、《网易新闻》为代表的资讯类App，移动端的兴起，带火了这类应用，本身是一个聚合平台，但由于可以自定义不同的领域，你将可以只看到自己希望关注的领域，不受其他无用咨询的打扰。</li>
+<li>book： 信息爆照时代，我们大多数的信息的获取来源是利用碎片化的时间，碎片化的时间意味着，没有深度阅读，阅读往往停留在表面。这会让人很浮躁，看到一大片文字，往往一掠而过，不会仔细去读，往往看完了，并不记得讲的是什么了。读一本，一本专注于一个主题的书，能够更加系统的对主题进行阐述和讲解，阅读这样的书籍更能够培养深度阅读能力。看书什么时候也是不能被替代的。</li>
+<li>邮件订阅《卖桃者说》——MacTalk池建强： 随着时代的发展，又出现了一种邮件订阅的知识获取途径，第一次接触是某个技术网站的电子期刊订阅，这是免费的，但相应的，免费的也是最贵的。因此这类订阅往往不是太受重视，特别是天朝垃圾邮件这么多，每天都有好多封邮件，真的很头疼。<ul>
+<li>但依然个别邮件订阅却做得很不错，例如《卖桃者说》这是一个付费的信息订阅。价格也很贵，每周一封，每次是关于一个主题，优点是，信息是多媒体的，而且信息随时随地都可以看，在哪里都可以看，因为是收费的，你也就不会忽视它，反而会每周期待他的到来，邮件的形式也很适合与作者沟通交流。缺点就是毕竟是基于邮件，信息的管理不是很方便。</li>
+</ul>
+</li>
+<li>有声电台：随着播客的兴起，特别是《喜马拉雅》的流行，在国内，出现了众多以声音为媒介的知识分享，对每个用户来说，都可以成为信息的提供方，将自己的知识、经验进行分享。有免费的、也有收费的。本着免费的也是最贵的原则，你会发现收费的往往没那么多废话，内容也是充满干活，能够学到更多的东西。例如喜马拉雅在12月13日举行了知识付费节，很多收费课程都是半价优惠。很多节目，50块钱就能学很久。</li>
+<li>视频：大部分免费的视频缺陷就是，啰嗦，比较浪费时间，看着很着急。</li>
+</ul>
+<blockquote>
+<p>讲了这么多信息的获取渠道，是不是大开眼界，很多自己都没有尝试呢。其实对于我们来说，最值钱的就是时间，每个人的时间都是有限的，如何合理利用自己的时间，比别人多获取更多的有效信息呢。我整理了自己的信息获取途径。</p>
+</blockquote>
+<h2 id="现在我的信息获取渠道及方式"><a href="#现在我的信息获取渠道及方式" class="headerlink" title="现在我的信息获取渠道及方式"></a>现在我的信息获取渠道及方式</h2><ul>
+<li>RSS<ul>
+<li>这是我最推崇的信息获取方式，一般的图文信息，包括、博客、垂直网站，甚至是公众号都可以使用RSS进行订阅。</li>
+<li>传统的电视早已成为了时间杀手，我们要远离，能有多远，跑多远。</li>
+<li>杂志从某个角度来说早已退出了当今的社会。</li>
+<li>报纸的核心就是时效性，如今有太多的渠道要强于报纸。</li>
+<li>论坛里充满了各种水贴，真正有价值的信息很难找、也很少。</li>
+<li>而微博，更多的是博主与粉丝的互动，没有太多的有价值信息。</li>
+<li>真正有价值的图文信息通常在个别的高质量垂直网站、个人博客、微信公众号。使用RSS进行订阅，能够进行统一管理，分类，标识读过的信息，对优秀的信息进行归档等。</li>
+</ul>
+</li>
+<li>极个别的网站(ithome)<ul>
+<li>有些网站并不支持RSS订阅，有些网站具有大量的信息输出，且涉及不同的领域，这些网站就需要加入收藏夹，自己定期查看，以获取有价值的信息，比如：掘金、InfoQ、github、开源中国等。</li>
+</ul>
+</li>
+<li>book(包括Kindle)<ul>
+<li>看书是最能提高人认知的活动。纸质书无疑更有感觉，但纸质书多了对经济和存放空间都是一种挑战，因此Kindle为首的电子书才会如此流行。</li>
+</ul>
+</li>
+</ul>
+<h3 id="资源分享"><a href="#资源分享" class="headerlink" title="资源分享"></a>资源分享</h3><ul>
+<li>优秀的公众号：<ul>
+<li>小道消息</li>
+<li><a href="http://www.infoq.com/cn/" target="_blank" rel="external">InfoQ</a></li>
+<li><a href="http://macshuo.com" target="_blank" rel="external">malkTalk</a></li>
+<li>学习学习在学习</li>
+<li><a href="http://www.write.org.cn" target="_blank" rel="external">warfalcon</a></li>
+<li><a href="xinshengdaxue.com">新生大学</a></li>
+<li><a href="http://guokr.com" target="_blank" rel="external">果壳网</a></li>
+</ul>
+</li>
+<li>优秀的网站 <ul>
+<li><a href="http://sspai.com" target="_blank" rel="external">少数派</a></li>
+<li><a href="http://www.iplaysoft.com" target="_blank" rel="external">异次元软件世界</a></li>
+<li><a href="http://www.waerfa.com" target="_blank" rel="external">Mac玩儿法</a></li>
+</ul>
+</li>
+<li>博客<ul>
+<li><a href="http://www.liaoxuefeng.com" target="_blank" rel="external">廖雪峰</a></li>
+<li><a href="http://www.ruanyifeng.com" target="_blank" rel="external">阮一峰</a></li>
+<li>……</li>
+</ul>
+</li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;如今社会是一个信息爆炸的时代，我们有多种多样的渠道可以获取信息，但又有读不完的信息。如何最低成本获取到有价值的信息显得尤为重要，因此对信息渠道进行筛选和入口统一显得尤为重要。RSS已死，RSS永生。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id
+    
+    </summary>
+    
+      <category term="Speak" scheme="geekerhua.com/categories/Speak/"/>
+    
+    
+      <category term="成长" scheme="geekerhua.com/tags/%E6%88%90%E9%95%BF/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>戒了吧拖延症</title>
+    <link href="geekerhua.com/2016/11/15/procrastination/"/>
+    <id>geekerhua.com/2016/11/15/procrastination/</id>
+    <published>2016-11-15T10:00:00.000Z</published>
+    <updated>2017-02-13T05:21:48.000Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote>
+<p>拖延症是每个人的噩梦，但很多人并没有这样的意识。拖延会让你失去很多机会，会降低效率(包括工作效率，生活上的效率，以及各种效率)。</p>
+</blockquote>
+<p>本书的主人公胡小懒，从一个做事拖延，散漫的人到逐渐认清自己，再观察别人的情况，反思自己的行为表现，最终一步步告诫自己、制定计划，走出拖延的泥潭。</p>
+<p>本书共有10大章节，每个章节都围绕一个主题展开。</p>
+<h2 id="拖延在靠近"><a href="#拖延在靠近" class="headerlink" title="拖延在靠近"></a>拖延在靠近</h2><p>拖延的类型，无外乎有一下几个。</p>
+<ol>
+<li>工作型拖延</li>
+<li>学习型拖延</li>
+<li>瞎忙型拖延</li>
+<li>被动型拖延</li>
+<li>侥幸型拖延</li>
+<li>苛求型拖延</li>
+</ol>
+<h2 id="拖延的危害"><a href="#拖延的危害" class="headerlink" title="拖延的危害"></a>拖延的危害</h2><ul>
+<li>拖延会无意义的浪费生命，而需要做的事没有完成，早晚还是要花费时间去做的。</li>
+<li>拖延还会是的情况一团糟，既有的计划可能会被打乱，突发的情况更会让事情变得无法收拾，变得一团糟糕。</li>
+<li>拖延会对心里产生压力，让人颓废。</li>
+<li>当然工作中的拖延很可能会让你丢掉工作。</li>
+</ul>
+<p>拖延症的计算公式<br><code>U = EV/ID</code> </p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">U：完成给定任务的愿望</div><div class="line">E：对成功的期望</div><div class="line">V：创造的价值</div><div class="line">I：任务的紧迫性</div><div class="line">D：主观拖延的程度</div></pre></td></tr></table></figure>
+<blockquote>
+<p>这个公式意味着，人往往会拖延那些无法立刻见到回报的事，而是会把经理全部放在能够直接产生效益的活动上。</p>
+</blockquote>
+<h2 id="我们为什么会拖延"><a href="#我们为什么会拖延" class="headerlink" title="我们为什么会拖延"></a>我们为什么会拖延</h2><ul>
+<li>因为心里问题，心里问题导致有些事情我们不愿意去做；</li>
+<li>因为懒惰，懒惰会使我们变得拖延；</li>
+<li>部分情况因为完美主义，我们会等待，继而变成了拖延；</li>
+<li>因为害怕失败，我们也会进行逃避，不敢去面对，就不回去做，变得拖延；</li>
+<li>害怕抉择，害怕做决定，让我们拖延；</li>
+<li>甚至我们会害怕成功，比如升值了怕不能胜任而去拖延；</li>
+<li>人不是独立个体，当我们太过依赖别人的时候也会产生拖延。</li>
+</ul>
+<h2 id="如何战胜拖延呢"><a href="#如何战胜拖延呢" class="headerlink" title="如何战胜拖延呢"></a>如何战胜拖延呢</h2><p>首先要克服懒惰，原理懒惰，就已经成功一半了。当不想行动时，用语言提醒自己，别犯懒。要克服拖延。</p>
+<h3 id="PDCA循环法"><a href="#PDCA循环法" class="headerlink" title="PDCA循环法"></a>PDCA循环法</h3><p>Plan(计划) ->Do(执行) -> Check(检查) -> Action(行动)</p>
+<ul>
+<li>要克服懒惰，就必须先有计划；</li>
+<li>提高执行力，在执行的过程中，时刻提醒自己，不能犯懒。</li>
+<li>自检和被检。自检是一种自省，可以不断地发现自身存在的问题，从而解决问题。被检则是将自己置身于优秀的监督机制中。</li>
+<li>检查是为了发现问题、解决问题。检查之后就要采取行动。</li>
+</ul>
+<h2 id="与借口说bye-bye"><a href="#与借口说bye-bye" class="headerlink" title="与借口说bye-bye"></a>与借口说bye-bye</h2><ul>
+<li>生活的赢家，从来没有借口；</li>
+<li>负责的人，从来没有借口。<h2 id="打造强大的执行力"><a href="#打造强大的执行力" class="headerlink" title="打造强大的执行力"></a>打造强大的执行力</h2></li>
+<li>快速决定、一分钟也不耽误，重要的事不能拖得最后，要先做；</li>
+<li>优先处理讨厌的工作。赶走负面情绪，收回注意力。<h2 id="有目标的人，才不拖延"><a href="#有目标的人，才不拖延" class="headerlink" title="有目标的人，才不拖延"></a>有目标的人，才不拖延</h2></li>
+<li>有什么样的目标，就有什么样的人生；</li>
+<li>不瞎忙，有一个明确的目标；</li>
+<li>任何目标都要有个Deadline；</li>
+<li>专注眼前，一次只做一点事；</li>
+<li>把大目标分解成小目标<h2 id="时间管理，终结拖延恶习"><a href="#时间管理，终结拖延恶习" class="headerlink" title="时间管理，终结拖延恶习"></a>时间管理，终结拖延恶习</h2></li>
+<li>二八法则</li>
+<li>四象限法则<h2 id="来点正能量"><a href="#来点正能量" class="headerlink" title="来点正能量"></a>来点正能量</h2></li>
+<li>输给别人，别输给自己</li>
+<li>让工作氛围积极起来；</li>
+<li>让工作变得有趣；</li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;拖延症是每个人的噩梦，但很多人并没有这样的意识。拖延会让你失去很多机会，会降低效率(包括工作效率，生活上的效率，以及各种效率)。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;本书的主人公胡小懒，从一个做事拖延，散漫的人到逐渐认清自己，再观察别人的情况
+    
+    </summary>
+    
+      <category term="Reading" scheme="geekerhua.com/categories/Reading/"/>
+    
+    
+      <category term="读书笔记" scheme="geekerhua.com/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Swift Protocal实战1(Refreshable)</title>
+    <link href="geekerhua.com/2016/06/18/Swift_protocal_refreshable/"/>
+    <id>geekerhua.com/2016/06/18/Swift_protocal_refreshable/</id>
+    <published>2016-06-18T13:57:21.000Z</published>
+    <updated>2017-02-13T05:21:48.000Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote>
+<p>在app的开发中，出现最多的一个情况就是显示一个列表来展示数据，就像刷微博一样，要能够上拉加载更多，下拉进行刷新。但在实际开发过程中，需要考虑的情况会更多。我们使用<code>header</code>来表示下拉刷新控件，使用<code>footer</code>来表示上拉加载控件。</p>
+</blockquote>
+<h2 id="在不考虑缓存的情况下单数据源tableView需要考虑以下注意点"><a href="#在不考虑缓存的情况下单数据源tableView需要考虑以下注意点" class="headerlink" title="在不考虑缓存的情况下单数据源tableView需要考虑以下注意点"></a>在不考虑缓存的情况下单数据源tableView需要考虑以下注意点</h2><ol>
+<li>首次进入这个页面，没有数据需要进行首次数据加载</li>
+<li>首次加载过程中不能显示footer</li>
+<li>下拉刷新需要用返回的结果覆盖数据源的数据</li>
+<li>下拉刷新后需要还原footer的状态(变更为可以加载更多)</li>
+<li>上拉加载成功后需要根据返回数据数量来判断是否还有更多数据，没有更多数据需要修改footer的状态为<code>没有更多数据了</code>，并禁止上拉刷新功能。</li>
+<li>首次加载数据如果没有网络连接或者加载失败，需要显示一个失败页面，点击失败页面能够重新进行网络请求获取数据。</li>
+<li>每次进行下拉刷新都需要将当前page设为<code>1</code></li>
+<li>每次进行上拉加载前都需要将当前page进行<code>+1</code>操作</li>
+<li>每次上拉加载失败都需要将当前page进行<code>-1</code>操作，以还原防止，下次上拉加载page多加了的问题</li>
+</ol>
+<h2 id="如果是多数据源的tableView则需要考虑的更多"><a href="#如果是多数据源的tableView则需要考虑的更多" class="headerlink" title="如果是多数据源的tableView则需要考虑的更多"></a>如果是多数据源的tableView则需要考虑的更多</h2><ol>
+<li>首先就是不同数据源的page记录，每个数据源都需要对应一个自己的page</li>
+<li>每个数据源都需要记录是否还有更多数据可供加载</li>
+<li>甚至每个数据源拥有各自的没数据的文字提示</li>
+<li>实际项目中，为了一些效果，还需要记录当前数据源是否处于加载数据状态，以此来显示某些加载页面。</li>
+<li>可能还会有一个个性化的定制需求</li>
+</ol>
+<blockquote>
+<p>综上所述，仅仅是一个控制器的数据加载逻辑就有这么多，如果有很多这样类似的页面，每次都要考虑这么多问题，难免会有不少疏忽，而且要实现这些功能会产生大量的重复代码，这肯定是我们不希望看到的。</p>
+</blockquote>
+<p>分析上述需求我们发现，实际上通常我们所接触的<code>tableView</code>大体上也就需要注意这么多问题，而且为了整个工程的统一性，一般情况所有的处理也是采用同一套逻辑，因此我们完全可以把这些逻辑统一起来，使用一个<code>Protocol</code>来实现这些逻辑。得益于Swift强大的<code>Protocol Extention</code> 大部分情况我们只需要在合适的关键点调用几个方法就可以了，所有的逻辑默认都已经实现了。<code>Controller</code>中的代码更少了，不相关的逻辑都封装好了，逻辑更加简洁了。</p>
+<h2 id="控制器使用代码"><a href="#控制器使用代码" class="headerlink" title="控制器使用代码"></a>控制器使用代码</h2><figure class="highlight swift"><table><tr><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">PYMyOrderListController</span>: <span class="title">PYBaseViewController</span>, <span class="title">Refreshable</span> </span>&#123;</div><div class="line">    <span class="keyword">internal</span> <span class="keyword">var</span> refreshStatus: [(page: <span class="type">Int</span>, isLoading: <span class="type">Bool</span>, noMoreData: <span class="type">Bool</span>, noMoreTitle: <span class="type">String</span>)] = [(<span class="number">1</span>,<span class="literal">false</span>,<span class="literal">false</span>,<span class="string">"没有更多订单了"</span>)]     <span class="comment">// 定义每个数据源需要的四个属性，分别是当前页码，是否被正在加载中，是否没有更多数据可供加载了。没有数据可供加载的footer文字</span></div><div class="line">    <span class="keyword">internal</span> <span class="keyword">var</span> currentIndex = <span class="number">0</span>       <span class="comment">// 当前现实的数据源索引</span></div><div class="line">    <span class="keyword">internal</span> <span class="keyword">var</span> refreshTable: <span class="type">UITableView</span> = <span class="type">UITableView</span>()      <span class="comment">// 当前tableView</span></div><div class="line">   </div><div class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">viewDidLoad</span><span class="params">()</span></span> &#123;</div><div class="line">         view.addSubview(tableView)</div><div class="line">         tableView.snp_makeConstraints &#123; (make) <span class="keyword">in</span></div><div class="line">                     make.<span class="keyword">left</span>.<span class="keyword">right</span>.bottom.equalTo(<span class="number">0</span>)</div><div class="line">                     make.top.equalTo(segementView.snp_bottom)</div><div class="line">             &#125;</div><div class="line">         refreshTable = tableView       <span class="comment">// 赋值当前tableView</span></div><div class="line">         setupRefreshHeader()           <span class="comment">//初始化下拉刷新控件</span></div><div class="line">         setupRefreshFooter()           <span class="comment">// 初始化上拉加载控件</span></div><div class="line">     &#125;    </div><div class="line">        <span class="comment">///  加载数据的方法</span></div><div class="line">        <span class="comment">///</span></div><div class="line">        <span class="comment">///  - parameter isRefresh: 是否是下拉刷新</span></div><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">refreshData</span><span class="params">(isRefresh: Bool)</span></span> &#123;    </div><div class="line">        refreshStatus[currentIndex].isLoading = <span class="literal">true</span>        <span class="comment">// 修改当前数据源的加载状态为正在加载</span></div><div class="line">        <span class="keyword">let</span> indexItem = currentIndex</div><div class="line">        <span class="keyword">let</span> url = <span class="type">URL_OrderList</span> + <span class="string">"/\(type)/\(PageCount)"</span> + <span class="string">"/\(refreshStatus[currentIndex].page).json"</span></div><div class="line">        <span class="keyword">let</span> request = <span class="type">PYNetWorkTools</span>.<span class="type">GET</span>(url, hudType: .<span class="type">None</span>, failer: &#123; [<span class="keyword">weak</span> <span class="keyword">self</span>] (failerTuples) <span class="keyword">in</span></div><div class="line">            <span class="keyword">guard</span> <span class="keyword">self</span> != <span class="literal">nil</span> <span class="keyword">else</span>&#123; <span class="keyword">return</span> &#125;</div><div class="line">            <span class="keyword">self</span>?.loadFailer(failerTuples)      <span class="comment">// 加载失败的方法</span></div><div class="line">        &#125;) &#123;[<span class="keyword">weak</span> <span class="keyword">self</span>] (response, jsonResult) <span class="keyword">in</span></div><div class="line">            <span class="keyword">guard</span> <span class="keyword">self</span> != <span class="literal">nil</span> <span class="keyword">else</span>&#123; <span class="keyword">return</span> &#125;</div><div class="line">            <span class="keyword">self</span>?.tableView.hiddenNoNetPlace()</div><div class="line">            <span class="keyword">let</span> array = <span class="type">PYOrderListModel</span>.modelArray(jsonResult)</div><div class="line">            <span class="keyword">if</span> isRefresh &#123;</div><div class="line">                <span class="keyword">self</span>?.totalArray[indexItem] = array</div><div class="line">            &#125; <span class="keyword">else</span> &#123;</div><div class="line">                <span class="keyword">self</span>?.totalArray[indexItem] += array</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">self</span>?.loadSuccess(array.<span class="built_in">count</span> &lt; <span class="type">PageCount</span>)      <span class="comment">// 加载成功的方法，并传递一个是否还有更多数据的返回值</span></div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span> request != <span class="literal">nil</span> &#123;</div><div class="line">            requests.append(request!)</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>以上这些代码就可以实现上述所有的功能，怎么样，是不是很有魅力呢？实例中使用了<code>Refreshable</code>协议，这套协议可以用在<code>UIViewController</code>和<code>UITableViewController</code>中，其中的<code>refreshTable</code>就是为了适配<code>UIViewController</code>所增加的一个属性，否则连这个属性都不用写了。</p>
+<h2 id="代码中能看到的协议中定义的内容如下"><a href="#代码中能看到的协议中定义的内容如下" class="headerlink" title="代码中能看到的协议中定义的内容如下"></a>代码中能看到的协议中定义的内容如下</h2><ul>
+<li><p>属性</p>
+<ul>
+<li>refreshStatus</li>
+<li>currentInidex</li>
+<li>refreshTable</li>
+</ul>
+</li>
+<li><p>方法</p>
+<ul>
+<li>refreshData(isRefresh: Bool)</li>
+<li>setupRefreshHeader()</li>
+<li>setupRefreshFooter()</li>
+<li>loadFailer(failerTuples: FailerTuples)</li>
+<li>loadSuccess(noMoreData: Bool?)</li>
+</ul>
+</li>
+</ul>
+<h2 id="让我们先看看Refreshable这个协议里是怎么写的"><a href="#让我们先看看Refreshable这个协议里是怎么写的" class="headerlink" title="让我们先看看Refreshable这个协议里是怎么写的"></a>让我们先看看<code>Refreshable</code>这个协议里是怎么写的</h2><figure class="highlight swift"><table><tr><td class="code"><pre><div class="line"><span class="comment">///  刷新协议</span></div><div class="line"><span class="class"><span class="keyword">protocol</span> <span class="title">Refreshable</span> </span>&#123;</div><div class="line">    <span class="comment">///  刷新数据的方法，必须实现，调用这个方法来执行下拉刷新和上拉加载</span></div><div class="line">    <span class="comment">///</span></div><div class="line">    <span class="comment">///  - parameter isRefresh: 是否是下拉刷新</span></div><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">refreshData</span><span class="params">(isRefresh: Bool)</span></span></div><div class="line">    </div><div class="line">    <span class="comment">/// 刷新状态的四个参数，分别是，当前页码，是否正在加载中，是否没有更多数据了，没有更多数据的footer显示文字</span></div><div class="line">    <span class="keyword">var</span> refreshStatus: [(page: <span class="type">Int</span>, isLoading: <span class="type">Bool</span>, noMoreData: <span class="type">Bool</span>, noMoreTitle: <span class="type">String</span>)] &#123;<span class="keyword">set</span> <span class="keyword">get</span>&#125;</div><div class="line">    </div><div class="line">    <span class="comment">/// 当前数据源的索引号</span></div><div class="line">    <span class="keyword">var</span> currentIndex: <span class="type">Int</span> &#123;<span class="keyword">set</span> <span class="keyword">get</span>&#125;</div><div class="line">    </div><div class="line">    <span class="comment">/// 需要处理的tableView</span></div><div class="line">    <span class="keyword">var</span> refreshTable: <span class="type">UITableView</span> &#123;<span class="keyword">get</span> <span class="keyword">set</span>&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// MARK: - 遵守这个协议的是控制器</span></div><div class="line"><span class="class"><span class="keyword">extension</span> <span class="title">Refreshable</span> <span class="title">where</span> <span class="title">Self</span>: <span class="title">UIViewController</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="comment">///  加载数据失败调用此方法</span></div><div class="line">    <span class="comment">///</span></div><div class="line">    <span class="comment">///  - parameter failerTuples: 失败原因</span></div><div class="line">    <span class="keyword">mutating</span> <span class="function"><span class="keyword">func</span> <span class="title">loadFailer</span><span class="params">(failerTuples: <span class="params">(type: NetFailerType, desc: String?)</span></span></span>?) &#123;</div><div class="line">        refreshStatus[currentIndex].page -= <span class="number">1</span></div><div class="line">        <span class="keyword">if</span> refreshStatus[currentIndex].page &lt; <span class="number">0</span> &#123;</div><div class="line">            refreshStatus[currentIndex].page = <span class="number">0</span></div><div class="line">        &#125;</div><div class="line">        refreshStatus[currentIndex].isLoading = <span class="literal">false</span></div><div class="line">        refreshFooter()</div><div class="line">        <span class="keyword">if</span> refreshTable.mj_header != <span class="literal">nil</span> &#123;</div><div class="line">            refreshTable.mj_header.endRefreshing()</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        <span class="keyword">if</span> failerTuples?.type == <span class="type">NetFailerType</span>.<span class="type">NoNet</span> &#123;</div><div class="line">            <span class="keyword">if</span> refreshTable.visibleCells.isEmpty &#123;</div><div class="line">                refreshTable.showNoNetPlace(&#123; [<span class="keyword">weak</span> <span class="keyword">self</span>] <span class="keyword">in</span></div><div class="line">                    <span class="keyword">guard</span> <span class="keyword">self</span> != <span class="literal">nil</span> <span class="keyword">else</span> &#123; <span class="keyword">return</span> &#125;</div><div class="line">                    <span class="keyword">self</span>?.refreshData(<span class="literal">true</span>)</div><div class="line">                    &#125;)</div><div class="line">            &#125; <span class="keyword">else</span> &#123;</div><div class="line">                showToast(failerTuples?.type.rawValue ?? <span class="string">""</span>)</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        refreshTable.reloadData()</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="comment">///  加载数据成功调用此方法</span></div><div class="line">    <span class="comment">///</span></div><div class="line">    <span class="comment">///  - parameter noMoreData: 是否没有更多数据了</span></div><div class="line">    <span class="keyword">mutating</span> <span class="function"><span class="keyword">func</span> <span class="title">loadSuccess</span><span class="params">(noMoreData: Bool?)</span></span> &#123;</div><div class="line">        refreshStatus[currentIndex].isLoading = <span class="literal">false</span></div><div class="line">        <span class="keyword">if</span> <span class="keyword">let</span> noMoreData = noMoreData <span class="keyword">where</span> refreshTable.mj_footer != <span class="literal">nil</span> &#123;</div><div class="line">            refreshStatus[currentIndex].noMoreData = noMoreData</div><div class="line">            refreshTable.mj_footer.hidden = <span class="literal">false</span></div><div class="line">            refreshFooter()</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span> refreshTable.mj_header != <span class="literal">nil</span> &#123;</div><div class="line">            refreshTable.mj_header.endRefreshing()</div><div class="line">        &#125;</div><div class="line">        refreshTable.reloadData()</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="comment">///  初始化下拉刷新控件</span></div><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">setupRefreshHeader</span><span class="params">()</span></span> &#123;</div><div class="line">        <span class="keyword">let</span> header = <span class="type">MJRefreshNormalHeader</span> &#123;[<span class="keyword">weak</span> <span class="keyword">self</span>] () -&gt; <span class="type">Void</span> <span class="keyword">in</span></div><div class="line">            <span class="keyword">guard</span> <span class="keyword">self</span> != <span class="literal">nil</span> <span class="keyword">else</span> &#123; <span class="keyword">return</span> &#125;</div><div class="line">            <span class="keyword">self</span>?.refreshTable.mj_footer.resetNoMoreData()</div><div class="line">            <span class="keyword">self</span>?.refreshStatus[<span class="keyword">self</span>!.currentIndex].page = <span class="number">1</span></div><div class="line">            <span class="keyword">self</span>?.refreshData(<span class="literal">true</span>)</div><div class="line">            <span class="keyword">self</span>?.refreshStatus[<span class="keyword">self</span>!.currentIndex].isLoading = <span class="literal">true</span></div><div class="line">        &#125;</div><div class="line">        refreshTable.mj_header = header</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="comment">///  初始化上拉加载控件</span></div><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">setupRefreshFooter</span><span class="params">()</span></span> &#123;</div><div class="line">        <span class="keyword">let</span> footer = <span class="type">MJRefreshBackStateFooter</span> &#123;[<span class="keyword">weak</span> <span class="keyword">self</span>] () -&gt; <span class="type">Void</span> <span class="keyword">in</span></div><div class="line">            <span class="keyword">guard</span> <span class="keyword">self</span> != <span class="literal">nil</span> <span class="keyword">else</span> &#123; <span class="keyword">return</span> &#125;</div><div class="line">            <span class="keyword">self</span>?.refreshStatus[<span class="keyword">self</span>!.currentIndex].page += <span class="number">1</span></div><div class="line">            <span class="keyword">self</span>?.refreshData(<span class="literal">false</span>)</div><div class="line">            <span class="keyword">self</span>?.refreshStatus[<span class="keyword">self</span>!.currentIndex].isLoading = <span class="literal">true</span></div><div class="line">        &#125;</div><div class="line">        footer.hidden = <span class="literal">true</span></div><div class="line">        refreshTable.mj_footer = footer</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="comment">///  刷新上拉加载控件，用来重置上拉刷新控件状态，控制能够刷新以及显示类型</span></div><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">refreshFooter</span><span class="params">()</span></span> &#123;</div><div class="line">        <span class="keyword">if</span> refreshTable.mj_footer != <span class="literal">nil</span> &#123;</div><div class="line">            <span class="keyword">if</span> refreshStatus[currentIndex].noMoreData &#123;</div><div class="line">                refreshTable.mj_footer.endRefreshingWithNoMoreData()</div><div class="line">            &#125; <span class="keyword">else</span> &#123;</div><div class="line">                refreshTable.mj_footer.endRefreshing()</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>整个协议简洁明了，没有一句废话。就把众多需要的功能及注意点都涵盖了。该协议具有以下特点。</p>
+<ul>
+<li>支持<code>UITableViewController</code>以及<code>UIViewcontroller</code>的刷新处理。</li>
+<li>支持多数据源的切换加载。</li>
+</ul>
+<p>这两个特性已经涵盖了日常开发中常见的所有情况。当然你也可以只添加上拉加载，不添加下拉刷新功能，总之，这些都随便。</p>
+<blockquote>
+<p><a href="https://github.com/GeekerHua/Refreshable" target="_blank" rel="external">源码在这</a></p>
+</blockquote>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;在app的开发中，出现最多的一个情况就是显示一个列表来展示数据，就像刷微博一样，要能够上拉加载更多，下拉进行刷新。但在实际开发过程中，需要考虑的情况会更多。我们使用&lt;code&gt;header&lt;/code&gt;来表示下拉刷新控件，使用&lt;code&gt;foote
+    
+    </summary>
+    
+      <category term="Swift" scheme="geekerhua.com/categories/Swift/"/>
+    
+    
+      <category term="Swift" scheme="geekerhua.com/tags/Swift/"/>
+    
+      <category term="protocal" scheme="geekerhua.com/tags/protocal/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Git与Git工作流</title>
+    <link href="geekerhua.com/2016/06/02/Git_workflow/"/>
+    <id>geekerhua.com/2016/06/02/Git_workflow/</id>
+    <published>2016-06-02T10:57:21.000Z</published>
+    <updated>2017-02-13T05:21:48.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="Git-基础用法"><a href="#Git-基础用法" class="headerlink" title="Git 基础用法"></a>Git 基础用法</h1><p>SVN与Git（集中式VS分布式）</p>
+<ul>
+<li>集中式</li>
+</ul>
+<p><img src="http://7xtibb.com2.z0.glb.qiniucdn.com/2016-06-06-Git_集中式.jpeg" alt=""></p>
+<ul>
+<li>分布式</li>
+</ul>
+<p><img src="http://7xtibb.com2.z0.glb.qiniucdn.com/2016-06-06-Git_分布式.jpeg" alt=""></p>
+<h4 id="工作区"><a href="#工作区" class="headerlink" title="工作区"></a>工作区</h4><blockquote>
+<p>电脑中能够看到的目录就是工作区。</p>
+</blockquote>
+<h4 id="版本库"><a href="#版本库" class="headerlink" title="版本库"></a>版本库</h4><blockquote>
+<p>工作区有一个隐藏目录<code>.git</code>，这个不算工作区，而是Git的版本库。</p>
+</blockquote>
+<ul>
+<li>Git的版本库里存了很多东西，其中最重要的就是称为stage（或者叫index）的暂存区，还有Git为我们自动创建的第一个分支<code>master</code>，以及指向<code>master</code>的一个指针叫HEAD。</li>
+</ul>
+<p><img src="http://7xtibb.com2.z0.glb.qiniucdn.com/2016-06-06-Git_partition_map.jpeg" alt=""></p>
+<ul>
+<li>git add -&gt; 将变化提交到了暂存区</li>
+<li>git commit -&gt; 将暂存区的所有修改都提交到分支，并清空暂存区</li>
+</ul>
+<h3 id="全局设置"><a href="#全局设置" class="headerlink" title="全局设置"></a>全局设置</h3><table>
+<thead>
+<tr>
+<th>指令</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$ git config –global user.name “姓名”</td>
+<td>告诉git你是谁</td>
+</tr>
+<tr>
+<td>$ git config –global user.email “xxx@qq.com”</td>
+<td>告诉git怎么联系你</td>
+</tr>
+<tr>
+<td>$ git config -l</td>
+<td>查看配置信息</td>
+</tr>
+</tbody>
+</table>
+<h3 id="初始化代码仓库"><a href="#初始化代码仓库" class="headerlink" title="初始化代码仓库"></a>初始化代码仓库</h3><table>
+<thead>
+<tr>
+<th>指令</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$ git commit –amend</td>
+<td>修改最后一次提交的注释</td>
+</tr>
+<tr>
+<td>$ git init –bare</td>
+<td>初始化空白的代码仓库，协同开发使用</td>
+</tr>
+<tr>
+<td>$ git add . –all</td>
+<td>将所有变化添加到暂存区</td>
+</tr>
+<tr>
+<td>$ git commit -m “注释”</td>
+<td>将暂存区内容提交至代码库</td>
+</tr>
+<tr>
+<td>$ git init</td>
+<td>初始化代码库</td>
+</tr>
+</tbody>
+</table>
+<h3 id="查看信息"><a href="#查看信息" class="headerlink" title="查看信息"></a>查看信息</h3><table>
+<thead>
+<tr>
+<th>指令</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$ git status</td>
+<td>查看所有文件状态</td>
+</tr>
+<tr>
+<td>$ git status 文件名</td>
+<td>查看指定文件的状态</td>
+</tr>
+<tr>
+<td>$ git log</td>
+<td>查看版本库日志(按字母 q 可以退出)</td>
+</tr>
+<tr>
+<td>$ git log 文件名</td>
+<td>查看指定文件的修订记录</td>
+</tr>
+</tbody>
+</table>
+<h3 id="版本回撤"><a href="#版本回撤" class="headerlink" title="版本回撤"></a>版本回撤</h3><table>
+<thead>
+<tr>
+<th>指令</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$ git reset –hard HEAD^</td>
+<td>回撤到上一个版本</td>
+</tr>
+<tr>
+<td>$ git reset –hard HEAD^^</td>
+<td>回撤到上上一个版本</td>
+</tr>
+<tr>
+<td>$ git reset –hard 版本号(前6位)</td>
+<td>切换到任意版本</td>
+</tr>
+<tr>
+<td>$ git checkout 文件名</td>
+<td>撤销某一个文件当前的修改(恢复到最近一次记录点状态)</td>
+</tr>
+<tr>
+<td>$ git reflog</td>
+<td>查看分支引用记录，能够查阅所有的版本号</td>
+</tr>
+</tbody>
+</table>
+<h3 id="分支操作"><a href="#分支操作" class="headerlink" title="分支操作"></a>分支操作</h3><table>
+<thead>
+<tr>
+<th>指令</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$ git branch</td>
+<td>查看本地分支</td>
+</tr>
+<tr>
+<td>$ git branch -r</td>
+<td>查看远程分支</td>
+</tr>
+<tr>
+<td>$ git branch [name]</td>
+<td>创建本地分支(注意不会自动切换分支)</td>
+</tr>
+<tr>
+<td>$ git checkout [name]</td>
+<td>切换分支</td>
+</tr>
+<tr>
+<td>$ git checkout -b [name]</td>
+<td>创建新分支并立即切换到新分支</td>
+</tr>
+<tr>
+<td>$ git branch -d [name]</td>
+<td>只能删除已经合并过的分支<code>没有合并的分支不能删除,如果要强行删除分支，可以使用 -D 选项</code></td>
+</tr>
+<tr>
+<td>$ git merge [name]</td>
+<td>合并分支</td>
+</tr>
+<tr>
+<td>$ git push origin [name]</td>
+<td>创建远程分支<code>本质上是将本地的分支 push 到远程</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="远程操作"><a href="#远程操作" class="headerlink" title="远程操作"></a>远程操作</h3><table>
+<thead>
+<tr>
+<th>指令</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$ git pull</td>
+<td>将远程代码库的变化更新到本地</td>
+</tr>
+<tr>
+<td>$ git push</td>
+<td>将本地修改内容推送到远程代码仓库</td>
+</tr>
+<tr>
+<td>$ git clone url</td>
+<td>将远程代码库克隆到本地</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>两篇入门教程，自行学习进修<br><a href="http://backlogtool.com/git-guide/cn/intro/intro1_1.html" target="_blank" rel="external">猴子都能懂的Git入门</a><br><a href="http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000" target="_blank" rel="external">Git教程</a></p>
+</blockquote>
+<h2 id="Git工作流"><a href="#Git工作流" class="headerlink" title="Git工作流"></a><a href="http://blog.jobbole.com/76843/" target="_blank" rel="external">Git工作流</a></h2><blockquote>
+<p>如何有效的进行项目流程管理和高效的开发协同。</p>
+</blockquote>
+<p><img src="https://raw.githubusercontent.com/quickhack/translations/master/git-workflows-and-tutorials/images/git_workflow.png" alt=""></p>
+<h3 id="集中式工作流"><a href="#集中式工作流" class="headerlink" title="集中式工作流"></a><a href="http://blog.jobbole.com/76847/" target="_blank" rel="external">集中式工作流</a></h3><blockquote>
+<p>使用过SVN与Subversion这类集中式版本控制系统的人刚刚转到分布式版本控制可能会很不熟悉，但Git也能做到像SVN一样的集中式版本控制，即以中央仓库作为项目所有修改的单点实体。</p>
+</blockquote>
+<p><img src="https://raw.githubusercontent.com/quickhack/translations/master/git-workflows-and-tutorials/images/git-workflow-svn.png" alt=""></p>
+<h4 id="对比SVN与Git对比进行集中式版本控制"><a href="#对比SVN与Git对比进行集中式版本控制" class="headerlink" title="对比SVN与Git对比进行集中式版本控制"></a>对比SVN与Git对比进行集中式版本控制</h4><ul>
+<li>SVN缺省开发分支叫<code>trunk</code>,git叫<code>master</code></li>
+<li>SVN的<code>commit</code>操作相当于git的<code>push</code>操作</li>
+<li>SVN的<code>update</code>操作相当于git的<code>pull</code>操作</li>
+</ul>
+<p>但这样的工作流并没有突出git的优势</p>
+<h3 id="功能分支工作流"><a href="#功能分支工作流" class="headerlink" title="功能分支工作流"></a><a href="http://blog.jobbole.com/76857/" target="_blank" rel="external">功能分支工作流</a></h3><blockquote>
+<p>功能分支工作流以集中式工作流为基础，不同的是为各个新功能分配一个专门的分支来开发。这样可以在把新功能集成到正式项目前，用Pull Requests的方式讨论变更。</p>
+</blockquote>
+<p><img src="https://raw.githubusercontent.com/quickhack/translations/master/git-workflows-and-tutorials/images/git-workflow-feature_branch.png" alt=""></p>
+<h4 id="功能分支工作流优点"><a href="#功能分支工作流优点" class="headerlink" title="功能分支工作流优点"></a>功能分支工作流优点</h4><ul>
+<li>每个新功能开发都在一个专门的分支，而不是在master分支，不会弄乱主干分支</li>
+<li>功能开发隔离使<code>pull requests工作流</code>成为可能</li>
+<li>使用<code>pull requests</code>可以很好地进行<code>Code Review</code></li>
+</ul>
+<h3 id="Gitflow工作流"><a href="#Gitflow工作流" class="headerlink" title="Gitflow工作流"></a><a href="http://blog.jobbole.com/76867/" target="_blank" rel="external">Gitflow工作流</a></h3><blockquote>
+<p>Gitflow工作流通过为功能开发、发布准备和维护分配独立的分支，让发布迭代过程更流畅。严格的分支模型也为大型项目提供了一些非常必要的结构<br><img src="https://raw.githubusercontent.com/quickhack/translations/master/git-workflows-and-tutorials/images/git-workflows-gitflow.png" alt=""></p>
+</blockquote>
+<p><strong><a href="http://www.jianshu.com/p/7dddf0e9f1ef" target="_blank" rel="external">目前iOS开发大体上遵循这种工作流</a></strong><br><img src="http://upload-images.jianshu.io/upload_images/296122-5de3d3e00962f911.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<h3 id="Forking工作流"><a href="#Forking工作流" class="headerlink" title="Forking工作流"></a><a href="http://blog.jobbole.com/76861/" target="_blank" rel="external">Forking工作流</a></h3><blockquote>
+<p>Forking工作流是分布式工作流，充分利用了Git在分支和克隆上的优势。可以安全可靠地管理大团队的开发者（developer），并能接受不信任贡献者（contributor）的提交。</p>
+</blockquote>
+<p><img src="https://raw.githubusercontent.com/quickhack/translations/master/git-workflows-and-tutorials/images/git-workflow-forking.png" alt=""></p>
+<ul>
+<li>Forking工作流的一个主要优势是，贡献的代码可以被集成，而不需要所有人都能push代码到仅有的中央仓库中。开发者push到自己的服务端仓库，而只有项目维护者才能push到正式仓库。这样项目维护者可以接受任何开发者的提交，但无需给他正式代码库的写权限</li>
+<li>GitHub中每个代码仓库都有三个选项，分别是Star、Watch、Fork，</li>
+<li><img src="quiver-image-url/F81C279EDF5AD53780259EB087CD4F84.png" alt="屏幕快照 2016-04-11 下午11.20.38.png"></li>
+</ul>
+<h4 id="流程如下"><a href="#流程如下" class="headerlink" title="流程如下"></a>流程如下</h4><ul>
+<li>项目维护者初始化正式仓库<ul>
+<li><img src="https://raw.githubusercontent.com/quickhack/translations/master/git-workflows-and-tutorials/images/git-workflows-forking-1.png" alt=""> </li>
+</ul>
+</li>
+<li>开发者fork正式仓库<ul>
+<li><img src="https://raw.githubusercontent.com/quickhack/translations/master/git-workflows-and-tutorials/images/git-workflows-forking-2.png" alt=""> </li>
+</ul>
+</li>
+<li>开发者克隆自己fork出来的仓库<ul>
+<li><img src="https://raw.githubusercontent.com/quickhack/translations/master/git-workflows-and-tutorials/images/git-workflows-forking-3.png" alt=""> </li>
+</ul>
+</li>
+<li>开发者开发自己的功能<ul>
+<li><img src="https://raw.githubusercontent.com/quickhack/translations/master/git-workflows-and-tutorials/images/git-workflows-forking-4.png" alt=""> </li>
+</ul>
+</li>
+<li>开发者发布自己的功能<ul>
+<li><img src="https://raw.githubusercontent.com/quickhack/translations/master/git-workflows-and-tutorials/images/git-workflows-forking-5.png" alt=""> </li>
+</ul>
+</li>
+<li>项目维护者集成开发者的功能<ul>
+<li><img src="https://raw.githubusercontent.com/quickhack/translations/master/git-workflows-and-tutorials/images/git-workflows-forking-6.png" alt=""> </li>
+</ul>
+</li>
+<li>开发者和正式仓库做同步<ul>
+<li><img src="https://raw.githubusercontent.com/quickhack/translations/master/git-workflows-and-tutorials/images/git-workflows-forking-7.png" alt=""></li>
+</ul>
+</li>
+</ul>
+<h3 id="Pull-Requests"><a href="#Pull-Requests" class="headerlink" title="Pull Requests"></a><a href="http://blog.jobbole.com/76854/" target="_blank" rel="external">Pull Requests</a></h3><blockquote>
+<p>Pull Requests是Bitbucket上方便开发者之间协作的功能。提供了一个用户友好的Web界面，在集成提交的变更到正式项目前可以对变更进行讨论。GitHub也有这个功能。<br>Pull Request可以和功能分支工作流、Gitflow工作流或Forking工作流一起使用。<br><img src="quiver-image-url/8E87744F9F2DAF716E5CF4E727C2A4C8.png" alt="屏幕快照 2016-04-11 下午11.21.45.png"></p>
+</blockquote>
+<p><img src="https://raw.githubusercontent.com/quickhack/translations/master/git-workflows-and-tutorials/images/pull-request.png" alt=""></p>
+<h2 id="Commit-message-和-Change-log-编写指南"><a href="#Commit-message-和-Change-log-编写指南" class="headerlink" title="Commit message 和 Change log 编写指南"></a><a href="http://www.ruanyifeng.com/blog/2016/01/commit_message_change_log.html#rd?sukey=ecafc0a7cc4a741b1e6e4fadd82915cefdf73cbbe70d0626a8bce92a8162402a53d6fb99492db71ab5fb4ae3ff50d974" target="_blank" rel="external">Commit message 和 Change log 编写指南</a></h2><blockquote>
+<p>通常我们是这样提交代码的<br><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">$ git commit -m <span class="string">"hello world"</span></div></pre></td></tr></table></figure></p>
+<p>但这样的提交注释并没有卵用，当你log提交记录的时候，还是会看的云里雾里，更不用说是利用了。现在通用的效果比较好的Commit messag规范是<code>Angular规范</code>。</p>
+</blockquote>
+<h3 id="commit-message的作用"><a href="#commit-message的作用" class="headerlink" title="commit message的作用"></a>commit message的作用</h3><ul>
+<li>提供更多的历史信息，方便快速浏览<blockquote>
+<p>比如，下面的命令显示上次发布后的变动，每个commit占据一行。你只看行首，就知道某次 commit 的目的。</p>
+</blockquote>
+</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">$ git <span class="built_in">log</span> &lt;last tag&gt; HEAD --pretty=format:%s</div></pre></td></tr></table></figure>
+<ul>
+<li><p>可以过滤某些commit（比如文档改动），便于快速查找信息。</p>
+<blockquote>
+<p>比如，下面的命令仅仅显示本次发布新增加的功能。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">$ git <span class="built_in">log</span> &lt;last release&gt; HEAD --grep feature</div></pre></td></tr></table></figure>
+</blockquote>
+</li>
+<li><p>可以直接从commit生成Change log。</p>
+<blockquote>
+<p>Change Log 是发布新版本时，用来说明与上一个版本差异的文档。<br><img src="http://www.ruanyifeng.com/blogimg/asset/2016/bg2016010603.png" alt=""></p>
+</blockquote>
+</li>
+</ul>
+<h3 id="Commit-message-的格式"><a href="#Commit-message-的格式" class="headerlink" title="Commit message 的格式"></a>Commit message 的格式</h3><blockquote>
+<p>每次提交，Commit message 都包括三个部分：Header，Body 和 Footer。</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">&lt;<span class="built_in">type</span>&gt;(&lt;scope&gt;): &lt;subject&gt;</div><div class="line">// 空一行</div><div class="line">&lt;body&gt;</div><div class="line">// 空一行</div><div class="line">&lt;footer&gt;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>其中，Header 是必需的，Body 和 Footer 可以省略。</p>
+</blockquote>
+<h4 id="Header"><a href="#Header" class="headerlink" title="Header"></a>Header</h4><p>Header部分只有一行，包括三个字段：type（必需）、scope（可选）和subject（必需）。</p>
+<h5 id="type"><a href="#type" class="headerlink" title="type"></a>type</h5><blockquote>
+<p>type用于说明 commit 的类别，只允许使用下面7个标识。</p>
+</blockquote>
+<ul>
+<li>feat：新功能（feature）</li>
+<li>fix：修补bug</li>
+<li>docs：文档（documentation）</li>
+<li>style： 格式（不影响代码运行的变动）</li>
+<li>refactor：重构（即不是新增功能，也不是修改bug的代码变动）</li>
+<li>test：增加测试</li>
+<li>chore：构建过程或辅助工具的变动</li>
+</ul>
+<h5 id="scope"><a href="#scope" class="headerlink" title="scope"></a>scope</h5><blockquote>
+<p>scope用于说明 commit 影响的范围，比如数据层、控制层、视图层等等，视项目不同而不同。</p>
+</blockquote>
+<h5 id="subject"><a href="#subject" class="headerlink" title="subject"></a>subject</h5><blockquote>
+<p>subject是 commit 目的的简短描述，不超过50个字符。</p>
+<ul>
+<li>以动词开头，使用第一人称现在时，比如change，而不是changed或changes</li>
+<li>第一个字母小写</li>
+<li>结尾不加句号（.）</li>
+</ul>
+</blockquote>
+<h4 id="Body"><a href="#Body" class="headerlink" title="Body"></a>Body</h4><blockquote>
+<p>Body 部分是对本次 commit 的详细描述，可以分成多行。下面是一个范例。</p>
+</blockquote>
+<p><strong>有两个注意点</strong></p>
+<ol>
+<li>使用第一人称现在时，比如使用change而不是changed或changes。</li>
+<li>应该说明代码变动的动机，以及与以前行为的对比。</li>
+</ol>
+<h4 id="Footer"><a href="#Footer" class="headerlink" title="Footer"></a>Footer</h4><h5 id="不兼容变动"><a href="#不兼容变动" class="headerlink" title="不兼容变动"></a>不兼容变动</h5><blockquote>
+<p>如果当前代码与上一个版本不兼容，则 Footer 部分以<code>BREAKING CHANGE</code>开头，后面是对变动的描述、以及变动理由和迁移方法。</p>
+</blockquote>
+<h5 id="关闭-Issue"><a href="#关闭-Issue" class="headerlink" title="关闭 Issue"></a>关闭 Issue</h5><blockquote>
+<p>如果当前 commit 针对某个issue，那么可以在 Footer 部分关闭这个 issue 。</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">Closes <span class="comment">#234</span></div><div class="line"></div><div class="line">Closes <span class="comment">#123, #245, #992</span></div></pre></td></tr></table></figure>
+<h4 id="Revert"><a href="#Revert" class="headerlink" title="Revert"></a>Revert</h4><blockquote>
+<p>还有一种特殊情况，如果当前 commit 用于撤销以前的 commit，则必须以revert:开头，后面跟着被撤销 Commit 的 Header。</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">revert: feat(pencil): add <span class="string">'graphiteWidth'</span> option</div><div class="line">This reverts commit 667ecc1654a317a13331b17617d973392f415f02.</div></pre></td></tr></table></figure>
+<blockquote>
+<p>Body部分的格式是固定的，必须写成This reverts commit &lt;hash&gt;.，其中的hash是被撤销 commit 的 SHA 标识符。<br>如果当前 commit 与被撤销的 commit，在同一个发布（release）里面，那么它们都不会出现在 Change log 里面。如果两者在不同的发布，那么当前 commit，会出现在 Change log 的Reverts小标题下面。</p>
+</blockquote>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;Git-基础用法&quot;&gt;&lt;a href=&quot;#Git-基础用法&quot; class=&quot;headerlink&quot; title=&quot;Git 基础用法&quot;&gt;&lt;/a&gt;Git 基础用法&lt;/h1&gt;&lt;p&gt;SVN与Git（集中式VS分布式）&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;集中式&lt;/li&gt;
+&lt;/ul&gt;
+
+    
+    </summary>
+    
+      <category term="工具" scheme="geekerhua.com/categories/%E5%B7%A5%E5%85%B7/"/>
+    
+    
+      <category term="git" scheme="geekerhua.com/tags/git/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>终极Shell修行大法-不得不拥有</title>
+    <link href="geekerhua.com/2015/12/10/Ultimate_shell/"/>
+    <id>geekerhua.com/2015/12/10/Ultimate_shell/</id>
+    <published>2015-12-10T10:57:21.000Z</published>
+    <updated>2017-02-13T05:21:48.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="Homebrew"><a href="#Homebrew" class="headerlink" title="Homebrew"></a><a href="http://brew.sh/index_zh-cn.html" target="_blank" rel="external">Homebrew</a></h1><blockquote>
+<p>Shell神器,OS X 不可或缺的套件管理器。<code>Homebrew</code>较之于<code>Shell</code>,好比<code>CocoaPod</code>较之于<code>Xcode</code>。这么说,<code>Homebrew</code>的定位就应该相当明确了吧！</p>
+</blockquote>
+<ul>
+<li><p>安装:</p>
+<figure class="highlight ruby"><table><tr><td class="code"><pre><div class="line">ruby -e <span class="string">"$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>卸载:</p>
+<figure class="highlight ruby"><table><tr><td class="code"><pre><div class="line">ruby -e <span class="string">"$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/uninstall)"</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>更新已安装的package</p>
+<ul>
+<li>先更新brew：$ <code>brew update</code></li>
+<li>更新所有package：$ <code>brew upgarde</code></li>
+</ul>
+</li>
+<li>Homebrew下载的package存放的路径在哪里？<ul>
+<li><code>/Library/Caches/Homebrew/</code></li>
+</ul>
+</li>
+</ul>
+<p>Homebrew 可以很方便的安装需要的套件,方法如下：$ <code>brew install wget</code>。是不是很简单？</p>
+<p>Homebrew 使 OS X 更完美。使用 gem 来安装 gems、用 brew 来搞定那些依赖包。</p>
+<blockquote>
+<p>Tips:</p>
+<ul>
+<li>如果安装过程中提示错误,提示先卸载,但执行卸载命令又卸载不掉,说明有曾经安装失败过,有残留。解决方式删除<code>/usr/local</code>文件夹即可。</li>
+</ul>
+</blockquote>
+<p><img src="http://7xtibb.com2.z0.glb.qiniucdn.com/2016-06-06-Shell_Homebrew安装失败.png" alt="Shell_Homebrew安装失败"></p>
+<h2 id="wget"><a href="#wget" class="headerlink" title="wget"></a><a href="http://baike.baidu.com/link?url=_4E-kuBinS_AItjdR3vsisJTYpRsOCav7kEUifcKfUsLGMAML6kPVKJK0tVd5tOhLP13C_BnTzI7yFHFENwiKq" target="_blank" rel="external">wget</a></h2><blockquote>
+<p>wget是一个从网络上自动下载文件的自由工具，支持通过HTTP、HTTPS、FTP三个最常见的TCP/IP协议下载，并可以使用HTTP代理。wget名称的由来是“World Wide Web”与“get”的结合。</p>
+</blockquote>
+<ul>
+<li><code>Homebrew</code>下安装: 在安装了<code>Homebrew</code>的情况下安装wget特别简单。只需要：$ <code>brew install wget</code> 即可。如果没安装<code>Homebrew</code>建议赶紧安装。</li>
+<li>正常安装(特别复杂,不建议直接安装)：<ol>
+<li><a href="http://ftp.gnu.org/gnu/wget/wget-1.13.4.tar.gz" target="_blank" rel="external">http://ftp.gnu.org/gnu/wget/wget-1.13.4.tar.gz</a><br>下载源码包。这里面找到最新版本，直接下载安装就行了</li>
+<li>到目录<code>cd /usr/local/src</code> 解压： tar -zxvf wget-1.13.tar.gz</li>
+<li><code>./configure</code>，这个过程第一次是不成功的，然后提示你下载安装一个make,安装make后，再运行一下<code>./configure</code>。</li>
+<li><code>make</code></li>
+<li><code>sudo make install</code></li>
+</ol>
+</li>
+</ul>
+<h2 id="zsh"><a href="#zsh" class="headerlink" title="zsh"></a>zsh</h2><blockquote>
+<p>终极shell,Mac自带就有,使用<a href="http://ohmyz.sh" target="_blank" rel="external"><code>oh-my-zsh</code></a>进行配置,简单又强大.配合iTerm 2一同使用,简单又强大。</p>
+<ul>
+<li><a href="http://www.zhihu.com/question/20873070/answer/43230384" target="_blank" rel="external">iTerm 2 &amp;&amp; Oh My Zsh博客</a></li>
+<li><a href="http://tieba.baidu.com/p/2818750493" target="_blank" rel="external">终极shell</a></li>
+</ul>
+</blockquote>
+<p><img src="http://7xtibb.com2.z0.glb.qiniucdn.com/2016-06-06-Shell_zsh_them.png" alt="Shell_zsh_the"></p>
+<ul>
+<li><p>安装</p>
+<ol>
+<li><p>下载一个 .oh-my-zsh 配置（推荐有）</p>
+<figure class="highlight ruby"><table><tr><td class="code"><pre><div class="line">git clone <span class="symbol">git:</span>/<span class="regexp">/github.com/robbyrussell</span><span class="regexp">/oh-my-zsh.git ~/</span>.oh-my-zsh</div></pre></td></tr></table></figure>
+</li>
+<li><p>创建新配置（备份）</p>
+<figure class="highlight ruby"><table><tr><td class="code"><pre><div class="line">cp ~<span class="regexp">/.zshrc ~/</span>.zshrc.orig</div><div class="line">cp ~<span class="regexp">/.oh-my-zsh/templates</span><span class="regexp">/zshrc.zsh-template ~/</span>.zshrc</div></pre></td></tr></table></figure>
+</li>
+<li><p>把 zsh 设置成默认的 shell</p>
+<figure class="highlight ruby"><table><tr><td class="code"><pre><div class="line">chsh -s /bin/zsh</div></pre></td></tr></table></figure>
+</li>
+<li><p>重启 zsh (打开一个新的 terminal 窗口)</p>
+</li>
+</ol>
+</li>
+<li><p>配置</p>
+<ul>
+<li>主题：agnoster</li>
+<li><p>字体：Powerline （把 iTerm 2 的设置里的 Profile 中的 Text 选项卡中里的 Regular Font 和 Non-ASCII Font 的字体都设置成 Powerline 的字体。）</p>
+<ul>
+<li><p>推荐使用 14pt Meslo LG S DZ Regular for Powerline </p>
+<blockquote>
+<ul>
+<li><a href="https://powerline.readthedocs.org/en/master/" target="_blank" rel="external">Powerline — Powerline beta documentation</a></li>
+<li><a href="https://github.com/powerline/fonts" target="_blank" rel="external">powerline/fonts · GitHub</a></li>
+</ul>
+</blockquote>
+</li>
+</ul>
+<ul>
+<li><p>设置命令正确绿色高亮,错误红色高亮</p>
+<figure class="highlight ruby"><table><tr><td class="code"><pre><div class="line">git clone <span class="symbol">git:</span>/<span class="regexp">/github.com/jimmijj</span><span class="regexp">/zsh-syntax-highlighting ~/</span>.oh-my-zsh/custom/plugins/zsh-syntax-highlighting</div></pre></td></tr></table></figure>
+</li>
+<li><p>然后在~/.zshrc中插件那添加 </p>
+<ul>
+<li><code>plugins=(zsh-syntax-highlighting)</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>加强zsh的补全功能实现tab自动纠错</p>
+<ul>
+<li><p>把这两句话添加到oh-my-zsh/lib/completion.zsh  (末尾)</p>
+<figure class="highlight ruby"><table><tr><td class="code"><pre><div class="line">zstyle <span class="string">':completion:incremental:*'</span> completer _complete _correct</div><div class="line">zstyle <span class="string">':completion:*'</span> completer _complete _prefix _correct _prefix _match _approximate</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="zsh-好处"><a href="#zsh-好处" class="headerlink" title="zsh 好处"></a>zsh 好处</h3><ol>
+<li><p>zsh 可以<strong>补全参数</strong><br>当你敲指令敲到一般的时候，不必在虚拟终端下Ctrl_Shift_T 打开一个新标签看手册了，只需要一个<tab>，zsh 会为你列出所有符合你已经输入部分的参数，其后跟着参数说明，你需要的只是看下其后的说明，然后选中你需要的参数按下回车键。视频中我们差一点就用纯tab 完成了一条dd 指令。</tab></p>
+</li>
+<li><p>zsh 的<strong>参数补全是智能补全</strong><br>简单的例子：<br>当你输入ls 指令按下<tab> 的时候，zsh 会列出目录下所有的文件并让你交互式处理。<br>当你输入unzip 指令要求补全的时候，zsh 只会列出zip 文件<br>当你输入kill 指令要求补全的时候，zsh 会列出所有符合要求的进程并自动把参数转换为PID。<br>当你输入参数的一部分时（例如systemctl 的–type=,-t），zsh 会列出其后所有的可能性供你选择。</tab></p>
+</li>
+<li><p>zsh 可以<strong>补全路径</strong><br>当你想到你的vim 插件目录下看看的时候，你甚至连cd 都不需要输入，你要做的只是/u/s/v/vimf/p<tab><enter></enter></tab></p>
+</li>
+<li><p>zsh 可以<strong>不额外安装autojump 在目录中快速跳转</strong><br>安装oh-my-zsh 后，在你的plugins=() 中加入jump（事实上这个插件提供的是几个函数）。之后mark dir 标记一个目录，下次jump dir 就可以快速跳转到该目录。</p>
+</li>
+<li><p>zsh 可以<strong>自动纠错指令</strong><br>当你输入了错误的指令时，如果只是几个字母按错了，一个<tab> zsh 就会为你自动纠错。<br>你可以利用这个特性缩写指令，例如把systemd-analyze 变成sys-an<tab>。</tab></tab></p>
+</li>
+<li><p>zsh 可以<strong>预先告知你指令中的错误</strong><br>zsh 会将错误的指令显示为红色，正确的指令（或者函数、alisa）会被显示为绿色。<br>至于目录和文件，虚拟终端下，存在的文件或目录会被显示为下划线形式，tty 下则是绿色，不存在的都会被现实为普通的白色。<br>所以当你重定向&gt; file，如果file 带下划线，你会事先明白你的操作会清空一个已经存在的文件而不是重定向到新文件。这个特性对于新手来说是非常有用的。</p>
+</li>
+<li><p>zsh 可以<strong>补全环境变量</strong><br>环境变量大多数都比较难记，而且大小写都有，感到很困难？zsh 中一个tab 为你列出所有符合期望的环境变量，你做的只是按上下左右键挑选一个即可。</p>
+</li>
+<li><p>zsh 有<strong>多重定向</strong>的功能<br>简单的例子：<br>当你指令后跟着”&gt;/dev/null &gt;1 &gt;2” 的时候，zsh 明白你的意思是将stdout 分别重定向到三个流，但是bash 就无法如此。<br>而当你后跟”&gt;/dev/null 2&gt;&amp;1 &amp;” 的时候，zsh 明白你的意思是将stdout 和stderr 都重定向到一个流。<br>zsh 会推断你的意图，如果你是perl 用户，你会很熟悉这种行为。</p>
+</li>
+<li><p>zsh 可以<strong>提示通配符的作用范围</strong><br>不知道有多少人有过”rm -rf dir/&lt;空格&gt;<em> “ 的悲剧——你想清空目录其下的文件并保留目录，结果删除了当前目录下所有的文件。<br>zsh 会将被通配符作用的参数显示为深蓝色，当你手贱在”dir/“ 和”</em>“ 之间敲了一个回车的时候，”/dir” 会立刻变白，你会明白我的通配符无法作用于”dir/“，从而预料到这条指令可能造成什么后果。<br>事实上：zsh 也有着防手贱的能力，当你rm -rf dir/* 的时候，即使带着-f 参数，zsh 仍然会询问你是否真的想这样做（但是不要认为zsh 总会这样）。</p>
+</li>
+<li><p>zsh 可以<strong>有区分的提示指令历史</strong><br>在你的.zshrc 的plugins=() 中添加history 插件，简单的例子：<br>在目录A 下输入ls 按上箭头，zsh 会提示你所有在目录A 下执行的ls 指令——zsh 绝对不会补全一个在其他目录下指令的ls 指令的，因为zsh 明白即使补全了，这条指令也对你毫无用处。<br>当然这样做有好有坏，如果你不喜欢这个特性，不要启用history 插件。</p>
+</li>
+<li><p>zsh 内置了大量的<strong>命令提示符样式</strong><br>.zshrc 的plugins=() 中添加theme 插件，敲theme 指令回车可以随机选择，后跟参数可以选择指定的样式，例如theme gen<tab><enter> 会切换到gentoo 样式，这也是新手美化过程中非常痛苦的一环。</enter></tab></p>
+</li>
+<li><p>zsh <strong>可以alisa 参数</strong><br>相对于其他shell 的alisa 指令，zsh 中你可以为参数alisa 一个缩写！</p>
+</li>
+<li><p>zsh <strong>脚本的语法更加顺手</strong><br>简单的例子：bash 中设置PATH，你需要PATH 后跟长长的一串，然而zsh 中可以写成<br>PATH=(<br>dir1<br>dir2<br>dir3<br>……<br>)</p>
+</li>
+<li><p>zsh 的<strong>配置非常省心</strong><br>安装oh-my-zsh 后，配置都已经被继承，你可以很简单的配置好一个舒服的zsh——我的.zshrc 除去成片的alisa 之外，有效配置只有十几行。</p>
+</li>
+</ol>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;Homebrew&quot;&gt;&lt;a href=&quot;#Homebrew&quot; class=&quot;headerlink&quot; title=&quot;Homebrew&quot;&gt;&lt;/a&gt;&lt;a href=&quot;http://brew.sh/index_zh-cn.html&quot; target=&quot;_blank&quot; rel=
+    
+    </summary>
+    
+      <category term="Linux" scheme="geekerhua.com/categories/Linux/"/>
+    
+    
+      <category term="Shell" scheme="geekerhua.com/tags/Shell/"/>
+    
+      <category term="Linux" scheme="geekerhua.com/tags/Linux/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>从面试官的角度谈iOS面试</title>
+    <link href="geekerhua.com/2015/12/07/iOS_interview/"/>
+    <id>geekerhua.com/2015/12/07/iOS_interview/</id>
+    <published>2015-12-07T10:57:21.000Z</published>
+    <updated>2017-02-13T05:21:48.000Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote>
+<p>本来,这篇博文应该在大约1个月前发布的,无奈项目无节制的加班剥夺了我的时间,一拖再拖,直到有一天我开始管理我的时间,才有功夫把它写完,发布出来。 </p>
+</blockquote>
+<p>没成想、距上次去面试已经过了半年有余了，感觉时间过得好快，印象中只有周一、周五，就连周六、周日也过得飞快。不经意间由于内在和外在的因素，招聘新的iOS成员的重任落到了我的头上。本文将通过完整的情景介绍在招聘官的立场上的面试。</p>
+<h4 id="首先介绍下这次招聘的前提"><a href="#首先介绍下这次招聘的前提" class="headerlink" title="首先介绍下这次招聘的前提"></a>首先介绍下这次招聘的前提</h4><p>由于公司业务需要，需要招聘一名中级、一名高级iOS工程师外派到青岛工作。说实话，这个工作的优点是可以拿着北京的高工资、享受海尔的生活。缺点就是对很多打算留在北京或者已经安家的人、甚至是刚刚来到北京想要闯荡一番的人来说，可能是万万无法接受的。至于得与失，每个人的评判标准都不一样。面试要求无非就是能干活，其实领导什么也没交代，只是说要技术好的（很感谢被领导信任。PS:没有目地的招聘就是自欺欺人）。</p>
+<p>不到两天的时间里，我先后面试了11个人，在此之前是从来没有去面过别人的，倒是被别人面了10多次，两个10多次，也算是打平了。</p>
+<p>####说说我对于招聘的理解：</p>
+<ul>
+<li>首先，公司肯定是想花更少的钱来招到技术实力更好的人才。</li>
+<li>其次，不同的公司由于各自情况不同，对人才的看法与重视程度是不同的，比如我们是做外包的，对实力的要求是能干活，不需要别人带，尽量不会给别人留下坑。</li>
+<li>很多人想来到公司有人带、能够学习、能够进步。其实如果自己积极向上，就算没人带，自己依然能够学习、能够进步，技术水平的进步更重要的是看人自身思想和学习能力。没有一个公司想花成本招来需要人带、需要学习的程序员。</li>
+<li>永远不要畏惧你的面试官、很多东西他不问你，可能是它也不知道、实质是都不知道问什么。</li>
+</ul>
+<p>####再来说说面试注意事项：</p>
+<ul>
+<li>一定要带一份简历,哪怕是知道,目标公司可能会帮你打印一份简历,如果没打印呢！拿什么介绍你自己呢？光靠一张嘴很多东西是说不出来的,更何况不带简历,怎么突出你的优势呢,让面试官问你什么问题呢。</li>
+<li>准时,这个不解释,不准时的话,可能直接pass掉,如果不能及时来,提前通知招聘方。</li>
+<li>可以自信,不能自大。自信会让自己说话有底气,面试官听了也舒服,会加分。但相反自大会让面试官产生厌恶,会给面试官一种目空一切,目中无人的感觉,直接结果就是pass。</li>
+</ul>
+<p>####再聊聊项目<br>项目可大可小,做的工作可多可少,协助别人写了一个页面也叫做过,但毕竟差的太多了不是？</p>
+<ul>
+<li>项目经验,一定要写上自己做了哪些模块,尽量写有价值的东西,否则,面试官又不知道这个项目有什么技术难点,又不知道你到底写了哪些模块,根本就没法评估你在这个项目中的付出和重要程度。</li>
+<li>一定要在项目中突出自己的优势,要用数据去展示自己的价值。比如说<code>进行代码重构,将3000行的代码拆分到3个控制器中,保证了可维护性</code>。</li>
+<li>项目贵在精而不在多,试想一下,如果干了很多项目,每个项目时间都很短,相应的在技术上肯定不会有太多出色的地方,大多是流水账,否则也不会这么快就完成了。因此,只需要详细描述两个自己权重最高的项目即可,在这两个项目中,可以用更多的篇幅来阐述自己的能力以及贡献,更加具有说服力。</li>
+</ul>
+<p>####最后聊聊技术</p>
+<ul>
+<li>除非面试的公司从来都没有过iOS开发人员,否则公司必然会有一套自己的框架体系,可能特别简单,几个分类就OK了,也可能特别复杂,面面俱到,能够应付各种使用环境。这些本来就有的东西,可能已经非常完善了,拥有多样性的Api、封装完好、良好的注释,使用起来方便顺手,上手难度很低。也有可能就是从哪个已有的项目中抽出来的,并没没有及时进行封装处理,也没有完好的注释,甚至于只适用于当时的语境,没有预留足够的接口,每次使用都需要去修改里边的东西。这些都是资源。面试官其实更希望你能够聊聊这些,聊一聊都有哪些这样的框架,怎么学习这些框架,甚至是自己封装这些框架的。</li>
+<li>有一个自己的技术博客确实是一个加分项,要知道,自己会和能说出来是完全不同的两个水平。如果你能够清晰的在自己的技术博客中表达出来,想必做起来应该也是十分得心应手的。况且技术博客可以从另一个角度证明自己的技术水准甚至是工作经验。</li>
+<li>相信自己的技术,没有人能够什么都会,同样面试官也是,因此,对于会的东西大胆去说,对于不会的东西,也就可以大胆的去学习,不要害怕自己不会。因为会的越多,不会的也就越多。</li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;本来,这篇博文应该在大约1个月前发布的,无奈项目无节制的加班剥夺了我的时间,一拖再拖,直到有一天我开始管理我的时间,才有功夫把它写完,发布出来。 &lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;没成想、距上次去面试已经过了半年有余了，感觉时间过得好快，
+    
+    </summary>
+    
+      <category term="Other" scheme="geekerhua.com/categories/Other/"/>
+    
+    
+      <category term="interview" scheme="geekerhua.com/tags/interview/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>多读书,读好书</title>
+    <link href="geekerhua.com/2015/11/04/Read_more_book/"/>
+    <id>geekerhua.com/2015/11/04/Read_more_book/</id>
+    <published>2015-11-04T10:57:21.000Z</published>
+    <updated>2017-02-13T05:21:48.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>2015年11月01日京东进行双十一活动,其中在11月01日和02日两天全场自营图书满200减100,这相当于在京东正版的优惠图书价格上打了5折,于是乎淘书活动开始了。在经历筛选、缺货、预定、购买的一些列过程后,终于买下了以下几本书。</p>
+<ul>
+<li>MacTalk人生元编程</li>
+<li>重构 改善既有代码的设计</li>
+<li>设计模式：可复用面向对象软件的基础</li>
+<li>树莓派 Raspberry Pi 实战指南：手把手教你掌握100个精彩案例</li>
+<li>数字匠人：树莓派Python编程指南</li>
+</ul>
+<p>第二天,借用同事的账号又买了几本书</p>
+<ul>
+<li>算法导论 原书第3版</li>
+<li>React：引领未来的用户界面开发框架 </li>
+<li>鸟哥的Linux私房菜 （基础学习篇 第三版）</li>
+</ul>
+<p>至此一共买了8本书,打完折,一共花了￥230左右,大喜啊！至少能看个几年了,可以好好研究研究,镀金一下。接下来就是一边看书,一边写读书笔记了。</p>
+<p>再来说说读书,一个朋友和我说,<code>每年读5本书算是及格,每年读10本书算是优秀,不读书、又不会数据结构、更不会算法、设计模式,算什么程序员。</code>对此我只能说呵呵,是啊！能够在工作中静下心来读书又有多少人呢,软件本身就是一个高工资的行业,拿着高薪水,又有多少人能够安心下来好好读书呢。</p>
+<p>再来说说为什么要读书,不读书那你干什么呢？打游戏？游戏能提升什么呢？除了浪费时间,浪费精力,也只能图得一时痛快罢了。有朋友们在聊天,总结起来有以下几点。</p>
+<ul>
+<li>自己公司资金链断了</li>
+<li>没钱了,公司要倒闭了</li>
+<li>3个人裁了两个,少发年终奖</li>
+<li>听说xx公司也停止社会招聘了</li>
+<li>某某公司一个部门一个部门的裁人</li>
+<li>互联网寒冬来了,iOS供大于求</li>
+</ul>
+<p>而更多地人则说工作是越来越难找了,大家都人心惶惶的,有人甚至提议学PHP,因为PHP人才比较紧缺,薪水也比以前涨了很多,和iOS有的比了。总之不管怎样,提升自身的能力真的是重中之重。自己有了实力还怕没有工作？还怕没饭吃？</p>
+<p><code>多读书,读好书</code></p>
+<p>我会沿着我的步伐,成长！</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;2015年11月01日京东进行双十一活动,其中在11月01日和02日两天全场自营图书满200减100,这相当于在京东正版的优惠图书价格上打了5折,于是乎淘书活动开始了。在经历筛选、缺货、预定、购买的一些列过程后,终于买下了以下几本书。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;MacTal
+    
+    </summary>
+    
+      <category term="Reading" scheme="geekerhua.com/categories/Reading/"/>
+    
+    
+      <category term="other" scheme="geekerhua.com/tags/other/"/>
+    
+  </entry>
+  
+</feed>

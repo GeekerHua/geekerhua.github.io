@@ -1,0 +1,749 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>终极Shell修行大法-不得不拥有 | GeekerHua的Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="GeekerHua">
+    
+
+    
+    <meta name="description" content="Homebrew
+Shell神器,OS X 不可或缺的套件管理器。Homebrew较之于Shell,好比CocoaPod较之于Xcode。这么说,Homebrew的定位就应该相当明确了吧！
+
+
+安装:
+ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot;
+
+卸载:
+ruby">
+<meta property="og:type" content="article">
+<meta property="og:title" content="终极Shell修行大法-不得不拥有">
+<meta property="og:url" content="geekerhua.com/2015/12/10/Ultimate_shell/index.html">
+<meta property="og:site_name" content="GeekerHua的Blog">
+<meta property="og:description" content="Homebrew
+Shell神器,OS X 不可或缺的套件管理器。Homebrew较之于Shell,好比CocoaPod较之于Xcode。这么说,Homebrew的定位就应该相当明确了吧！
+
+
+安装:
+ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot;
+
+卸载:
+ruby">
+<meta property="og:image" content="http://7xtibb.com2.z0.glb.qiniucdn.com/2016-06-06-Shell_Homebrew安装失败.png">
+<meta property="og:image" content="http://7xtibb.com2.z0.glb.qiniucdn.com/2016-06-06-Shell_zsh_them.png">
+<meta property="og:updated_time" content="2017-02-13T05:21:48.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="终极Shell修行大法-不得不拥有">
+<meta name="twitter:description" content="Homebrew
+Shell神器,OS X 不可或缺的套件管理器。Homebrew较之于Shell,好比CocoaPod较之于Xcode。这么说,Homebrew的定位就应该相当明确了吧！
+
+
+安装:
+ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot;
+
+卸载:
+ruby">
+<meta name="twitter:image" content="http://7xtibb.com2.z0.glb.qiniucdn.com/2016-06-06-Shell_Homebrew安装失败.png">
+<meta name="twitter:creator" content="@GeekerHua">
+
+    
+    <link rel="alternative" href="/atom.xml" title="GeekerHua的Blog" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.png" alt="GeekerHua的Blog" title="GeekerHua的Blog"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="GeekerHua的Blog">GeekerHua的Blog</a></h1>
+				<h2 class="blog-motto">爱生活，爱自由</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">首页</a></li>
+					
+						<li><a href="/archives">归档</a></li>
+					
+						<li><a href="/categories">分类</a></li>
+					
+						<li><a href="/tags">标签</a></li>
+					
+						<li><a href="/about">关于我</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="hidden" name="q" value="site:geekerhua.com">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2015/12/10/Ultimate_shell/" title="终极Shell修行大法-不得不拥有" itemprop="url">终极Shell修行大法-不得不拥有</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="GeekerHua" target="_blank" itemprop="author">GeekerHua</a>
+		
+  <p class="article-time">
+    <time datetime="2015-12-10T10:57:21.000Z" itemprop="datePublished"> Published 2015-12-10</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Homebrew"><span class="toc-number">1.</span> <span class="toc-text">Homebrew</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#wget"><span class="toc-number">1.1.</span> <span class="toc-text">wget</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#zsh"><span class="toc-number">1.2.</span> <span class="toc-text">zsh</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#zsh-好处"><span class="toc-number">1.2.1.</span> <span class="toc-text">zsh 好处</span></a></li></ol></li></ol></li></ol>
+		
+		</div>
+		
+		<h1 id="Homebrew"><a href="#Homebrew" class="headerlink" title="Homebrew"></a><a href="http://brew.sh/index_zh-cn.html" target="_blank" rel="external">Homebrew</a></h1><blockquote>
+<p>Shell神器,OS X 不可或缺的套件管理器。<code>Homebrew</code>较之于<code>Shell</code>,好比<code>CocoaPod</code>较之于<code>Xcode</code>。这么说,<code>Homebrew</code>的定位就应该相当明确了吧！</p>
+</blockquote>
+<ul>
+<li><p>安装:</p>
+<figure class="highlight ruby"><table><tr><td class="code"><pre><div class="line">ruby -e <span class="string">"$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>卸载:</p>
+<figure class="highlight ruby"><table><tr><td class="code"><pre><div class="line">ruby -e <span class="string">"$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/uninstall)"</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>更新已安装的package</p>
+<ul>
+<li>先更新brew：$ <code>brew update</code></li>
+<li>更新所有package：$ <code>brew upgarde</code></li>
+</ul>
+</li>
+<li>Homebrew下载的package存放的路径在哪里？<ul>
+<li><code>/Library/Caches/Homebrew/</code></li>
+</ul>
+</li>
+</ul>
+<p>Homebrew 可以很方便的安装需要的套件,方法如下：$ <code>brew install wget</code>。是不是很简单？</p>
+<p>Homebrew 使 OS X 更完美。使用 gem 来安装 gems、用 brew 来搞定那些依赖包。</p>
+<blockquote>
+<p>Tips:</p>
+<ul>
+<li>如果安装过程中提示错误,提示先卸载,但执行卸载命令又卸载不掉,说明有曾经安装失败过,有残留。解决方式删除<code>/usr/local</code>文件夹即可。</li>
+</ul>
+</blockquote>
+<p><img src="http://7xtibb.com2.z0.glb.qiniucdn.com/2016-06-06-Shell_Homebrew安装失败.png" alt="Shell_Homebrew安装失败"></p>
+<h2 id="wget"><a href="#wget" class="headerlink" title="wget"></a><a href="http://baike.baidu.com/link?url=_4E-kuBinS_AItjdR3vsisJTYpRsOCav7kEUifcKfUsLGMAML6kPVKJK0tVd5tOhLP13C_BnTzI7yFHFENwiKq" target="_blank" rel="external">wget</a></h2><blockquote>
+<p>wget是一个从网络上自动下载文件的自由工具，支持通过HTTP、HTTPS、FTP三个最常见的TCP/IP协议下载，并可以使用HTTP代理。wget名称的由来是“World Wide Web”与“get”的结合。</p>
+</blockquote>
+<ul>
+<li><code>Homebrew</code>下安装: 在安装了<code>Homebrew</code>的情况下安装wget特别简单。只需要：$ <code>brew install wget</code> 即可。如果没安装<code>Homebrew</code>建议赶紧安装。</li>
+<li>正常安装(特别复杂,不建议直接安装)：<ol>
+<li><a href="http://ftp.gnu.org/gnu/wget/wget-1.13.4.tar.gz" target="_blank" rel="external">http://ftp.gnu.org/gnu/wget/wget-1.13.4.tar.gz</a><br>下载源码包。这里面找到最新版本，直接下载安装就行了</li>
+<li>到目录<code>cd /usr/local/src</code> 解压： tar -zxvf wget-1.13.tar.gz</li>
+<li><code>./configure</code>，这个过程第一次是不成功的，然后提示你下载安装一个make,安装make后，再运行一下<code>./configure</code>。</li>
+<li><code>make</code></li>
+<li><code>sudo make install</code></li>
+</ol>
+</li>
+</ul>
+<h2 id="zsh"><a href="#zsh" class="headerlink" title="zsh"></a>zsh</h2><blockquote>
+<p>终极shell,Mac自带就有,使用<a href="http://ohmyz.sh" target="_blank" rel="external"><code>oh-my-zsh</code></a>进行配置,简单又强大.配合iTerm 2一同使用,简单又强大。</p>
+<ul>
+<li><a href="http://www.zhihu.com/question/20873070/answer/43230384" target="_blank" rel="external">iTerm 2 &amp;&amp; Oh My Zsh博客</a></li>
+<li><a href="http://tieba.baidu.com/p/2818750493" target="_blank" rel="external">终极shell</a></li>
+</ul>
+</blockquote>
+<p><img src="http://7xtibb.com2.z0.glb.qiniucdn.com/2016-06-06-Shell_zsh_them.png" alt="Shell_zsh_the"></p>
+<ul>
+<li><p>安装</p>
+<ol>
+<li><p>下载一个 .oh-my-zsh 配置（推荐有）</p>
+<figure class="highlight ruby"><table><tr><td class="code"><pre><div class="line">git clone <span class="symbol">git:</span>/<span class="regexp">/github.com/robbyrussell</span><span class="regexp">/oh-my-zsh.git ~/</span>.oh-my-zsh</div></pre></td></tr></table></figure>
+</li>
+<li><p>创建新配置（备份）</p>
+<figure class="highlight ruby"><table><tr><td class="code"><pre><div class="line">cp ~<span class="regexp">/.zshrc ~/</span>.zshrc.orig</div><div class="line">cp ~<span class="regexp">/.oh-my-zsh/templates</span><span class="regexp">/zshrc.zsh-template ~/</span>.zshrc</div></pre></td></tr></table></figure>
+</li>
+<li><p>把 zsh 设置成默认的 shell</p>
+<figure class="highlight ruby"><table><tr><td class="code"><pre><div class="line">chsh -s /bin/zsh</div></pre></td></tr></table></figure>
+</li>
+<li><p>重启 zsh (打开一个新的 terminal 窗口)</p>
+</li>
+</ol>
+</li>
+<li><p>配置</p>
+<ul>
+<li>主题：agnoster</li>
+<li><p>字体：Powerline （把 iTerm 2 的设置里的 Profile 中的 Text 选项卡中里的 Regular Font 和 Non-ASCII Font 的字体都设置成 Powerline 的字体。）</p>
+<ul>
+<li><p>推荐使用 14pt Meslo LG S DZ Regular for Powerline </p>
+<blockquote>
+<ul>
+<li><a href="https://powerline.readthedocs.org/en/master/" target="_blank" rel="external">Powerline — Powerline beta documentation</a></li>
+<li><a href="https://github.com/powerline/fonts" target="_blank" rel="external">powerline/fonts · GitHub</a></li>
+</ul>
+</blockquote>
+</li>
+</ul>
+<ul>
+<li><p>设置命令正确绿色高亮,错误红色高亮</p>
+<figure class="highlight ruby"><table><tr><td class="code"><pre><div class="line">git clone <span class="symbol">git:</span>/<span class="regexp">/github.com/jimmijj</span><span class="regexp">/zsh-syntax-highlighting ~/</span>.oh-my-zsh/custom/plugins/zsh-syntax-highlighting</div></pre></td></tr></table></figure>
+</li>
+<li><p>然后在~/.zshrc中插件那添加 </p>
+<ul>
+<li><code>plugins=(zsh-syntax-highlighting)</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>加强zsh的补全功能实现tab自动纠错</p>
+<ul>
+<li><p>把这两句话添加到oh-my-zsh/lib/completion.zsh  (末尾)</p>
+<figure class="highlight ruby"><table><tr><td class="code"><pre><div class="line">zstyle <span class="string">':completion:incremental:*'</span> completer _complete _correct</div><div class="line">zstyle <span class="string">':completion:*'</span> completer _complete _prefix _correct _prefix _match _approximate</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="zsh-好处"><a href="#zsh-好处" class="headerlink" title="zsh 好处"></a>zsh 好处</h3><ol>
+<li><p>zsh 可以<strong>补全参数</strong><br>当你敲指令敲到一般的时候，不必在虚拟终端下Ctrl_Shift_T 打开一个新标签看手册了，只需要一个<tab>，zsh 会为你列出所有符合你已经输入部分的参数，其后跟着参数说明，你需要的只是看下其后的说明，然后选中你需要的参数按下回车键。视频中我们差一点就用纯tab 完成了一条dd 指令。</tab></p>
+</li>
+<li><p>zsh 的<strong>参数补全是智能补全</strong><br>简单的例子：<br>当你输入ls 指令按下<tab> 的时候，zsh 会列出目录下所有的文件并让你交互式处理。<br>当你输入unzip 指令要求补全的时候，zsh 只会列出zip 文件<br>当你输入kill 指令要求补全的时候，zsh 会列出所有符合要求的进程并自动把参数转换为PID。<br>当你输入参数的一部分时（例如systemctl 的–type=,-t），zsh 会列出其后所有的可能性供你选择。</tab></p>
+</li>
+<li><p>zsh 可以<strong>补全路径</strong><br>当你想到你的vim 插件目录下看看的时候，你甚至连cd 都不需要输入，你要做的只是/u/s/v/vimf/p<tab><enter></enter></tab></p>
+</li>
+<li><p>zsh 可以<strong>不额外安装autojump 在目录中快速跳转</strong><br>安装oh-my-zsh 后，在你的plugins=() 中加入jump（事实上这个插件提供的是几个函数）。之后mark dir 标记一个目录，下次jump dir 就可以快速跳转到该目录。</p>
+</li>
+<li><p>zsh 可以<strong>自动纠错指令</strong><br>当你输入了错误的指令时，如果只是几个字母按错了，一个<tab> zsh 就会为你自动纠错。<br>你可以利用这个特性缩写指令，例如把systemd-analyze 变成sys-an<tab>。</tab></tab></p>
+</li>
+<li><p>zsh 可以<strong>预先告知你指令中的错误</strong><br>zsh 会将错误的指令显示为红色，正确的指令（或者函数、alisa）会被显示为绿色。<br>至于目录和文件，虚拟终端下，存在的文件或目录会被显示为下划线形式，tty 下则是绿色，不存在的都会被现实为普通的白色。<br>所以当你重定向&gt; file，如果file 带下划线，你会事先明白你的操作会清空一个已经存在的文件而不是重定向到新文件。这个特性对于新手来说是非常有用的。</p>
+</li>
+<li><p>zsh 可以<strong>补全环境变量</strong><br>环境变量大多数都比较难记，而且大小写都有，感到很困难？zsh 中一个tab 为你列出所有符合期望的环境变量，你做的只是按上下左右键挑选一个即可。</p>
+</li>
+<li><p>zsh 有<strong>多重定向</strong>的功能<br>简单的例子：<br>当你指令后跟着”&gt;/dev/null &gt;1 &gt;2” 的时候，zsh 明白你的意思是将stdout 分别重定向到三个流，但是bash 就无法如此。<br>而当你后跟”&gt;/dev/null 2&gt;&amp;1 &amp;” 的时候，zsh 明白你的意思是将stdout 和stderr 都重定向到一个流。<br>zsh 会推断你的意图，如果你是perl 用户，你会很熟悉这种行为。</p>
+</li>
+<li><p>zsh 可以<strong>提示通配符的作用范围</strong><br>不知道有多少人有过”rm -rf dir/&lt;空格&gt;<em> “ 的悲剧——你想清空目录其下的文件并保留目录，结果删除了当前目录下所有的文件。<br>zsh 会将被通配符作用的参数显示为深蓝色，当你手贱在”dir/“ 和”</em>“ 之间敲了一个回车的时候，”/dir” 会立刻变白，你会明白我的通配符无法作用于”dir/“，从而预料到这条指令可能造成什么后果。<br>事实上：zsh 也有着防手贱的能力，当你rm -rf dir/* 的时候，即使带着-f 参数，zsh 仍然会询问你是否真的想这样做（但是不要认为zsh 总会这样）。</p>
+</li>
+<li><p>zsh 可以<strong>有区分的提示指令历史</strong><br>在你的.zshrc 的plugins=() 中添加history 插件，简单的例子：<br>在目录A 下输入ls 按上箭头，zsh 会提示你所有在目录A 下执行的ls 指令——zsh 绝对不会补全一个在其他目录下指令的ls 指令的，因为zsh 明白即使补全了，这条指令也对你毫无用处。<br>当然这样做有好有坏，如果你不喜欢这个特性，不要启用history 插件。</p>
+</li>
+<li><p>zsh 内置了大量的<strong>命令提示符样式</strong><br>.zshrc 的plugins=() 中添加theme 插件，敲theme 指令回车可以随机选择，后跟参数可以选择指定的样式，例如theme gen<tab><enter> 会切换到gentoo 样式，这也是新手美化过程中非常痛苦的一环。</enter></tab></p>
+</li>
+<li><p>zsh <strong>可以alisa 参数</strong><br>相对于其他shell 的alisa 指令，zsh 中你可以为参数alisa 一个缩写！</p>
+</li>
+<li><p>zsh <strong>脚本的语法更加顺手</strong><br>简单的例子：bash 中设置PATH，你需要PATH 后跟长长的一串，然而zsh 中可以写成<br>PATH=(<br>dir1<br>dir2<br>dir3<br>……<br>)</p>
+</li>
+<li><p>zsh 的<strong>配置非常省心</strong><br>安装oh-my-zsh 后，配置都已经被继承，你可以很简单的配置好一个舒服的zsh——我的.zshrc 除去成片的alisa 之外，有效配置只有十几行。</p>
+</li>
+</ol>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/Linux/">Linux</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/Shell/">Shell</a><a href="/tags/Linux/">Linux</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="geekerhua.com/2015/12/10/Ultimate_shell/" data-title="终极Shell修行大法-不得不拥有 | GeekerHua的Blog" data-tsina="null" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2016/06/02/Git_workflow/" title="Git与Git工作流">
+  <strong>上一篇：</strong><br/>
+  <span>
+  Git与Git工作流</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2015/12/07/iOS_interview/"  title="从面试官的角度谈iOS面试">
+ <strong>下一篇：</strong><br/> 
+ <span>从面试官的角度谈iOS面试
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+<section id="comments" class="comment">
+	<div class="ds-thread" data-thread-key="2015/12/10/Ultimate_shell/" data-title="终极Shell修行大法-不得不拥有" data-url="geekerhua.com/2015/12/10/Ultimate_shell/"></div>
+</section>
+
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contents</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Homebrew"><span class="toc-number">1.</span> <span class="toc-text">Homebrew</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#wget"><span class="toc-number">1.1.</span> <span class="toc-text">wget</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#zsh"><span class="toc-number">1.2.</span> <span class="toc-text">zsh</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#zsh-好处"><span class="toc-number">1.2.1.</span> <span class="toc-text">zsh 好处</span></a></li></ol></li></ol></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">Categories</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/Linux/" title="Linux">Linux<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Other/" title="Other">Other<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Python/" title="Python">Python<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Reading/" title="Reading">Reading<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Speak/" title="Speak">Speak<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Swift/" title="Swift">Swift<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/工具/" title="工具">工具<sup>1</sup></a></li>
+		  
+		
+		  
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">Tags</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/Shell/" title="Shell">Shell<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/环境配置/" title="环境配置">环境配置<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Linux/" title="Linux">Linux<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/git/" title="git">git<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Python/" title="Python">Python<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/other/" title="other">other<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/interview/" title="interview">interview<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/成长/" title="成长">成长<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Swift/" title="Swift">Swift<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/protocal/" title="protocal">protocal<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/读书笔记/" title="读书笔记">读书笔记<sup>1</sup></a></li>
+			
+		
+			
+		
+			
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">Links</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="https://coderq.com" target="_blank" title="一个面向程序员交流分享的新一代社区">码农圈</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://yanshinian.com" target="_blank" title="上善若水，水善利萬物而不爭">言十年的博客</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://swift.gg" target="_blank" title="走心的Swift翻译组">SwiftGG</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://scp.net.cn" target="_blank" title="西二三旗的垃圾桶">BB4BB</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS</a>
+</div>
+
+  
+  <div class="tagcloudlist">
+    <p class="asidetitle">Tag Cloud</p>
+    <div class="tagcloudlist clearfix">
+       <a href="/tags/Linux/" style="font-size: 15px;">Linux</a> <a href="/tags/Python/" style="font-size: 10px;">Python</a> <a href="/tags/Shell/" style="font-size: 20px;">Shell</a> <a href="/tags/Swift/" style="font-size: 10px;">Swift</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/interview/" style="font-size: 10px;">interview</a> <a href="/tags/other/" style="font-size: 10px;">other</a> <a href="/tags/protocal/" style="font-size: 10px;">protocal</a> <a href="/tags/成长/" style="font-size: 10px;">成长</a> <a href="/tags/环境配置/" style="font-size: 15px;">环境配置</a> <a href="/tags/读书笔记/" style="font-size: 10px;">读书笔记</a>
+    </div>
+  </div>
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> 没有梦想就没有未来 <br/>
+			Without dreams, we have no future.</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		<a href="http://weibo.com/geekerhua" target="_blank" class="icon-weibo" title="微博"></a>
+		
+		
+		<a href="https://github.com/geekerhua" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		
+		<a href="https://twitter.com/GeekerHua" target="_blank" class="icon-twitter" title="twitter"></a>
+		
+		
+		<a href="https://www.facebook.com/100014141115493" target="_blank" class="icon-facebook" title="facebook"></a>
+		
+		
+		<a href="https://www.linkedin.com/in/振华-杭-35b122126" target="_blank" class="icon-linkedin" title="linkedin"></a>
+		
+		
+		
+		<a href="http://www.zhihu.com/people/hang-zhen-hua-82" target="_blank" class="icon-zhihu" title="知乎"></a>
+		
+		
+		
+		<a href="mailto:geekerhua@sina.com" target="_blank" class="icon-email" title="Email Me"></a>
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2017 
+		
+		<a href="/about" target="_blank" title="GeekerHua">GeekerHua</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"geekerhua"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script> 
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+<script>
+(function(){
+    var bp = document.createElement('script');
+    bp.src = '//push.zhanzhang.baidu.com/push.js';
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+<!-- Analytics Begin -->
+
+
+
+
+
+<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1259417518'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s23.cnzz.com/z_stat.php%3Fid%3D1259417518' type='text/javascript'%3E%3C/script%3E"));</script>
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="Back to Top"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>
