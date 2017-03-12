@@ -4,9 +4,9 @@
   <subtitle>爱生活，爱自由</subtitle>
   <link href="/atom.xml" rel="self"/>
   
-  <link href="geekerhua.com/"/>
-  <updated>2017-02-13T05:34:59.000Z</updated>
-  <id>geekerhua.com/</id>
+  <link href="blog.geekerhua.com/"/>
+  <updated>2017-03-12T09:23:43.000Z</updated>
+  <id>blog.geekerhua.com/</id>
   
   <author>
     <name>GeekerHua</name>
@@ -16,9 +16,99 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>从碎片化阅读到知识的输出</title>
+    <link href="blog.geekerhua.com/2017/03/12/read_to_write/"/>
+    <id>blog.geekerhua.com/2017/03/12/read_to_write/</id>
+    <published>2017-03-12T09:03:18.000Z</published>
+    <updated>2017-03-12T09:23:43.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="从碎片化阅读到知识的输出"><a href="#从碎片化阅读到知识的输出" class="headerlink" title="从碎片化阅读到知识的输出"></a>从碎片化阅读到知识的输出</h1><blockquote>
+<p>先来一个最终的结论：(<code>即刻</code> + <code>Reeder</code>) -&gt; <a href="shouqu.me">收趣云书签</a> -&gt; (<code>印象笔记</code> + <code>markdown</code>)</p>
+</blockquote>
+<p>碎片化阅读，相对于读书，前者是泛读，后者是精读，在这里我们只讨论泛读的问题。</p>
+<h2 id="为什么会出现碎片化阅读"><a href="#为什么会出现碎片化阅读" class="headerlink" title="为什么会出现碎片化阅读"></a>为什么会出现碎片化阅读</h2><p>在网络发达之前，人们的知识大多是通多读书来完成的，一本书很厚，每本书都对应着一个主题，通多阅读一整本书学的一定的知识。<br>而到了互联网时代，人人都可以进行内容输出，微博、头条、公众号的兴起更是加剧了碎片化，人们充斥在碎片化知识的海洋里，深度阅读越来越少，人的耐心也越来越差。收到海量的碎片化信息，如何合理的进行碎片化阅读以及将碎片化知识转化成自己的知识显得尤为重要。在经过多次尝试以及阅读量大量的文章之后，笔者总结出来一套相对完善的碎片化知识变现流程。</p>
+<h3 id="阅读—-gt-整理—-gt-写作"><a href="#阅读—-gt-整理—-gt-写作" class="headerlink" title="阅读—&gt;整理—&gt;写作"></a>阅读—&gt;整理—&gt;写作</h3><p>阅读是为了获取信息，获取新的内容。而写作是对阅读到的信息进行整理，添加自己的思想，进行润色的产物。从知识的角度来说，阅读的内容是显性知识，显性知识要求通俗易懂，能够传递；当我们读了之后转化为隐性知识，隐性知识通常不太好进行传递，很多时候我们懂的知识无法传递给他人，好比”只可意会不可言传”一样；而写作就是将我们的隐性知识转化为显性知识，完成这样一个循环，这些知识才能彻彻底底的变成我们自己的。<code>输入—&gt;整理—&gt;输出</code>，一个循环，你可以在任何一个环节终止，来达到不同的目的。</p>
+<h2 id="碎片化阅读"><a href="#碎片化阅读" class="headerlink" title="碎片化阅读"></a>碎片化阅读</h2><blockquote>
+<p>泛读+稍后读</p>
+</blockquote>
+<p>大部分情况下，泛读知识读一下标题，不需要读完整个文章，甚至连文章都不要看，你只需要看标题，知道有这么一回事就够了。</p>
+<p>而遇到优秀的文章，需要细细品味的内容，就需要采取稍后读，将这些文章放到稍后读应用中，在一个时间充裕，安静的环境下细细品读。</p>
+<blockquote>
+<p>Tips:<br>不要在泛读的过程中穿插深度阅读，这会大大降低阅读的效率。想想看，当你一屏一屏的浏览文章标题时，突然打开一片文章仔细看，然后看完了在返回，再一屏一屏浏览，想想这篇文章你看的效果也不会好到哪里去的。</p>
+</blockquote>
+<h3 id="泛读的入口"><a href="#泛读的入口" class="headerlink" title="泛读的入口"></a>泛读的入口</h3><ul>
+<li>微信公众号</li>
+<li>朋友圈</li>
+<li>群、好友转发</li>
+<li>微博</li>
+<li>博客</li>
+<li>头条</li>
+<li>论坛</li>
+<li>知乎</li>
+<li>垂直门户<br>泛读的入口远远不止这么多，各行各业还有很多各自的垂直平台。如果放任这些入口不加控制，最终只会导致精力憔悴，看了很多没营养的，遗漏了很多有价值的，甚至不知不居中在“标题党”上浪费了很多宝贵的时间。</li>
+</ul>
+<p>因此我们要从源头控制这些信息，世面上有很多泛读类的聚合工具可以帮我们从一定程度上解决这些问题。</p>
+<h3 id="泛读工具"><a href="#泛读工具" class="headerlink" title="泛读工具"></a>泛读工具</h3><ol>
+<li>轻芒阅读</li>
+<li>即刻</li>
+<li>RSS<br>绝大多数情况下，泛读的入口可以归纳为<code>即刻</code>和<code>RSS</code>中，其中，<code>即刻</code>属于被动阅读，<code>RSS</code>属于主动阅读，而<code>轻芒阅读</code>的功能很大程度上与<code>即刻</code>重叠，因此不做推荐。</li>
+</ol>
+<p><code>轻芒阅读</code>原名<code>一览</code>，是豌豆荚旗下产品，核心功能是，将众多自媒体的文章进行聚合，用户选择订阅自己喜欢的自媒体或门户网站，这些媒体有文章更新就可以在app上进行阅读，相当于用着一款app干了很多app的事。<br><code>即刻</code>的核心是定制化内容，即刻有很多主题提醒，例如： “豆瓣8.5分以上的电影”、“一觉醒来世界发生了什么”、“折扣优惠精选”。<code>即刻</code>新推出了几个机器人，可以自定义规则抓取网上的信息，比如你关注python开发，你可以将几个网站的关于python的内容整合成一个提醒，这样，这些网站的的python内容如有更新，都会提醒你。<br><code>RSS</code>是一个老牌服务，但在这个流程中却相当重要，RSS如何使用这里就不做介绍了，这里只介绍如何更好地使用它。RSS更多的是订阅那种需要较细阅读的内容，而不是想各种自媒体一样雷同信息的内容。</p>
+<ol>
+<li>我们用RSS来订阅个人博客，这部分内容是以上两个工具抓取不到的；</li>
+<li>还用来订阅微信公众号，很多公众号的文章质量都很优秀，但微信公众号中有很多事工具性质的，在这种环境下并不适合文章的阅读；</li>
+<li>除此之外，还可以订阅一些优质的网站资源，例如国外网站。相信前两个做好了就已经收益无穷了，因为订阅源全都是自己精挑细选的，匹配性更高。<blockquote>
+<p>对于RSS服务，推荐使用<a href="http://www.inoreader.com" target="_blank" rel="external">inoreader</a>，这是目前为止最好用的RSS服务，拥有Android和iOS客户端，且在iOS和mac平台上可以再Reeder应用中直接使用，那体验谁用谁知道。</p>
+</blockquote>
+</li>
+</ol>
+<h4 id="泛读流程"><a href="#泛读流程" class="headerlink" title="泛读流程"></a>泛读流程</h4><p>拥有了这三款应用或者后两款，并进行了针对自己合适的订阅。我们就可以开大餐了。</p>
+<ol>
+<li><p>在即刻中，进行标题泛读，不是很感兴趣的内容就直接跳过，只看标题。如果是标题党，直接放弃，不用点进去看了。对标题感兴趣的文章，点进去，快速浏览，尽量在5到10秒内判断出是否有价值进行细读，如果有，就使用分享丢到<code>收趣云书签</code>中，并分好类。如果没有要么直接返回，要么浏览一遍看完。</p>
+<blockquote>
+<p>如何判断是否需要细读，细读的文章，很多内容对你可能是有价值的，甚至能够在今后的某些地方进行引用，因此丢到<code>收趣云书签</code>中，稍后会进行标记，甚至整理到印象笔记中。</p>
+</blockquote>
+</li>
+<li><p>在RSS的文章，已经是经过刷选过的内容了，绝大多数品质都很高，几乎没有标题党存在。这些文章数量相对要少很多，同样，觉得需要进行整理、标记、引用、日后会有价值的就分享到<code>收趣云书签</code>中，剩下的就可以慢慢看完了。</p>
+<h2 id="收集整理流程"><a href="#收集整理流程" class="headerlink" title="收集整理流程"></a>收集整理流程</h2><p>微博、知乎、豆瓣、简书等，会有很多优秀的内容，这些内容有的非常短，我们只是想把有价值的内容整理下，虽然这些平台都有自己的收藏系统，但如此分散，日后想再去找，估计早就忘了在哪个平台看到的了。因此手收集显得十分重要。</p>
+</li>
+</ol>
+<h3 id="常用的收集工具"><a href="#常用的收集工具" class="headerlink" title="常用的收集工具"></a>常用的收集工具</h3><ol>
+<li>pocket</li>
+<li>instapaper</li>
+<li>方片收集</li>
+<li>Raindrop.io</li>
+<li>收趣云书签</li>
+</ol>
+<p>前两者都是响当当的稍后读应用，都可以用来做收集，后三个是相对比较小众的应用。这五款应用都是全平台可用的，目前都是免费的。但各有特色。<br>在使用这五款软件之后，最终我选择了收趣云书签，彻底放弃了其他4款应用。相对于其他几款应用，收趣云有如下独特的优势。</p>
+<ol>
+<li>能够导入几乎所有平台的文章，支持微信导入、微博导入；</li>
+<li>对众多网站的文章进行内容重排；</li>
+<li>能够很流畅的语音朗读文章，偶尔英文会按照单词去读；</li>
+<li>出色的全文搜索功能，跨文章搜索；</li>
+<li>笔记与标注功能，标注重点内容；<br>话说，语音朗读文章这个功能，很多时候解放了眼睛，就像挺书一样，值得使用。我们可以对文章添加标签，对重要的内容添加高亮，甚至添加标注，日后可以浏览这些标注，快速跳到标注的位置。</li>
+</ol>
+<h2 id="写作输出"><a href="#写作输出" class="headerlink" title="写作输出"></a>写作输出</h2><p>通过收趣云的收集、标签与标注功能，我们已经收集了大量的信息，对于同类的信息，我们可以进行整理，在收趣云的web页面中，将这些内容复制整理到印象笔记中，或者以markdown的形式写成博客进行输出，由此一个知识从输入到整理再到输出的环节就完成了。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;从碎片化阅读到知识的输出&quot;&gt;&lt;a href=&quot;#从碎片化阅读到知识的输出&quot; class=&quot;headerlink&quot; title=&quot;从碎片化阅读到知识的输出&quot;&gt;&lt;/a&gt;从碎片化阅读到知识的输出&lt;/h1&gt;&lt;blockquote&gt;
+&lt;p&gt;先来一个最终的结论：(&lt;code&gt;
+    
+    </summary>
+    
+      <category term="成长" scheme="blog.geekerhua.com/categories/%E6%88%90%E9%95%BF/"/>
+    
+    
+      <category term="方法论" scheme="blog.geekerhua.com/tags/%E6%96%B9%E6%B3%95%E8%AE%BA/"/>
+    
+  </entry>
+  
+  <entry>
     <title>pyenv管理多版本python</title>
-    <link href="geekerhua.com/2017/02/06/Python_environment/"/>
-    <id>geekerhua.com/2017/02/06/Python_environment/</id>
+    <link href="blog.geekerhua.com/2017/02/06/Python_environment/"/>
+    <id>blog.geekerhua.com/2017/02/06/Python_environment/</id>
     <published>2017-02-06T05:46:28.000Z</published>
     <updated>2017-02-13T05:34:59.000Z</updated>
     
@@ -83,19 +173,19 @@
     
     </summary>
     
-      <category term="Python" scheme="geekerhua.com/categories/Python/"/>
+      <category term="Python" scheme="blog.geekerhua.com/categories/Python/"/>
     
     
-      <category term="Python" scheme="geekerhua.com/tags/Python/"/>
+      <category term="环境配置" scheme="blog.geekerhua.com/tags/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/"/>
     
-      <category term="环境配置" scheme="geekerhua.com/tags/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/"/>
+      <category term="Python" scheme="blog.geekerhua.com/tags/Python/"/>
     
   </entry>
   
   <entry>
     <title>Linux命令基础</title>
-    <link href="geekerhua.com/2017/01/13/Linux_foundation/"/>
-    <id>geekerhua.com/2017/01/13/Linux_foundation/</id>
+    <link href="blog.geekerhua.com/2017/01/13/Linux_foundation/"/>
+    <id>blog.geekerhua.com/2017/01/13/Linux_foundation/</id>
     <published>2017-01-13T11:58:22.000Z</published>
     <updated>2017-02-13T05:21:48.000Z</updated>
     
@@ -407,21 +497,21 @@
     
     </summary>
     
-      <category term="Linux" scheme="geekerhua.com/categories/Linux/"/>
+      <category term="Linux" scheme="blog.geekerhua.com/categories/Linux/"/>
     
     
-      <category term="Shell" scheme="geekerhua.com/tags/Shell/"/>
+      <category term="Shell" scheme="blog.geekerhua.com/tags/Shell/"/>
     
-      <category term="Linux" scheme="geekerhua.com/tags/Linux/"/>
+      <category term="Linux" scheme="blog.geekerhua.com/tags/Linux/"/>
     
   </entry>
   
   <entry>
     <title>mac开发环境配置</title>
-    <link href="geekerhua.com/2017/01/12/mac_develop_environment/"/>
-    <id>geekerhua.com/2017/01/12/mac_develop_environment/</id>
+    <link href="blog.geekerhua.com/2017/01/12/mac_develop_environment/"/>
+    <id>blog.geekerhua.com/2017/01/12/mac_develop_environment/</id>
     <published>2017-01-12T12:18:28.000Z</published>
-    <updated>2017-02-13T05:21:48.000Z</updated>
+    <updated>2017-02-16T03:07:27.000Z</updated>
     
     <content type="html"><![CDATA[<h1 id="Homebrew"><a href="#Homebrew" class="headerlink" title="Homebrew"></a><a href="http://brew.sh/index_zh-cn.html" target="_blank" rel="external">Homebrew</a></h1><blockquote>
 <p>Shell神器,OS X 不可或缺的套件管理器。<code>Homebrew</code>较之于<code>Shell</code>,好比<code>CocoaPod</code>较之于<code>Xcode</code>。这么说,<code>Homebrew</code>的定位就应该相当明确了吧！</p>
@@ -448,26 +538,27 @@
 <h2 id="优秀的命令工具"><a href="#优秀的命令工具" class="headerlink" title="优秀的命令工具"></a>优秀的命令工具</h2><h3 id="1-htop"><a href="#1-htop" class="headerlink" title="1.htop"></a>1.htop</h3><blockquote>
 <p>带颜色的top工具，能够显示内存和CPU使用情况</p>
 </blockquote>
-<figure class="highlight zsh"><table><tr><td class="code"><pre><div class="line">brew install htop</div></pre></td></tr></table></figure>
-<h3 id="2-rew-cask"><a href="#2-rew-cask" class="headerlink" title="2.rew cask"></a>2.<a href="https://caskroom.github.io" target="_blank" rel="external">rew cask</a></h3><blockquote>
-<p>一个基于终端的软件安装工具<br><figure class="highlight zsh"><table><tr><td class="code"><pre><div class="line">brew tap caskroom/cask</div></pre></td></tr></table></figure></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">brew install htop</div></pre></td></tr></table></figure>
+<h3 id="2-brew-cask"><a href="#2-brew-cask" class="headerlink" title="2.brew cask"></a>2.<a href="https://caskroom.github.io" target="_blank" rel="external">brew cask</a></h3><blockquote>
+<p>一个基于终端的软件安装工具</p>
 </blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">brew tap caskroom/cask</div></pre></td></tr></table></figure>
 <ul>
-<li>安装软件(比如安装chrom)<figure class="highlight zsh"><table><tr><td class="code"><pre><div class="line">brew cask install google-chrome</div></pre></td></tr></table></figure>
+<li>安装软件(比如安装chrome)<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">brew cask install google-chrome</div></pre></td></tr></table></figure>
 </li>
 </ul>
 <h3 id="3-tree"><a href="#3-tree" class="headerlink" title="3.tree"></a>3.tree</h3><blockquote>
 <p>tree可以显示目录树,类似于ubuntu中的tree。</p>
 </blockquote>
-<figure class="highlight zsh"><table><tr><td class="code"><pre><div class="line">brew install tree</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">brew install tree</div></pre></td></tr></table></figure>
 <blockquote>
 <p>tree命令在mac下并不太好用，中文显示乱码有个解决方法如下，这是一个自己写的tree功能，支持中文显示</p>
 </blockquote>
-<figure class="highlight zsh"><table><tr><td class="code"><pre><div class="line"><span class="built_in">alias</span> tree=<span class="string">"find . -print | sed -e 's;[^/]*/;|____;g;s;____|; |;g'"</span></div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line"><span class="built_in">alias</span> tree=<span class="string">"find . -print | sed -e 's;[^/]*/;|____;g;s;____|; |;g'"</span></div></pre></td></tr></table></figure>
 <h3 id="4-wget"><a href="#4-wget" class="headerlink" title="4.wget"></a>4.<a href="http://baike.baidu.com/link?url=_4E-kuBinS_AItjdR3vsisJTYpRsOCav7kEUifcKfUsLGMAML6kPVKJK0tVd5tOhLP13C_BnTzI7yFHFENwiKq" target="_blank" rel="external">wget</a></h3><blockquote>
 <p>wget是一个从网络上自动下载文件的自由工具，支持通过HTTP、HTTPS、FTP三个最常见的TCP/IP协议下载，并可以使用HTTP代理。wget名称的由来是“World Wide Web”与“get”的结合。</p>
 </blockquote>
-<figure class="highlight zsh"><table><tr><td class="code"><pre><div class="line">brew install wget</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">brew install wget</div></pre></td></tr></table></figure>
 <hr>
 <h1 id="xcode-selected"><a href="#xcode-selected" class="headerlink" title="xcode-selected"></a>xcode-selected</h1><blockquote>
 <p>Mac下很多工具都需要xcode-selected支持，比如git。<br>如果没有安装的话，在终端输入<code>git</code>，会提示安装xcode commond line 工具。安装即可。</p>
@@ -478,14 +569,13 @@
 </blockquote>
 <ul>
 <li><p>安装</p>
-<figure class="highlight zsh"><table><tr><td class="code"><pre><div class="line">git <span class="built_in">clone</span> git://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">git <span class="built_in">clone</span> git://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh</div></pre></td></tr></table></figure>
 </li>
-<li></li>
 <li><p>创建备份</p>
-<figure class="highlight zsh"><table><tr><td class="code"><pre><div class="line">cp ~/.zshrc ~/.zshrc.orig</div><div class="line">cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">cp ~/.zshrc ~/.zshrc.orig</div><div class="line">cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc</div></pre></td></tr></table></figure>
 </li>
 <li><p>把 zsh 设置成默认的 shell</p>
-<figure class="highlight zsh"><table><tr><td class="code"><pre><div class="line">chsh <span class="_">-s</span> /bin/zsh</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">chsh <span class="_">-s</span> /bin/zsh</div></pre></td></tr></table></figure>
 </li>
 <li><p>重启zsh</p>
 </li>
@@ -632,19 +722,19 @@
     
     </summary>
     
-      <category term="Other" scheme="geekerhua.com/categories/Other/"/>
+      <category term="Other" scheme="blog.geekerhua.com/categories/Other/"/>
     
     
-      <category term="环境配置" scheme="geekerhua.com/tags/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/"/>
+      <category term="Shell" scheme="blog.geekerhua.com/tags/Shell/"/>
     
-      <category term="Shell" scheme="geekerhua.com/tags/Shell/"/>
+      <category term="环境配置" scheme="blog.geekerhua.com/tags/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/"/>
     
   </entry>
   
   <entry>
     <title>信息爆炸的时代，该怎么有效获取信息</title>
-    <link href="geekerhua.com/2017/01/08/infomation/"/>
-    <id>geekerhua.com/2017/01/08/infomation/</id>
+    <link href="blog.geekerhua.com/2017/01/08/infomation/"/>
+    <id>blog.geekerhua.com/2017/01/08/infomation/</id>
     <published>2017-01-08T10:00:00.000Z</published>
     <updated>2017-02-13T05:21:48.000Z</updated>
     
@@ -727,17 +817,17 @@
     
     </summary>
     
-      <category term="Speak" scheme="geekerhua.com/categories/Speak/"/>
+      <category term="Speak" scheme="blog.geekerhua.com/categories/Speak/"/>
     
     
-      <category term="成长" scheme="geekerhua.com/tags/%E6%88%90%E9%95%BF/"/>
+      <category term="成长" scheme="blog.geekerhua.com/tags/%E6%88%90%E9%95%BF/"/>
     
   </entry>
   
   <entry>
     <title>戒了吧拖延症</title>
-    <link href="geekerhua.com/2016/11/15/procrastination/"/>
-    <id>geekerhua.com/2016/11/15/procrastination/</id>
+    <link href="blog.geekerhua.com/2016/11/15/procrastination/"/>
+    <id>blog.geekerhua.com/2016/11/15/procrastination/</id>
     <published>2016-11-15T10:00:00.000Z</published>
     <updated>2017-02-13T05:21:48.000Z</updated>
     
@@ -810,17 +900,17 @@
     
     </summary>
     
-      <category term="Reading" scheme="geekerhua.com/categories/Reading/"/>
+      <category term="Reading" scheme="blog.geekerhua.com/categories/Reading/"/>
     
     
-      <category term="读书笔记" scheme="geekerhua.com/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
+      <category term="读书笔记" scheme="blog.geekerhua.com/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
     
   </entry>
   
   <entry>
     <title>Swift Protocal实战1(Refreshable)</title>
-    <link href="geekerhua.com/2016/06/18/Swift_protocal_refreshable/"/>
-    <id>geekerhua.com/2016/06/18/Swift_protocal_refreshable/</id>
+    <link href="blog.geekerhua.com/2016/06/18/Swift_protocal_refreshable/"/>
+    <id>blog.geekerhua.com/2016/06/18/Swift_protocal_refreshable/</id>
     <published>2016-06-18T13:57:21.000Z</published>
     <updated>2017-02-13T05:21:48.000Z</updated>
     
@@ -888,19 +978,19 @@
     
     </summary>
     
-      <category term="Swift" scheme="geekerhua.com/categories/Swift/"/>
+      <category term="Swift" scheme="blog.geekerhua.com/categories/Swift/"/>
     
     
-      <category term="Swift" scheme="geekerhua.com/tags/Swift/"/>
+      <category term="Swift" scheme="blog.geekerhua.com/tags/Swift/"/>
     
-      <category term="protocal" scheme="geekerhua.com/tags/protocal/"/>
+      <category term="protocal" scheme="blog.geekerhua.com/tags/protocal/"/>
     
   </entry>
   
   <entry>
     <title>Git与Git工作流</title>
-    <link href="geekerhua.com/2016/06/02/Git_workflow/"/>
-    <id>geekerhua.com/2016/06/02/Git_workflow/</id>
+    <link href="blog.geekerhua.com/2016/06/02/Git_workflow/"/>
+    <id>blog.geekerhua.com/2016/06/02/Git_workflow/</id>
     <published>2016-06-02T10:57:21.000Z</published>
     <updated>2017-02-13T05:21:48.000Z</updated>
     
@@ -1261,17 +1351,17 @@
     
     </summary>
     
-      <category term="工具" scheme="geekerhua.com/categories/%E5%B7%A5%E5%85%B7/"/>
+      <category term="工具" scheme="blog.geekerhua.com/categories/%E5%B7%A5%E5%85%B7/"/>
     
     
-      <category term="git" scheme="geekerhua.com/tags/git/"/>
+      <category term="git" scheme="blog.geekerhua.com/tags/git/"/>
     
   </entry>
   
   <entry>
     <title>终极Shell修行大法-不得不拥有</title>
-    <link href="geekerhua.com/2015/12/10/Ultimate_shell/"/>
-    <id>geekerhua.com/2015/12/10/Ultimate_shell/</id>
+    <link href="blog.geekerhua.com/2015/12/10/Ultimate_shell/"/>
+    <id>blog.geekerhua.com/2015/12/10/Ultimate_shell/</id>
     <published>2015-12-10T10:57:21.000Z</published>
     <updated>2017-02-13T05:21:48.000Z</updated>
     
@@ -1417,19 +1507,19 @@
     
     </summary>
     
-      <category term="Linux" scheme="geekerhua.com/categories/Linux/"/>
+      <category term="Linux" scheme="blog.geekerhua.com/categories/Linux/"/>
     
     
-      <category term="Shell" scheme="geekerhua.com/tags/Shell/"/>
+      <category term="Shell" scheme="blog.geekerhua.com/tags/Shell/"/>
     
-      <category term="Linux" scheme="geekerhua.com/tags/Linux/"/>
+      <category term="Linux" scheme="blog.geekerhua.com/tags/Linux/"/>
     
   </entry>
   
   <entry>
     <title>从面试官的角度谈iOS面试</title>
-    <link href="geekerhua.com/2015/12/07/iOS_interview/"/>
-    <id>geekerhua.com/2015/12/07/iOS_interview/</id>
+    <link href="blog.geekerhua.com/2015/12/07/iOS_interview/"/>
+    <id>blog.geekerhua.com/2015/12/07/iOS_interview/</id>
     <published>2015-12-07T10:57:21.000Z</published>
     <updated>2017-02-13T05:21:48.000Z</updated>
     
@@ -1475,17 +1565,17 @@
     
     </summary>
     
-      <category term="Other" scheme="geekerhua.com/categories/Other/"/>
+      <category term="Other" scheme="blog.geekerhua.com/categories/Other/"/>
     
     
-      <category term="interview" scheme="geekerhua.com/tags/interview/"/>
+      <category term="interview" scheme="blog.geekerhua.com/tags/interview/"/>
     
   </entry>
   
   <entry>
     <title>多读书,读好书</title>
-    <link href="geekerhua.com/2015/11/04/Read_more_book/"/>
-    <id>geekerhua.com/2015/11/04/Read_more_book/</id>
+    <link href="blog.geekerhua.com/2015/11/04/Read_more_book/"/>
+    <id>blog.geekerhua.com/2015/11/04/Read_more_book/</id>
     <published>2015-11-04T10:57:21.000Z</published>
     <updated>2017-02-13T05:21:48.000Z</updated>
     
@@ -1527,10 +1617,10 @@
     
     </summary>
     
-      <category term="Reading" scheme="geekerhua.com/categories/Reading/"/>
+      <category term="Reading" scheme="blog.geekerhua.com/categories/Reading/"/>
     
     
-      <category term="other" scheme="geekerhua.com/tags/other/"/>
+      <category term="other" scheme="blog.geekerhua.com/tags/other/"/>
     
   </entry>
   

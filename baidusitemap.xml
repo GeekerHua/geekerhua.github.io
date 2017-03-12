@@ -4,42 +4,63 @@
 
     
   <url>
-    <loc>geekerhua.com/2017/02/06/Python_environment/</loc>
-    <lastmod>2017-02-13T05:34:59.000Z</lastmod>
+    <loc>blog.geekerhua.com/2017/03/12/read_to_write/</loc>
+    <lastmod>2017-03-12T09:23:43.000Z</lastmod>
     <data>
         <display>
-        <title>pyenv管理多版本python</title>
-        <pubTime>2017-02-06T05:46:28.000Z</pubTime>
+        <title>从碎片化阅读到知识的输出</title>
+        <pubTime>2017-03-12T09:03:18.000Z</pubTime>
         
-        <tag>Python</tag>
+        <tag>方法论</tag>
+         
+         
+           
+             
+              <breadCrumb title="成长" url="blog.geekerhua.com/categories/%E6%88%90%E9%95%BF/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>blog.geekerhua.com/2017/01/12/mac_develop_environment/</loc>
+    <lastmod>2017-02-16T03:07:27.000Z</lastmod>
+    <data>
+        <display>
+        <title>mac开发环境配置</title>
+        <pubTime>2017-01-12T12:18:28.000Z</pubTime>
+        
+        <tag>Shell</tag>
          
         <tag>环境配置</tag>
          
          
            
              
-              <breadCrumb title="Python" url="geekerhua.com/categories/Python/"/>
+              <breadCrumb title="Other" url="blog.geekerhua.com/categories/Other/"/>
           
         </display>
     </data>
     </url>
 
     
-    
   <url>
-    <loc>geekerhua.com/2016/06/02/Git_workflow/</loc>
-    <lastmod>2017-02-13T05:21:48.000Z</lastmod>
+    <loc>blog.geekerhua.com/2017/02/06/Python_environment/</loc>
+    <lastmod>2017-02-13T05:34:59.000Z</lastmod>
     <data>
         <display>
-        <title>Git与Git工作流</title>
-        <pubTime>2016-06-02T10:57:21.000Z</pubTime>
+        <title>pyenv管理多版本python</title>
+        <pubTime>2017-02-06T05:46:28.000Z</pubTime>
         
-        <tag>git</tag>
+        <tag>环境配置</tag>
+         
+        <tag>Python</tag>
          
          
            
              
-              <breadCrumb title="工具" url="geekerhua.com/categories/%E5%B7%A5%E5%85%B7/"/>
+              <breadCrumb title="Python" url="blog.geekerhua.com/categories/Python/"/>
           
         </display>
     </data>
@@ -47,21 +68,19 @@
 
     
   <url>
-    <loc>geekerhua.com/2017/01/13/Linux_foundation/</loc>
+    <loc>blog.geekerhua.com/2015/11/04/Read_more_book/</loc>
     <lastmod>2017-02-13T05:21:48.000Z</lastmod>
     <data>
         <display>
-        <title>Linux命令基础</title>
-        <pubTime>2017-01-13T11:58:22.000Z</pubTime>
+        <title>多读书,读好书</title>
+        <pubTime>2015-11-04T10:57:21.000Z</pubTime>
         
-        <tag>Shell</tag>
-         
-        <tag>Linux</tag>
+        <tag>other</tag>
          
          
            
              
-              <breadCrumb title="Linux" url="geekerhua.com/categories/Linux/"/>
+              <breadCrumb title="Reading" url="blog.geekerhua.com/categories/Reading/"/>
           
         </display>
     </data>
@@ -69,7 +88,7 @@
 
     
   <url>
-    <loc>geekerhua.com/2016/06/18/Swift_protocal_refreshable/</loc>
+    <loc>blog.geekerhua.com/2016/06/18/Swift_protocal_refreshable/</loc>
     <lastmod>2017-02-13T05:21:48.000Z</lastmod>
     <data>
         <display>
@@ -83,7 +102,7 @@
          
            
              
-              <breadCrumb title="Swift" url="geekerhua.com/categories/Swift/"/>
+              <breadCrumb title="Swift" url="blog.geekerhua.com/categories/Swift/"/>
           
         </display>
     </data>
@@ -91,7 +110,7 @@
 
     
   <url>
-    <loc>geekerhua.com/2015/12/10/Ultimate_shell/</loc>
+    <loc>blog.geekerhua.com/2015/12/10/Ultimate_shell/</loc>
     <lastmod>2017-02-13T05:21:48.000Z</lastmod>
     <data>
         <display>
@@ -105,7 +124,7 @@
          
            
              
-              <breadCrumb title="Linux" url="geekerhua.com/categories/Linux/"/>
+              <breadCrumb title="Linux" url="blog.geekerhua.com/categories/Linux/"/>
           
         </display>
     </data>
@@ -113,7 +132,7 @@
 
     
   <url>
-    <loc>geekerhua.com/2015/12/07/iOS_interview/</loc>
+    <loc>blog.geekerhua.com/2015/12/07/iOS_interview/</loc>
     <lastmod>2017-02-13T05:21:48.000Z</lastmod>
     <data>
         <display>
@@ -125,7 +144,7 @@
          
            
              
-              <breadCrumb title="Other" url="geekerhua.com/categories/Other/"/>
+              <breadCrumb title="Other" url="blog.geekerhua.com/categories/Other/"/>
           
         </display>
     </data>
@@ -133,7 +152,7 @@
 
     
   <url>
-    <loc>geekerhua.com/2017/01/08/infomation/</loc>
+    <loc>blog.geekerhua.com/2017/01/08/infomation/</loc>
     <lastmod>2017-02-13T05:21:48.000Z</lastmod>
     <data>
         <display>
@@ -145,7 +164,7 @@
          
            
              
-              <breadCrumb title="Speak" url="geekerhua.com/categories/Speak/"/>
+              <breadCrumb title="Speak" url="blog.geekerhua.com/categories/Speak/"/>
           
         </display>
     </data>
@@ -153,54 +172,29 @@
 
     
   <url>
-    <loc>geekerhua.com/2015/11/04/Read_more_book/</loc>
+    <loc>blog.geekerhua.com/2017/01/13/Linux_foundation/</loc>
     <lastmod>2017-02-13T05:21:48.000Z</lastmod>
     <data>
         <display>
-        <title>多读书,读好书</title>
-        <pubTime>2015-11-04T10:57:21.000Z</pubTime>
+        <title>Linux命令基础</title>
+        <pubTime>2017-01-13T11:58:22.000Z</pubTime>
         
-        <tag>other</tag>
-         
-         
-           
-             
-              <breadCrumb title="Reading" url="geekerhua.com/categories/Reading/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>geekerhua.com/2017/01/12/mac_develop_environment/</loc>
-    <lastmod>2017-02-13T05:21:48.000Z</lastmod>
-    <data>
-        <display>
-        <title>mac开发环境配置</title>
-        <pubTime>2017-01-12T12:18:28.000Z</pubTime>
-        
-        <tag>环境配置</tag>
-         
         <tag>Shell</tag>
          
+        <tag>Linux</tag>
+         
          
            
              
-              <breadCrumb title="Other" url="geekerhua.com/categories/Other/"/>
+              <breadCrumb title="Linux" url="blog.geekerhua.com/categories/Linux/"/>
           
         </display>
     </data>
     </url>
 
     
-    
-    
-    
-    
-    
   <url>
-    <loc>geekerhua.com/2016/11/15/procrastination/</loc>
+    <loc>blog.geekerhua.com/2016/11/15/procrastination/</loc>
     <lastmod>2017-02-13T05:21:48.000Z</lastmod>
     <data>
         <display>
@@ -212,10 +206,36 @@
          
            
              
-              <breadCrumb title="Reading" url="geekerhua.com/categories/Reading/"/>
+              <breadCrumb title="Reading" url="blog.geekerhua.com/categories/Reading/"/>
           
         </display>
     </data>
     </url>
 
+    
+  <url>
+    <loc>blog.geekerhua.com/2016/06/02/Git_workflow/</loc>
+    <lastmod>2017-02-13T05:21:48.000Z</lastmod>
+    <data>
+        <display>
+        <title>Git与Git工作流</title>
+        <pubTime>2016-06-02T10:57:21.000Z</pubTime>
+        
+        <tag>git</tag>
+         
+         
+           
+             
+              <breadCrumb title="工具" url="blog.geekerhua.com/categories/%E5%B7%A5%E5%85%B7/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+    
+    
+    
+    
+    
 </urlset>
