@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="blog.geekerhua.com/"/>
-  <updated>2017-03-12T09:23:43.000Z</updated>
+  <updated>2017-03-16T10:06:55.000Z</updated>
   <id>blog.geekerhua.com/</id>
   
   <author>
@@ -16,11 +16,72 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Alfred手记五：与Übersicht一同构建极简TodoList</title>
+    <link href="blog.geekerhua.com/2017/03/16/alfred5-todolist/"/>
+    <id>blog.geekerhua.com/2017/03/16/alfred5-todolist/</id>
+    <published>2017-03-16T10:00:19.000Z</published>
+    <updated>2017-03-16T10:06:55.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="Alfred手记五：与Übersicht一同构建极简TodoList"><a href="#Alfred手记五：与Übersicht一同构建极简TodoList" class="headerlink" title="Alfred手记五：与Übersicht一同构建极简TodoList"></a>Alfred手记五：与Übersicht一同构建极简TodoList</h1><h2 id="效果展示"><a href="#效果展示" class="headerlink" title="效果展示"></a>效果展示</h2><p>先来秀一张布置好的桌面图，怎么样是不是很清爽简约啊！<br><img src="http://img.geekerhua.com/blog/alfred5/2017-03-15%2019_00_17.gif" alt="2017-03-15 19_00_17"></p>
+<h2 id="资源下载"><a href="#资源下载" class="headerlink" title="资源下载"></a>资源下载</h2><ul>
+<li>Alfred <a href="https://www.alfredapp.com" target="_blank" rel="external">官网链接</a><ul>
+<li>Minimal-TODO <a href="https://github.com/GeekerHua/alfred-Minimal-TODO/releases" target="_blank" rel="external">github下载</a></li>
+</ul>
+</li>
+<li>Übersicht <a href="http://tracesof.net/uebersicht/" target="_blank" rel="external">官网链接</a><ul>
+<li>插件商店  <a href="http://tracesof.net/uebersicht-widgets/" target="_blank" rel="external">点击访问</a></li>
+<li>TODO <a href="https://raw.githubusercontent.com/illuminati945/ToDo/master/ToDo.widget.zip" target="_blank" rel="external">点击下载</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="急速教程"><a href="#急速教程" class="headerlink" title="急速教程"></a>急速教程</h2><ul>
+<li>用到两款软件，<code>Alfred</code>和<code>Übersicht</code>。</li>
+<li>外加两个插件，<code>Übersicht</code>下的<code>ToDo</code>和Alfred下的<code>Minimal-TODO</code>。</li>
+</ul>
+<blockquote>
+<p>tips: 要想运行<code>Minimal-TODO</code>，需要拥有<code>Powerpack</code>功能，付费还是使用破解版本，随你咯。</p>
+</blockquote>
+<p>本身两个插件是独立运行的，没有任何关联，但两者都是操作一个txt文本，该文本文件每一行为一个TODO任务，使用<code>-</code>开头代表任务以完成。</p>
+<ul>
+<li>在<code>Übersicht</code>的桌面插件上会已灰色文字显示，并添加中划线。</li>
+<li>在<code>Alfred</code>的插件中，可以对该文本进行操作，获取所有TODO，添加TODO，删除TODO，标记为完成状态，重置为未完成状态等操作。<br><img src="http://img.geekerhua.com/blog/alfred5/14896526072534.jpg" alt=""><br><img src="http://img.geekerhua.com/blog/alfred5/14896526569327.jpg" alt=""><br><img src="http://img.geekerhua.com/blog/alfred5/14896527156078.jpg" alt=""></li>
+</ul>
+<p><code>Minimal-TODO</code>是一个极简todo list工具，todo任务文件放在指定的路径中，例如”~/Documents/Alfred/todos/todo.txt”。</p>
+<p>使用“todo”来触发程序，默认会列出添加的todo，“-”开头意味着已经完成的todo。<br>可以使用的命令列表如下：</p>
+<ul>
+<li>“todo -c”  –&gt; clear all done功能，清除所以已完成项；</li>
+<li>“todo -a”  –&gt; 添加任务，支持一次添加多个，使用空格分割；</li>
+<li>“todo -r”  –&gt; reset all 重置所有任务为未完成状态。</li>
+</ul>
+<h3 id="必要设置"><a href="#必要设置" class="headerlink" title="必要设置"></a>必要设置</h3><h4 id="1-ToDo插件的列表路径，无默认路径"><a href="#1-ToDo插件的列表路径，无默认路径" class="headerlink" title="1.  ToDo插件的列表路径，无默认路径"></a>1.  <code>ToDo</code>插件的列表路径，无默认路径</h4><p><code>Übersicht</code>的<code>ToDo</code>插件默认没有设置文件路径，需要用户自己去设置，为了和另一款软件<code>Alfred</code>进行无缝协作，建议将文件路径设置在用户Document文件夹下。</p>
+<h4 id="2-ToDo的BUG处理"><a href="#2-ToDo的BUG处理" class="headerlink" title="2. ToDo的BUG处理"></a>2. <code>ToDo</code>的BUG处理</h4><p><img src="http://img.geekerhua.com/blog/alfred5/14895760187086.jpg" alt=""><br>默认下载下来的代码有些bug，会导致对于完成的TODO，会显示两遍，一遍是未完成的白色状态，一遍是完成的灰色状态。需要对代码进行修复。<br><img src="http://img.geekerhua.com/blog/alfred5/14895761894277.jpg" alt=""></p>
+<h4 id="3-Minimal-TODO插件的列表路径，有默认路径"><a href="#3-Minimal-TODO插件的列表路径，有默认路径" class="headerlink" title="3. Minimal-TODO插件的列表路径，有默认路径"></a>3. <code>Minimal-TODO</code>插件的列表路径，有默认路径</h4><p><code>Minimal-TODO</code>插件的默认路径推荐设置为<code>~/Documents/Alfred/todos/todo.txt</code>。你也可以根据需要进行设置，设置方法如下。</p>
+<hr>
+<h2 id="自定义设置"><a href="#自定义设置" class="headerlink" title="自定义设置"></a>自定义设置</h2><p><code>ToDo</code>的主题自定义，有序无序列表的设置。默认是<code>ul</code>无序列表，改为<code>ol</code>即为有序列表<br><img src="http://img.geekerhua.com/blog/alfred5/14896556515833.jpg" alt=""><br>将如图的ol改为ul，即为无序列表。</p>
+<h2 id="关于Minimal-TODOworkflow的开发过程"><a href="#关于Minimal-TODOworkflow的开发过程" class="headerlink" title="关于Minimal-TODOworkflow的开发过程"></a>关于<code>Minimal-TODO</code>workflow的开发过程</h2><p>开发过程踩了很多坑，细节日后再补充。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;Alfred手记五：与Übersicht一同构建极简TodoList&quot;&gt;&lt;a href=&quot;#Alfred手记五：与Übersicht一同构建极简TodoList&quot; class=&quot;headerlink&quot; title=&quot;Alfred手记五：与Übersicht一
+    
+    </summary>
+    
+      <category term="工具" scheme="blog.geekerhua.com/categories/%E5%B7%A5%E5%85%B7/"/>
+    
+    
+      <category term="效率" scheme="blog.geekerhua.com/tags/%E6%95%88%E7%8E%87/"/>
+    
+      <category term="Alfred" scheme="blog.geekerhua.com/tags/Alfred/"/>
+    
+  </entry>
+  
+  <entry>
     <title>从碎片化阅读到知识的输出</title>
     <link href="blog.geekerhua.com/2017/03/12/read_to_write/"/>
     <id>blog.geekerhua.com/2017/03/12/read_to_write/</id>
     <published>2017-03-12T09:03:18.000Z</published>
-    <updated>2017-03-12T09:23:43.000Z</updated>
+    <updated>2017-03-12T09:24:47.000Z</updated>
     
     <content type="html"><![CDATA[<h1 id="从碎片化阅读到知识的输出"><a href="#从碎片化阅读到知识的输出" class="headerlink" title="从碎片化阅读到知识的输出"></a>从碎片化阅读到知识的输出</h1><blockquote>
 <p>先来一个最终的结论：(<code>即刻</code> + <code>Reeder</code>) -&gt; <a href="shouqu.me">收趣云书签</a> -&gt; (<code>印象笔记</code> + <code>markdown</code>)</p>
@@ -70,9 +131,9 @@
 </blockquote>
 </li>
 <li><p>在RSS的文章，已经是经过刷选过的内容了，绝大多数品质都很高，几乎没有标题党存在。这些文章数量相对要少很多，同样，觉得需要进行整理、标记、引用、日后会有价值的就分享到<code>收趣云书签</code>中，剩下的就可以慢慢看完了。</p>
-<h2 id="收集整理流程"><a href="#收集整理流程" class="headerlink" title="收集整理流程"></a>收集整理流程</h2><p>微博、知乎、豆瓣、简书等，会有很多优秀的内容，这些内容有的非常短，我们只是想把有价值的内容整理下，虽然这些平台都有自己的收藏系统，但如此分散，日后想再去找，估计早就忘了在哪个平台看到的了。因此手收集显得十分重要。</p>
 </li>
 </ol>
+<h2 id="收集整理流程"><a href="#收集整理流程" class="headerlink" title="收集整理流程"></a>收集整理流程</h2><p>微博、知乎、豆瓣、简书等，会有很多优秀的内容，这些内容有的非常短，我们只是想把有价值的内容整理下，虽然这些平台都有自己的收藏系统，但如此分散，日后想再去找，估计早就忘了在哪个平台看到的了。因此手收集显得十分重要。</p>
 <h3 id="常用的收集工具"><a href="#常用的收集工具" class="headerlink" title="常用的收集工具"></a>常用的收集工具</h3><ol>
 <li>pocket</li>
 <li>instapaper</li>
