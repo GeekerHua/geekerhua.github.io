@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>blog.geekerhua.com/2017/03/16/2016-digital-life/</loc>
+    
+    <lastmod>2017-03-16T10:40:01.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>blog.geekerhua.com/2017/03/16/alfred5-todolist/</loc>
     
     <lastmod>2017-03-16T10:06:55.000Z</lastmod>
@@ -26,13 +33,6 @@
     <loc>blog.geekerhua.com/2017/02/06/Python_environment/</loc>
     
     <lastmod>2017-02-13T05:34:59.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>blog.geekerhua.com/2015/11/04/Read_more_book/</loc>
-    
-    <lastmod>2017-02-13T05:21:48.000Z</lastmod>
     
   </url>
   
@@ -80,6 +80,13 @@
   
   <url>
     <loc>blog.geekerhua.com/2015/12/07/iOS_interview/</loc>
+    
+    <lastmod>2017-02-13T05:21:48.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>blog.geekerhua.com/2015/11/04/Read_more_book/</loc>
     
     <lastmod>2017-02-13T05:21:48.000Z</lastmod>
     

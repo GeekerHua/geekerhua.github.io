@@ -4,6 +4,26 @@
 
     
   <url>
+    <loc>blog.geekerhua.com/2017/03/16/2016-digital-life/</loc>
+    <lastmod>2017-03-16T10:40:01.000Z</lastmod>
+    <data>
+        <display>
+        <title>我的2016数字化生活</title>
+        <pubTime>2017-03-16T10:37:42.000Z</pubTime>
+        
+        <tag>成长</tag>
+         
+         
+           
+             
+              <breadCrumb title="成长" url="blog.geekerhua.com/categories/%E6%88%90%E9%95%BF/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>blog.geekerhua.com/2017/03/16/alfred5-todolist/</loc>
     <lastmod>2017-03-16T10:06:55.000Z</lastmod>
     <data>
@@ -83,26 +103,6 @@
            
              
               <breadCrumb title="Python" url="blog.geekerhua.com/categories/Python/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>blog.geekerhua.com/2015/11/04/Read_more_book/</loc>
-    <lastmod>2017-02-13T05:21:48.000Z</lastmod>
-    <data>
-        <display>
-        <title>多读书,读好书</title>
-        <pubTime>2015-11-04T10:57:21.000Z</pubTime>
-        
-        <tag>other</tag>
-         
-         
-           
-             
-              <breadCrumb title="Reading" url="blog.geekerhua.com/categories/Reading/"/>
           
         </display>
     </data>
@@ -249,6 +249,26 @@
            
              
               <breadCrumb title="Other" url="blog.geekerhua.com/categories/Other/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>blog.geekerhua.com/2015/11/04/Read_more_book/</loc>
+    <lastmod>2017-02-13T05:21:48.000Z</lastmod>
+    <data>
+        <display>
+        <title>多读书,读好书</title>
+        <pubTime>2015-11-04T10:57:21.000Z</pubTime>
+        
+        <tag>other</tag>
+         
+         
+           
+             
+              <breadCrumb title="Reading" url="blog.geekerhua.com/categories/Reading/"/>
           
         </display>
     </data>
