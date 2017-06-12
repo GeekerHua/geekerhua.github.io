@@ -4,19 +4,41 @@
 
     
   <url>
-    <loc>blog.geekerhua.com/2017/03/16/2016-digital-life/</loc>
-    <lastmod>2017-03-16T10:40:01.000Z</lastmod>
+    <loc>blog.geekerhua.com/2017/05/12/alfred1-nc/</loc>
+    <lastmod>2017-06-12T04:52:22.000Z</lastmod>
     <data>
         <display>
-        <title>我的2016数字化生活</title>
-        <pubTime>2017-03-16T10:37:42.000Z</pubTime>
+        <title>Alfred手记一：简化nc传输操作</title>
+        <pubTime>2017-05-12T04:48:00.000Z</pubTime>
         
-        <tag>成长</tag>
+        <tag>效率</tag>
+         
+        <tag>Alfred</tag>
          
          
            
              
-              <breadCrumb title="成长" url="blog.geekerhua.com/categories/%E6%88%90%E9%95%BF/"/>
+              <breadCrumb title="工具" url="blog.geekerhua.com/categories/%E5%B7%A5%E5%85%B7/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>blog.geekerhua.com/2017/06/12/Python_const/</loc>
+    <lastmod>2017-06-12T04:52:20.000Z</lastmod>
+    <data>
+        <display>
+        <title>Python常量的正确写法</title>
+        <pubTime>2017-06-12T04:45:26.000Z</pubTime>
+        
+        <tag>Python</tag>
+         
+         
+           
+             
+              <breadCrumb title="改善Python" url="blog.geekerhua.com/categories/%E6%94%B9%E5%96%84Python/"/>
           
         </display>
     </data>
@@ -25,7 +47,7 @@
     
   <url>
     <loc>blog.geekerhua.com/2017/03/16/alfred5-todolist/</loc>
-    <lastmod>2017-03-16T10:06:55.000Z</lastmod>
+    <lastmod>2017-06-12T04:49:41.000Z</lastmod>
     <data>
         <display>
         <title>Alfred手记五：与Übersicht一同构建极简TodoList</title>
@@ -39,6 +61,26 @@
            
              
               <breadCrumb title="工具" url="blog.geekerhua.com/categories/%E5%B7%A5%E5%85%B7/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>blog.geekerhua.com/2017/03/16/2016-digital-life/</loc>
+    <lastmod>2017-03-16T10:40:01.000Z</lastmod>
+    <data>
+        <display>
+        <title>我的2016数字化生活</title>
+        <pubTime>2017-03-16T10:37:42.000Z</pubTime>
+        
+        <tag>成长</tag>
+         
+         
+           
+             
+              <breadCrumb title="成长" url="blog.geekerhua.com/categories/%E6%88%90%E9%95%BF/"/>
           
         </display>
     </data>
@@ -110,48 +152,6 @@
 
     
   <url>
-    <loc>blog.geekerhua.com/2017/01/08/infomation/</loc>
-    <lastmod>2017-02-13T05:21:48.000Z</lastmod>
-    <data>
-        <display>
-        <title>信息爆炸的时代，该怎么有效获取信息</title>
-        <pubTime>2017-01-08T10:00:00.000Z</pubTime>
-        
-        <tag>成长</tag>
-         
-         
-           
-             
-              <breadCrumb title="Speak" url="blog.geekerhua.com/categories/Speak/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>blog.geekerhua.com/2016/06/18/Swift_protocal_refreshable/</loc>
-    <lastmod>2017-02-13T05:21:48.000Z</lastmod>
-    <data>
-        <display>
-        <title>Swift Protocal实战1(Refreshable)</title>
-        <pubTime>2016-06-18T13:57:21.000Z</pubTime>
-        
-        <tag>Swift</tag>
-         
-        <tag>protocal</tag>
-         
-         
-           
-             
-              <breadCrumb title="Swift" url="blog.geekerhua.com/categories/Swift/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>blog.geekerhua.com/2015/12/10/Ultimate_shell/</loc>
     <lastmod>2017-02-13T05:21:48.000Z</lastmod>
     <data>
@@ -194,6 +194,26 @@
 
     
   <url>
+    <loc>blog.geekerhua.com/2016/06/02/Git_workflow/</loc>
+    <lastmod>2017-02-13T05:21:48.000Z</lastmod>
+    <data>
+        <display>
+        <title>Git与Git工作流</title>
+        <pubTime>2016-06-02T10:57:21.000Z</pubTime>
+        
+        <tag>git</tag>
+         
+         
+           
+             
+              <breadCrumb title="工具" url="blog.geekerhua.com/categories/%E5%B7%A5%E5%85%B7/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>blog.geekerhua.com/2017/01/13/Linux_foundation/</loc>
     <lastmod>2017-02-13T05:21:48.000Z</lastmod>
     <data>
@@ -209,26 +229,6 @@
            
              
               <breadCrumb title="Linux" url="blog.geekerhua.com/categories/Linux/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>blog.geekerhua.com/2016/06/02/Git_workflow/</loc>
-    <lastmod>2017-02-13T05:21:48.000Z</lastmod>
-    <data>
-        <display>
-        <title>Git与Git工作流</title>
-        <pubTime>2016-06-02T10:57:21.000Z</pubTime>
-        
-        <tag>git</tag>
-         
-         
-           
-             
-              <breadCrumb title="工具" url="blog.geekerhua.com/categories/%E5%B7%A5%E5%85%B7/"/>
           
         </display>
     </data>
@@ -269,6 +269,48 @@
            
              
               <breadCrumb title="Reading" url="blog.geekerhua.com/categories/Reading/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>blog.geekerhua.com/2017/01/08/infomation/</loc>
+    <lastmod>2017-02-13T05:21:48.000Z</lastmod>
+    <data>
+        <display>
+        <title>信息爆炸的时代，该怎么有效获取信息</title>
+        <pubTime>2017-01-08T10:00:00.000Z</pubTime>
+        
+        <tag>成长</tag>
+         
+         
+           
+             
+              <breadCrumb title="Speak" url="blog.geekerhua.com/categories/Speak/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>blog.geekerhua.com/2016/06/18/Swift_protocal_refreshable/</loc>
+    <lastmod>2017-02-13T05:21:48.000Z</lastmod>
+    <data>
+        <display>
+        <title>Swift Protocal实战1(Refreshable)</title>
+        <pubTime>2016-06-18T13:57:21.000Z</pubTime>
+        
+        <tag>Swift</tag>
+         
+        <tag>protocal</tag>
+         
+         
+           
+             
+              <breadCrumb title="Swift" url="blog.geekerhua.com/categories/Swift/"/>
           
         </display>
     </data>

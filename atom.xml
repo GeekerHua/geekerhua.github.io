@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="blog.geekerhua.com/"/>
-  <updated>2017-03-16T10:40:01.000Z</updated>
+  <updated>2017-06-12T04:52:20.000Z</updated>
   <id>blog.geekerhua.com/</id>
   
   <author>
@@ -14,6 +14,106 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Python常量的正确写法</title>
+    <link href="blog.geekerhua.com/2017/06/12/Python_const/"/>
+    <id>blog.geekerhua.com/2017/06/12/Python_const/</id>
+    <published>2017-06-12T04:45:26.000Z</published>
+    <updated>2017-06-12T04:52:20.000Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote>
+<p>Python内建的命名空间是支持小部分常量的，例如True、False、None等，但Python默认是没有提供直接定义常量的方法，因此要想实现常量的功能需要人为实现。一般有两种方法</p>
+</blockquote>
+<h3 id="一：通过明明风格提醒使用者该变量代表的意义为常量"><a href="#一：通过明明风格提醒使用者该变量代表的意义为常量" class="headerlink" title="一：通过明明风格提醒使用者该变量代表的意义为常量"></a>一：通过明明风格提醒使用者该变量代表的意义为常量</h3><blockquote>
+<p>如长两名所有字母大写,使用下划线连接各个单词，<code>MAX_OVERFLOW</code>、<code>TOTAL</code>。这是一种约定俗称的风格，对应的值仍然可以改变。</p>
+</blockquote>
+<h3 id="二：通过自定义的类实现常量功能。"><a href="#二：通过自定义的类实现常量功能。" class="headerlink" title="二：通过自定义的类实现常量功能。"></a>二：通过自定义的类实现常量功能。</h3><blockquote>
+<p>要求符合“命名全部大写”和“值一旦绑定便不可再修改”两个条件。下面是一种较为常见的解决方法，它通过对常量对应的值进行修改时或者命名不符合规范时抛出异常来满足以上常量的两个条件。</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">_const</span>:</span></div><div class="line">    <span class="class"><span class="keyword">class</span> <span class="title">ConstError</span><span class="params">(TypeError)</span>:</span> <span class="keyword">pass</span></div><div class="line">    <span class="class"><span class="keyword">class</span> <span class="title">ConstCaseError</span><span class="params">(ConstError)</span>:</span> <span class="keyword">pass</span></div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__setattr__</span><span class="params">(self, name, value)</span>:</span></div><div class="line">        <span class="keyword">if</span> self.__dict__.has_key(name):</div><div class="line">            <span class="keyword">raise</span> self.ConstError, <span class="string">"Can't change const.%s"</span> % name</div><div class="line">        <span class="keyword">if</span> <span class="keyword">not</span> name.isupper():</div><div class="line">            <span class="keyword">raise</span> self.ConstCaseError, <span class="string">'const name "%s" is not all uppercase'</span> % name</div><div class="line">        self.__dict__[name] = value</div><div class="line"></div><div class="line"><span class="keyword">import</span> sys</div><div class="line">sys.modules[__name__] = _const()</div><div class="line"></div><div class="line"><span class="keyword">import</span> constant</div><div class="line"><span class="comment"># 在这之后定义常量</span></div><div class="line">constant.A = <span class="string">'a'</span></div></pre></td></tr></table></figure>
+<h4 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h4><p>如此之后，导入这个模块，在这个模块中定义常量，建议将所有常量都定义到这个模块中，方便统一管理。使用的时候，</p>
+<ul>
+<li>如果对已经定义到常量进行修改会报<code>ConstError</code>错误；</li>
+<li>如果定义的常量不是全大写，会报<code>ConstCaseError</code>错误。</li>
+</ul>
+<p>例如模块名为constant.py，在其他文件中使用方法为：<br><figure class="highlight python"><table><tr><td class="code"><pre><div class="line"><span class="keyword">import</span> constant</div><div class="line">constant.A = <span class="string">'a'</span></div><div class="line">constant.B_Play = <span class="string">'xxx'</span></div></pre></td></tr></table></figure></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;Python内建的命名空间是支持小部分常量的，例如True、False、None等，但Python默认是没有提供直接定义常量的方法，因此要想实现常量的功能需要人为实现。一般有两种方法&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&quot;一：通过明明
+    
+    </summary>
+    
+      <category term="改善Python" scheme="blog.geekerhua.com/categories/%E6%94%B9%E5%96%84Python/"/>
+    
+    
+      <category term="Python" scheme="blog.geekerhua.com/tags/Python/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Alfred手记一：简化nc传输操作</title>
+    <link href="blog.geekerhua.com/2017/05/12/alfred1-nc/"/>
+    <id>blog.geekerhua.com/2017/05/12/alfred1-nc/</id>
+    <published>2017-05-12T04:48:00.000Z</published>
+    <updated>2017-06-12T04:52:22.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>nc是什么，nc是一个简单传输协议。nc的具体使用在文章后边会做详细的介绍。简单说就是，通过nc能够在局域网中传输文件，由于是基于TCP协议，无论是速度还是稳定性都很可靠，除此之外还能进行聊天。如果说缺点，那就是传输文件时需要在命令行指定端口号，而且接收方还要自己输入文件名。</p>
+<p>由于前段时间经常使用nc，所以突发奇想，想把nc服务写到Alfred的workflow中，从而简化操作。虽然对于mac来说，airdrop要比nc好用多了，但通过这个例子，还是能学到很多关于workflow开发的提示，近日后开发更复杂强大的workflow带来些许帮助。</p>
+<h2 id="最终效果。"><a href="#最终效果。" class="headerlink" title="最终效果。"></a>最终效果。</h2><h3 id="文件发送"><a href="#文件发送" class="headerlink" title="文件发送"></a>文件发送</h3><p>作为服务端，nc的命令为</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">$ nc <span class="_">-l</span> `port` &lt; `document`</div></pre></td></tr></table></figure>
+<p>只需要指定port端口号，和文件就行。既然如此，我们大可以借助Alfred自带的文件搜索功能，调出nc发送功能。这要比直接去Finder中进行查找文件，或者在终端中输入常常的文件路径要高效的多。</p>
+<p><img src="http://img.geekerhua.com/blog/alfred1/14898397730412.jpg" alt="14898397730412"><br><img src="http://img.geekerhua.com/blog/alfred1/14898397975568.jpg" alt="14898397975568"><br><img src="http://img.geekerhua.com/blog/alfred1/14898398228729.jpg" alt="14898398228729"></p>
+<p>发送一共分三步：</p>
+<ul>
+<li>用Alfred找到需要发送的文件</li>
+<li>按下<code>Ctrl</code>键，进入文件操作，选择ncsend命令</li>
+<li>输入端口号，按下回车。<br>即启动一个终端执行发送监听模式，等待客户端进行接收。与此同时，屏幕上会用大字显示出本机的局域网ip和刚才输入的端口号，方便客户端使用。<br><img src="http://img.geekerhua.com/blog/alfred1/14898400344094.jpg" alt="14898400344094"><h3 id="文件接收"><a href="#文件接收" class="headerlink" title="文件接收"></a>文件接收</h3>对于文件的接收，nc的命令为：</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">$ nc -n `ip` `port` &gt; `document`</div></pre></td></tr></table></figure>
+<p>可以看到不仅不要客户端的端口号，还需要客户端的ip。刚才的服务端操作已经实现了发送，并把内网ip和端口号显示在屏幕中了。客户端只需要借助workflow执行接收命令即可。<br><img src="http://img.geekerhua.com/blog/alfred1/14898402129318.jpg" alt="14898402129318"><br><img src="http://img.geekerhua.com/blog/alfred1/14898402642075.jpg" alt="14898402642075"></p>
+<p>接收一共两步：</p>
+<ul>
+<li>调出nc，并输入ip和端口号，使用空格分隔，按下回车</li>
+<li>提示输入接收文件名，按下回车即可接收，默认保存到<code>~/Downloads</code>文件夹下。</li>
+</ul>
+<p>由此接收工作也完成了。整体来说对命令的简化并不是很明显，但可以以此来简单了解下workflow的工作原理。</p>
+<h2 id="nc——netcat"><a href="#nc——netcat" class="headerlink" title="nc——netcat"></a>nc——netcat</h2><ul>
+<li>server: nc -l <code>port</code> &lt; <code>document</code></li>
+<li>client: nc -n <code>ip</code> <code>port</code> &gt; <code>document</code></li>
+</ul>
+<h2 id="用nc聊天"><a href="#用nc聊天" class="headerlink" title="用nc聊天"></a>用nc聊天</h2><ul>
+<li>server: nc -l 10000</li>
+<li>nc <code>ip</code> 10000</li>
+</ul>
+<hr>
+<h2 id="nc-netCat-常用命令"><a href="#nc-netCat-常用命令" class="headerlink" title="nc (netCat)常用命令"></a>nc (netCat)常用命令</h2><p><code>nc -l [-u] 9090</code>: 在9090端口开启tcp服务器<br><code>[-v] [-u] 127.0.0.1 9090</code>: 连接本地ip的9090端口tcp服务器</p>
+<p><code>-l</code>: 启动监听, 启动服务器必须<br><code>-v</code>: 显示连接进度<br><code>-u</code>: 使用udp通信, 默认是tcp, 使用udp连接可以保持一直监听状态<br><code>-w2</code>: 设置超时2秒<br><code>-z</code>: 检测端口</p>
+<h3 id="tcp聊天"><a href="#tcp聊天" class="headerlink" title="tcp聊天"></a>tcp聊天</h3><p><code>nc -l 9090</code>: tcp监听9090端口<br><code>nc 127.0.0.1 9090</code>: tcp连接9090端口<br>可以用重定向 ‘&lt;’/‘&gt;’, 指定传输内容, 只能响应一个客户端, 客户端断开, 服务器端也会断开</p>
+<h3 id="udp聊天"><a href="#udp聊天" class="headerlink" title="udp聊天"></a>udp聊天</h3><p><code>nc -lu 9090</code>: udp监听9090端口<br><code>nc -u 127.0.0.1 9090</code>: udp连接9090端口<br>可以用重定向 ‘&lt;’/‘&gt;’, 指定传输内容, 只能响应一个客户端, 客户端断开, 服务器端不会断开</p>
+<h3 id="检查端口"><a href="#检查端口" class="headerlink" title="检查端口"></a>检查端口</h3><p><code>nc -z 127.0.0.1 1-100</code>: 查看指定ip tcp 连接 的 1-100端口<br><code>nc -z -u 127.0.0.1 1-100</code>: 查看指定ip udp 连接 的 1-100端口</p>
+<h3 id="远程传输文件"><a href="#远程传输文件" class="headerlink" title="远程传输文件"></a>远程传输文件</h3><p><code>nc -l 9090 &gt; test.tmp</code>: 监听 9090 端口 并把信息输出到指定文件<br><code>nc 127.0.0.1 9090 &lt; test.tmp</code>: 连接服务, 并把文件输出</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;nc是什么，nc是一个简单传输协议。nc的具体使用在文章后边会做详细的介绍。简单说就是，通过nc能够在局域网中传输文件，由于是基于TCP协议，无论是速度还是稳定性都很可靠，除此之外还能进行聊天。如果说缺点，那就是传输文件时需要在命令行指定端口号，而且接收方还要自己输入文件名
+    
+    </summary>
+    
+      <category term="工具" scheme="blog.geekerhua.com/categories/%E5%B7%A5%E5%85%B7/"/>
+    
+    
+      <category term="效率" scheme="blog.geekerhua.com/tags/%E6%95%88%E7%8E%87/"/>
+    
+      <category term="Alfred" scheme="blog.geekerhua.com/tags/Alfred/"/>
+    
+  </entry>
   
   <entry>
     <title>我的2016数字化生活</title>
@@ -82,9 +182,9 @@
     <link href="blog.geekerhua.com/2017/03/16/alfred5-todolist/"/>
     <id>blog.geekerhua.com/2017/03/16/alfred5-todolist/</id>
     <published>2017-03-16T10:00:19.000Z</published>
-    <updated>2017-03-16T10:06:55.000Z</updated>
+    <updated>2017-06-12T04:49:41.000Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="Alfred手记五：与Übersicht一同构建极简TodoList"><a href="#Alfred手记五：与Übersicht一同构建极简TodoList" class="headerlink" title="Alfred手记五：与Übersicht一同构建极简TodoList"></a>Alfred手记五：与Übersicht一同构建极简TodoList</h1><h2 id="效果展示"><a href="#效果展示" class="headerlink" title="效果展示"></a>效果展示</h2><p>先来秀一张布置好的桌面图，怎么样是不是很清爽简约啊！<br><img src="http://img.geekerhua.com/blog/alfred5/2017-03-15%2019_00_17.gif" alt="2017-03-15 19_00_17"></p>
+    <content type="html"><![CDATA[<h1 id="效果展示"><a href="#效果展示" class="headerlink" title="效果展示"></a>效果展示</h1><p>先来秀一张布置好的桌面图，怎么样是不是很清爽简约啊！<br><img src="http://img.geekerhua.com/blog/alfred5/2017-03-15%2019_00_17.gif" alt="2017-03-15 19_00_17"></p>
 <h2 id="资源下载"><a href="#资源下载" class="headerlink" title="资源下载"></a>资源下载</h2><ul>
 <li>Alfred <a href="https://www.alfredapp.com" target="_blank" rel="external">官网链接</a><ul>
 <li>Minimal-TODO <a href="https://github.com/GeekerHua/alfred-Minimal-TODO/releases" target="_blank" rel="external">github下载</a></li>
@@ -125,7 +225,7 @@
     
     <summary type="html">
     
-      &lt;h1 id=&quot;Alfred手记五：与Übersicht一同构建极简TodoList&quot;&gt;&lt;a href=&quot;#Alfred手记五：与Übersicht一同构建极简TodoList&quot; class=&quot;headerlink&quot; title=&quot;Alfred手记五：与Übersicht一
+      &lt;h1 id=&quot;效果展示&quot;&gt;&lt;a href=&quot;#效果展示&quot; class=&quot;headerlink&quot; title=&quot;效果展示&quot;&gt;&lt;/a&gt;效果展示&lt;/h1&gt;&lt;p&gt;先来秀一张布置好的桌面图，怎么样是不是很清爽简约啊！&lt;br&gt;&lt;img src=&quot;http://img.geekerhua.c
     
     </summary>
     

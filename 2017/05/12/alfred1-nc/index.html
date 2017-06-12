@@ -4,82 +4,33 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>Alfred手记五：与Übersicht一同构建极简TodoList | GeekerHua的Blog</title>
+    <title>Alfred手记一：简化nc传输操作 | GeekerHua的Blog</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="GeekerHua">
     
 
     
-    <meta name="description" content="效果展示先来秀一张布置好的桌面图，怎么样是不是很清爽简约啊！
-资源下载
-Alfred 官网链接
-Minimal-TODO github下载
-
-
-Übersicht 官网链接
-插件商店  点击访问
-TODO 点击下载
-
-
-
-急速教程
-用到两款软件，Alfred和Übersicht。
-外加两个插件，Übersicht下的ToDo和Alfred下的Minimal-TODO。
-
-
-tips: 要想运">
+    <meta name="description" content="nc是什么，nc是一个简单传输协议。nc的具体使用在文章后边会做详细的介绍。简单说就是，通过nc能够在局域网中传输文件，由于是基于TCP协议，无论是速度还是稳定性都很可靠，除此之外还能进行聊天。如果说缺点，那就是传输文件时需要在命令行指定端口号，而且接收方还要自己输入文件名。
+由于前段时间经常使用nc，所以突发奇想，想把nc服务写到Alfred的workflow中，从而简化操作。虽然对于mac来说">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Alfred手记五：与Übersicht一同构建极简TodoList">
-<meta property="og:url" content="blog.geekerhua.com/2017/03/16/alfred5-todolist/index.html">
+<meta property="og:title" content="Alfred手记一：简化nc传输操作">
+<meta property="og:url" content="blog.geekerhua.com/2017/05/12/alfred1-nc/index.html">
 <meta property="og:site_name" content="GeekerHua的Blog">
-<meta property="og:description" content="效果展示先来秀一张布置好的桌面图，怎么样是不是很清爽简约啊！
-资源下载
-Alfred 官网链接
-Minimal-TODO github下载
-
-
-Übersicht 官网链接
-插件商店  点击访问
-TODO 点击下载
-
-
-
-急速教程
-用到两款软件，Alfred和Übersicht。
-外加两个插件，Übersicht下的ToDo和Alfred下的Minimal-TODO。
-
-
-tips: 要想运">
-<meta property="og:image" content="http://img.geekerhua.com/blog/alfred5/2017-03-15%2019_00_17.gif">
-<meta property="og:image" content="http://img.geekerhua.com/blog/alfred5/14896526072534.jpg">
-<meta property="og:image" content="http://img.geekerhua.com/blog/alfred5/14896526569327.jpg">
-<meta property="og:image" content="http://img.geekerhua.com/blog/alfred5/14896527156078.jpg">
-<meta property="og:image" content="http://img.geekerhua.com/blog/alfred5/14895760187086.jpg">
-<meta property="og:image" content="http://img.geekerhua.com/blog/alfred5/14895761894277.jpg">
-<meta property="og:image" content="http://img.geekerhua.com/blog/alfred5/14896556515833.jpg">
-<meta property="og:updated_time" content="2017-06-12T04:49:41.000Z">
+<meta property="og:description" content="nc是什么，nc是一个简单传输协议。nc的具体使用在文章后边会做详细的介绍。简单说就是，通过nc能够在局域网中传输文件，由于是基于TCP协议，无论是速度还是稳定性都很可靠，除此之外还能进行聊天。如果说缺点，那就是传输文件时需要在命令行指定端口号，而且接收方还要自己输入文件名。
+由于前段时间经常使用nc，所以突发奇想，想把nc服务写到Alfred的workflow中，从而简化操作。虽然对于mac来说">
+<meta property="og:image" content="http://img.geekerhua.com/blog/alfred1/14898397730412.jpg">
+<meta property="og:image" content="http://img.geekerhua.com/blog/alfred1/14898397975568.jpg">
+<meta property="og:image" content="http://img.geekerhua.com/blog/alfred1/14898398228729.jpg">
+<meta property="og:image" content="http://img.geekerhua.com/blog/alfred1/14898400344094.jpg">
+<meta property="og:image" content="http://img.geekerhua.com/blog/alfred1/14898402129318.jpg">
+<meta property="og:image" content="http://img.geekerhua.com/blog/alfred1/14898402642075.jpg">
+<meta property="og:updated_time" content="2017-06-12T04:52:22.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Alfred手记五：与Übersicht一同构建极简TodoList">
-<meta name="twitter:description" content="效果展示先来秀一张布置好的桌面图，怎么样是不是很清爽简约啊！
-资源下载
-Alfred 官网链接
-Minimal-TODO github下载
-
-
-Übersicht 官网链接
-插件商店  点击访问
-TODO 点击下载
-
-
-
-急速教程
-用到两款软件，Alfred和Übersicht。
-外加两个插件，Übersicht下的ToDo和Alfred下的Minimal-TODO。
-
-
-tips: 要想运">
-<meta name="twitter:image" content="http://img.geekerhua.com/blog/alfred5/2017-03-15%2019_00_17.gif">
+<meta name="twitter:title" content="Alfred手记一：简化nc传输操作">
+<meta name="twitter:description" content="nc是什么，nc是一个简单传输协议。nc的具体使用在文章后边会做详细的介绍。简单说就是，通过nc能够在局域网中传输文件，由于是基于TCP协议，无论是速度还是稳定性都很可靠，除此之外还能进行聊天。如果说缺点，那就是传输文件时需要在命令行指定端口号，而且接收方还要自己输入文件名。
+由于前段时间经常使用nc，所以突发奇想，想把nc服务写到Alfred的workflow中，从而简化操作。虽然对于mac来说">
+<meta name="twitter:image" content="http://img.geekerhua.com/blog/alfred1/14898397730412.jpg">
 <meta name="twitter:creator" content="@GeekerHua">
 
     
@@ -144,14 +95,14 @@ tips: 要想运">
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2017/03/16/alfred5-todolist/" title="Alfred手记五：与Übersicht一同构建极简TodoList" itemprop="url">Alfred手记五：与Übersicht一同构建极简TodoList</a>
+      <a href="/2017/05/12/alfred1-nc/" title="Alfred手记一：简化nc传输操作" itemprop="url">Alfred手记一：简化nc传输操作</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/about" title="GeekerHua" target="_blank" itemprop="author">GeekerHua</a>
 		
   <p class="article-time">
-    <time datetime="2017-03-16T10:00:19.000Z" itemprop="datePublished"> Published 2017-03-16</time>
+    <time datetime="2017-05-12T04:48:00.000Z" itemprop="datePublished"> Published 2017-05-12</time>
     
   </p>
 </header>
@@ -160,47 +111,45 @@ tips: 要想运">
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">Contents</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#效果展示"><span class="toc-number">1.</span> <span class="toc-text">效果展示</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#资源下载"><span class="toc-number">1.1.</span> <span class="toc-text">资源下载</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#急速教程"><span class="toc-number">1.2.</span> <span class="toc-text">急速教程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#必要设置"><span class="toc-number">1.2.1.</span> <span class="toc-text">必要设置</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-ToDo插件的列表路径，无默认路径"><span class="toc-number">1.2.1.1.</span> <span class="toc-text">1.  ToDo插件的列表路径，无默认路径</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-ToDo的BUG处理"><span class="toc-number">1.2.1.2.</span> <span class="toc-text">2. ToDo的BUG处理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-Minimal-TODO插件的列表路径，有默认路径"><span class="toc-number">1.2.1.3.</span> <span class="toc-text">3. Minimal-TODO插件的列表路径，有默认路径</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#自定义设置"><span class="toc-number">1.3.</span> <span class="toc-text">自定义设置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#关于Minimal-TODOworkflow的开发过程"><span class="toc-number">1.4.</span> <span class="toc-text">关于Minimal-TODOworkflow的开发过程</span></a></li></ol></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#最终效果。"><span class="toc-number">1.</span> <span class="toc-text">最终效果。</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#文件发送"><span class="toc-number">1.1.</span> <span class="toc-text">文件发送</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#文件接收"><span class="toc-number">1.2.</span> <span class="toc-text">文件接收</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#nc——netcat"><span class="toc-number">2.</span> <span class="toc-text">nc——netcat</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#用nc聊天"><span class="toc-number">3.</span> <span class="toc-text">用nc聊天</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#nc-netCat-常用命令"><span class="toc-number">4.</span> <span class="toc-text">nc (netCat)常用命令</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#tcp聊天"><span class="toc-number">4.1.</span> <span class="toc-text">tcp聊天</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#udp聊天"><span class="toc-number">4.2.</span> <span class="toc-text">udp聊天</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#检查端口"><span class="toc-number">4.3.</span> <span class="toc-text">检查端口</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#远程传输文件"><span class="toc-number">4.4.</span> <span class="toc-text">远程传输文件</span></a></li></ol></li></ol>
 		
 		</div>
 		
-		<h1 id="效果展示"><a href="#效果展示" class="headerlink" title="效果展示"></a>效果展示</h1><p>先来秀一张布置好的桌面图，怎么样是不是很清爽简约啊！<br><img src="http://img.geekerhua.com/blog/alfred5/2017-03-15%2019_00_17.gif" alt="2017-03-15 19_00_17"></p>
-<h2 id="资源下载"><a href="#资源下载" class="headerlink" title="资源下载"></a>资源下载</h2><ul>
-<li>Alfred <a href="https://www.alfredapp.com" target="_blank" rel="external">官网链接</a><ul>
-<li>Minimal-TODO <a href="https://github.com/GeekerHua/alfred-Minimal-TODO/releases" target="_blank" rel="external">github下载</a></li>
-</ul>
-</li>
-<li>Übersicht <a href="http://tracesof.net/uebersicht/" target="_blank" rel="external">官网链接</a><ul>
-<li>插件商店  <a href="http://tracesof.net/uebersicht-widgets/" target="_blank" rel="external">点击访问</a></li>
-<li>TODO <a href="https://raw.githubusercontent.com/illuminati945/ToDo/master/ToDo.widget.zip" target="_blank" rel="external">点击下载</a></li>
-</ul>
-</li>
-</ul>
-<h2 id="急速教程"><a href="#急速教程" class="headerlink" title="急速教程"></a>急速教程</h2><ul>
-<li>用到两款软件，<code>Alfred</code>和<code>Übersicht</code>。</li>
-<li>外加两个插件，<code>Übersicht</code>下的<code>ToDo</code>和Alfred下的<code>Minimal-TODO</code>。</li>
-</ul>
-<blockquote>
-<p>tips: 要想运行<code>Minimal-TODO</code>，需要拥有<code>Powerpack</code>功能，付费还是使用破解版本，随你咯。</p>
-</blockquote>
-<p>本身两个插件是独立运行的，没有任何关联，但两者都是操作一个txt文本，该文本文件每一行为一个TODO任务，使用<code>-</code>开头代表任务以完成。</p>
+		<p>nc是什么，nc是一个简单传输协议。nc的具体使用在文章后边会做详细的介绍。简单说就是，通过nc能够在局域网中传输文件，由于是基于TCP协议，无论是速度还是稳定性都很可靠，除此之外还能进行聊天。如果说缺点，那就是传输文件时需要在命令行指定端口号，而且接收方还要自己输入文件名。</p>
+<p>由于前段时间经常使用nc，所以突发奇想，想把nc服务写到Alfred的workflow中，从而简化操作。虽然对于mac来说，airdrop要比nc好用多了，但通过这个例子，还是能学到很多关于workflow开发的提示，近日后开发更复杂强大的workflow带来些许帮助。</p>
+<h2 id="最终效果。"><a href="#最终效果。" class="headerlink" title="最终效果。"></a>最终效果。</h2><h3 id="文件发送"><a href="#文件发送" class="headerlink" title="文件发送"></a>文件发送</h3><p>作为服务端，nc的命令为</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">$ nc <span class="_">-l</span> `port` &lt; `document`</div></pre></td></tr></table></figure>
+<p>只需要指定port端口号，和文件就行。既然如此，我们大可以借助Alfred自带的文件搜索功能，调出nc发送功能。这要比直接去Finder中进行查找文件，或者在终端中输入常常的文件路径要高效的多。</p>
+<p><img src="http://img.geekerhua.com/blog/alfred1/14898397730412.jpg" alt="14898397730412"><br><img src="http://img.geekerhua.com/blog/alfred1/14898397975568.jpg" alt="14898397975568"><br><img src="http://img.geekerhua.com/blog/alfred1/14898398228729.jpg" alt="14898398228729"></p>
+<p>发送一共分三步：</p>
 <ul>
-<li>在<code>Übersicht</code>的桌面插件上会已灰色文字显示，并添加中划线。</li>
-<li>在<code>Alfred</code>的插件中，可以对该文本进行操作，获取所有TODO，添加TODO，删除TODO，标记为完成状态，重置为未完成状态等操作。<br><img src="http://img.geekerhua.com/blog/alfred5/14896526072534.jpg" alt=""><br><img src="http://img.geekerhua.com/blog/alfred5/14896526569327.jpg" alt=""><br><img src="http://img.geekerhua.com/blog/alfred5/14896527156078.jpg" alt=""></li>
+<li>用Alfred找到需要发送的文件</li>
+<li>按下<code>Ctrl</code>键，进入文件操作，选择ncsend命令</li>
+<li>输入端口号，按下回车。<br>即启动一个终端执行发送监听模式，等待客户端进行接收。与此同时，屏幕上会用大字显示出本机的局域网ip和刚才输入的端口号，方便客户端使用。<br><img src="http://img.geekerhua.com/blog/alfred1/14898400344094.jpg" alt="14898400344094"><h3 id="文件接收"><a href="#文件接收" class="headerlink" title="文件接收"></a>文件接收</h3>对于文件的接收，nc的命令为：</li>
 </ul>
-<p><code>Minimal-TODO</code>是一个极简todo list工具，todo任务文件放在指定的路径中，例如”~/Documents/Alfred/todos/todo.txt”。</p>
-<p>使用“todo”来触发程序，默认会列出添加的todo，“-”开头意味着已经完成的todo。<br>可以使用的命令列表如下：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">$ nc -n `ip` `port` &gt; `document`</div></pre></td></tr></table></figure>
+<p>可以看到不仅不要客户端的端口号，还需要客户端的ip。刚才的服务端操作已经实现了发送，并把内网ip和端口号显示在屏幕中了。客户端只需要借助workflow执行接收命令即可。<br><img src="http://img.geekerhua.com/blog/alfred1/14898402129318.jpg" alt="14898402129318"><br><img src="http://img.geekerhua.com/blog/alfred1/14898402642075.jpg" alt="14898402642075"></p>
+<p>接收一共两步：</p>
 <ul>
-<li>“todo -c”  –&gt; clear all done功能，清除所以已完成项；</li>
-<li>“todo -a”  –&gt; 添加任务，支持一次添加多个，使用空格分割；</li>
-<li>“todo -r”  –&gt; reset all 重置所有任务为未完成状态。</li>
+<li>调出nc，并输入ip和端口号，使用空格分隔，按下回车</li>
+<li>提示输入接收文件名，按下回车即可接收，默认保存到<code>~/Downloads</code>文件夹下。</li>
 </ul>
-<h3 id="必要设置"><a href="#必要设置" class="headerlink" title="必要设置"></a>必要设置</h3><h4 id="1-ToDo插件的列表路径，无默认路径"><a href="#1-ToDo插件的列表路径，无默认路径" class="headerlink" title="1.  ToDo插件的列表路径，无默认路径"></a>1.  <code>ToDo</code>插件的列表路径，无默认路径</h4><p><code>Übersicht</code>的<code>ToDo</code>插件默认没有设置文件路径，需要用户自己去设置，为了和另一款软件<code>Alfred</code>进行无缝协作，建议将文件路径设置在用户Document文件夹下。</p>
-<h4 id="2-ToDo的BUG处理"><a href="#2-ToDo的BUG处理" class="headerlink" title="2. ToDo的BUG处理"></a>2. <code>ToDo</code>的BUG处理</h4><p><img src="http://img.geekerhua.com/blog/alfred5/14895760187086.jpg" alt=""><br>默认下载下来的代码有些bug，会导致对于完成的TODO，会显示两遍，一遍是未完成的白色状态，一遍是完成的灰色状态。需要对代码进行修复。<br><img src="http://img.geekerhua.com/blog/alfred5/14895761894277.jpg" alt=""></p>
-<h4 id="3-Minimal-TODO插件的列表路径，有默认路径"><a href="#3-Minimal-TODO插件的列表路径，有默认路径" class="headerlink" title="3. Minimal-TODO插件的列表路径，有默认路径"></a>3. <code>Minimal-TODO</code>插件的列表路径，有默认路径</h4><p><code>Minimal-TODO</code>插件的默认路径推荐设置为<code>~/Documents/Alfred/todos/todo.txt</code>。你也可以根据需要进行设置，设置方法如下。</p>
+<p>由此接收工作也完成了。整体来说对命令的简化并不是很明显，但可以以此来简单了解下workflow的工作原理。</p>
+<h2 id="nc——netcat"><a href="#nc——netcat" class="headerlink" title="nc——netcat"></a>nc——netcat</h2><ul>
+<li>server: nc -l <code>port</code> &lt; <code>document</code></li>
+<li>client: nc -n <code>ip</code> <code>port</code> &gt; <code>document</code></li>
+</ul>
+<h2 id="用nc聊天"><a href="#用nc聊天" class="headerlink" title="用nc聊天"></a>用nc聊天</h2><ul>
+<li>server: nc -l 10000</li>
+<li>nc <code>ip</code> 10000</li>
+</ul>
 <hr>
-<h2 id="自定义设置"><a href="#自定义设置" class="headerlink" title="自定义设置"></a>自定义设置</h2><p><code>ToDo</code>的主题自定义，有序无序列表的设置。默认是<code>ul</code>无序列表，改为<code>ol</code>即为有序列表<br><img src="http://img.geekerhua.com/blog/alfred5/14896556515833.jpg" alt=""><br>将如图的ol改为ul，即为无序列表。</p>
-<h2 id="关于Minimal-TODOworkflow的开发过程"><a href="#关于Minimal-TODOworkflow的开发过程" class="headerlink" title="关于Minimal-TODOworkflow的开发过程"></a>关于<code>Minimal-TODO</code>workflow的开发过程</h2><p>开发过程踩了很多坑，细节日后再补充。</p>
+<h2 id="nc-netCat-常用命令"><a href="#nc-netCat-常用命令" class="headerlink" title="nc (netCat)常用命令"></a>nc (netCat)常用命令</h2><p><code>nc -l [-u] 9090</code>: 在9090端口开启tcp服务器<br><code>[-v] [-u] 127.0.0.1 9090</code>: 连接本地ip的9090端口tcp服务器</p>
+<p><code>-l</code>: 启动监听, 启动服务器必须<br><code>-v</code>: 显示连接进度<br><code>-u</code>: 使用udp通信, 默认是tcp, 使用udp连接可以保持一直监听状态<br><code>-w2</code>: 设置超时2秒<br><code>-z</code>: 检测端口</p>
+<h3 id="tcp聊天"><a href="#tcp聊天" class="headerlink" title="tcp聊天"></a>tcp聊天</h3><p><code>nc -l 9090</code>: tcp监听9090端口<br><code>nc 127.0.0.1 9090</code>: tcp连接9090端口<br>可以用重定向 ‘&lt;’/‘&gt;’, 指定传输内容, 只能响应一个客户端, 客户端断开, 服务器端也会断开</p>
+<h3 id="udp聊天"><a href="#udp聊天" class="headerlink" title="udp聊天"></a>udp聊天</h3><p><code>nc -lu 9090</code>: udp监听9090端口<br><code>nc -u 127.0.0.1 9090</code>: udp连接9090端口<br>可以用重定向 ‘&lt;’/‘&gt;’, 指定传输内容, 只能响应一个客户端, 客户端断开, 服务器端不会断开</p>
+<h3 id="检查端口"><a href="#检查端口" class="headerlink" title="检查端口"></a>检查端口</h3><p><code>nc -z 127.0.0.1 1-100</code>: 查看指定ip tcp 连接 的 1-100端口<br><code>nc -z -u 127.0.0.1 1-100</code>: 查看指定ip udp 连接 的 1-100端口</p>
+<h3 id="远程传输文件"><a href="#远程传输文件" class="headerlink" title="远程传输文件"></a>远程传输文件</h3><p><code>nc -l 9090 &gt; test.tmp</code>: 监听 9090 端口 并把信息输出到指定文件<br><code>nc 127.0.0.1 9090 &lt; test.tmp</code>: 连接服务, 并把文件输出</p>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -223,7 +172,7 @@ tips: 要想运">
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="blog.geekerhua.com/2017/03/16/alfred5-todolist/" data-title="Alfred手记五：与Übersicht一同构建极简TodoList | GeekerHua的Blog" data-tsina="null" class="share clearfix">
+	  <div data-url="blog.geekerhua.com/2017/05/12/alfred1-nc/" data-title="Alfred手记一：简化nc传输操作 | GeekerHua的Blog" data-tsina="null" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -237,18 +186,18 @@ tips: 要想运">
 <nav class="article-nav clearfix">
  
  <div class="prev" >
- <a href="/2017/03/16/2016-digital-life/" title="我的2016数字化生活">
+ <a href="/2017/06/12/Python_const/" title="Python常量的正确写法">
   <strong>上一篇：</strong><br/>
   <span>
-  我的2016数字化生活</span>
+  Python常量的正确写法</span>
 </a>
 </div>
 
 
 <div class="next">
-<a href="/2017/03/12/read_to_write/"  title="从碎片化阅读到知识的输出">
+<a href="/2017/03/16/2016-digital-life/"  title="我的2016数字化生活">
  <strong>下一篇：</strong><br/> 
- <span>从碎片化阅读到知识的输出
+ <span>我的2016数字化生活
 </span>
 </a>
 </div>
@@ -257,7 +206,7 @@ tips: 要想运">
 
 	
 <section id="comments" class="comment">
-	<div class="ds-thread" data-thread-key="2017/03/16/alfred5-todolist/" data-title="Alfred手记五：与Übersicht一同构建极简TodoList" data-url="blog.geekerhua.com/2017/03/16/alfred5-todolist/"></div>
+	<div class="ds-thread" data-thread-key="2017/05/12/alfred1-nc/" data-title="Alfred手记一：简化nc传输操作" data-url="blog.geekerhua.com/2017/05/12/alfred1-nc/"></div>
 </section>
 
 
@@ -267,7 +216,7 @@ tips: 要想运">
   <div id="toc" class="toc-aside">
   <strong class="toc-title">Contents</strong>
  
- <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#效果展示"><span class="toc-number">1.</span> <span class="toc-text">效果展示</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#资源下载"><span class="toc-number">1.1.</span> <span class="toc-text">资源下载</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#急速教程"><span class="toc-number">1.2.</span> <span class="toc-text">急速教程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#必要设置"><span class="toc-number">1.2.1.</span> <span class="toc-text">必要设置</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-ToDo插件的列表路径，无默认路径"><span class="toc-number">1.2.1.1.</span> <span class="toc-text">1.  ToDo插件的列表路径，无默认路径</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-ToDo的BUG处理"><span class="toc-number">1.2.1.2.</span> <span class="toc-text">2. ToDo的BUG处理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-Minimal-TODO插件的列表路径，有默认路径"><span class="toc-number">1.2.1.3.</span> <span class="toc-text">3. Minimal-TODO插件的列表路径，有默认路径</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#自定义设置"><span class="toc-number">1.3.</span> <span class="toc-text">自定义设置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#关于Minimal-TODOworkflow的开发过程"><span class="toc-number">1.4.</span> <span class="toc-text">关于Minimal-TODOworkflow的开发过程</span></a></li></ol></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#最终效果。"><span class="toc-number">1.</span> <span class="toc-text">最终效果。</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#文件发送"><span class="toc-number">1.1.</span> <span class="toc-text">文件发送</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#文件接收"><span class="toc-number">1.2.</span> <span class="toc-text">文件接收</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#nc——netcat"><span class="toc-number">2.</span> <span class="toc-text">nc——netcat</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#用nc聊天"><span class="toc-number">3.</span> <span class="toc-text">用nc聊天</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#nc-netCat-常用命令"><span class="toc-number">4.</span> <span class="toc-text">nc (netCat)常用命令</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#tcp聊天"><span class="toc-number">4.1.</span> <span class="toc-text">tcp聊天</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#udp聊天"><span class="toc-number">4.2.</span> <span class="toc-text">udp聊天</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#检查端口"><span class="toc-number">4.3.</span> <span class="toc-text">检查端口</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#远程传输文件"><span class="toc-number">4.4.</span> <span class="toc-text">远程传输文件</span></a></li></ol></li></ol>
  
   </div>
 

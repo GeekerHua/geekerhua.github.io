@@ -4,82 +4,38 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>Alfred手记五：与Übersicht一同构建极简TodoList | GeekerHua的Blog</title>
+    <title>Python常量的正确写法 | GeekerHua的Blog</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="GeekerHua">
     
 
     
-    <meta name="description" content="效果展示先来秀一张布置好的桌面图，怎么样是不是很清爽简约啊！
-资源下载
-Alfred 官网链接
-Minimal-TODO github下载
+    <meta name="description" content="Python内建的命名空间是支持小部分常量的，例如True、False、None等，但Python默认是没有提供直接定义常量的方法，因此要想实现常量的功能需要人为实现。一般有两种方法
 
+一：通过明明风格提醒使用者该变量代表的意义为常量
+如长两名所有字母大写,使用下划线连接各个单词，MAX_OVERFLOW、TOTAL。这是一种约定俗称的风格，对应的值仍然可以改变。
 
-Übersicht 官网链接
-插件商店  点击访问
-TODO 点击下载
-
-
-
-急速教程
-用到两款软件，Alfred和Übersicht。
-外加两个插件，Übersicht下的ToDo和Alfred下的Minimal-TODO。
-
-
-tips: 要想运">
+二：通过自定义的类实现常量功">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Alfred手记五：与Übersicht一同构建极简TodoList">
-<meta property="og:url" content="blog.geekerhua.com/2017/03/16/alfred5-todolist/index.html">
+<meta property="og:title" content="Python常量的正确写法">
+<meta property="og:url" content="blog.geekerhua.com/2017/06/12/Python_const/index.html">
 <meta property="og:site_name" content="GeekerHua的Blog">
-<meta property="og:description" content="效果展示先来秀一张布置好的桌面图，怎么样是不是很清爽简约啊！
-资源下载
-Alfred 官网链接
-Minimal-TODO github下载
+<meta property="og:description" content="Python内建的命名空间是支持小部分常量的，例如True、False、None等，但Python默认是没有提供直接定义常量的方法，因此要想实现常量的功能需要人为实现。一般有两种方法
 
+一：通过明明风格提醒使用者该变量代表的意义为常量
+如长两名所有字母大写,使用下划线连接各个单词，MAX_OVERFLOW、TOTAL。这是一种约定俗称的风格，对应的值仍然可以改变。
 
-Übersicht 官网链接
-插件商店  点击访问
-TODO 点击下载
-
-
-
-急速教程
-用到两款软件，Alfred和Übersicht。
-外加两个插件，Übersicht下的ToDo和Alfred下的Minimal-TODO。
-
-
-tips: 要想运">
-<meta property="og:image" content="http://img.geekerhua.com/blog/alfred5/2017-03-15%2019_00_17.gif">
-<meta property="og:image" content="http://img.geekerhua.com/blog/alfred5/14896526072534.jpg">
-<meta property="og:image" content="http://img.geekerhua.com/blog/alfred5/14896526569327.jpg">
-<meta property="og:image" content="http://img.geekerhua.com/blog/alfred5/14896527156078.jpg">
-<meta property="og:image" content="http://img.geekerhua.com/blog/alfred5/14895760187086.jpg">
-<meta property="og:image" content="http://img.geekerhua.com/blog/alfred5/14895761894277.jpg">
-<meta property="og:image" content="http://img.geekerhua.com/blog/alfred5/14896556515833.jpg">
-<meta property="og:updated_time" content="2017-06-12T04:49:41.000Z">
+二：通过自定义的类实现常量功">
+<meta property="og:updated_time" content="2017-06-12T04:52:20.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Alfred手记五：与Übersicht一同构建极简TodoList">
-<meta name="twitter:description" content="效果展示先来秀一张布置好的桌面图，怎么样是不是很清爽简约啊！
-资源下载
-Alfred 官网链接
-Minimal-TODO github下载
+<meta name="twitter:title" content="Python常量的正确写法">
+<meta name="twitter:description" content="Python内建的命名空间是支持小部分常量的，例如True、False、None等，但Python默认是没有提供直接定义常量的方法，因此要想实现常量的功能需要人为实现。一般有两种方法
 
+一：通过明明风格提醒使用者该变量代表的意义为常量
+如长两名所有字母大写,使用下划线连接各个单词，MAX_OVERFLOW、TOTAL。这是一种约定俗称的风格，对应的值仍然可以改变。
 
-Übersicht 官网链接
-插件商店  点击访问
-TODO 点击下载
-
-
-
-急速教程
-用到两款软件，Alfred和Übersicht。
-外加两个插件，Übersicht下的ToDo和Alfred下的Minimal-TODO。
-
-
-tips: 要想运">
-<meta name="twitter:image" content="http://img.geekerhua.com/blog/alfred5/2017-03-15%2019_00_17.gif">
+二：通过自定义的类实现常量功">
 <meta name="twitter:creator" content="@GeekerHua">
 
     
@@ -144,14 +100,14 @@ tips: 要想运">
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2017/03/16/alfred5-todolist/" title="Alfred手记五：与Übersicht一同构建极简TodoList" itemprop="url">Alfred手记五：与Übersicht一同构建极简TodoList</a>
+      <a href="/2017/06/12/Python_const/" title="Python常量的正确写法" itemprop="url">Python常量的正确写法</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/about" title="GeekerHua" target="_blank" itemprop="author">GeekerHua</a>
 		
   <p class="article-time">
-    <time datetime="2017-03-16T10:00:19.000Z" itemprop="datePublished"> Published 2017-03-16</time>
+    <time datetime="2017-06-12T04:45:26.000Z" itemprop="datePublished"> Published 2017-06-12</time>
     
   </p>
 </header>
@@ -160,47 +116,26 @@ tips: 要想运">
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">Contents</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#效果展示"><span class="toc-number">1.</span> <span class="toc-text">效果展示</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#资源下载"><span class="toc-number">1.1.</span> <span class="toc-text">资源下载</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#急速教程"><span class="toc-number">1.2.</span> <span class="toc-text">急速教程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#必要设置"><span class="toc-number">1.2.1.</span> <span class="toc-text">必要设置</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-ToDo插件的列表路径，无默认路径"><span class="toc-number">1.2.1.1.</span> <span class="toc-text">1.  ToDo插件的列表路径，无默认路径</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-ToDo的BUG处理"><span class="toc-number">1.2.1.2.</span> <span class="toc-text">2. ToDo的BUG处理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-Minimal-TODO插件的列表路径，有默认路径"><span class="toc-number">1.2.1.3.</span> <span class="toc-text">3. Minimal-TODO插件的列表路径，有默认路径</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#自定义设置"><span class="toc-number">1.3.</span> <span class="toc-text">自定义设置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#关于Minimal-TODOworkflow的开发过程"><span class="toc-number">1.4.</span> <span class="toc-text">关于Minimal-TODOworkflow的开发过程</span></a></li></ol></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#一：通过明明风格提醒使用者该变量代表的意义为常量"><span class="toc-number">1.</span> <span class="toc-text">一：通过明明风格提醒使用者该变量代表的意义为常量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#二：通过自定义的类实现常量功能。"><span class="toc-number">2.</span> <span class="toc-text">二：通过自定义的类实现常量功能。</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#使用"><span class="toc-number">2.1.</span> <span class="toc-text">使用</span></a></li></ol></li></ol>
 		
 		</div>
 		
-		<h1 id="效果展示"><a href="#效果展示" class="headerlink" title="效果展示"></a>效果展示</h1><p>先来秀一张布置好的桌面图，怎么样是不是很清爽简约啊！<br><img src="http://img.geekerhua.com/blog/alfred5/2017-03-15%2019_00_17.gif" alt="2017-03-15 19_00_17"></p>
-<h2 id="资源下载"><a href="#资源下载" class="headerlink" title="资源下载"></a>资源下载</h2><ul>
-<li>Alfred <a href="https://www.alfredapp.com" target="_blank" rel="external">官网链接</a><ul>
-<li>Minimal-TODO <a href="https://github.com/GeekerHua/alfred-Minimal-TODO/releases" target="_blank" rel="external">github下载</a></li>
-</ul>
-</li>
-<li>Übersicht <a href="http://tracesof.net/uebersicht/" target="_blank" rel="external">官网链接</a><ul>
-<li>插件商店  <a href="http://tracesof.net/uebersicht-widgets/" target="_blank" rel="external">点击访问</a></li>
-<li>TODO <a href="https://raw.githubusercontent.com/illuminati945/ToDo/master/ToDo.widget.zip" target="_blank" rel="external">点击下载</a></li>
-</ul>
-</li>
-</ul>
-<h2 id="急速教程"><a href="#急速教程" class="headerlink" title="急速教程"></a>急速教程</h2><ul>
-<li>用到两款软件，<code>Alfred</code>和<code>Übersicht</code>。</li>
-<li>外加两个插件，<code>Übersicht</code>下的<code>ToDo</code>和Alfred下的<code>Minimal-TODO</code>。</li>
-</ul>
-<blockquote>
-<p>tips: 要想运行<code>Minimal-TODO</code>，需要拥有<code>Powerpack</code>功能，付费还是使用破解版本，随你咯。</p>
+		<blockquote>
+<p>Python内建的命名空间是支持小部分常量的，例如True、False、None等，但Python默认是没有提供直接定义常量的方法，因此要想实现常量的功能需要人为实现。一般有两种方法</p>
 </blockquote>
-<p>本身两个插件是独立运行的，没有任何关联，但两者都是操作一个txt文本，该文本文件每一行为一个TODO任务，使用<code>-</code>开头代表任务以完成。</p>
+<h3 id="一：通过明明风格提醒使用者该变量代表的意义为常量"><a href="#一：通过明明风格提醒使用者该变量代表的意义为常量" class="headerlink" title="一：通过明明风格提醒使用者该变量代表的意义为常量"></a>一：通过明明风格提醒使用者该变量代表的意义为常量</h3><blockquote>
+<p>如长两名所有字母大写,使用下划线连接各个单词，<code>MAX_OVERFLOW</code>、<code>TOTAL</code>。这是一种约定俗称的风格，对应的值仍然可以改变。</p>
+</blockquote>
+<h3 id="二：通过自定义的类实现常量功能。"><a href="#二：通过自定义的类实现常量功能。" class="headerlink" title="二：通过自定义的类实现常量功能。"></a>二：通过自定义的类实现常量功能。</h3><blockquote>
+<p>要求符合“命名全部大写”和“值一旦绑定便不可再修改”两个条件。下面是一种较为常见的解决方法，它通过对常量对应的值进行修改时或者命名不符合规范时抛出异常来满足以上常量的两个条件。</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">_const</span>:</span></div><div class="line">    <span class="class"><span class="keyword">class</span> <span class="title">ConstError</span><span class="params">(TypeError)</span>:</span> <span class="keyword">pass</span></div><div class="line">    <span class="class"><span class="keyword">class</span> <span class="title">ConstCaseError</span><span class="params">(ConstError)</span>:</span> <span class="keyword">pass</span></div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__setattr__</span><span class="params">(self, name, value)</span>:</span></div><div class="line">        <span class="keyword">if</span> self.__dict__.has_key(name):</div><div class="line">            <span class="keyword">raise</span> self.ConstError, <span class="string">"Can't change const.%s"</span> % name</div><div class="line">        <span class="keyword">if</span> <span class="keyword">not</span> name.isupper():</div><div class="line">            <span class="keyword">raise</span> self.ConstCaseError, <span class="string">'const name "%s" is not all uppercase'</span> % name</div><div class="line">        self.__dict__[name] = value</div><div class="line"></div><div class="line"><span class="keyword">import</span> sys</div><div class="line">sys.modules[__name__] = _const()</div><div class="line"></div><div class="line"><span class="keyword">import</span> constant</div><div class="line"><span class="comment"># 在这之后定义常量</span></div><div class="line">constant.A = <span class="string">'a'</span></div></pre></td></tr></table></figure>
+<h4 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h4><p>如此之后，导入这个模块，在这个模块中定义常量，建议将所有常量都定义到这个模块中，方便统一管理。使用的时候，</p>
 <ul>
-<li>在<code>Übersicht</code>的桌面插件上会已灰色文字显示，并添加中划线。</li>
-<li>在<code>Alfred</code>的插件中，可以对该文本进行操作，获取所有TODO，添加TODO，删除TODO，标记为完成状态，重置为未完成状态等操作。<br><img src="http://img.geekerhua.com/blog/alfred5/14896526072534.jpg" alt=""><br><img src="http://img.geekerhua.com/blog/alfred5/14896526569327.jpg" alt=""><br><img src="http://img.geekerhua.com/blog/alfred5/14896527156078.jpg" alt=""></li>
+<li>如果对已经定义到常量进行修改会报<code>ConstError</code>错误；</li>
+<li>如果定义的常量不是全大写，会报<code>ConstCaseError</code>错误。</li>
 </ul>
-<p><code>Minimal-TODO</code>是一个极简todo list工具，todo任务文件放在指定的路径中，例如”~/Documents/Alfred/todos/todo.txt”。</p>
-<p>使用“todo”来触发程序，默认会列出添加的todo，“-”开头意味着已经完成的todo。<br>可以使用的命令列表如下：</p>
-<ul>
-<li>“todo -c”  –&gt; clear all done功能，清除所以已完成项；</li>
-<li>“todo -a”  –&gt; 添加任务，支持一次添加多个，使用空格分割；</li>
-<li>“todo -r”  –&gt; reset all 重置所有任务为未完成状态。</li>
-</ul>
-<h3 id="必要设置"><a href="#必要设置" class="headerlink" title="必要设置"></a>必要设置</h3><h4 id="1-ToDo插件的列表路径，无默认路径"><a href="#1-ToDo插件的列表路径，无默认路径" class="headerlink" title="1.  ToDo插件的列表路径，无默认路径"></a>1.  <code>ToDo</code>插件的列表路径，无默认路径</h4><p><code>Übersicht</code>的<code>ToDo</code>插件默认没有设置文件路径，需要用户自己去设置，为了和另一款软件<code>Alfred</code>进行无缝协作，建议将文件路径设置在用户Document文件夹下。</p>
-<h4 id="2-ToDo的BUG处理"><a href="#2-ToDo的BUG处理" class="headerlink" title="2. ToDo的BUG处理"></a>2. <code>ToDo</code>的BUG处理</h4><p><img src="http://img.geekerhua.com/blog/alfred5/14895760187086.jpg" alt=""><br>默认下载下来的代码有些bug，会导致对于完成的TODO，会显示两遍，一遍是未完成的白色状态，一遍是完成的灰色状态。需要对代码进行修复。<br><img src="http://img.geekerhua.com/blog/alfred5/14895761894277.jpg" alt=""></p>
-<h4 id="3-Minimal-TODO插件的列表路径，有默认路径"><a href="#3-Minimal-TODO插件的列表路径，有默认路径" class="headerlink" title="3. Minimal-TODO插件的列表路径，有默认路径"></a>3. <code>Minimal-TODO</code>插件的列表路径，有默认路径</h4><p><code>Minimal-TODO</code>插件的默认路径推荐设置为<code>~/Documents/Alfred/todos/todo.txt</code>。你也可以根据需要进行设置，设置方法如下。</p>
-<hr>
-<h2 id="自定义设置"><a href="#自定义设置" class="headerlink" title="自定义设置"></a>自定义设置</h2><p><code>ToDo</code>的主题自定义，有序无序列表的设置。默认是<code>ul</code>无序列表，改为<code>ol</code>即为有序列表<br><img src="http://img.geekerhua.com/blog/alfred5/14896556515833.jpg" alt=""><br>将如图的ol改为ul，即为无序列表。</p>
-<h2 id="关于Minimal-TODOworkflow的开发过程"><a href="#关于Minimal-TODOworkflow的开发过程" class="headerlink" title="关于Minimal-TODOworkflow的开发过程"></a>关于<code>Minimal-TODO</code>workflow的开发过程</h2><p>开发过程踩了很多坑，细节日后再补充。</p>
+<p>例如模块名为constant.py，在其他文件中使用方法为：<br><figure class="highlight python"><table><tr><td class="code"><pre><div class="line"><span class="keyword">import</span> constant</div><div class="line">constant.A = <span class="string">'a'</span></div><div class="line">constant.B_Play = <span class="string">'xxx'</span></div></pre></td></tr></table></figure></p>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -208,13 +143,13 @@ tips: 要想运">
 
 <div class="article-categories">
   <span></span>
-  <a class="article-category-link" href="/categories/工具/">工具</a>
+  <a class="article-category-link" href="/categories/改善Python/">改善Python</a>
 </div>
 
 
   <div class="article-tags">
   
-  <span></span> <a href="/tags/效率/">效率</a><a href="/tags/Alfred/">Alfred</a>
+  <span></span> <a href="/tags/Python/">Python</a>
   </div>
 
 </div>
@@ -223,7 +158,7 @@ tips: 要想运">
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="blog.geekerhua.com/2017/03/16/alfred5-todolist/" data-title="Alfred手记五：与Übersicht一同构建极简TodoList | GeekerHua的Blog" data-tsina="null" class="share clearfix">
+	  <div data-url="blog.geekerhua.com/2017/06/12/Python_const/" data-title="Python常量的正确写法 | GeekerHua的Blog" data-tsina="null" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -236,19 +171,11 @@ tips: 要想运">
 	
 <nav class="article-nav clearfix">
  
- <div class="prev" >
- <a href="/2017/03/16/2016-digital-life/" title="我的2016数字化生活">
-  <strong>上一篇：</strong><br/>
-  <span>
-  我的2016数字化生活</span>
-</a>
-</div>
-
 
 <div class="next">
-<a href="/2017/03/12/read_to_write/"  title="从碎片化阅读到知识的输出">
+<a href="/2017/05/12/alfred1-nc/"  title="Alfred手记一：简化nc传输操作">
  <strong>下一篇：</strong><br/> 
- <span>从碎片化阅读到知识的输出
+ <span>Alfred手记一：简化nc传输操作
 </span>
 </a>
 </div>
@@ -257,7 +184,7 @@ tips: 要想运">
 
 	
 <section id="comments" class="comment">
-	<div class="ds-thread" data-thread-key="2017/03/16/alfred5-todolist/" data-title="Alfred手记五：与Übersicht一同构建极简TodoList" data-url="blog.geekerhua.com/2017/03/16/alfred5-todolist/"></div>
+	<div class="ds-thread" data-thread-key="2017/06/12/Python_const/" data-title="Python常量的正确写法" data-url="blog.geekerhua.com/2017/06/12/Python_const/"></div>
 </section>
 
 
@@ -267,7 +194,7 @@ tips: 要想运">
   <div id="toc" class="toc-aside">
   <strong class="toc-title">Contents</strong>
  
- <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#效果展示"><span class="toc-number">1.</span> <span class="toc-text">效果展示</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#资源下载"><span class="toc-number">1.1.</span> <span class="toc-text">资源下载</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#急速教程"><span class="toc-number">1.2.</span> <span class="toc-text">急速教程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#必要设置"><span class="toc-number">1.2.1.</span> <span class="toc-text">必要设置</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-ToDo插件的列表路径，无默认路径"><span class="toc-number">1.2.1.1.</span> <span class="toc-text">1.  ToDo插件的列表路径，无默认路径</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-ToDo的BUG处理"><span class="toc-number">1.2.1.2.</span> <span class="toc-text">2. ToDo的BUG处理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-Minimal-TODO插件的列表路径，有默认路径"><span class="toc-number">1.2.1.3.</span> <span class="toc-text">3. Minimal-TODO插件的列表路径，有默认路径</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#自定义设置"><span class="toc-number">1.3.</span> <span class="toc-text">自定义设置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#关于Minimal-TODOworkflow的开发过程"><span class="toc-number">1.4.</span> <span class="toc-text">关于Minimal-TODOworkflow的开发过程</span></a></li></ol></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#一：通过明明风格提醒使用者该变量代表的意义为常量"><span class="toc-number">1.</span> <span class="toc-text">一：通过明明风格提醒使用者该变量代表的意义为常量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#二：通过自定义的类实现常量功能。"><span class="toc-number">2.</span> <span class="toc-text">二：通过自定义的类实现常量功能。</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#使用"><span class="toc-number">2.1.</span> <span class="toc-text">使用</span></a></li></ol></li></ol>
  
   </div>
 
