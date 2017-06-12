@@ -4,6 +4,26 @@
 
     
   <url>
+    <loc>blog.geekerhua.com/2017/06/12/Python_const/</loc>
+    <lastmod>2017-06-12T04:53:40.000Z</lastmod>
+    <data>
+        <display>
+        <title>Python常量的正确写法</title>
+        <pubTime>2017-06-12T04:45:26.000Z</pubTime>
+        
+        <tag>Python</tag>
+         
+         
+           
+             
+              <breadCrumb title="Python" url="blog.geekerhua.com/categories/Python/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>blog.geekerhua.com/2017/05/12/alfred1-nc/</loc>
     <lastmod>2017-06-12T04:52:22.000Z</lastmod>
     <data>
@@ -19,26 +39,6 @@
            
              
               <breadCrumb title="工具" url="blog.geekerhua.com/categories/%E5%B7%A5%E5%85%B7/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>blog.geekerhua.com/2017/06/12/Python_const/</loc>
-    <lastmod>2017-06-12T04:52:20.000Z</lastmod>
-    <data>
-        <display>
-        <title>Python常量的正确写法</title>
-        <pubTime>2017-06-12T04:45:26.000Z</pubTime>
-        
-        <tag>Python</tag>
-         
-         
-           
-             
-              <breadCrumb title="改善Python" url="blog.geekerhua.com/categories/%E6%94%B9%E5%96%84Python/"/>
           
         </display>
     </data>

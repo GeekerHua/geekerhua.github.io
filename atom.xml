@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="blog.geekerhua.com/"/>
-  <updated>2017-06-12T04:52:20.000Z</updated>
+  <updated>2017-06-12T04:53:40.000Z</updated>
   <id>blog.geekerhua.com/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="blog.geekerhua.com/2017/06/12/Python_const/"/>
     <id>blog.geekerhua.com/2017/06/12/Python_const/</id>
     <published>2017-06-12T04:45:26.000Z</published>
-    <updated>2017-06-12T04:52:20.000Z</updated>
+    <updated>2017-06-12T04:53:40.000Z</updated>
     
     <content type="html"><![CDATA[<blockquote>
 <p>Python内建的命名空间是支持小部分常量的，例如True、False、None等，但Python默认是没有提供直接定义常量的方法，因此要想实现常量的功能需要人为实现。一般有两种方法</p>
@@ -49,7 +49,7 @@
     
     </summary>
     
-      <category term="改善Python" scheme="blog.geekerhua.com/categories/%E6%94%B9%E5%96%84Python/"/>
+      <category term="Python" scheme="blog.geekerhua.com/categories/Python/"/>
     
     
       <category term="Python" scheme="blog.geekerhua.com/tags/Python/"/>
