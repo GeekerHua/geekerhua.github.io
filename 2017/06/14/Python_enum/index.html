@@ -4,38 +4,26 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>Python常量的正确写法 | GeekerHua的Blog</title>
+    <title>Python枚举的实现 | GeekerHua的Blog</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="GeekerHua">
     
 
     
-    <meta name="description" content="Python内建的命名空间是支持小部分常量的，例如True、False、None等，但Python默认是没有提供直接定义常量的方法，因此要想实现常量的功能需要人为实现。一般有两种方法
-
-一：通过明明风格提醒使用者该变量代表的意义为常量
-如长两名所有字母大写,使用下划线连接各个单词，MAX_OVERFLOW、TOTAL。这是一种约定俗称的风格，对应的值仍然可以改变。
-
-二：通过自定义的类实现常量功">
+    <meta name="description" content="在Python3.4版本之前，默认是没有枚举的，我们经常使用的Python2.x的版本，如果想实现枚举的功能该怎么办呢？代码是人写出来的，这难不倒我们的，因此利用动态语言的特性，就出现了下面的众多中的枚举实现。
+枚举的实现1.使用类属性&amp;gt;&amp;gt;&amp;gt; class Seasons:... 	Spring = 0... 	Summer = 1... 	Autumn = 2... 	Winte">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Python常量的正确写法">
-<meta property="og:url" content="blog.geekerhua.com/2017/06/12/Python_const/index.html">
+<meta property="og:title" content="Python枚举的实现">
+<meta property="og:url" content="blog.geekerhua.com/2017/06/14/Python_enum/index.html">
 <meta property="og:site_name" content="GeekerHua的Blog">
-<meta property="og:description" content="Python内建的命名空间是支持小部分常量的，例如True、False、None等，但Python默认是没有提供直接定义常量的方法，因此要想实现常量的功能需要人为实现。一般有两种方法
-
-一：通过明明风格提醒使用者该变量代表的意义为常量
-如长两名所有字母大写,使用下划线连接各个单词，MAX_OVERFLOW、TOTAL。这是一种约定俗称的风格，对应的值仍然可以改变。
-
-二：通过自定义的类实现常量功">
-<meta property="og:updated_time" content="2017-06-12T04:53:40.000Z">
+<meta property="og:description" content="在Python3.4版本之前，默认是没有枚举的，我们经常使用的Python2.x的版本，如果想实现枚举的功能该怎么办呢？代码是人写出来的，这难不倒我们的，因此利用动态语言的特性，就出现了下面的众多中的枚举实现。
+枚举的实现1.使用类属性&amp;gt;&amp;gt;&amp;gt; class Seasons:... 	Spring = 0... 	Summer = 1... 	Autumn = 2... 	Winte">
+<meta property="og:updated_time" content="2017-06-14T05:40:54.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Python常量的正确写法">
-<meta name="twitter:description" content="Python内建的命名空间是支持小部分常量的，例如True、False、None等，但Python默认是没有提供直接定义常量的方法，因此要想实现常量的功能需要人为实现。一般有两种方法
-
-一：通过明明风格提醒使用者该变量代表的意义为常量
-如长两名所有字母大写,使用下划线连接各个单词，MAX_OVERFLOW、TOTAL。这是一种约定俗称的风格，对应的值仍然可以改变。
-
-二：通过自定义的类实现常量功">
+<meta name="twitter:title" content="Python枚举的实现">
+<meta name="twitter:description" content="在Python3.4版本之前，默认是没有枚举的，我们经常使用的Python2.x的版本，如果想实现枚举的功能该怎么办呢？代码是人写出来的，这难不倒我们的，因此利用动态语言的特性，就出现了下面的众多中的枚举实现。
+枚举的实现1.使用类属性&amp;gt;&amp;gt;&amp;gt; class Seasons:... 	Spring = 0... 	Summer = 1... 	Autumn = 2... 	Winte">
 <meta name="twitter:creator" content="@GeekerHua">
 
     
@@ -100,14 +88,14 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2017/06/12/Python_const/" title="Python常量的正确写法" itemprop="url">Python常量的正确写法</a>
+      <a href="/2017/06/14/Python_enum/" title="Python枚举的实现" itemprop="url">Python枚举的实现</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/about" title="GeekerHua" target="_blank" itemprop="author">GeekerHua</a>
 		
   <p class="article-time">
-    <time datetime="2017-06-12T04:45:26.000Z" itemprop="datePublished"> Published 2017-06-12</time>
+    <time datetime="2017-06-14T05:05:26.000Z" itemprop="datePublished"> Published 2017-06-14</time>
     
   </p>
 </header>
@@ -116,26 +104,40 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">Contents</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#一：通过明明风格提醒使用者该变量代表的意义为常量"><span class="toc-number">1.</span> <span class="toc-text">一：通过明明风格提醒使用者该变量代表的意义为常量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#二：通过自定义的类实现常量功能。"><span class="toc-number">2.</span> <span class="toc-text">二：通过自定义的类实现常量功能。</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#使用"><span class="toc-number">2.1.</span> <span class="toc-text">使用</span></a></li></ol></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#枚举的实现"><span class="toc-number">1.</span> <span class="toc-text">枚举的实现</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-使用类属性"><span class="toc-number">1.1.</span> <span class="toc-text">1.使用类属性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-借助函数"><span class="toc-number">1.2.</span> <span class="toc-text">2.借助函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-使用collections-namedtuple"><span class="toc-number">1.3.</span> <span class="toc-text">3.使用collections.namedtuple</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#枚举实现的缺陷"><span class="toc-number">2.</span> <span class="toc-text">枚举实现的缺陷</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-7后的替代方案–flufl-enum模块-第三方"><span class="toc-number">3.</span> <span class="toc-text">2.7后的替代方案–flufl.enum模块(第三方)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#迟来的官方支持–Enum-gt-3-4"><span class="toc-number">4.</span> <span class="toc-text">迟来的官方支持–Enum(>=3.4)</span></a></li></ol>
 		
 		</div>
 		
-		<blockquote>
-<p>Python内建的命名空间是支持小部分常量的，例如True、False、None等，但Python默认是没有提供直接定义常量的方法，因此要想实现常量的功能需要人为实现。一般有两种方法</p>
-</blockquote>
-<h3 id="一：通过明明风格提醒使用者该变量代表的意义为常量"><a href="#一：通过明明风格提醒使用者该变量代表的意义为常量" class="headerlink" title="一：通过明明风格提醒使用者该变量代表的意义为常量"></a>一：通过明明风格提醒使用者该变量代表的意义为常量</h3><blockquote>
-<p>如长两名所有字母大写,使用下划线连接各个单词，<code>MAX_OVERFLOW</code>、<code>TOTAL</code>。这是一种约定俗称的风格，对应的值仍然可以改变。</p>
-</blockquote>
-<h3 id="二：通过自定义的类实现常量功能。"><a href="#二：通过自定义的类实现常量功能。" class="headerlink" title="二：通过自定义的类实现常量功能。"></a>二：通过自定义的类实现常量功能。</h3><blockquote>
-<p>要求符合“命名全部大写”和“值一旦绑定便不可再修改”两个条件。下面是一种较为常见的解决方法，它通过对常量对应的值进行修改时或者命名不符合规范时抛出异常来满足以上常量的两个条件。</p>
-</blockquote>
-<figure class="highlight python"><table><tr><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">_const</span>:</span></div><div class="line">    <span class="class"><span class="keyword">class</span> <span class="title">ConstError</span><span class="params">(TypeError)</span>:</span> <span class="keyword">pass</span></div><div class="line">    <span class="class"><span class="keyword">class</span> <span class="title">ConstCaseError</span><span class="params">(ConstError)</span>:</span> <span class="keyword">pass</span></div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__setattr__</span><span class="params">(self, name, value)</span>:</span></div><div class="line">        <span class="keyword">if</span> self.__dict__.has_key(name):</div><div class="line">            <span class="keyword">raise</span> self.ConstError, <span class="string">"Can't change const.%s"</span> % name</div><div class="line">        <span class="keyword">if</span> <span class="keyword">not</span> name.isupper():</div><div class="line">            <span class="keyword">raise</span> self.ConstCaseError, <span class="string">'const name "%s" is not all uppercase'</span> % name</div><div class="line">        self.__dict__[name] = value</div><div class="line"></div><div class="line"><span class="keyword">import</span> sys</div><div class="line">sys.modules[__name__] = _const()</div><div class="line"></div><div class="line"><span class="keyword">import</span> constant</div><div class="line"><span class="comment"># 在这之后定义常量</span></div><div class="line">constant.A = <span class="string">'a'</span></div></pre></td></tr></table></figure>
-<h4 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h4><p>如此之后，导入这个模块，在这个模块中定义常量，建议将所有常量都定义到这个模块中，方便统一管理。使用的时候，</p>
-<ul>
-<li>如果对已经定义到常量进行修改会报<code>ConstError</code>错误；</li>
-<li>如果定义的常量不是全大写，会报<code>ConstCaseError</code>错误。</li>
+		<p>在Python3.4版本之前，默认是没有枚举的，我们经常使用的Python2.x的版本，如果想实现枚举的功能该怎么办呢？代码是人写出来的，这难不倒我们的，因此利用动态语言的特性，就出现了下面的众多中的枚举实现。</p>
+<h2 id="枚举的实现"><a href="#枚举的实现" class="headerlink" title="枚举的实现"></a>枚举的实现</h2><h3 id="1-使用类属性"><a href="#1-使用类属性" class="headerlink" title="1.使用类属性"></a>1.使用类属性</h3><figure class="highlight python"><table><tr><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="class"><span class="keyword">class</span> <span class="title">Seasons</span>:</span></div><div class="line"><span class="meta">... </span>	Spring = <span class="number">0</span></div><div class="line"><span class="meta">... </span>	Summer = <span class="number">1</span></div><div class="line"><span class="meta">... </span>	Autumn = <span class="number">2</span></div><div class="line"><span class="meta">... </span>	Winter = <span class="number">3</span></div><div class="line">...</div><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">print</span> Seasons.Spring</div></pre></td></tr></table></figure>
+<p>上边的例子可以简化成：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="class"><span class="keyword">class</span> <span class="title">Seasons</span>:</span></div><div class="line"><span class="meta">... </span>	Spring, Summer, Autumn, Winter = range(<span class="number">4</span>)</div></pre></td></tr></table></figure>
+<h3 id="2-借助函数"><a href="#2-借助函数" class="headerlink" title="2.借助函数"></a>2.借助函数</h3><figure class="highlight python"><table><tr><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="function"><span class="keyword">def</span> <span class="title">enum</span><span class="params">(*posarg, **keysarg)</span>:</span></div><div class="line"><span class="meta">... </span>	<span class="keyword">return</span> type(<span class="string">"Enum"</span>, (object,), dict(zip(posarg, xrange(len(posarg))), **keysarg))</div><div class="line">...	</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>Seasons = enum(<span class="string">"Spring"</span>, <span class="string">"Summer"</span>, <span class="string">"Autumn"</span>, <span class="string">"Wunter"</span>=<span class="number">1</span>)</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>Seasons.Spring</div><div class="line"><span class="number">0</span></div></pre></td></tr></table></figure>
+<h3 id="3-使用collections-namedtuple"><a href="#3-使用collections-namedtuple" class="headerlink" title="3.使用collections.namedtuple"></a>3.使用<code>collections.namedtuple</code></h3><figure class="highlight python"><table><tr><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>Seasons = namedtuple(<span class="string">'Seasons'</span>, <span class="string">'Spring Summer Autumn Winter'</span>)._make(range(<span class="number">4</span>))</div><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">print</span> Seasons.Spring</div><div class="line"><span class="number">0</span></div></pre></td></tr></table></figure>
+<p>Python中枚举的替代方法远不止这些，就不一一列举了。但这些替代实现有哪些不合理的地方呢？</p>
+<h2 id="枚举实现的缺陷"><a href="#枚举实现的缺陷" class="headerlink" title="枚举实现的缺陷"></a>枚举实现的缺陷</h2><ul>
+<li>允许枚举值重复。以<code>collections.namedtuple</code>为例，下面的例子中枚举值<code>Spring</code>与<code>Autumn</code>相等，但却不会提示任何错误。</li>
 </ul>
-<p>例如模块名为constant.py，在其他文件中使用方法为：<br><figure class="highlight python"><table><tr><td class="code"><pre><div class="line"><span class="keyword">import</span> constant</div><div class="line">constant.A = <span class="string">'a'</span></div><div class="line">constant.B_Play = <span class="string">'xxx'</span></div></pre></td></tr></table></figure></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>Seasons._replace(Spring = <span class="number">2</span>)</div><div class="line">Seasons(Spring = <span class="number">2</span>, Summer = <span class="number">1</span>, Autumn = <span class="number">2</span>, Winter = <span class="number">3</span>) <span class="comment"># Spring和Autumn的值相等，都为2</span></div></pre></td></tr></table></figure>
+<ul>
+<li>支持无意义的操作。</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>Seasons.Summer + Seasons.Autumn == Seasons.Winter</div><div class="line"><span class="keyword">True</span> <span class="comment"># Seasons.Summer+Seasons.Autumn相加无任何实际意义</span></div></pre></td></tr></table></figure>
+<h2 id="2-7后的替代方案–flufl-enum模块-第三方"><a href="#2-7后的替代方案–flufl-enum模块-第三方" class="headerlink" title="2.7后的替代方案–flufl.enum模块(第三方)"></a>2.7后的替代方案–<code>flufl.enum</code>模块(第三方)</h2><blockquote>
+<p>它包含两种枚举类：</p>
+<ul>
+<li>一种是Enum，只要保证枚举值唯一即可，对值的类型没有限制；</li>
+<li>另一种是IntEnum，其枚举值为int型</li>
+</ul>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="code"><pre><div class="line"><span class="keyword">from</span> flufl.enum <span class="keyword">import</span> Enum</div><div class="line"></div><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="class"><span class="keyword">class</span> <span class="title">Seasons</span><span class="params">(Enum)</span>:</span></div><div class="line">...:     Spring = <span class="string">'Spring'</span></div><div class="line">...:     Summer = <span class="string">'2'</span></div><div class="line">...:     Autumn = <span class="number">3</span></div><div class="line">...:     Winter = <span class="number">4</span></div><div class="line">...:</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>Seasons.Autumn</div><div class="line"><span class="number">3</span></div><div class="line">&gt;&gt;&gt;</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>Weak = Enum(<span class="string">'Weak'</span>, <span class="string">'Monday Wednesday'</span>)</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>Weak.Monday</div><div class="line"><span class="number">2</span></div></pre></td></tr></table></figure>
+<p>可使用<code>value</code>来获取枚举元素的值</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>Weak.Monday</div><div class="line"><span class="number">0</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>getattr(Weak, <span class="string">'Wedsday'</span>).value</div><div class="line"><span class="number">1</span></div></pre></td></tr></table></figure>
+<p><code>flufl.enum</code>不支持枚举元素的比较。</p>
+<blockquote>
+<p><a href="http://Pythonhosted.org/flufl.enum/docs/using.html" target="_blank" rel="external">更多参考</a></p>
+</blockquote>
+<h2 id="迟来的官方支持–Enum-gt-3-4"><a href="#迟来的官方支持–Enum-gt-3-4" class="headerlink" title="迟来的官方支持–Enum(&gt;=3.4)"></a>迟来的官方支持–Enum(&gt;=3.4)</h2><p>直到Python3.4版本，官方才加入了枚举Enum。其实现主要参考了<code>flufl.enum</code>。</p>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -158,7 +160,7 @@
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="blog.geekerhua.com/2017/06/12/Python_const/" data-title="Python常量的正确写法 | GeekerHua的Blog" data-tsina="null" class="share clearfix">
+	  <div data-url="blog.geekerhua.com/2017/06/14/Python_enum/" data-title="Python枚举的实现 | GeekerHua的Blog" data-tsina="null" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -171,19 +173,11 @@
 	
 <nav class="article-nav clearfix">
  
- <div class="prev" >
- <a href="/2017/06/14/Python_enum/" title="Python枚举的实现">
-  <strong>上一篇：</strong><br/>
-  <span>
-  Python枚举的实现</span>
-</a>
-</div>
-
 
 <div class="next">
-<a href="/2017/05/12/alfred1-nc/"  title="Alfred手记一：简化nc传输操作">
+<a href="/2017/06/12/Python_const/"  title="Python常量的正确写法">
  <strong>下一篇：</strong><br/> 
- <span>Alfred手记一：简化nc传输操作
+ <span>Python常量的正确写法
 </span>
 </a>
 </div>
@@ -192,7 +186,7 @@
 
 	
 <section id="comments" class="comment">
-	<div class="ds-thread" data-thread-key="2017/06/12/Python_const/" data-title="Python常量的正确写法" data-url="blog.geekerhua.com/2017/06/12/Python_const/"></div>
+	<div class="ds-thread" data-thread-key="2017/06/14/Python_enum/" data-title="Python枚举的实现" data-url="blog.geekerhua.com/2017/06/14/Python_enum/"></div>
 </section>
 
 
@@ -202,7 +196,7 @@
   <div id="toc" class="toc-aside">
   <strong class="toc-title">Contents</strong>
  
- <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#一：通过明明风格提醒使用者该变量代表的意义为常量"><span class="toc-number">1.</span> <span class="toc-text">一：通过明明风格提醒使用者该变量代表的意义为常量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#二：通过自定义的类实现常量功能。"><span class="toc-number">2.</span> <span class="toc-text">二：通过自定义的类实现常量功能。</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#使用"><span class="toc-number">2.1.</span> <span class="toc-text">使用</span></a></li></ol></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#枚举的实现"><span class="toc-number">1.</span> <span class="toc-text">枚举的实现</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-使用类属性"><span class="toc-number">1.1.</span> <span class="toc-text">1.使用类属性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-借助函数"><span class="toc-number">1.2.</span> <span class="toc-text">2.借助函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-使用collections-namedtuple"><span class="toc-number">1.3.</span> <span class="toc-text">3.使用collections.namedtuple</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#枚举实现的缺陷"><span class="toc-number">2.</span> <span class="toc-text">枚举实现的缺陷</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-7后的替代方案–flufl-enum模块-第三方"><span class="toc-number">3.</span> <span class="toc-text">2.7后的替代方案–flufl.enum模块(第三方)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#迟来的官方支持–Enum-gt-3-4"><span class="toc-number">4.</span> <span class="toc-text">迟来的官方支持–Enum(>=3.4)</span></a></li></ol>
  
   </div>
 

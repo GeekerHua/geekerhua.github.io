@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="blog.geekerhua.com/"/>
-  <updated>2017-06-12T04:53:40.000Z</updated>
+  <updated>2017-06-14T05:40:54.000Z</updated>
   <id>blog.geekerhua.com/</id>
   
   <author>
@@ -14,6 +14,59 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Python枚举的实现</title>
+    <link href="blog.geekerhua.com/2017/06/14/Python_enum/"/>
+    <id>blog.geekerhua.com/2017/06/14/Python_enum/</id>
+    <published>2017-06-14T05:05:26.000Z</published>
+    <updated>2017-06-14T05:40:54.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>在Python3.4版本之前，默认是没有枚举的，我们经常使用的Python2.x的版本，如果想实现枚举的功能该怎么办呢？代码是人写出来的，这难不倒我们的，因此利用动态语言的特性，就出现了下面的众多中的枚举实现。</p>
+<h2 id="枚举的实现"><a href="#枚举的实现" class="headerlink" title="枚举的实现"></a>枚举的实现</h2><h3 id="1-使用类属性"><a href="#1-使用类属性" class="headerlink" title="1.使用类属性"></a>1.使用类属性</h3><figure class="highlight python"><table><tr><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="class"><span class="keyword">class</span> <span class="title">Seasons</span>:</span></div><div class="line"><span class="meta">... </span>	Spring = <span class="number">0</span></div><div class="line"><span class="meta">... </span>	Summer = <span class="number">1</span></div><div class="line"><span class="meta">... </span>	Autumn = <span class="number">2</span></div><div class="line"><span class="meta">... </span>	Winter = <span class="number">3</span></div><div class="line">...</div><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">print</span> Seasons.Spring</div></pre></td></tr></table></figure>
+<p>上边的例子可以简化成：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="class"><span class="keyword">class</span> <span class="title">Seasons</span>:</span></div><div class="line"><span class="meta">... </span>	Spring, Summer, Autumn, Winter = range(<span class="number">4</span>)</div></pre></td></tr></table></figure>
+<h3 id="2-借助函数"><a href="#2-借助函数" class="headerlink" title="2.借助函数"></a>2.借助函数</h3><figure class="highlight python"><table><tr><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="function"><span class="keyword">def</span> <span class="title">enum</span><span class="params">(*posarg, **keysarg)</span>:</span></div><div class="line"><span class="meta">... </span>	<span class="keyword">return</span> type(<span class="string">"Enum"</span>, (object,), dict(zip(posarg, xrange(len(posarg))), **keysarg))</div><div class="line">...	</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>Seasons = enum(<span class="string">"Spring"</span>, <span class="string">"Summer"</span>, <span class="string">"Autumn"</span>, <span class="string">"Wunter"</span>=<span class="number">1</span>)</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>Seasons.Spring</div><div class="line"><span class="number">0</span></div></pre></td></tr></table></figure>
+<h3 id="3-使用collections-namedtuple"><a href="#3-使用collections-namedtuple" class="headerlink" title="3.使用collections.namedtuple"></a>3.使用<code>collections.namedtuple</code></h3><figure class="highlight python"><table><tr><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>Seasons = namedtuple(<span class="string">'Seasons'</span>, <span class="string">'Spring Summer Autumn Winter'</span>)._make(range(<span class="number">4</span>))</div><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">print</span> Seasons.Spring</div><div class="line"><span class="number">0</span></div></pre></td></tr></table></figure>
+<p>Python中枚举的替代方法远不止这些，就不一一列举了。但这些替代实现有哪些不合理的地方呢？</p>
+<h2 id="枚举实现的缺陷"><a href="#枚举实现的缺陷" class="headerlink" title="枚举实现的缺陷"></a>枚举实现的缺陷</h2><ul>
+<li>允许枚举值重复。以<code>collections.namedtuple</code>为例，下面的例子中枚举值<code>Spring</code>与<code>Autumn</code>相等，但却不会提示任何错误。</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>Seasons._replace(Spring = <span class="number">2</span>)</div><div class="line">Seasons(Spring = <span class="number">2</span>, Summer = <span class="number">1</span>, Autumn = <span class="number">2</span>, Winter = <span class="number">3</span>) <span class="comment"># Spring和Autumn的值相等，都为2</span></div></pre></td></tr></table></figure>
+<ul>
+<li>支持无意义的操作。</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>Seasons.Summer + Seasons.Autumn == Seasons.Winter</div><div class="line"><span class="keyword">True</span> <span class="comment"># Seasons.Summer+Seasons.Autumn相加无任何实际意义</span></div></pre></td></tr></table></figure>
+<h2 id="2-7后的替代方案–flufl-enum模块-第三方"><a href="#2-7后的替代方案–flufl-enum模块-第三方" class="headerlink" title="2.7后的替代方案–flufl.enum模块(第三方)"></a>2.7后的替代方案–<code>flufl.enum</code>模块(第三方)</h2><blockquote>
+<p>它包含两种枚举类：</p>
+<ul>
+<li>一种是Enum，只要保证枚举值唯一即可，对值的类型没有限制；</li>
+<li>另一种是IntEnum，其枚举值为int型</li>
+</ul>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="code"><pre><div class="line"><span class="keyword">from</span> flufl.enum <span class="keyword">import</span> Enum</div><div class="line"></div><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="class"><span class="keyword">class</span> <span class="title">Seasons</span><span class="params">(Enum)</span>:</span></div><div class="line">...:     Spring = <span class="string">'Spring'</span></div><div class="line">...:     Summer = <span class="string">'2'</span></div><div class="line">...:     Autumn = <span class="number">3</span></div><div class="line">...:     Winter = <span class="number">4</span></div><div class="line">...:</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>Seasons.Autumn</div><div class="line"><span class="number">3</span></div><div class="line">&gt;&gt;&gt;</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>Weak = Enum(<span class="string">'Weak'</span>, <span class="string">'Monday Wednesday'</span>)</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>Weak.Monday</div><div class="line"><span class="number">2</span></div></pre></td></tr></table></figure>
+<p>可使用<code>value</code>来获取枚举元素的值</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>Weak.Monday</div><div class="line"><span class="number">0</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>getattr(Weak, <span class="string">'Wedsday'</span>).value</div><div class="line"><span class="number">1</span></div></pre></td></tr></table></figure>
+<p><code>flufl.enum</code>不支持枚举元素的比较。</p>
+<blockquote>
+<p><a href="http://Pythonhosted.org/flufl.enum/docs/using.html" target="_blank" rel="external">更多参考</a></p>
+</blockquote>
+<h2 id="迟来的官方支持–Enum-gt-3-4"><a href="#迟来的官方支持–Enum-gt-3-4" class="headerlink" title="迟来的官方支持–Enum(&gt;=3.4)"></a>迟来的官方支持–Enum(&gt;=3.4)</h2><p>直到Python3.4版本，官方才加入了枚举Enum。其实现主要参考了<code>flufl.enum</code>。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;在Python3.4版本之前，默认是没有枚举的，我们经常使用的Python2.x的版本，如果想实现枚举的功能该怎么办呢？代码是人写出来的，这难不倒我们的，因此利用动态语言的特性，就出现了下面的众多中的枚举实现。&lt;/p&gt;
+&lt;h2 id=&quot;枚举的实现&quot;&gt;&lt;a href=&quot;#枚举
+    
+    </summary>
+    
+      <category term="Python" scheme="blog.geekerhua.com/categories/Python/"/>
+    
+    
+      <category term="Python" scheme="blog.geekerhua.com/tags/Python/"/>
+    
+  </entry>
   
   <entry>
     <title>Python常量的正确写法</title>
