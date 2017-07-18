@@ -8,7 +8,7 @@ cache: # 设置缓存
   - $HOME/.m2
 
 before_install:
-  - npm install hexo-cli
+  - npm install hexo-cli -g
   - hexo init blog
   - cd blog
 
