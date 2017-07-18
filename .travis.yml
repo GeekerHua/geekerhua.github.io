@@ -5,8 +5,7 @@ node_js: stable  #设置相应的版本
 cache: # 设置缓存
   directories:
   - blog/node_modules
-  - $HOME/.m2
-
+  
 before_install:
   - npm install hexo-cli -g
   - hexo init blog
