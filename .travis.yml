@@ -8,11 +8,11 @@ cache: # 设置缓存
   
 before_install:
   - npm install hexo-cli -g
-  - mv -r blog/node_modules node_modules
+  - mv blog/node_modules node_modules
   - rmdir blog
   - hexo init blog
   - cd blog
-  - mv -r node_modules blog/node_modules 
+  - mv node_modules blog/node_modules 
 
 install:
   - npm install  #安装hexo及插件
