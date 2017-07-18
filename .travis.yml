@@ -1,0 +1,41 @@
+language: node_js  #设置语言
+
+node_js: stable  #设置相应的版本
+
+before_install:
+  - npm install hexo-cli -g
+  - hexo init blog
+  - cd blog
+
+install:
+  - npm install  #安装hexo及插件
+
+script:
+  - git clone https://github.com/GeekerHua/jacman themes/jacman
+  - mkdir source/about
+  - mkdir source/categories
+  - mkdir source/tags
+  - rm -r source/_posts
+  - cp -r ../_posts ./source/_posts
+  - cp -f ../hexo/_config.yml _config.yml
+  - cp ../hexo/about.md ./source/about/index.md
+  - cp ../hexo/categories.md ./source/categories/index.md
+  - cp ../hexo/tags.md ./source/tags/index.md
+  - cp ../hexo/404.html ./source/404.html
+  - echo "${BAIDU_VERIFY}"" > ./source/baidu_verify_${BAIDU_VERIFY}.html
+  - echo 'google-site-verification: ${GOOGLE_VERIFY}.html' > ./source/${GOOGLE_VERIFY}.html
+  - echo '${CNAME}' > ./source/CNAME
+  - hexo g
+
+after_script:
+  - cd ./public
+  - git init
+  - git config user.name "travis"  #修改name
+  - git config user.email "travis@geekerhua.com"  #修改email
+  - git add .
+  - git commit -m "update"
+  - git push --force --quiet "https://${GH_TOKEN}@${GH_REF}" master:gh-pages  #GH_TOKEN是在Travis中配置token的名称
+
+branches:
+  only:
+    - master  #只监测master分支
