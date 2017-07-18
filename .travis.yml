@@ -23,7 +23,7 @@ script:
   - cp ../hexo/tags.md ./source/tags/index.md
   - cp ../hexo/404.html ./source/404.html
   - echo "${BAIDU_VERIFY}" > ./source/baidu_verify_${BAIDU_VERIFY}.html
-  - echo "google-site-verification\: ${GOOGLE_VERIFY}.html" > ./source/${GOOGLE_VERIFY}.html
+  - echo "google-site-verification:${GOOGLE_VERIFY}.html" > ./source/${GOOGLE_VERIFY}.html
   - echo "${CNAME}" > ./source/CNAME
   - hexo g
 
