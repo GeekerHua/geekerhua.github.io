@@ -12,7 +12,7 @@ before_install:
   - rmdir blog
   - hexo init blog
   - cd blog
-  - mv node_modules blog/node_modules 
+  - mv ../node_modules node_modules 
 
 install:
   - npm install  #安装hexo及插件
