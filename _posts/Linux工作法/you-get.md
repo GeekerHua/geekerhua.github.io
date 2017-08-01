@@ -1,4 +1,11 @@
-you-get可以下载多个网站的视频文件，类似于mac下的软件`Downie`。
+---
+title: you-get
+date: 2017-08-01 16:12:28
+tags: Soft
+categories: Linux工作法
+---
+
+> you-get可以下载多个网站的视频文件，类似于mac下的软件`Downie`。
 
 ## 安装
 使用homebrew进行安装

@@ -1,5 +1,11 @@
-# GitBook
-gitBook是一个基于markdown和git的书写工具，更加适合书写电子书，因为基于markdown，所以具有良好的书写体验与阅读体验，还能轻松导出pdf、epub、mobi格式，还能以网页形式在线阅读。基于git进行管理能够对内容进行版本管理，进行共享等。
+---
+title: GitBook
+date: 2017-08-01 16:10:16
+tags: Soft
+categories: Linux工作法
+---
+
+> gitBook是一个基于markdown和git的书写工具，更加适合书写电子书，因为基于markdown，所以具有良好的书写体验与阅读体验，还能轻松导出pdf、epub、mobi格式，还能以网页形式在线阅读。基于git进行管理能够对内容进行版本管理，进行共享等。
 
 ## 安装cli命令行工具
 GitBook cli工具是基于node写的，因此需要使用node进行安装。node安装方法自行搜索。

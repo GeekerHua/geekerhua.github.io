@@ -1,4 +1,9 @@
-# SSH介绍
+---
+title: SSH
+date: 2017-08-01 16:11:54
+tags: Linux
+categories: Linux工作法
+---
 
 ## 安装
 很多系统自带有，如果没有，使用以下命令安装

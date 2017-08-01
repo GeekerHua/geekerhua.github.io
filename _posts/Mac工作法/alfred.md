@@ -1,4 +1,9 @@
-# Alfred效率神器，没有之一
+---
+title: Alfred：效率神器，没有之一
+date: 2017-08-01 15:56:38
+tags: Soft
+categories: Mac工作法
+---
 
 Alfred被称为Mac中的效率神器，没有之一，一点都不为过。MalTalk作者也多次推荐这款软件，少数派也有很多关于这个软件的教程及分享。可见这个软件的确有它的神器之处。
 
@@ -23,7 +28,10 @@ Mac下自带一个功能强大的搜索工具Spotlight，能够实现全局文�
     |Single Licence:单用户许可   |`£19`|
     |Family Licence:家庭许可    |`£29`|
     |Mega Licence:单用户永久许可 | `£39`|
-- 平台：仅支持MacOS平台，Windows平台也有类似的软件[Wox](https://github.com/Wox-launcher/Wox),[Github](http://www.getwox.com),[参考文章](http://sspai.com/33460)。
+- 平台：仅支持MacOS平台，Windows平台也有类似的软件
+    - [Wox](https://github.com/Wox-launcher/Wox)
+    - [Github](http://www.getwox.com)
+    - [参考文章](http://sspai.com/33460)。
 - 版本：最新版本为3.3。
 
 ## 最优化设置
@@ -79,6 +87,6 @@ Mac下自带一个功能强大的搜索工具Spotlight，能够实现全局文�
 - [减少点击跳转：5 款提高操作效率的 Alfred 扩展推荐](http://sspai.com/33279)
 - [从零开始学习 Alfred：基础功能及设置](http://sspai.com/32979)
 
-还有很多
+还有很多……
 
 

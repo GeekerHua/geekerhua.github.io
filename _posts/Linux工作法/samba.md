@@ -1,4 +1,10 @@
-# samba
+---
+title: samba
+date: 2017-08-01 16:12:02
+tags: Linux
+categories: Linux工作法
+---
+
 ## 安装(如果需要)
 ```bash
 $ sudo apt-get install samba samba-common

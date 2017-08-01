@@ -1,4 +1,9 @@
-# BetterTouchTool最好的触控板增强工具，成就无限可能
+---
+title: BetterTouchTool最好的触控板增强工具，成就无限可能
+date: 2017-08-01 16:00:49
+tags: Soft
+categories: Mac工作法
+---
 
 众所周知，Mac的触控板是所有电脑中体验最好的，这块触控板能够识别5根手指，并且操作顺滑，最新的触控板采用压力传感器，能够模拟出多级触控反馈，这让触控板的功能更加好玩。
 
@@ -31,3 +36,4 @@
 
 
 ## 相关资源
+[Mac 触摸板增强神器：BetterTouchTool 上手指南](https://sspai.com/post/27094)

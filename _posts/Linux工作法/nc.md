@@ -1,3 +1,10 @@
+---
+title: nc
+date: 2017-08-01 16:12:07
+tags: Linux
+categories: Linux工作法
+---
+
 # nc——netcat
 - server: nc -l `port` < `document`
 - client: nc -n `ip` `port` > `document`

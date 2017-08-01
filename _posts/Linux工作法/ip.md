@@ -1,5 +1,11 @@
-# IP绑定
+---
+title: IP
+date: 2017-08-01 16:12:12
+tags: Linux
+categories: Linux工作法
+---
 
+# IP绑定
 ## 第一种方式静态修改.
  
 进入 /etc/network/ 目录下.修改interfaces文件.
