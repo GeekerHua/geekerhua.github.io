@@ -1,3 +1,10 @@
+---
+title: HomeBrew
+date: 2017-08-01 16:16:45
+tags: Soft
+categories: Mac工作法
+---
+
 mac是类Unix系统，拥有众多的终端工具。而类Unix系统都有属于它自己的终端工具管理软件。
 
 系统 | 工具
