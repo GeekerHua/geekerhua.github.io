@@ -1,6 +1,6 @@
 ---
 title: Alfred手记二：管理我的GitBook电子书
-date: 2017-08-01 16:38:43
+date: 2017-08-02 10:29:55
 tags: Alfred
 categories: 效率
 ---
