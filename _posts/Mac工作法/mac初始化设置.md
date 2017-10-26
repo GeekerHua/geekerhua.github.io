@@ -79,3 +79,27 @@ defaults write com.apple.finder AppleShowAllFiles -bool false
 ```bash
 sudo spctl --master-disable
 ```
+
+---
+## 安装xcode工具
+* xcode-select --install
+---
+## mac os 11.11关闭SIP(System Integrity Protection (SIP) 系统完整性保护)
+* 安装 TotalFinder 必须使用安装U盘启动进入安装界面
+* 打开终端，输入如下命令：`csrutil enable --without debug` ，然后回车，然后reboot重启
+
+---
+## Mac的启动组合键
+
+启动期间按住	| 描述
+------ | -----
+⇧	|以安全模式启动
+Option(⌥)	|启动进入启动管理器，从中选取其他启动磁盘，若可用
+C	|从可用CD、DVD或USB启动
+D(Option+D)   |从内建的Apple Hardware Test或Apple Diagnostics使用工具启动
+Option(⌥)+Command(⌘)+P+R	|重置NVRAM或PRAM
+Command(⌘)+R	|从内建的mac OS恢复系统服务
+Command(⌘)+S	|以单用户模式启动
+X	|正常从非macOS移动磁盘启动的情况下，会以macOS启动
+T	|以目标磁盘模式启动
+Command(⌘)	|以详细模式启动

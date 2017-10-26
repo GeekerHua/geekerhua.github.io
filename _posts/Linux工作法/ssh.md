@@ -22,6 +22,17 @@ Server:
 - 将客户端的id_rsa.pub添加到服务端.ssh/authorized_keys文件中。
 - 可以免密登录了
 
+## 快速设置
+
+```bash
+$ # 生成ssh key
+$ ssh-keygen
+$ # 拷贝ssh key到远程主机，ssh的时候就不需要输入密码了
+$ ssh-copy-id remoteuser@remoteserver
+$ # ssh的时候不会提示是否保存key
+$ ssh-keyscan remote_servers >> ~/.ssh/known_hosts
+```
+
 ## 基于SSH的服务
 
 ### SCP
