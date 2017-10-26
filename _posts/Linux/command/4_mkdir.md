@@ -13,9 +13,9 @@ categories: Linux命令
 
 缩略参数 | 完整参数  | 描述 | 例子
 --- | --- | --- | ---
--m | --mode=模式 | 设定权限<模式> (类似 chmod)，而不是 rwxrwxrwx 减 umask | `mkdir -m 777 test` 创建权限为777的test目录
--p | --parents | 可以是一个路径名称。此时若路径中的某些目录尚不存在,加上此选项后,系统将自动建立好那些尚不存在的目录,即一次可以建立多个目录; | `mkdir -p test1/test2` 递归创建test2目录
--v | --verbose | 每次创建新目录都显示信息
+| -m | --mode=模式 | 设定权限<模式> (类似 chmod)，而不是 rwxrwxrwx 减 umask | `mkdir -m 777 test` 创建权限为777的test目录
+| -p | --parents | 可以是一个路径名称。此时若路径中的某些目录尚不存在,加上此选项后,系统将自动建立好那些尚不存在的目录,即一次可以建立多个目录; | `mkdir -p test1/test2` 递归创建test2目录
+| -v | --verbose | 每次创建新目录都显示信息
 | |  --help  | 显示此帮助信息并退出
 | |  --version | 输出版本信息并退出
 
