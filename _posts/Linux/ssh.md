@@ -66,19 +66,6 @@ ssh使用非对称加密对传输进行加密，因此在传输开始前需要�
 6. Client收到Server的输入密码请求，使用Server的公钥进行解密，然后使用Client的公钥对密码加密并发送。
 7. Server端收到Client的加密信息，使用Client的公钥进行解密，并对密码进行比对，成功则完成登录。
 
-```sequence
-Title:ssh连接建立的过程
-Client->Server: 1. 连接请求
-Server->Client: 2. server的pub_key
-Note left of Client: 3. 添加到\n`~/.ssh/known_hosts`中
-Client->Server: 4. client的pub_key
-Note right of Server:  保存client的pub_key,\n并对用户有效性进行验证
-Server->Client: 5. 使用Server私钥加密\n“请求输入密码”\n(加密连接已建立)
-Note left of Client: 使用Server公钥解密
-Client->Server: 6. Client私钥加密，发送密码
-Note right of Server: 7. 使用Client公钥解密,\n验证密码，完成登录。
-```
-
 从上述过程可知，在用户信息(包括密码)传输之前，加密通道已经建立完成了。因此之后的操作都是安全的。唯一可能出现安全问题的是传输公钥的过程。但即使被恶意篡改了，由于Client和Server使用的并不是一套加密系统，也只能Client连接伪Server而不能反过来让伪Server连接Client。因此ssh连接还是非常安全可靠的。
 
 ## 2. 三套加密系统
