@@ -25,6 +25,7 @@ var/lib/samba/private/{passdb.tdb,secrets.tdb} | 管理Samba的使用者帐号/�
 
 ### 常用指令档
 指令 | 说明
+--- | ----
 /usr/sbin/{smbd,nmbd} | 伺服器功能，就是最重要的权限管理(smbd)以及NetBIOS name查询(nmbd)两个重要的服务程式；
 /usr/bin/{tdbdump,tdbtool} | 伺服器功能，在Samba 3.0以后的版本中，使用者的帐号与密码参数已经转为使用资料库了！Samba使用的资料库名称为TDB (Trivial DataBase)。既然是使用资料库，当然要使用资料库的控制指令来处理啰。tdbdump可以察看资料库的内容，tdbtool则可以进入资料库操作介面直接手动修改帐密参数。不过，你得要安装tdb-tools这个软体才行；
 /usr/bin/smbstatus | 伺服器功能，可以列出目前Samba的连线状况，包括每一条Samba连线的PID,分享的资源，使用的用户来源等等，让你轻松管理Samba啦；
