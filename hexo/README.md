@@ -26,3 +26,4 @@
 - `_posts`文件夹下的文章为发布的博客文章，
 - hexo文件夹下的文件是hexo所需要的个性化文件，比如`404.html`,`_config.yml`等。
 - `.travis.yml`为travis的配置文件
+

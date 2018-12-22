@@ -82,9 +82,13 @@ sudo spctl --master-disable
 
 ---
 ## 安装xcode工具
-* xcode-select --install
+```shell
+xcode-select --install
+```
+
 ---
 ## mac os 11.11关闭SIP(System Integrity Protection (SIP) 系统完整性保护)
+
 * 安装 TotalFinder 必须使用安装U盘启动进入安装界面
 * 打开终端，输入如下命令：`csrutil enable --without debug` ，然后回车，然后reboot重启
 
