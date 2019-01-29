@@ -34,6 +34,7 @@ script:
   - echo "${CNAME}" > ./source/CNAME
   - hexo g
   - cp ../hexo/README.md ./source/README.md
+  - cp ../hexo/README.md ./README.md
 
 after_script:
   - cd ./public
