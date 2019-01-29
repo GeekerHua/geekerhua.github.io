@@ -29,11 +29,11 @@ script:
   - cp ../hexo/categories.md ./source/categories/index.md
   - cp ../hexo/tags.md ./source/tags/index.md
   - cp ../hexo/404.html ./source/404.html
-  - cp ../hexo/README.md ./source/README.md
   - echo "${BAIDU_VERIFY}" > ./source/baidu_verify_${BAIDU_VERIFY}.html
   - echo "google-site-verification:${GOOGLE_VERIFY}.html" > ./source/${GOOGLE_VERIFY}.html
   - echo "${CNAME}" > ./source/CNAME
   - hexo g
+  - cp ../hexo/README.md ./source/README.md
 
 after_script:
   - cd ./public
