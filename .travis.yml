@@ -33,10 +33,9 @@ script:
   - echo "google-site-verification:${GOOGLE_VERIFY}.html" > ./source/${GOOGLE_VERIFY}.html
   - echo "${CNAME}" > ./source/CNAME
   - hexo g
-  - cp ../hexo/README.md ./source/README.md
-  - cp ./README.md ./public/README.md
 
 after_script:
+  - cp ../README.md ./public/README.md
   - cd ./public
   - git init
   - git config user.name "travis"  #修改name
