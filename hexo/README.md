@@ -1,4 +1,5 @@
-# 我的个人blog及笔记系统
+# 我的个人blog及笔记系统 
+[![Build Status](https://travis-ci.com/GeekerHua/geekerhua.github.io.svg?branch=note)](https://travis-ci.com/GeekerHua/geekerhua.github.io)
 
 > 这是我的个人blog及笔记系统的代码仓库
 
