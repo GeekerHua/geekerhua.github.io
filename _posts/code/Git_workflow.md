@@ -10,22 +10,24 @@ SVN与Git（集中式VS分布式）
 
 - 集中式
 
-![](http://7xtibb.com2.z0.glb.qiniucdn.com/2016-06-06-Git_集中式.jpeg)
+![](http://img.geekerhua.com/blog/2016-06-06-Git_集中式.jpeg)
 
 - 分布式
 
-![](http://7xtibb.com2.z0.glb.qiniucdn.com/2016-06-06-Git_分布式.jpeg)
+![](http://img.geekerhua.com/2016-06-06-Git_分布式.jpeg)
 
 #### 工作区
+
 > 电脑中能够看到的目录就是工作区。
 
 #### 版本库
+
 >工作区有一个隐藏目录`.git`，这个不算工作区，而是Git的版本库。
 
 - Git的版本库里存了很多东西，其中最重要的就是称为stage（或者叫index）的暂存区，还有Git为我们自动创建的第一个分支`master`，以及指向`master`的一个指针叫HEAD。
 
 
-![](http://7xtibb.com2.z0.glb.qiniucdn.com/2016-06-06-Git_partition_map.jpeg)
+![](http://img.geekerhua.com/2016-06-06-Git_partition_map.jpeg)
 
 - git add -> 将变化提交到了暂存区
 - git commit -> 将暂存区的所有修改都提交到分支，并清空暂存区

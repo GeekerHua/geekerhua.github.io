@@ -25,6 +25,7 @@ ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/
 * Homebrew下载的package存放的路径在哪里？
   * `/Library/Caches/Homebrew/`
   
+
 Homebrew 可以很方便的安装需要的套件,方法如下：$ `brew install wget`。是不是很简单？
 
 Homebrew 使 OS X 更完美。使用 gem 来安装 gems、用 brew 来搞定那些依赖包。
@@ -151,11 +152,10 @@ rvm remove 2.1.4
     - 利用终端进入新项目的根路径
     - 新建Podfile文件: vim Podfile, 在这个文件中描述需要依赖的第三方框架
      ```
-platform :ios, '8.0'
-pod 'UIView+AutoLayout', '~> 2.0'
-pod 'MJExtension'
-```
-
+    platform :ios, '8.0'
+    pod 'UIView+AutoLayout', '~> 2.0'
+    pod 'MJExtension'
+     ```
 - 5.解析Podfile文件
     - 建议先更新远程的框架信息: pod setup
     - 开始解析Podfile文件: pod install (可能需要等待较长时间)
@@ -181,6 +181,7 @@ pod 'MJExtension'
 
     - :set helplang=cn 回车之后 :help 就是中文的help。
 - 在解包之后的文件夹中使用以下命令可以卸载vim中文文档：
+
     - $sudo ./vimcdoc.sh -u
 
 - - - - -
@@ -190,7 +191,7 @@ pod 'MJExtension'
 
 - 使用`control` + `~`打开控制台，将从官网[复制代码](https://sublime.wbond.net/installation#st3)粘贴到控制台并执行。
 - 安装代码如下
-		import urllib.request,os,hashlib; h = '2915d1851351e5ee549c20394736b442' + '8bc59f460fa1548d1514676163dafc88'; pf = 'Package Control.sublime-package'; ipp = sublime.installed\_packages\_path(); urllib.request.install\_opener( urllib.request.build\_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)
+   import urllib.request,os,hashlib; h = '2915d1851351e5ee549c20394736b442' + '8bc59f460fa1548d1514676163dafc88'; pf = 'Package Control.sublime-package'; ipp = sublime.installed\_packages\_path(); urllib.request.install\_opener( urllib.request.build\_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)
 ### Package Control 常用命令
 - 激活`cmd+shift+P`
 - 安装插件 -\>  Package Control: Install Package xxx
@@ -204,14 +205,13 @@ pod 'MJExtension'
 - [emmet](http://docs.emmet.io)
     > [速查表](http://docs.emmet.io/cheat-sheet/)
     > [官方文档](http://docs.emmet.io/)
-    
-	- 安装
-		- 按Ctrl+Shift+P命令板
-		- 输入install然后选择install Package，然后输入emmet找到 Emmet Css Snippets，点击就可以自动完成安装。
+
+    - 安装
+      - 按Ctrl+Shift+P命令板
+      - 输入install然后选择install Package，然后输入emmet找到 Emmet Css Snippets，点击就可以自动完成安装。
 - Better Completion
-	- 自动补全Bootstrap 、JQuery、Less等
+
+  - 自动补全Bootstrap 、JQuery、Less等
 ### Python
 - SubLimener
     - 编码规范
-
-
