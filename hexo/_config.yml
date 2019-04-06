@@ -71,6 +71,7 @@ deploy:
     type: git
     repo:
       github: git@github.com:GeekerHua/geekerhua.github.io.git
+      tencent: git@git.dev.tencent.com:geekerhua/geekerhua.git
 feed:
     type: atom
     path: atom.xml
