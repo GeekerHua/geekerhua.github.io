@@ -92,3 +92,8 @@ tag_generator:
 
 category_generator: 
     per_page: 10 ##分类页面默认10篇文章，如果值为0不分页
+
+sitemap:
+    path: sitemap.xml
+baidusitemap:
+    path: baidusitemap.xml

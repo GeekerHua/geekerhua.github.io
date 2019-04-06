@@ -16,6 +16,8 @@ before_install:
 
 install:
   - npm install  #安装hexo及插件
+  - npm install hexo-generator-sitemap
+  - npm install hexo-generator-baidu-sitemap
 
 script:
   - git clone https://github.com/GeekerHua/jacman themes/jacman
