@@ -6,7 +6,8 @@ categories: 效率
 ---
 # 效果展示
 先来秀一张布置好的桌面图，怎么样是不是很清爽简约啊！
-![2017-03-15 19_00_17](http://img.geekerhua.com/blog/alfred5/2017-03-15%2019_00_17.gif)
+![2017-03-15 19_00_17](assets/2017-03-15%2019_00_17.gif)
+
 ## 资源下载
 - Alfred [官网链接](https://www.alfredapp.com)
     - Minimal-TODO [github下载](https://github.com/GeekerHua/alfred-Minimal-TODO/releases)
@@ -14,8 +15,8 @@ categories: 效率
     - 插件商店  [点击访问](http://tracesof.net/uebersicht-widgets/)
     - TODO [点击下载](https://raw.githubusercontent.com/illuminati945/ToDo/master/ToDo.widget.zip)
 
-
 ## 急速教程
+
 - 用到两款软件，`Alfred`和`Übersicht`。
 - 外加两个插件，`Übersicht`下的`ToDo`和Alfred下的`Minimal-TODO`。
 
@@ -25,9 +26,9 @@ categories: 效率
 
 - 在`Übersicht`的桌面插件上会已灰色文字显示，并添加中划线。
 - 在`Alfred`的插件中，可以对该文本进行操作，获取所有TODO，添加TODO，删除TODO，标记为完成状态，重置为未完成状态等操作。
-![](http://img.geekerhua.com/blog/alfred5/14896526072534.jpg)
-![](http://img.geekerhua.com/blog/alfred5/14896526569327.jpg)
-![](http://img.geekerhua.com/blog/alfred5/14896527156078.jpg)
+![](assets/14896526072534-4564461.jpg)
+![](assets/14896526569327.jpg)
+![](assets/14896527156078.jpg)
 
 `Minimal-TODO`是一个极简todo list工具，todo任务文件放在指定的路径中，例如"~/Documents/Alfred/todos/todo.txt"。
 
@@ -42,18 +43,17 @@ categories: 效率
 #### 1.  `ToDo`插件的列表路径，无默认路径
 `Übersicht`的`ToDo`插件默认没有设置文件路径，需要用户自己去设置，为了和另一款软件`Alfred`进行无缝协作，建议将文件路径设置在用户Document文件夹下。
 #### 2. `ToDo`的BUG处理
-![](http://img.geekerhua.com/blog/alfred5/14895760187086.jpg)
+![](assets/14895760187086.jpg)
 默认下载下来的代码有些bug，会导致对于完成的TODO，会显示两遍，一遍是未完成的白色状态，一遍是完成的灰色状态。需要对代码进行修复。
-![](http://img.geekerhua.com/blog/alfred5/14895761894277.jpg)
+![](assets/14895761894277.jpg)
 
 #### 3. `Minimal-TODO`插件的列表路径，有默认路径
 `Minimal-TODO`插件的默认路径推荐设置为`~/Documents/Alfred/todos/todo.txt`。你也可以根据需要进行设置，设置方法如下。
 
-
 ---
 ## 自定义设置
 `ToDo`的主题自定义，有序无序列表的设置。默认是`ul`无序列表，改为`ol`即为有序列表
-![](http://img.geekerhua.com/blog/alfred5/14896556515833.jpg)
+![](assets/14896556515833.jpg)
 将如图的ol改为ul，即为无序列表。
 
 ## 关于`Minimal-TODO`workflow的开发过程

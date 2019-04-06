@@ -8,10 +8,10 @@ categories: 效率
 使用Alfred的workflow管理所有的git仓库，简单又快捷，一起行动吧！
 
 最终效果图：
-![201782111543](http://img.geekerhua.com/blog/Alfred3-git/201782111543.png)
+![201782111543](assets/201782111543.png)
 
 实现的功能如下：
-![201782111625](http://img.geekerhua.com/blog/Alfred3-git/201782111625.png)
+![201782111625](assets/201782111625.png)
 可见，常用的功能都实现了。
 
 用到的组件如下：
@@ -25,8 +25,8 @@ categories: 效率
 
 ## 1.显示本地所有git仓库
 1. 这里需要用到`File Filter`组件，该组件能够过滤出制定目录下的制定格式文件，当然也支持过滤文件夹，我们就用它来只显示制定路径下的文件夹。该组件设置如下图：
-![201782111946](http://img.geekerhua.com/blog/Alfred3-git/201782111946.png)
-![201782111955](http://img.geekerhua.com/blog/Alfred3-git/201782111955.png)
+![201782111946](assets/201782111946.png)
+![201782111955](assets/201782111955.png)
 - 在`Basic Setup`选项卡中设置想要显示的文件类型，这里我们只显示文件夹。
 - 在`Search Scope`选项卡中选择需要搜索的文件夹，因为我的代码都是放到一个文件夹下的，因此只需要添加`~/Dode`文件夹即可。
 
@@ -36,11 +36,11 @@ categories: 效率
 - 使用`List Filter`组件显示支持操作
 
 这里我们选择如下图6中操作，后四种是git的基础命令，前两个是组合命令。为了方便简单，`Arg`也是列表项的标题，同时也是git的命令名称。
-![201782113124](http://img.geekerhua.com/blog/Alfred3-git/201782113124.png)
+![201782113124](assets/201782113124.png)
 
 - 然后用`action`变量进行保存
 - 接着要进行操作分发
-![201782113615](http://img.geekerhua.com/blog/Alfred3-git/201782113615.png)
+![201782113615](assets/201782113615.png)
 
 上边三种操作都是单一基础命令(push/pull/add .)，剩下三个操作都涉及到`commit`命令，需要有`commit description`。
 
@@ -72,7 +72,7 @@ fi
 ## 3. clone命令
 为了更方便的clone仓库，我们设想刚刚从github上复制下来了仓库地址，此时该地址保存在剪切板中，那最简单快速的clone方式就是激活Alfred，键入一个命令，自动clone剪切板中的仓库地址到制定路径。
 
-![20178212434](http://img.geekerhua.com/blog/Alfred3-git/20178212434.png)
+![20178212434](assets/20178212434.png)
 
 - `Run Script`脚本为
 

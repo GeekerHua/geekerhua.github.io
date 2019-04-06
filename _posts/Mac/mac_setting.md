@@ -34,19 +34,19 @@ categories: Mac工作法
 ## 按键映射
 ### f1-f12及功能键切换
 在系统偏好设置中，选择`键盘`，在键盘下方会有F1-F12按键的作用，默认是mac的特殊功能，勾选则转换为F1-F12功能键。推荐不勾选，mac不像Windows对F1-F12依赖那么严重。几乎很少有会用到的情况，相反调节屏幕亮度、音量等却会经常用到。  
-![mac_key1](http://img.geekerhua.com/blog/alfred1/mac_key1.jpg)
+![mac_key1](assets/mac_key1.jpg)
 
 ### 修改修饰键
 在`键盘`设置的右下角，能够修改`Caps lock`,`Control`,`Option`,`Command`四个按键的功能，比如vim党就会把`Caps lock`键修改为`Control`的功能。  
-![mac_setting2](http://img.geekerhua.com/blog/alfred1/mac_setting2.jpg)
+![mac_setting2](assets/mac_setting2.jpg)
 
 ---
 ## 网卡顺序
-![mac_setting3](http://img.geekerhua.com/blog/alfred1/mac_setting3.jpg)
+![mac_setting3](assets/mac_setting3.jpg)
 
 ---
 ## 主机名设置
-![2017725101212](http://img.geekerhua.com/blog/mac初始化设置/2017725101212.jpg)
+![2017725101212](assets/2017725101212.jpg)
 
 ---
 ## QuickLook预览
@@ -70,7 +70,7 @@ defaults write com.apple.finder AppleShowAllFiles -bool false
 
 ---
 ## 允许任何软件来源
-![2017725101419](http://img.geekerhua.com/blog/mac初始化设置/2017725101419.jpg)
+![2017725101419](assets/2017725101419.jpg)
 
 在升级到10.12后，系统默认隐藏了任何来源选项，可以通过以下方法让它显示出来。
 

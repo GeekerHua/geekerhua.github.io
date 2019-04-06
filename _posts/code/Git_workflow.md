@@ -10,11 +10,7 @@ SVN与Git（集中式VS分布式）
 
 - 集中式
 
-![](http://img.geekerhua.com/blog/2016-06-06-Git_集中式.jpeg)
-
 - 分布式
-
-![](http://img.geekerhua.com/2016-06-06-Git_分布式.jpeg)
 
 #### 工作区
 
@@ -26,8 +22,6 @@ SVN与Git（集中式VS分布式）
 
 - Git的版本库里存了很多东西，其中最重要的就是称为stage（或者叫index）的暂存区，还有Git为我们自动创建的第一个分支`master`，以及指向`master`的一个指针叫HEAD。
 
-
-![](http://img.geekerhua.com/2016-06-06-Git_partition_map.jpeg)
 
 - git add -> 将变化提交到了暂存区
 - git commit -> 将暂存区的所有修改都提交到分支，并清空暂存区
@@ -87,8 +81,8 @@ $ git push		|将本地修改内容推送到远程代码仓库
 $ git clone url	|将远程代码库克隆到本地
 
 >两篇入门教程，自行学习进修
->[猴子都能懂的Git入门](http://backlogtool.com/git-guide/cn/intro/intro1_1.html)
->[Git教程](http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000)
+>[猴子都能懂的Git入门](https://backlogtool.com/git-guide/cn/intro/intro1_1.html)
+>[Git教程](https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000)
 
 ## [Git工作流](http://blog.jobbole.com/76843/)
 > 如何有效的进行项目流程管理和高效的开发协同。
@@ -96,6 +90,7 @@ $ git clone url	|将远程代码库克隆到本地
 ![](https://raw.githubusercontent.com/quickhack/translations/master/git-workflows-and-tutorials/images/git_workflow.png)
 
 ### [集中式工作流](http://blog.jobbole.com/76847/)
+
 > 使用过SVN与Subversion这类集中式版本控制系统的人刚刚转到分布式版本控制可能会很不熟悉，但Git也能做到像SVN一样的集中式版本控制，即以中央仓库作为项目所有修改的单点实体。
 
 ![](https://raw.githubusercontent.com/quickhack/translations/master/git-workflows-and-tutorials/images/git-workflow-svn.png)
@@ -123,8 +118,8 @@ $ git clone url	|将远程代码库克隆到本地
 > Gitflow工作流通过为功能开发、发布准备和维护分配独立的分支，让发布迭代过程更流畅。严格的分支模型也为大型项目提供了一些非常必要的结构
 ![](https://raw.githubusercontent.com/quickhack/translations/master/git-workflows-and-tutorials/images/git-workflows-gitflow.png)
 
-**[目前iOS开发大体上遵循这种工作流](http://www.jianshu.com/p/7dddf0e9f1ef)**
-![](http://upload-images.jianshu.io/upload_images/296122-5de3d3e00962f911.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+**[目前iOS开发大体上遵循这种工作流](https://www.jianshu.com/p/7dddf0e9f1ef)**
+![](https://upload-images.jianshu.io/upload_images/296122-5de3d3e00962f911.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 ### [Forking工作流](http://blog.jobbole.com/76861/)
 > Forking工作流是分布式工作流，充分利用了Git在分支和克隆上的优势。可以安全可靠地管理大团队的开发者（developer），并能接受不信任贡献者（contributor）的提交。
@@ -180,7 +175,7 @@ $ git log <last release> HEAD --grep feature
 ```
 - 可以直接从commit生成Change log。
 > Change Log 是发布新版本时，用来说明与上一个版本差异的文档。
-![](http://www.ruanyifeng.com/blogimg/asset/2016/bg2016010603.png)
+![bg2016010603.png](assets/bg2016010603.png.png)
 
 ### Commit message 的格式
 
