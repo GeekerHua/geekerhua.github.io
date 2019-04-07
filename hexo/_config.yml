@@ -98,3 +98,5 @@ sitemap:
     path: sitemap.xml
 baidusitemap:
     path: baidusitemap.xml
+
+post_asset_folder: true
