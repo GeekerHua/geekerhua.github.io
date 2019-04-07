@@ -1,7 +1,7 @@
 ---
 title: fio磁盘测试
 date: 2018-07-07 13:56:10
-tags: [BenchMark,io]
+tags: [io]
 categories: BenchMark
 ---
 ## fio 介绍
@@ -71,4 +71,4 @@ fio -filename=/dev/sdc -direct=1 -iodepth=1  -thread -rw=randrw rwmixread=70 -io
 
 ## 3.结果分析
 
-![fio-result](assets/fio-result.png)
+![fio-result](fio/fio-result.png)

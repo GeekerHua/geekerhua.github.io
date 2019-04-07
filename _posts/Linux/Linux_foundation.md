@@ -2,7 +2,7 @@
 title:  Linux命令基础
 date: 2017-01-13 19:58:22
 tags: [Shell, Linux]
-categories: 编程
+categories: Linux满汉全席
 ---
 
 # 基础命令

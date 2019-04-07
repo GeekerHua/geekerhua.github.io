@@ -6,9 +6,9 @@ categories: 效率
 ---
 
 GitBook是基于Git的电子书写作工具，借助于Alfred的工作流可以非常方便的管理GitBook，包括build，export、serve、open等功能。以下是成品图。
-![201782102354](assets/201782102354.png)
+![201782102354](alfred2-GitBook/201782102354.png)
 可以实现如下功能：
-![201781164741](assets/201781164741.png)
+![201781164741](alfred2-GitBook/201781164741.png)
 
 1. 打开本地渲染的静态html文件，如果没有则执行`build`进行渲染。
 2. 安装插件`gitbook install plugin`。
@@ -41,7 +41,7 @@ GitBook是基于Git的电子书写作工具，借助于Alfred的工作流可以�
 
 ## 第一步：获取所有的电子书列表
 首先设置一个环境变量，设置一个路径，该路径下的每一个文件夹都会是一本GitBook电子书的路径。如下：
-![20178292337](assets/20178292337.png)
+![20178292337](alfred2-GitBook/20178292337.png)
 在Finder中的显示如下：
 ![20178292442](assets/20178292442.png)
 

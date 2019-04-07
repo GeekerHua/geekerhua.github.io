@@ -175,7 +175,7 @@ $ git log <last release> HEAD --grep feature
 ```
 - 可以直接从commit生成Change log。
 > Change Log 是发布新版本时，用来说明与上一个版本差异的文档。
-![bg2016010603.png](assets/bg2016010603.png.png)
+![bg2016010603.png](git_workflow/bg2016010603.png.png)
 
 ### Commit message 的格式
 

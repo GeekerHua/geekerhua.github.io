@@ -2,27 +2,28 @@
 title: 终极Shell修行大法-不得不拥有
 date: 2015-12-10 18:57:21
 tags: [Shell, Linux]
-categories: 编程
+categories: Linux满汉全席
 ---
 # [Homebrew](http://brew.sh/index_zh-cn.html)
 > Shell神器,OS X 不可或缺的套件管理器。`Homebrew`较之于`Shell`,好比`CocoaPod`较之于`Xcode`。这么说,`Homebrew`的定位就应该相当明确了吧！
- 
+
 * 安装:
 
  ```ruby
 ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-```
+ ```
 * 卸载:
 
  ```ruby
 ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/uninstall)"
-```
+ ```
 * 更新已安装的package
   * 先更新brew：$ `brew update`
   * 更新所有package：$ `brew upgarde`
 * Homebrew下载的package存放的路径在哪里？
   * `/Library/Caches/Homebrew/`
   
+
 Homebrew 可以很方便的安装需要的套件,方法如下：$ `brew install wget`。是不是很简单？
 
 Homebrew 使 OS X 更完美。使用 gem 来安装 gems、用 brew 来搞定那些依赖包。
@@ -30,8 +31,6 @@ Homebrew 使 OS X 更完美。使用 gem 来安装 gems、用 brew 来搞定那�
 
 > Tips:
 * 如果安装过程中提示错误,提示先卸载,但执行卸载命令又卸载不掉,说明有曾经安装失败过,有残留。解决方式删除`/usr/local`文件夹即可。
-
-![Shell_Homebrew安装失败](http://7xtibb.com2.z0.glb.qiniucdn.com/2016-06-06-Shell_Homebrew安装失败.png)
 
 
 
@@ -56,22 +55,21 @@ Homebrew 使 OS X 更完美。使用 gem 来安装 gems、用 brew 来搞定那�
 * [iTerm 2 && Oh My Zsh博客](http://www.zhihu.com/question/20873070/answer/43230384)
 * [终极shell](http://tieba.baidu.com/p/2818750493)
 
-![Shell_zsh_the](http://7xtibb.com2.z0.glb.qiniucdn.com/2016-06-06-Shell_zsh_them.png)
-
 
 
 * 安装
   1. 下载一个 .oh-my-zsh 配置（推荐有）
-    
+
      ```ruby
      git clone git://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
+     ```
     ```
   2. 创建新配置（备份）
   
      ```ruby  
      cp ~/.zshrc ~/.zshrc.orig
      cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc
-     ```
+    ```
   3. 把 zsh 设置成默认的 shell
     
      ```ruby
@@ -87,11 +85,12 @@ Homebrew 使 OS X 更完美。使用 gem 来安装 gems、用 brew 来搞定那�
      > * [powerline/fonts · GitHub](https://github.com/powerline/fonts)
 
     * 设置命令正确绿色高亮,错误红色高亮
-  
+
      ```ruby
     git clone git://github.com/jimmijj/zsh-syntax-highlighting ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
      ```
     * 然后在~/.zshrc中插件那添加 
+
         * `plugins=(zsh-syntax-highlighting)`
   * 加强zsh的补全功能实现tab自动纠错
     * 把这两句话添加到oh-my-zsh/lib/completion.zsh  (末尾)
@@ -99,7 +98,7 @@ Homebrew 使 OS X 更完美。使用 gem 来安装 gems、用 brew 来搞定那�
      ```ruby
     zstyle ':completion:incremental:*' completer _complete _correct
     zstyle ':completion:*' completer _complete _prefix _correct _prefix _match _approximate
-    ```
+     ```
 
 
 

@@ -2,7 +2,7 @@
 title:  mac开发环境配置
 date: 2017-01-12 20:18:28
 tags: [Shell,环境配置]
-categories: 编程
+categories: Mac工作法
 ---
 
 # [Homebrew](http://brew.sh/index_zh-cn.html)

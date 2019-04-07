@@ -2,7 +2,7 @@
 title: you-get
 date: 2017-08-01 16:12:28
 tags: Soft
-categories: Linux工作法
+categories: Linux满汉全席
 ---
 
 > you-get可以下载多个网站的视频文件，类似于mac下的软件`Downie`。
