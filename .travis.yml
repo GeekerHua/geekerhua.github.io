@@ -19,7 +19,6 @@ install:
   - npm install hexo-generator-sitemap
   - npm install hexo-generator-baidu-sitemap
   - npm install https://github.com/GeekerHua/hexo-asset-image.git
-  # - npm install hexo-baidu-url-push
 
 script:
   - git clone https://github.com/GeekerHua/jacman themes/jacman
