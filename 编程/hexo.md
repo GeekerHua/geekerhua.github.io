@@ -1,7 +1,7 @@
 ---
 title: hexo搭建自动化blog系统
 date:  2019/4/18  13:21:26
-tags: [blog]
+tags: [blog, hexo]
 categories: [other]
 ---
 
