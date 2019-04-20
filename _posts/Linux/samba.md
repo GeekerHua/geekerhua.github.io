@@ -2,7 +2,7 @@
 title: samba
 date: 2017-08-01 16:12:02
 tags: Linux
-categories: Linux工作法
+categories: Linux满汉全席
 ---
 
 ## 安装(如果需要)

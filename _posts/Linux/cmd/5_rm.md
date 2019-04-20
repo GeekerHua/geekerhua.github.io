@@ -1,8 +1,8 @@
 ---
 title: Linux命令5：rm
 date: 2017-10-25 16:39:43
-tags: Linux
-categories: Linux命令
+tags: [Linux, Shell]
+categories: Linux满汉全席
 ---
 
 ## rm

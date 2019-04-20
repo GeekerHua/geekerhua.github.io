@@ -1,8 +1,8 @@
 ---
 title: Linux命令1：ls
 date: 2017-10-25 15:39:43
-tags: Linux
-categories: Linux命令
+tags: [Linux, Shell]
+categories: Linux满汉全席
 ---
 
 
