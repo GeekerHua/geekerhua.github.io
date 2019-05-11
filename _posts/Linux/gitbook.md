@@ -8,45 +8,56 @@ categories: Linux满汉全席
 > gitBook是一个基于markdown和git的书写工具，更加适合书写电子书，因为基于markdown，所以具有良好的书写体验与阅读体验，还能轻松导出pdf、epub、mobi格式，还能以网页形式在线阅读。基于git进行管理能够对内容进行版本管理，进行共享等。
 
 ## 安装cli命令行工具
+
 GitBook cli工具是基于node写的，因此需要使用node进行安装。node安装方法自行搜索。
 ```bash
 $ npm install gitbook-cli -g
 ```
 
 ## 初始化
+
 ```bash
 $ gitbook init
 ```
+
 初始化结束会有两个文件；
+
 - 一个是`README.md`，是这本电子书的介绍。
 - 一个是`SUMMARY.md` ,是这本书的目录结构，只有该文件中记录的文件才会在电子书中显示，否则不显示。
 `SUMMARY.md`文件格式如下
 
 ```markdown
 # Summary
+
 ## 基础
+
 * [Introduction](README.md)
 …………
 ```
 
 ## 本地生成网页
+
 使用以下命令会在同名文件夹下生成`_book`文件夹，通过该文件夹下的`index.html`即可访问网页版。
+
 ```bash
 $ gitbook build
 ```
 
-
 ## 启动本地服务
+
 使用以下命令可自动生成`_book`的本地电子书，并在4000端口开启本地服务,访问`localhost:40000`即可使用浏览器打开。
+
 ```bash
 $ gitbook serve
 ```
 
 # GitBook.com
+
 [官网](https://www.gitbook.com)
 gitbook.com使用了git进行数据托管，并且可以和github进行关联，实现双相同步。创建在gitboo.com的书可以同时关联到github的项目上，一个更新，另一个会自动更新。
 
 ## 与GitHub进行同步
+
 gitbook.com的使用方式与github十分类似，不做介绍。只介绍与GitHub的无缝同步。
 
 gitbook.com[官方的介绍](https://help.gitbook.com/github/can-i-host-on-github.html)很简单。
