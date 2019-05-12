@@ -2,7 +2,7 @@
 title: Linux命令2：cd
 date: 2017-10-25 15:49:43
 tags: [Linux, Shell]
-categories: Linux满汉全席
+categories: [Linux满汉全席]
 ---
 
 # cd

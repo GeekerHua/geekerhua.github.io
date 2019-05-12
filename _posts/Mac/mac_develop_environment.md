@@ -2,7 +2,7 @@
 title:  mac开发环境配置
 date: 2017-01-12 20:18:28
 tags: [Shell,环境配置]
-categories: Mac工作法
+categories: [Mac工作法]
 ---
 
 # [Homebrew](http://brew.sh/index_zh-cn.html)
@@ -24,7 +24,7 @@ ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/
   * 更新所有package：$ `brew upgarde`
 * Homebrew下载的package存放的路径在哪里？
   * `/Library/Caches/Homebrew/`
-  
+
 
 Homebrew 可以很方便的安装需要的套件,方法如下：$ `brew install wget`。是不是很简单？
 
@@ -195,10 +195,10 @@ rvm remove 2.1.4
 ### Package Control 常用命令
 - 激活`cmd+shift+P`
 - 安装插件 -\>  Package Control: Install Package xxx
-- 显示所有已安装的插件 -\> List Packages 
-- 移除一个指定的插件 -\> Remove Packages 
-- 更新一个指定的插件 -\> Upgrade Package 
-- 更新所有已安装的插件 -\> Upgrade/Overwrite All Packages 
+- 显示所有已安装的插件 -\> List Packages
+- 移除一个指定的插件 -\> Remove Packages
+- 更新一个指定的插件 -\> Upgrade Package
+- 更新所有已安装的插件 -\> Upgrade/Overwrite All Packages
 
 ## 常用插件
 ### javascript

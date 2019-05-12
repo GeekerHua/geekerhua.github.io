@@ -2,7 +2,7 @@
 title: Linux命令10：cat
 date: 2017-11-16 15:00:56
 tags: [Linux, Shell]
-categories: Linux满汉全席
+categories: [Linux满汉全席]
 ---
 
 ## cat

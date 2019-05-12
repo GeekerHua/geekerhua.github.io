@@ -1,8 +1,8 @@
 ---
 title:  信息爆炸的时代，该怎么有效获取信息
 date: 2017-01-08 18:00:00
-tags: 成长
-categories: 思考
+tags: [成长]
+categories: [思考]
 ---
 
 > 如今社会是一个信息爆炸的时代，我们有多种多样的渠道可以获取信息，但又有读不完的信息。如何最低成本获取到有价值的信息显得尤为重要，因此对信息渠道进行筛选和入口统一显得尤为重要。RSS已死，RSS永生。
@@ -49,7 +49,7 @@ categories: 思考
 	- [warfalcon](http://www.write.org.cn)
 	- [新生大学](xinshengdaxue.com)
 	- [果壳网](http://guokr.com)
-- 优秀的网站 
+- 优秀的网站
 	- [少数派](http://sspai.com)
 	- [异次元软件世界](http://www.iplaysoft.com)
 	- [Mac玩儿法](http://www.waerfa.com)

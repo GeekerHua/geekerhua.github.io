@@ -2,7 +2,7 @@
 title: IP
 date: 2017-08-01 16:12:12
 tags: [Linux, IP]
-categories: Linux满汉全席
+categories: [Linux满汉全席]
 ---
 
 # IP绑定

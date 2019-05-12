@@ -2,7 +2,7 @@
 title: Linux命令6：rmdir
 date: 2017-11-16 14:29:04
 tags: [Linux, Shell]
-categories: Linux满汉全席
+categories: [Linux满汉全席]
 ---
 
 ## rmdir

@@ -1,8 +1,8 @@
 ---
 title: Bartender2菜单栏图标收纳神器
 date: 2017-08-01 16:00:31
-tags: Soft
-categories: Mac工作法
+tags: [Soft]
+categories: [Mac工作法]
 ---
 
 ## 功能定位

@@ -2,7 +2,7 @@
 title: squid+stunnel 科学上网
 date: 2019/04/06 16:12:18
 tags: [科学上网]
-categories: 效率
+categories: [效率]
 ---
 
 # squid+stunnel 合理的进行科学上网
@@ -109,18 +109,18 @@ categories: 效率
     ; 设置stunnel工作的用户（组）
     setuid = root
     setgid = root
-    
+
     ; 开启日志等级：emerg (0), alert (1), crit (2), err (3), warning (4), notice (5), info (6), or debug (7)
     ; 默认为5
     debug = 7
     ; 日志文件路径（我的server的版本有个bug，这个文件也被放在chroot路径下了，client的版本则是独立的=。=#）
     output = /stunnel.log
-    
+
     ; 证书文件，就是在本文2.2中用openssl生成的自签名证书（server端必须设置这两项）
     cert = /etc/stunnel/stunnel.pem
     ; 私钥文件
     key = /etc/stunnel/stunnel.pem
-    
+
     ; 设置stunnel服务，可以设置多个服务，监听同的端口，并发给不同的server。
     ; 自定义服务名squid-proxy
     [squid-proxy]
@@ -128,18 +128,18 @@ categories: 效率
     accept = 3129
     ; 服务要连接的端口，连接到squid的3128端口，将数据发给squid
     connect = 3128
-    
+
     ; **************************************************************************
     ; * 下面这些配置我都注释掉了，但也需要了解下 *
     ; **************************************************************************
-    
+
     ; 设置是否对传输数据进行压缩，默认不开启。
     ; 这是跟openssl相关的，如果你的openssl没有zlib，开启这个设置会导致启动失败（failed to initialize compression method）
     ;compression = zlib
-    
+
     ; 设置ssl版本,这个也是跟安装的openssl有关的
     ;sslVersion = TLSv1
-    
+
     ; Authentication stuff needs to be configured to prevent MITM attacks
     ; It is important to understand that this option was solely designed for access control and not for authorization
     ; It is not enabled by default!
@@ -169,27 +169,27 @@ categories: 效率
     ;setgid = root
     ; stunnel工作时候的pid
     pid = /stunnel.pid
-    
+
     ; 日志等级
     debug = 7
     ; 日志文件
     output = /var/log/stunnel/stunnel.log
-    
+
     ; 表示以client模式启动stunnel，默认client = no，即server模式
     client = yes
-    
+
     ; 定义一个服务
     [squid-proxy]
     ; 监听3128端口，那么用户浏览器的代理设置就是 stunnel-client-ip:3128
     accept = 3128
     ; 要连接到的stunnel server的ip与端口
     connect = xx.xx.xx.xx:3129
-    
+
     ; 需要验证对方发过来的证书
     verify = 2
     ; 用来进行证书验证的文件（里面有stunnel server的证书）
     CAfile = /etc/stunnel/stunnel-server.pem
-    
+
     ; 客户端不需要传递自己的证书，所以注释掉
     ;cert = /etc/stunnel/stunnel.pem
 

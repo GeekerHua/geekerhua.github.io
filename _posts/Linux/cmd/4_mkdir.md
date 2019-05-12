@@ -2,7 +2,7 @@
 title: Linux命令4：mkdir
 date: 2017-10-25 16:19:43
 tags: [Linux, Shell]
-categories: Linux满汉全席
+categories: [Linux满汉全席]
 ---
 
 ## mkdir
