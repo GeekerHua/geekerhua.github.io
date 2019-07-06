@@ -2,7 +2,7 @@
 title: PyCharm_efficient指南
 date: 2017-08-01 15:16:50
 tags: [Python, IDE]
-categories: [编程]
+categories: [Code]
 ---
 
 Pycharm是JetBrains家族的产物， 整个JetBrains的产品风格都是统一的， 因此， 熟悉了一款产品的模式， 大体上， 整个家族其他产品也能够轻松的驾驭。

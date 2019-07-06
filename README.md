@@ -1,4 +1,5 @@
-# 我的个人blog及笔记系统 
+# 我的个人blog及笔记系统
+
 [![Build Status](https://travis-ci.com/GeekerHua/geekerhua.github.io.svg?branch=note)](https://travis-ci.com/GeekerHua/geekerhua.github.io)
 
 > 这是我的个人blog及笔记系统的代码仓库
@@ -27,4 +28,3 @@
 - `_posts`文件夹下的文章为发布的博客文章，
 - hexo文件夹下的文件是hexo所需要的个性化文件，比如`404.html`,`_config.yml`等。
 - `.travis.yml`为travis的配置文件
-

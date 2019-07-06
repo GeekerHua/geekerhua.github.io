@@ -5,6 +5,42 @@ tags: [Linux, 树莓派]
 categories: [Linux满汉全席]
 ---
 
+## 写镜像
+
+### 将系统写入tf卡
+
+1. tf卡格式化成FAT32格式， 然后卸载
+2. [使用dd写入镜像](https://www.raspberrypi.org/documentation/installation/installing-images/mac.md)
+
+```shell
+sudo dd bs=1m if=${path_of_your_image.img} of=/dev/$> {diskn} conv=sync
+```
+
+3. [扩展全部存储卡](https://www.cnrancher.com/docs/os/v1.x/en/installation/running-rancheros/server/raspberry-pi/)
+
+## 初始化
+
+### 1. 设置默认wifi
+
+在boot分区下， 新建文件并重命名为“wpa_supplicant.conf”
+
+```shell
+country=CN
+ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
+update_config=1
+
+network={
+    ssid="ishangzu401a"
+    psk="ishangzu8888"
+    key_mgmt=WPA-PSK
+    priority=1
+}
+```
+
+### 2. 默认开启ssh
+
+在boot分区下， 新建一个文件， 并重命名为”ssh“， 不带任何后缀名
+
 ## 局域网内树莓派到识别扫描
 
 > 状态没有屏幕， 但有网线
@@ -41,6 +77,9 @@ Tho Q Luong, http://github.com/thoqbk/pi-oi
 ```
 
 ## WIFI密码设置
+
+> - [树莓派3命令行配置wifi无线连接和蓝牙连接](https://www.embbnux.com/2016/04/10/raspberry_pi_3_wifi_and_bluetooth_setting_on_console/)
+> - [让你的树莓派连上WiFi](http://ju.outofmemory.cn/entry/106824)
 
 ### 1. 查看已经识别的wifi, 记录ssid值
 
@@ -164,4 +203,17 @@ exit 0
 sudo chmod 755 /etc/init.d/tightvncserver
 sudo update-rc.d tightvncserver defaults
 ```
+
+## 中文输入法
+
+> 输入法， 一款是SCIM， 令一款是Rime(鼠须管)
+
+### SCIM安装
+
+```bash
+sudo apt-get install scim-pinyin
+```
+
+- 接着运行 `sudo raspi-config`
+- 选择 `change_locale` ， 在Default locale for the system environment:中选择zh_CN. UTF-8。 然后重启机器， 就发现整个环境变成中文的了。
 

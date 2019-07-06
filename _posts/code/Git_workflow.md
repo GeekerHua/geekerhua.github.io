@@ -2,7 +2,7 @@
 title: Git与Git工作流
 date: 2016-06-02 18:57:21
 tags: [git]
-categories: [编程]
+categories: [Code]
 ---
 
 ## Git 基础用法
@@ -116,9 +116,9 @@ SVN与Git(集中式VS分布式）
 
 #### 功能分支工作流优点
 
-* 每个新功能开发都在一个专门的分支， 而不是在master分支， 不会弄乱主干分支
-* 功能开发隔离使 `pull requests工作流` 成为可能
-* 使用 `pull requests` 可以很好地进行 `Code Review`
+- 每个新功能开发都在一个专门的分支， 而不是在master分支， 不会弄乱主干分支
+- 功能开发隔离使 `pull requests工作流` 成为可能
+- 使用 `pull requests` 可以很好地进行 `Code Review`
 
 ### [Gitflow工作流](http://blog.jobbole.com/76867/)
 
@@ -135,9 +135,10 @@ SVN与Git(集中式VS分布式）
 
 ![](https://raw.githubusercontent.com/quickhack/translations/master/git-workflows-and-tutorials/images/git-workflow-forking.png)
 
-* Forking工作流的一个主要优势是， 贡献的代码可以被集成， 而不需要所有人都能push代码到仅有的中央仓库中。 开发者push到自己的服务端仓库， 而只有项目维护者才能push到正式仓库。 这样项目维护者可以接受任何开发者的提交， 但无需给他正式代码库的写权限
-* GitHub中每个代码仓库都有三个选项， 分别是Star、 Watch、 Fork,
-* ![屏幕快照 2016-04-11 下午11.20.38.png](quiver-image-url/F81C279EDF5AD53780259EB087CD4F84.png)
+- Forking工作流的一个主要优势是， 贡献的代码可以被集成， 而不需要所有人都能push代码到仅有的中央仓库中。 开发者push到自己的服务端仓库， 而只有项目维护者才能push到正式仓库。 这样项目维护者可以接受任何开发者的提交， 但无需给他正式代码库的写权限
+- GitHub中每个代码仓库都有三个选项， 分别是Star、 Watch、 Fork,
+
+![屏幕快照 2016-04-11 下午11.20.38.png](quiver-image-url/F81C279EDF5AD53780259EB087CD4F84.png)
 
 #### 流程如下
 
@@ -183,7 +184,7 @@ SVN与Git(集中式VS分布式）
 > 通常我们是这样提交代码的
 
 ```bash
-$ git commit -m "hello world"
+$: git commit -m "hello world"
 ```
 
 > 但这样的提交注释并没有卵用， 当你log提交记录的时候， 还是会看的云里雾里， 更不用说是利用了。 现在通用的效果比较好的Commit messag规范是 `Angular规范` 。
@@ -195,7 +196,7 @@ $ git commit -m "hello world"
 > 比如， 下面的命令显示上次发布后的变动， 每个commit占据一行。 你只看行首， 就知道某次 commit 的目的。
 
 ```bash
-$ git log <last tag> HEAD --pretty=format:%s
+$: git log <last tag> HEAD --pretty=format:%s
 ```
 
 - 可以过滤某些commit(比如文档改动）， 便于快速查找信息。
@@ -203,7 +204,7 @@ $ git log <last tag> HEAD --pretty=format:%s
 > 比如， 下面的命令仅仅显示本次发布新增加的功能。
 
 ```bash
-$ git log <last release> HEAD --grep feature
+$: git log <last release> HEAD --grep feature
 ```
 
 - 可以直接从commit生成Change log.

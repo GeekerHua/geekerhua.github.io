@@ -5,8 +5,6 @@ tags: [iOS]
 categories: [Code]
 ---
 
-
-
 - ViewController load
 - ViewController initialize
 - AppDelegate application:didFinishLaunchingWithOptions
@@ -26,4 +24,3 @@ categories: [Code]
 - ChildView drawRect
 - ViewController viewDidApplear
 - AppDelegate applicationDidBecomeActive
-

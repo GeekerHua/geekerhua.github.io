@@ -2,7 +2,7 @@
 title: Python装饰器
 date: 2017-08-07 09:12:59
 tags: Python
-categories: 编程
+categories: Code
 ---
 
 ## 方法装饰器
@@ -30,7 +30,7 @@ def log(text_func):
                 return result
             return wrapper
         return decordor
-        
+
 @log('excute')
 def now():
     print '2016-08-07'
@@ -55,7 +55,7 @@ import functools
 class Foo(object):
     def __init__(self, txt):
         self.txt = txt
-    
+
     def __call__(self, func):
         @functools.wraps(func)
         def wrapper(*args, **kwargs):

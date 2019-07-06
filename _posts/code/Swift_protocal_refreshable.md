@@ -1,8 +1,8 @@
 ---
 title: Swift Protocal实战1(Refreshable)
 date: 2016-06-18 21:57:21
-tags: [Swift]
-categories: [编程]
+tags: [Swift, iOS]
+categories: [Code]
 ---
 
 > 在app的开发中， 出现最多的一个情况就是显示一个列表来展示数据， 就像刷微博一样， 要能够上拉加载更多， 下拉进行刷新。 但在实际开发过程中， 需要考虑的情况会更多。 我们使用 `header` 来表示下拉刷新控件， 使用 `footer` 来表示上拉加载控件。

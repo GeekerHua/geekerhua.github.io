@@ -25,9 +25,7 @@ $: ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/mast
 
 * 先更新brew: $: `brew update`
 * 更新所有package: $: `brew upgarde`
-* Homebrew下载的package存放的路径在哪里？
-
-  * `/Library/Caches/Homebrew/`
+* Homebrew下载的package存放的路径在哪里？`/Library/Caches/Homebrew/`
 
 Homebrew 可以很方便的安装需要的套件， 方法如下： $: `brew install wget` 。 是不是很简单？
 
@@ -66,14 +64,14 @@ $: git clone git://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
 ### 2. 创建新配置（ 备份）
 
 ```ruby
-$: cp~/.zshrc ~/.zshrc.orig
-$: cp~/.oh-my-zsh/templates / zshrc.zsh - template~/.zshrc
+$: cp ~/.zshrc ~/.zshrc.orig
+$: cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc
 ```
 
 ### 3. 把 zsh 设置成默认的 shell
 
 ```ruby
-$: chsh - s / bin / zsh
+$: chsh -s /bin/zsh
 ```
 
 ### 4. 重启 zsh(打开一个新的 terminal 窗口）
@@ -110,19 +108,19 @@ completer _complete _prefix _correct _prefix _match _approximate
 
 ### 1. zsh 可以**补全参数**
 
-当你敲指令敲到一般的时候， 不必在虚拟终端下Ctrl_Shift_T 打开一个新标签看手册了， 只需要一个`<Tab>`， zsh 会为你列出所有符合你已经输入部分的参数， 其后跟着参数说明， 你需要的只是看下其后的说明， 然后选中你需要的参数按下回车键。 视频中我们差一点就用纯tab 完成了一条dd 指令。
+当你敲指令敲到一般的时候， 不必在虚拟终端下Ctrl_Shift_T 打开一个新标签看手册了， 只需要一个 `<Tab>` ， zsh 会为你列出所有符合你已经输入部分的参数， 其后跟着参数说明， 你需要的只是看下其后的说明， 然后选中你需要的参数按下回车键。 视频中我们差一点就用纯tab 完成了一条dd 指令。
 
 ### 2. zsh 的**参数补全是智能补全**
 
 简单的例子：
-当你输入ls 指令按下`<Tab>` 的时候， zsh 会列出目录下所有的文件并让你交互式处理。
+当你输入ls 指令按下 `<Tab>` 的时候， zsh 会列出目录下所有的文件并让你交互式处理。
 当你输入unzip 指令要求补全的时候， zsh 只会列出zip 文件
 当你输入kill 指令要求补全的时候， zsh 会列出所有符合要求的进程并自动把参数转换为PID.
 当你输入参数的一部分时（例如systemctl 的--type=, -t)， zsh 会列出其后所有的可能性供你选择。
 
 ### 3. zsh 可以**补全路径**
 
-当你想到你的vim 插件目录下看看的时候， 你甚至连cd 都不需要输入， 你要做的只是/u/s/v/vimf/p`<Tab>``<Enter>`
+当你想到你的vim 插件目录下看看的时候， 你甚至连cd 都不需要输入， 你要做的只是/u/s/v/vimf/p `<Tab>`  `<Enter>`
 
 ### 4. zsh 可以**不额外安装autojump 在目录中快速跳转**
 
@@ -130,8 +128,8 @@ completer _complete _prefix _correct _prefix _match _approximate
 
 ### 5. zsh 可以**自动纠错指令**
 
-当你输入了错误的指令时， 如果只是几个字母按错了， 一个`<Tab>` zsh 就会为你自动纠错。
-你可以利用这个特性缩写指令， 例如把systemd-analyze 变成sys-an`<Tab>`。
+当你输入了错误的指令时， 如果只是几个字母按错了， 一个 `<Tab>` zsh 就会为你自动纠错。
+你可以利用这个特性缩写指令， 例如把systemd-analyze 变成sys-an `<Tab>` 。
 
 ### 6. zsh 可以**预先告知你指令中的错误**
 
@@ -164,7 +162,7 @@ zsh 会将被通配符作用的参数显示为深蓝色， 当你手贱在“dir
 
 ### 11. zsh 内置了大量的**命令提示符样式**
 
-.zshrc 的plugins=() 中添加theme 插件， 敲theme 指令回车可以随机选择， 后跟参数可以选择指定的样式， 例如theme gen`<Tab>``<Enter>` 会切换到gentoo 样式， 这也是新手美化过程中非常痛苦的一环。
+.zshrc 的plugins=() 中添加theme 插件， 敲theme 指令回车可以随机选择， 后跟参数可以选择指定的样式， 例如theme gen `<Tab>`  `<Enter>` 会切换到gentoo 样式， 这也是新手美化过程中非常痛苦的一环。
 
 ### 12. zsh **可以alisa 参数**
 

@@ -40,12 +40,12 @@ $: ssh user@host
 
 步骤如下：
 
-#### 3.1 Server端：
+#### 3.1 Server端
 
 开启sshd服务， 不同平台甚至同平台不同版本的启动方式都有所不同。 详细不同平台版本服务[Daemons](xxxxx)
 
 ```bash
-systemctl satart sshd
+$: systemctl satart sshd
 ```
 
 默认情况下不需要修改sshd配置（/etc/ssh/sshd_config)， 但有时会涉及到最常用的三个修改：
@@ -56,7 +56,7 @@ systemctl satart sshd
 | 是否允许使用密码登录 | PasswordAuthentication yes |
 | 是否允许使用公钥登录 | PubkeyAuthentication yes   |
 
-#### 3.2 Client端：
+#### 3.2 Client端
 
 ```bash
 $: # 生成ssh key
@@ -85,15 +85,15 @@ ssh使用非对称加密对传输进行加密， 因此在传输开始前需要�
 
 ### 2. 三套加密系统
 
-#### 2.1 Server端加密：
+#### 2.1 Server端加密
 
 在Server端sshd服务启动时， 会自动生成一对公钥和私钥， 默认保存在 `/etc/ssh/` 下， ssh支持多种加密协议， 支持rsa, dsa, ed25519, ecdsa四种加密方式， 该路径可以在config中进行设置。 当有客户端进行ssh连接该Server时， 就是使用这里的公钥和私钥加解密的。
 
-#### 2.2 Client密码登录：
+#### 2.2 Client密码登录
 
 在未设置免密登录的情况下每次ssh连接都需要输入密码。 但这都是在加密通道建立之后。
 
-#### 2.3 免密登录：
+#### 2.3 免密登录
 
 每个用户的 `~/.ssh` 文件夹下都会有连个文件， 一个是 `known_hosts` ， 记录曾经连接过的主机的公钥。 另一个是 `authorized_keys` , 用来记录授权免密登录的公钥， 使用该公钥对应私钥加密连接的Client都可以实现免密登录。 因此， 只要将Client的 `id_rsa.pub` 公钥内容添加到Server的authorized_keys中即可。 ssh有个快捷方法。 `ssh-copy-id remoteuser@remoteserver` 。
 
