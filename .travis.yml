@@ -11,8 +11,8 @@ before_install:
   - export PATH="$HOME/.nvm/versions/node/$(node -v)/bin:$PATH"
   - echo $PATH
   - which hexo
-  - hexo -v
-  - hexo init blog
+  - $HOME/.nvm/versions/node/$(node -v)/bin/hexo -v
+  - $HOME/.nvm/versions/node/$(node -v)/bin/hexo init blog
   - npm install  #安装hexo及插件
   - npm install hexo --save
   - npm install hexo-generator-sitemap
@@ -46,7 +46,7 @@ script:
   - echo "${CNAME}" > ./source/CNAME
 
 after_script:
-  - hexo generate
+  - $HOME/.nvm/versions/node/$(node -v)/bin/hexo generate
   - cp ../README.md ./public/README.md
   - cd ./public
   - git init
