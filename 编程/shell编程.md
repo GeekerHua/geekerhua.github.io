@@ -3,7 +3,7 @@
 ## 命令的下达
 > 会用`\`+ `Enter`来进行换行操作，会继续输入，而不是截止这行
 
-## alias 
+## alias
 > - 直接输入alias 会查看所有设置好的alias
 > - `alias lm='ls -al'`能够设置别名
 
@@ -22,7 +22,7 @@ $ open 'name'   # 打开文件
 ```bash
 $ echo $LANG    # 显示目前所支持的语言
 $ echo LANG=en_US   # 修改语言为英文
-# 汉语为 
+# 汉语为
 zh_CN.UTF-8
 ```
 ### date
@@ -32,7 +32,7 @@ zh_CN.UTF-8
 $ ~ date +%Y/%m/%d
 2016/05/26
 ```
-### cal 
+### cal
 >日历
 ```bash
 $ cal 10 2019   # 显示2019年10的月历
