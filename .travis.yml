@@ -27,7 +27,7 @@ install:
 
 
 script:
-  - rm -r source/_posts
+  # - rm -rf source/_posts
   - cp -r ../_posts ./source/_posts
   - cp -f ../hexo/_config.yml _config.yml
   - cp ../hexo/about.md ./source/about/index.md
