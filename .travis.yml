@@ -9,7 +9,7 @@ node_js: stable  #设置相应的版本
 before_install:
   - npm install hexo-cli -g
   # - mv blog/node_modules node_modules
-  - rmdir blog
+  - rm -rf blog
   - hexo init blog
   - cd blog
   # - mv ../node_modules node_modules
