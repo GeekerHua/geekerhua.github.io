@@ -37,7 +37,7 @@ script:
   - echo "${BAIDU_VERIFY}" > ./source/baidu_verify_${BAIDU_VERIFY}.html
   - echo "google-site-verification:${GOOGLE_VERIFY}.html" > ./source/${GOOGLE_VERIFY}.html
   - echo "${CNAME}" > ./source/CNAME
-  - hexo g
+  - node_modules/.bin/hexo g
 
 after_script:
   - cp ../README.md ./public/README.md
