@@ -8,6 +8,7 @@ node_js: stable  #设置相应的版本
 
 before_install:
   - npm install hexo-cli@1.1.0 -g
+  - export PATH="$HOME/.nvm/versions/node/$(node -v)/bin:$PATH"
   - which hexo
   - hexo -v
   - hexo init blog
