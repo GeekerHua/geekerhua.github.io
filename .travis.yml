@@ -22,6 +22,7 @@ install:
   - npm install hexo-cli@1.1.0 -g
   - which hexo
   - npm install  #安装hexo及插件
+  - npm install hexo --save
   - npm install hexo-generator-sitemap
   - npm install hexo-generator-baidu-sitemap
   - npm install https://github.com/GeekerHua/hexo-asset-image.git
@@ -29,7 +30,7 @@ install:
 
 script:
   # - rm -rf source/_posts
-  - ./node_modules/.bin/hexo generate
+  # - ./node_modules/.bin/hexo generate
   - hexo generate
   - cp -r ../_posts ./source/_posts
   - cp -f ../hexo/_config.yml _config.yml
