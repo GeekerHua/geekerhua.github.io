@@ -31,7 +31,6 @@ install:
 script:
   # - rm -rf source/_posts
   # - ./node_modules/.bin/hexo generate
-  - hexo generate
   - cp -r ../_posts ./source/_posts
   - cp -f ../hexo/_config.yml _config.yml
   - cp ../hexo/about.md ./source/about/index.md
@@ -43,6 +42,7 @@ script:
   - echo "${CNAME}" > ./source/CNAME
 
 after_script:
+  - hexo generate
   - cp ../README.md ./public/README.md
   - cd ./public
   - git init
