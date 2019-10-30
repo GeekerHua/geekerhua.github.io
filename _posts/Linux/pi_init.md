@@ -10,13 +10,14 @@ categories: [Linux满汉全席]
 ### 将系统写入tf卡
 
 1. tf卡格式化成FAT32格式， 然后卸载
-2. [使用dd写入镜像](https://www.raspberrypi.org/documentation/installation/installing-images/mac.md)
 
-```shell
+2.[使用dd写入镜像](https://www.raspberrypi.org/documentation/installation/installing-images/mac.md)
+
+``` bash
 sudo dd bs=1m if=${path_of_your_image.img} of=/dev/$> {diskn} conv=sync
 ```
 
-3. [扩展全部存储卡](https://www.cnrancher.com/docs/os/v1.x/en/installation/running-rancheros/server/raspberry-pi/)
+3.[扩展全部存储卡](https://www.cnrancher.com/docs/os/v1.x/en/installation/running-rancheros/server/raspberry-pi/)
 
 ## 初始化
 
@@ -24,7 +25,7 @@ sudo dd bs=1m if=${path_of_your_image.img} of=/dev/$> {diskn} conv=sync
 
 在boot分区下， 新建文件并重命名为“wpa_supplicant.conf”
 
-```shell
+``` bash
 country=CN
 ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
 update_config=1
@@ -45,11 +46,13 @@ network={
 
 > 状态没有屏幕， 但有网线
 
-### 1. 使用arp进行设备扫描， 如下图， 是使用网线直连电脑到结果， 可以直接识别hostname.
+### 1. 使用arp进行设备扫描
+
+> 如下图， 是使用网线直连电脑到结果， 可以直接识别hostname
 
 使用网线将树莓派与电脑进行连接， 此时两台设备处于同一个局域内。 使用arp工具扫描局域网设备
 
-```shell
+``` bash
 $ arp -a
 raspberrypi.local (169.254.117.22) at b8:27:eb:42:a9:53 on en4 [ethernet]
 ? (192.168.0.1) at 78:44:fd:46:32:c0 on en0 ifscope [ethernet]
@@ -64,8 +67,8 @@ raspberrypi.local (169.254.117.22) at b8:27:eb:42:a9:53 on en4 [ethernet]
 
 ### 2. 使用[pi-oi](http://github.com/thoqbk/pi-oi)进行扫描， 对wifi下到扫描效果很好
 
-```shell
-$ java -jar pi-oi.jar
+``` bash
+$: java -jar pi-oi.jar
 
 PI-OI is finding your Pi ...
 +-----------------------------------------------------------------------------------------+
@@ -83,20 +86,20 @@ Tho Q Luong, http://github.com/thoqbk/pi-oi
 
 ### 1. 查看已经识别的wifi, 记录ssid值
 
-```shell
+``` bash
 sudo iwlist wlan0 scan
 ```
 
 ### 2. 修改网络自动连接， /etc/network/interfaces
 
-```shell
+``` bash
 iface wlan0 inet dhcp
     wpa-conf /etc/wpa_supplicant/wpa_supplicant.conf
 ```
 
 ### 3. 在 `/etc/wpa_supplicant/wpa_supplicant.conf` 文件中添加wifi配置， 可以配置多个wifi
 
-```shell
+``` bash
 network={
     ssid="TMWHCM"
     key_mgmt=WPA-PSK
@@ -109,7 +112,7 @@ network={
 
 ### 4. 连接wifi, 重启
 
-```shell
+``` bash
 sudo reboot
 ```
 
@@ -121,31 +124,31 @@ sudo reboot
 
 1.1 安装tightvncserver
 
-```shell
+``` bash
 $: apt install tightvncserver
 ```
 
 1.2 设置密码
 
-```shell
+``` bash
 $: vncpasswd
 ```
 
 ### 2. 启动vnc服务
 
-```shell
+``` bash
 $: tightvncserver #- vncserver :1 - geometry 1280x1080-depth 24
 ```
 
 > 指定尺寸
 
-```shell
+``` bash
 tightvncserver -geometry 800x600 :1
 ```
 
 ### 3. 终止vnc
 
-```shell
+``` bash
 tightvncserver -kill :1
 ```
 
@@ -153,7 +156,7 @@ tightvncserver -kill :1
 
 4.1 将下方代码添加到 `/etc/init.d/tightvncserver`
 
-```shell
+``` bash
 
 ### BEGIN INIT INFO
 
@@ -199,7 +202,7 @@ exit 0
 
 4.2 可以设置开机自启， 看个人需求
 
-```shell
+``` bash
 sudo chmod 755 /etc/init.d/tightvncserver
 sudo update-rc.d tightvncserver defaults
 ```
@@ -210,10 +213,9 @@ sudo update-rc.d tightvncserver defaults
 
 ### SCIM安装
 
-```bash
+``` bash
 sudo apt-get install scim-pinyin
 ```
 
 - 接着运行 `sudo raspi-config`
-- 选择 `change_locale` ， 在Default locale for the system environment:中选择zh_CN. UTF-8。 然后重启机器， 就发现整个环境变成中文的了。
-
+- 选择 `change_locale` ， 在Default locale for the system environment: 中选择zh_CN. UTF-8。 然后重启机器， 就发现整个环境变成中文的了。
