@@ -11,8 +11,9 @@ before_install:
   - export PATH="$HOME/.nvm/versions/node/$(node -v)/bin:$PATH"
   - echo $PATH
   - which hexo
-  - hexo -v
-  - hexo init blog
+  - echo $(which hexo)
+  - $(which hexo) -v
+  - $(which hexo) init blog
   - npm install  #安装hexo及插件
   - npm install hexo --save
   - npm install hexo-generator-sitemap
