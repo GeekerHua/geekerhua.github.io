@@ -20,10 +20,10 @@ install:
   - git clone https://github.com/GeekerHua/jacman themes/jacman
 
 script:
-  - rm -rf source
-  - cp -r ../hexo/about ../hexo/categories ../hexo/tags ./source
+  - rm -rf source/* || mkdir source
+  - cp -r ../hexo/about ../hexo/categories ../hexo/tags ./source/
   - cp -f ../hexo/_config.yml _config.yml
-  - cp -r ../hexo/404.html ./source/404.html
+  - cp -f ../hexo/404.html ./source/404.html
   - cp -r ../_posts ./source/_posts
   - echo "${BAIDU_VERIFY}" > ./source/baidu_verify_${BAIDU_VERIFY}.html
   - echo "google-site-verification:${GOOGLE_VERIFY}.html" > ./source/${GOOGLE_VERIFY}.html
