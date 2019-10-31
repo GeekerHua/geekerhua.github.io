@@ -21,7 +21,10 @@ install:
 
 script:
   - rm -rf source/* || mkdir source
-  - cp -r ../hexo/about ../hexo/categories ../hexo/tags ./source/
+  - ls
+  - pwd
+  - cp -h
+  - cp -r ../hexo/about ../hexo/categories ../hexo/tags ./source
   - cp -f ../hexo/_config.yml _config.yml
   - cp -f ../hexo/404.html ./source/404.html
   - cp -r ../_posts ./source/_posts
