@@ -20,10 +20,8 @@ install:
   - git clone https://github.com/GeekerHua/jacman themes/jacman
 
 script:
-  - rm -rf source/* || mkdir source
-  - ls
-  - pwd
-  - cp -h
+  - rm -rf source/*
+  - mkdir source
   - cp -r ../hexo/about ../hexo/categories ../hexo/tags ./source
   - cp -f ../hexo/_config.yml _config.yml
   - cp -f ../hexo/404.html ./source/404.html
