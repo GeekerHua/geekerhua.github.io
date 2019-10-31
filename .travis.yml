@@ -1,5 +1,5 @@
 language: node_js #设置语言
-node_js: 13 #设置相应的版本
+node_js: v13.0.1 #设置相应的版本
 cache: npm
 branches:
   only:
