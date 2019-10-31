@@ -3,22 +3,22 @@ at用来执行一次性的任务,执行at需要`atd`的支持。
 
 ## at一次性工作排程(定时任务)
 使用at可以在指定时间执行一次任务。
-```bash
-$ at now + 2 minutes  <== 2分钟后执行
+``` bash
+$: at now + 2 minutes  <== 2分钟后执行
 at> xxxxx
 at> <EOT>  <== ctrl + d 结束输入
 
-$ at -l <== 列出所有的任务, 相当去 atq 
-$ at -c 4 <== 列出4号任务的详情
-$ at -d <== 结束一个任务, 相当于 atrm
+$: at -l <== 列出所有的任务, 相当去 atq
+$: at -c 4 <== 列出4号任务的详情
+$: at -d <== 结束一个任务, 相当于 atrm
 ```
 
 ## atd的启动
-```bash
-$ /etc/init.d/atd start  // atd启动
-$ chkconfig atd on       // atd开机自启
+``` bash
+$: /etc/init.d/atd start  // atd启动
+$: chkconfig atd on       // atd开机自启
 
-$ systemctl status atd // ubuntu命令
+$: systemctl status atd // ubuntu命令
 ```
 
 ## at的权限
@@ -42,8 +42,8 @@ crontab可以进行例行性的任务执行，需要`crond`这个服务支持。
 > cron 运行的每一项工作都会被纪录到 /var/log/cron 这个登录档中
 
 ## 命令
-```bash
-$ crontab [-u username] [-l|-e|-r]
+``` bash
+$: crontab [-u username] [-l|-e|-r]
 选项与参数：
 -u  ：只有 root 才能进行这个任务，亦即帮其他使用者创建/移除 crontab 工作排程；
 -e  ：编辑 crontab 的工作内容

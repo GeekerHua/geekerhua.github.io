@@ -1,40 +1,30 @@
-language: node_js  #设置语言
-
-node_js: stable  #设置相应的版本
+language: node_js #设置语言
+node_js: stable #设置相应的版本
 cache: npm
 branches:
   only:
-    - note  #只监测note分支
+    - note #只监测note分支
 # cache: # 设置缓存
 #   directories:
 #   - blog/node_modules
 
 before_install:
-  - npm install hexo -g
-  # - mv blog/node_modules node_modules
-  - rm -rf blog
-  - hexo init blog
+  - git config user.name "travis" #修改name
+  - git config user.email "travis@geekerhua.com" #修改email
+  - mkdir blog || rm -rf blog/*
+  - cp package.json blog/
   - cd blog
-  # - mv ../node_modules node_modules
 
 install:
-  - npm install  #安装hexo及插件
-  - npm install hexo-generator-sitemap
-  - npm install hexo-generator-baidu-sitemap
-  - npm install https://github.com/GeekerHua/hexo-asset-image.git
+  - npm install #安装hexo及插件
+  - git clone https://github.com/GeekerHua/jacman themes/jacman
 
 script:
-  - git clone https://github.com/GeekerHua/jacman themes/jacman
-  - mkdir source/about
-  - mkdir source/categories
-  - mkdir source/tags
-  - rm -r source/_posts
-  - cp -r ../_posts ./source/_posts
+  - rm -rf source
+  - cp -r ../hexo/about ../hexo/categories ../hexo/tags ./source
   - cp -f ../hexo/_config.yml _config.yml
-  - cp ../hexo/about.md ./source/about/index.md
-  - cp ../hexo/categories.md ./source/categories/index.md
-  - cp ../hexo/tags.md ./source/tags/index.md
-  - cp ../hexo/404.html ./source/404.html
+  - cp -r ../hexo/404.html ./source/404.html
+  - cp -r ../_posts ./source/_posts
   - echo "${BAIDU_VERIFY}" > ./source/baidu_verify_${BAIDU_VERIFY}.html
   - echo "google-site-verification:${GOOGLE_VERIFY}.html" > ./source/${GOOGLE_VERIFY}.html
   - echo "${CNAME}" > ./source/CNAME
@@ -44,9 +34,7 @@ after_script:
   - cp ../README.md ./public/README.md
   - cd ./public
   - git init
-  - git config user.name "travis"  #修改name
-  - git config user.email "travis@geekerhua.com"  #修改email
   - git add .
   - git commit -m "update"
-  - git push --force --quiet "https://${GH_TOKEN}@${GH_REF}" master:master  #GH_TOKEN是在Travis中配置token的名称, 上传到github
+  - git push --force --quiet "https://${GH_TOKEN}@${GH_REF}" master:master #GH_TOKEN是在Travis中配置token的名称, 上传到github
   - git push --force --quiet "https://${CODING_USER}:${CODING_TOKEN}@${CODING_REF}" master:master # 上传到tencent

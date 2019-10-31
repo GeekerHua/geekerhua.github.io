@@ -1,4 +1,4 @@
-```bash
+``` bash
 cd ~/mem
 ps aux | grep 'stream_omp_exe' | awk '{print $2}' |xargs  kill -9
 max_stream_array_size='20000000000'

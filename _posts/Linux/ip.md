@@ -11,7 +11,7 @@ categories: [Linux满汉全席]
 
 进入 /etc/network/ 目录下, 修改 `interfaces` 文件。
 
-```bash
+``` bash
 # The primary network interface
 auto eth0
 iface eth0 inet static
@@ -30,8 +30,8 @@ gateway 110.25.*.1
 
 这里直接使用 ifconfig 命令
 
-```bash
-$ sudo ifconfig eth0:0 110.25.*.* broadcast 110.25.*.255 netmask 255.255.255.0 
+``` bash
+$: sudo ifconfig eth0:0 110.25.*.* broadcast 110.25.*.255 netmask 255.255.255.0 
 ```
 
 第一种方式在你修改重启之后不会失效. 这种方式稍微操作不当, 则会造成远程无法连接。 第二种方式虽然只对当前生效, 重启之后就会失效. 但是不会因为操作不当给自己造成的不便。

@@ -3,6 +3,7 @@ title: NUMA
 date:  2019/4/11  13:51:06
 tags: [Linux]
 categories: [Linux满汉全席]
+permalink: 30F154F8-C537-4002-8E6E-D15F032F587A
 ---
 
 ## NUMA
@@ -60,22 +61,22 @@ categories: [Linux满汉全席]
 
 ### NUMA对大内存应用的坑（如MySQL)
 
-- CPU规模因摩尔定律指数级发展， 而总线发展缓慢， 导致多核CPU通过一条总线共享内存成为瓶颈
-- 于是NUMA出现了， CPU平均划分为若干个Chip(不多于4个）， 每个Chip有自己的内存控制器及内存插槽
-- CPU访问自己Chip上所插的内存时速度快， 而访问其他CPU所关联的内存（下文称Remote Access)的速度相较慢三倍左右
-- 于是Linux内核默认使用CPU亲和的内存分配策略， 使内存页尽可能的和调用线程处在同一个Core/Chip中
-- 由于内存页没有动态调整策略， 使得大部分内存页都集中在CPU 0上
-- 又因为Reclaim默认策略优先淘汰/Swap本Chip上的内存， 使得大量有用内存被换出
-- 当被换出页被访问时问题就以数据库响应时间飙高甚至阻塞的形式出现了
+* CPU规模因摩尔定律指数级发展， 而总线发展缓慢， 导致多核CPU通过一条总线共享内存成为瓶颈
+* 于是NUMA出现了， CPU平均划分为若干个Chip(不多于4个）， 每个Chip有自己的内存控制器及内存插槽
+* CPU访问自己Chip上所插的内存时速度快， 而访问其他CPU所关联的内存（下文称Remote Access)的速度相较慢三倍左右
+* 于是Linux内核默认使用CPU亲和的内存分配策略， 使内存页尽可能的和调用线程处在同一个Core/Chip中
+* 由于内存页没有动态调整策略， 使得大部分内存页都集中在CPU 0上
+* 又因为Reclaim默认策略优先淘汰/Swap本Chip上的内存， 使得大量有用内存被换出
+* 当被换出页被访问时问题就以数据库响应时间飙高甚至阻塞的形式出现了
 
 ### NUMA interleavel
 
 NUMA内存分配策略有一下四种：
 
-- 缺省default:总是在本地节点分配（当前进程运行的节点上）。
-- 绑定bind:强制分配到指定节点上。
-- 交叉interleavel:在所有节点或者指定节点上交叉分配内存。
-- 优先preferred:在指定节点上分配， 失败则在其他节点上分配。
+* 缺省default: 总是在本地节点分配（当前进程运行的节点上）。
+* 绑定bind: 强制分配到指定节点上。
+* 交叉interleavel: 在所有节点或者指定节点上交叉分配内存。
+* 优先preferred: 在指定节点上分配， 失败则在其他节点上分配。
 
 使用interleavel 可以在一定程度上很好的解决这个问题。 像MySQL这种外部请求随机性强， 各个线程访问内存在地址上平均分布的这种应用， Interleave的内存分配模式相较默认模式可以带来一定程度的性能提升。
 
@@ -83,5 +84,5 @@ NUMA内存分配策略有一下四种：
 
 > 参考链接
 
-1. [NUMA的原理与局限](https://blog.csdn.net/liguangxianbin/article/details/80797400)
-2. [NUMA架构的优缺点](https://www.cnblogs.com/klb561/p/9053692.html)
+1.[NUMA的原理与局限](https://blog.csdn.net/liguangxianbin/article/details/80797400)
+2.[NUMA架构的优缺点](https://www.cnblogs.com/klb561/p/9053692.html)

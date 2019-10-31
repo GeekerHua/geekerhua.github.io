@@ -3,6 +3,7 @@ title: Python枚举的实现
 date: 2017-06-14 13:05:26
 tags: [Python]
 categories: [Code]
+permalink: 5D33E2AF-7AAB-4CD6-BC68-CC9D3A467D53
 ---
 
 在Python3.4版本之前， 默认是没有枚举的， 我们经常使用的Python2.x的版本， 如果想实现枚举的功能该怎么办呢？ 代码是人写出来的， 这难不倒我们的， 因此利用动态语言的特性， 就出现了下面的众多中的枚举实现。
@@ -11,7 +12,7 @@ categories: [Code]
 
 ### 1. 使用类属性
 
-```Python
+``` Python
 
 >>> class Seasons:
 
@@ -27,7 +28,7 @@ categories: [Code]
 
 上边的例子可以简化成：
 
-```Python
+``` Python
 
 >>> class Seasons:
 
@@ -36,7 +37,7 @@ categories: [Code]
 
 ### 2. 借助函数
 
-```Python
+``` Python
 
 >>> def enum(*posarg, **keysarg):
 
@@ -51,7 +52,7 @@ categories: [Code]
 
 ### 3. 使用 `collections.namedtuple`
 
-```Python
+``` Python
 
 >>> Seasons = namedtuple('Seasons', 'Spring Summer Autumn Winter')._make(range(4))
 >>> print Seasons. Spring
@@ -67,7 +68,7 @@ Python中枚举的替代方法远不止这些， 就不一一列举了。 但这
 
 以 `collections.namedtuple` 为例， 下面的例子中枚举值 `Spring` 与 `Autumn` 相等， 但却不会提示任何错误。
 
-```Python
+``` Python
 
 >>> Seasons._replace(Spring = 2)
 
@@ -76,7 +77,7 @@ Seasons(Spring = 2, Summer = 1, Autumn = 2, Winter = 3) # Spring和Autumn的值�
 
 ### 2. 支持无意义的操作
 
-```Python
+``` Python
 
 >>> Seasons. Summer + Seasons. Autumn == Seasons. Winter
 
@@ -90,7 +91,7 @@ True # Seasons. Summer+Seasons. Autumn相加无任何实际意义
 * 一种是Enum, 只要保证枚举值唯一即可， 对值的类型没有限制；
 * 另一种是IntEnum, 其枚举值为int型
 
-```Python
+``` Python
 from flufl.enum import Enum
 
 >>> class Seasons(Enum):
@@ -114,7 +115,7 @@ from flufl.enum import Enum
 
 可使用 `value` 来获取枚举元素的值
 
-```Python
+``` Python
 
 >>> Weak. Monday
 
@@ -125,7 +126,7 @@ from flufl.enum import Enum
 1
 ```
 
- `flufl.enum` 不支持枚举元素的比较。
+`flufl.enum` 不支持枚举元素的比较。
 
 ## 迟来的官方支持----Enum(>=3.4)
 

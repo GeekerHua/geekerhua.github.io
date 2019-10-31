@@ -3,6 +3,7 @@ title:  pyenv管理多版本python
 date: 2017-02-6 13:46:28
 tags: [环境配置， Python]
 categories: [Code]
+permalink: 04A6E100-8BB8-471D-B122-B8CFC68E1B8E
 ---
 
 在工作中不同项目对Python的版本有着不同的要求， Python2与Python3的差异， 是的很多时候我们要同时使用者两种环境来做对比。 众所周知， ipython的交互性设计能带来很大的方便。 最理想的状态下就是能够随时切换Python的版本， 且Python2与Python3能够并存， 并且都能拥有自己的ipython和自己的pip包管理工具。
@@ -36,13 +37,13 @@ mac里面Python自带easy_install的， 最快的应该就是在terminal里面�
 
 ### 1. 安装pyenv
 
-```zsh
+``` bash
 $: brew install pyenv
 ```
 
 ### 2. 添加到环境变量
 
-```zsh
+``` bash
 $: echo 'eval "$(pyenv init -)"' >> ~/.zshrc
 ```
 
@@ -50,32 +51,32 @@ $: echo 'eval "$(pyenv init -)"' >> ~/.zshrc
 
 ### 3. 应用zsh(bash)设置
 
-```zsh
+``` bash
 $: source ~/.zshrc
 $: exec $SHELL -l     # 输入命令重启 Shell, 然后就可以重启pyenv
 ```
 
 ### 4. 安装python
 
-```zsh
+``` bash
 $: pyenv install 3.6.0 # 安装3.6.0版本
 ```
 
 ### 5. 重建索引
 
-```zsh
+``` bash
 $: pyenv rehash
 ```
 
 ### 6. 设置全局pyhon版本
 
-```zsh
+``` bash
 $: pyenv global 2.7.13 3.6.0
 ```
 
 ### 7. 指定项目python版本
 
-```zsh
+``` bash
 $: pyenv local 3.5.2
 ```
 
@@ -84,7 +85,7 @@ $: pyenv local 3.5.2
 
 ## 其他命令
 
-```zsh
+``` bash
 $: pyenv version   # 查看当前生效python版本
 $: pyenv versions  # 查看已安装版本
 $: pyenv install --list # 查看可用版本
@@ -94,7 +95,7 @@ $: pyenv install --list # 查看可用版本
 
 ## 安装常见问题
 
-### 1.  安装时出现 `zipimport.ZipImportError: can't decompress data; zlib not available` 错误[官方的解释](https://github.com/yyuu/pyenv/wiki/Common-build-problems)
+### 1. 安装时出现 `zipimport.ZipImportError: can't decompress data; zlib not available` 错误[官方的解释](https://github.com/yyuu/pyenv/wiki/Common-build-problems)
 
 解决方法1：
 $: brew install readline xz
@@ -114,7 +115,7 @@ $: CFLAGS = "-I$(xcrun --show-sdk-path)/usr/include"
 
 新建编译环境， 输入以下内容
 
-```json
+``` json
 {
     "cmd": ["$: which python3 的路径“, "-u", "$file"],
     "env": { "PYTHONIOENCODING": "utf8" }   # 使Python3支持中文
@@ -122,4 +123,3 @@ $: CFLAGS = "-I$(xcrun --show-sdk-path)/usr/include"
 ```
 
 选择新建的编译环境进行编译。
-

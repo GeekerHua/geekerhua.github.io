@@ -11,31 +11,31 @@
 ###  open
 > 用来打开文件、文件夹，使用方式在`open`后添加后缀
 
-```bash
-$ open -a finder    #打开finder
-$ open -n -a qq     # 打开新的qq程序
-$ open 'name'   # 打开文件
+``` bash
+$: open -a finder    #打开finder
+$: open -n -a qq     # 打开新的qq程序
+$: open 'name'   # 打开文件
 ```
 ### LANG
 >用来显示和设置全局语言的
 
-```bash
-$ echo $LANG    # 显示目前所支持的语言
-$ echo LANG=en_US   # 修改语言为英文
+``` bash
+$: echo $LANG    # 显示目前所支持的语言
+$: echo LANG=en_US   # 修改语言为英文
 # 汉语为
 zh_CN.UTF-8
 ```
 ### date
 >用来显示当前时间
 
-```bash
-$ ~ date +%Y/%m/%d
+``` bash
+$: ~ date +%Y/%m/%d
 2016/05/26
 ```
 ### cal
 >日历
-```bash
-$ cal 10 2019   # 显示2019年10的月历
+``` bash
+$: cal 10 2019   # 显示2019年10的月历
 ```
 
 ### bc

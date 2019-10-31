@@ -29,11 +29,11 @@ three.example.com
 > -m后面接调用module的名字
   -a后面接调用module的参数
 
-```bash
-$ #使用module copy拷贝管理员节点文件/etc/hosts到所有远程主机/tmp/hosts
-$ ansible all -m copy -a "src=/etc/hosts dest=/tmp/hosts"
-$ #使用module yum在远程主机web上安装httpd包
-$ ansible web -m yum -a "name=httpd state=present"
+``` bash
+$: #使用module copy拷贝管理员节点文件/etc/hosts到所有远程主机/tmp/hosts
+$: ansible all -m copy -a "src=/etc/hosts dest=/tmp/hosts"
+$: #使用module yum在远程主机web上安装httpd包
+$: ansible web -m yum -a "name=httpd state=present"
 ```
 
 ### playbook中使用
@@ -82,9 +82,9 @@ inventory = /etc/ansible/hosts
 ```
 
 2. 命令行中传递主机目录配置文件
-```bash
-$ ansible-playbook -i hosts site.yml
-$ ansible-playbook -inventory-file hosts site.yml
+``` bash
+$: ansible-playbook -i hosts site.yml
+$: ansible-playbook -inventory-file hosts site.yml
 ```
 
 ### 远程主机分组
@@ -119,15 +119,15 @@ proxy=proxy.atlanta.example.com
 ## Ansible的脚本
 
 ### 基本语法
-```bash
+``` bash
 # 执行
-$ ansible-playbook deploy.yml
+$: ansible-playbook deploy.yml
 # 查看输出的细节
-$ ansible-playbook playbook.yml  --verbose
+$: ansible-playbook playbook.yml  --verbose
 # 查看该脚本影响哪些hosts
-$ ansible-playbook playbook.yml --list-hosts
+$: ansible-playbook playbook.yml --list-hosts
 # 并行执行脚本
-$ ansible-playbook playbook.yml -f 10
+$: ansible-playbook playbook.yml -f 10
 ```
 
 

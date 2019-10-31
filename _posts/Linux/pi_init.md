@@ -1,8 +1,9 @@
 ---
 title: 树莓派初始化
-date:  2019/5/11  9:21:46 PM
+date:  2019/5/11  21:21:46
 tags: [Linux, 树莓派]
 categories: [Linux满汉全席]
+permalink: 33C79E13-A298-4440-BD27-3F4A0356AF0B
 ---
 
 ## 写镜像
@@ -53,7 +54,7 @@ network={
 使用网线将树莓派与电脑进行连接， 此时两台设备处于同一个局域内。 使用arp工具扫描局域网设备
 
 ``` bash
-$ arp -a
+$: arp -a
 raspberrypi.local (169.254.117.22) at b8:27:eb:42:a9:53 on en4 [ethernet]
 ? (192.168.0.1) at 78:44:fd:46:32:c0 on en0 ifscope [ethernet]
 ? (192.168.0.112) at f4:5c:89:9f:65:2b on en0 ifscope [ethernet]
@@ -217,5 +218,5 @@ sudo update-rc.d tightvncserver defaults
 sudo apt-get install scim-pinyin
 ```
 
-- 接着运行 `sudo raspi-config`
-- 选择 `change_locale` ， 在Default locale for the system environment: 中选择zh_CN. UTF-8。 然后重启机器， 就发现整个环境变成中文的了。
+* 接着运行 `sudo raspi-config`
+* 选择 `change_locale` ， 在Default locale for the system environment: 中选择zh_CN. UTF-8。 然后重启机器， 就发现整个环境变成中文的了。

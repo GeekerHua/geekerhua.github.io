@@ -3,6 +3,7 @@ title: autojump
 date: 2017-08-01 16:00:12
 tags: [Soft]
 categories: [Mac工作法]
+permalink: 486EACA2-A017-441D-8179-00BF6784581C
 ---
 
 > 经常在终端进行操作的时候，路径的频繁切换是一件很麻烦的事情。使用autojump能够快速的在经常使用的路径中切换，省了不少麻烦。
@@ -10,17 +11,19 @@ categories: [Mac工作法]
 > [参考文章](http://www.jianshu.com/p/23aeb7c4d89b)
 
 ## 安装
-```bash
-$ brew install autojump
+
+``` bash
+$: brew install autojump
 ```
 
-```bash
-$ echo '[ -f /usr/local/etc/profile.d/autojump.sh  ] && . /usr/local/etc/profile.d/autojump.sh' >> .zshrc
-$ source ~/.zshrc
+``` bash
+$: echo '[ -f /usr/local/etc/profile.d/autojump.sh  ] && . /usr/local/etc/profile.d/autojump.sh' >> .zshrc
+$: source ~/.zshrc
 ```
 
 ## 常用方法
-```bash
+
+``` bash
 // 进入目录
 j dir
 
@@ -39,3 +42,4 @@ jco
 j in   //自动进入权重高的
 j w in   //加个关键词呗
 ```
+

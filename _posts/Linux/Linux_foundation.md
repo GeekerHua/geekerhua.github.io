@@ -54,7 +54,7 @@ categories: [Linux满汉全席]
 
 要查看相应区段的内容， 就在 man 后面加上相应区段的数字即可， 如：
 
-```shell
+``` bash
 $: man 1 ls
 ```
 
@@ -68,14 +68,14 @@ $: man 1 ls
 
 使用cat, tac和nl命令查看文件。 使用cat, tac和nl命令查看文件。
 
-```shell
+``` bash
 $: cat -n passwd
 ```
 
- `nl` 命令， 添加行号并打印， 这是个比cat -n更专业的行号打印命令。
+`nl` 命令， 添加行号并打印， 这是个比cat -n更专业的行号打印命令。
 这里简单列举它的常用的几个参数：
 
-```zsh
+``` bash
 -b : 指定添加行号的方式， 主要有两种：
     -b a:表示无论是否为空行， 同样列出行号（"cat -n"就是这种方式）
     -b t:只列出非空行的编号并列出（默认为这种方式）
@@ -95,7 +95,7 @@ less 是more和vi的结合体， 功能强大
 
 更直接的只看一行， 加上-n参数， 后面紧跟行数：
 
-```shell
+``` bash
 $: tail -n 1 /etc/passwd
 ```
 
@@ -109,13 +109,13 @@ $: tail -n 1 /etc/passwd
 
 ### 查看PATH
 
-```shell
+``` bash
 $: echo PATH
 ```
 
 ### 添加值
 
-```shell
+``` bash
 $: PATH=$PATH:/home/shiyanlou/mybin
 ```
 
@@ -123,7 +123,7 @@ $: PATH=$PATH:/home/shiyanlou/mybin
 
 > zsh的配置文件为。 zshrc, bash的配置文件为。 bashrc
 
-```shell
+``` bash
 $: echo "PATH=$PATH:/home/shiyanlou/mybin" >> .zshrc
 ```
 
@@ -140,13 +140,13 @@ $: echo "PATH=$PATH:/home/shiyanlou/mybin" >> .zshrc
 
 ### 删除变量
 
-```shell
+``` bash
 $: unset path
 ```
 
 ### 环境变量修改立刻生效
 
-```shell
+``` bash
 $: source .zshrc
 -----
 $: . ./.zshrc    # 第一个点后边必须跟绝对路径
@@ -164,7 +164,7 @@ whereis只能搜索二进制文件（-b)， man帮助文件（-m)和源代码文
 
 它可以用来查找指定目录下的不同文件类型， 如查找 /etc 下所有以 sh 开头的文件：
 
-```shell
+``` bash
 $: locate /etc/sh
 ```
 
@@ -172,7 +172,7 @@ $: locate /etc/sh
 
 查找 /usr/share/ 下所有 jpg 文件：
 
-```shell
+``` bash
 $: locate /usr/share/\*.jpg
 ```
 
@@ -184,7 +184,7 @@ $: locate /usr/share/\*.jpg
 
 which本身是 Shell 内建的一个命令， 我们通常使用which来确定是否安装了某个指定的软件， 因为它只从PATH环境变量指定的路径中去搜索命令：
 
-```shell
+``` bash
 $: which ls
 ```
 
@@ -194,7 +194,7 @@ find应该是这几个命令中最强大的了， 它不但可以通过文件类
 
 在指定目录下搜索指定文件名的文件：
 
-```shell
+``` bash
 $: find /etc/ -name interfaces
 ```
 
@@ -212,7 +212,7 @@ $: find /etc/ -name interfaces
 
     •
 
- `-mtime n` : n 为数字， 表示为在n天之前的” 一天之内“ 修改过的文件• `-mtime +n` : 列出在n天之前（ 不包含n天本身） 被修改过的文件• `-mtime -n` : 列出在n天之内（ 包含n天本身） 被修改过的文件• `newer file` : file为一个已存在的文件， 列出比file还要新的文件名
+`-mtime n` : n 为数字， 表示为在n天之前的” 一天之内“ 修改过的文件• `-mtime +n` : 列出在n天之前（ 不包含n天本身） 被修改过的文件• `-mtime -n` : 列出在n天之内（ 包含n天本身） 被修改过的文件• `newer file` : file为一个已存在的文件， 列出比file还要新的文件名
 
 ---
 
@@ -222,7 +222,7 @@ $: find /etc/ -name interfaces
 
 查看磁盘情况
 
-```shell
+``` bash
 $: df -h    #以大小形式显示， 而不是block块形式
 ```
 
@@ -230,7 +230,7 @@ $: df -h    #以大小形式显示， 而不是block块形式
 
 查看文件夹大小
 
-```shell
+``` bash
 # 只查看1级目录的信息
 $: du -h -d 0 ~
 ```
@@ -241,9 +241,9 @@ $: du -h -d 0 ~
 
 ### 使用type可以判断命令类型， 是内部命令， 还是其他的
 
-- type ls
-- type vim
-- type ls
+* type ls
+* type vim
+* type ls
 
 ### help
 
@@ -251,7 +251,7 @@ $: du -h -d 0 ~
 
 外部命令也可以使用help命令
 
-```shell
+``` bash
 ls --help
 ```
 
@@ -274,3 +274,4 @@ man 手册中一共有这么几个章节
 ### info
 
 > 如果man命令显示的信息还不够， 可以用info命令。 但zsh没有这个命令
+

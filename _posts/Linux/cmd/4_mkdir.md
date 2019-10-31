@@ -23,7 +23,7 @@ categories: [Linux满汉全席]
 创建项目的目录结构
 `mkdir -vp scf/{lib/,bin/,doc/{info,product},logs/{info,product},service/deploy/{info,product}}`
 
-```bash
+``` bash
 [root@localhost test]# mkdir -vp scf/{lib/,bin/,doc/{info,product},logs/{info,product},service/deploy/{info,product}}
 mkdir: 已创建目录 “scf”
 mkdir: 已创建目录 “scf/lib”

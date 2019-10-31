@@ -3,15 +3,16 @@ title: Git与Git工作流
 date: 2016-06-02 18:57:21
 tags: [git]
 categories: [Code]
+permalink: C4E1DCD7-0E9A-4126-A903-5143DBA1638D
 ---
 
 ## Git 基础用法
 
 SVN与Git(集中式VS分布式）
 
-- 集中式
+* 集中式
 
-- 分布式
+* 分布式
 
 #### 工作区
 
@@ -21,10 +22,10 @@ SVN与Git(集中式VS分布式）
 
 > 工作区有一个隐藏目录 `.git` ， 这个不算工作区， 而是Git的版本库。
 
-- Git的版本库里存了很多东西， 其中最重要的就是称为stage(或者叫index)的暂存区， 还有Git为我们自动创建的第一个分支 `master` ， 以及指向 `master` 的一个指针叫HEAD.
+* Git的版本库里存了很多东西， 其中最重要的就是称为stage(或者叫index)的暂存区， 还有Git为我们自动创建的第一个分支 `master` ， 以及指向 `master` 的一个指针叫HEAD.
 
-- git add -> 将变化提交到了暂存区
-- git commit -> 将暂存区的所有修改都提交到分支， 并清空暂存区
+* git add -> 将变化提交到了暂存区
+* git commit -> 将暂存区的所有修改都提交到分支， 并清空暂存区
 
 ### 全局设置
 
@@ -40,7 +41,7 @@ SVN与Git(集中式VS分布式）
 |-----------------------|------------------------------|
 | $ git commit --amend  | 修改最后一次提交的注释          |
 | $ git init --bare     | 初始化空白的代码仓库， 协同开发使用 |
-| $ git add . --all     | 将所有变化添加到暂存区          |
+| $ git add .--all     | 将所有变化添加到暂存区          |
 | $ git commit -m "注释“ | 将暂存区内容提交至代码库         |
 | $ git init            | 初始化代码库                   |
 
@@ -116,9 +117,9 @@ SVN与Git(集中式VS分布式）
 
 #### 功能分支工作流优点
 
-- 每个新功能开发都在一个专门的分支， 而不是在master分支， 不会弄乱主干分支
-- 功能开发隔离使 `pull requests工作流` 成为可能
-- 使用 `pull requests` 可以很好地进行 `Code Review`
+* 每个新功能开发都在一个专门的分支， 而不是在master分支， 不会弄乱主干分支
+* 功能开发隔离使 `pull requests工作流` 成为可能
+* 使用 `pull requests` 可以很好地进行 `Code Review`
 
 ### [Gitflow工作流](http://blog.jobbole.com/76867/)
 
@@ -135,40 +136,40 @@ SVN与Git(集中式VS分布式）
 
 ![](https://raw.githubusercontent.com/quickhack/translations/master/git-workflows-and-tutorials/images/git-workflow-forking.png)
 
-- Forking工作流的一个主要优势是， 贡献的代码可以被集成， 而不需要所有人都能push代码到仅有的中央仓库中。 开发者push到自己的服务端仓库， 而只有项目维护者才能push到正式仓库。 这样项目维护者可以接受任何开发者的提交， 但无需给他正式代码库的写权限
-- GitHub中每个代码仓库都有三个选项， 分别是Star、 Watch、 Fork,
+* Forking工作流的一个主要优势是， 贡献的代码可以被集成， 而不需要所有人都能push代码到仅有的中央仓库中。 开发者push到自己的服务端仓库， 而只有项目维护者才能push到正式仓库。 这样项目维护者可以接受任何开发者的提交， 但无需给他正式代码库的写权限
+* GitHub中每个代码仓库都有三个选项， 分别是Star、 Watch、 Fork,
 
 ![屏幕快照 2016-04-11 下午11.20.38.png](quiver-image-url/F81C279EDF5AD53780259EB087CD4F84.png)
 
 #### 流程如下
 
-- 项目维护者初始化正式仓库
+* 项目维护者初始化正式仓库
 
-  - ![](https://raw.githubusercontent.com/quickhack/translations/master/git-workflows-and-tutorials/images/git-workflows-forking-1.png)
+  + ![](https://raw.githubusercontent.com/quickhack/translations/master/git-workflows-and-tutorials/images/git-workflows-forking-1.png)
 
-- 开发者fork正式仓库
+* 开发者fork正式仓库
 
-  - ![](https://raw.githubusercontent.com/quickhack/translations/master/git-workflows-and-tutorials/images/git-workflows-forking-2.png)
+  + ![](https://raw.githubusercontent.com/quickhack/translations/master/git-workflows-and-tutorials/images/git-workflows-forking-2.png)
 
-- 开发者克隆自己fork出来的仓库
+* 开发者克隆自己fork出来的仓库
 
-  - ![](https://raw.githubusercontent.com/quickhack/translations/master/git-workflows-and-tutorials/images/git-workflows-forking-3.png)
+  + ![](https://raw.githubusercontent.com/quickhack/translations/master/git-workflows-and-tutorials/images/git-workflows-forking-3.png)
 
-- 开发者开发自己的功能
+* 开发者开发自己的功能
 
-  - ![](https://raw.githubusercontent.com/quickhack/translations/master/git-workflows-and-tutorials/images/git-workflows-forking-4.png)
+  + ![](https://raw.githubusercontent.com/quickhack/translations/master/git-workflows-and-tutorials/images/git-workflows-forking-4.png)
 
-- 开发者发布自己的功能
+* 开发者发布自己的功能
 
-  - ![](https://raw.githubusercontent.com/quickhack/translations/master/git-workflows-and-tutorials/images/git-workflows-forking-5.png)
+  + ![](https://raw.githubusercontent.com/quickhack/translations/master/git-workflows-and-tutorials/images/git-workflows-forking-5.png)
 
-- 项目维护者集成开发者的功能
+* 项目维护者集成开发者的功能
 
-  - ![](https://raw.githubusercontent.com/quickhack/translations/master/git-workflows-and-tutorials/images/git-workflows-forking-6.png)
+  + ![](https://raw.githubusercontent.com/quickhack/translations/master/git-workflows-and-tutorials/images/git-workflows-forking-6.png)
 
-- 开发者和正式仓库做同步
+* 开发者和正式仓库做同步
 
-  - ![](https://raw.githubusercontent.com/quickhack/translations/master/git-workflows-and-tutorials/images/git-workflows-forking-7.png)
+  + ![](https://raw.githubusercontent.com/quickhack/translations/master/git-workflows-and-tutorials/images/git-workflows-forking-7.png)
 
 ### [Pull Requests](http://blog.jobbole.com/76854/)
 
@@ -183,7 +184,7 @@ SVN与Git(集中式VS分布式）
 
 > 通常我们是这样提交代码的
 
-```bash
+``` bash
 $: git commit -m "hello world"
 ```
 
@@ -191,23 +192,23 @@ $: git commit -m "hello world"
 
 ### commit message的作用
 
-- 提供更多的历史信息， 方便快速浏览
+* 提供更多的历史信息， 方便快速浏览
 
 > 比如， 下面的命令显示上次发布后的变动， 每个commit占据一行。 你只看行首， 就知道某次 commit 的目的。
 
-```bash
+``` bash
 $: git log <last tag> HEAD --pretty=format:%s
 ```
 
-- 可以过滤某些commit(比如文档改动）， 便于快速查找信息。
+* 可以过滤某些commit(比如文档改动）， 便于快速查找信息。
 
 > 比如， 下面的命令仅仅显示本次发布新增加的功能。
 
-```bash
+``` bash
 $: git log <last release> HEAD --grep feature
 ```
 
-- 可以直接从commit生成Change log.
+* 可以直接从commit生成Change log.
 
 > Change Log 是发布新版本时， 用来说明与上一个版本差异的文档。
 
@@ -217,7 +218,7 @@ $: git log <last release> HEAD --grep feature
 
 > 每次提交， Commit message 都包括三个部分： Header, Body 和 Footer.
 
-```bash
+``` bash
 <type>(<scope>): <subject>
 // 空一行
 <body>
@@ -235,13 +236,13 @@ Header部分只有一行， 包括三个字段： type(必需）、 scope(可选
 
 > type用于说明 commit 的类别， 只允许使用下面7个标识。
 
-- feat: 新功能（feature)
-- fix: 修补bug
-- docs: 文档（documentation)
-- style: 格式（不影响代码运行的变动）
-- refactor: 重构（即不是新增功能， 也不是修改bug的代码变动）
-- test: 增加测试
-- chore: 构建过程或辅助工具的变动
+* feat: 新功能（feature)
+* fix: 修补bug
+* docs: 文档（documentation)
+* style: 格式（不影响代码运行的变动）
+* refactor: 重构（即不是新增功能， 也不是修改bug的代码变动）
+* test: 增加测试
+* chore: 构建过程或辅助工具的变动
 
 ##### scope
 
@@ -251,9 +252,9 @@ Header部分只有一行， 包括三个字段： type(必需）、 scope(可选
 
 > subject是 commit 目的的简短描述， 不超过50个字符。
 
-- 以动词开头， 使用第一人称现在时， 比如change, 而不是changed或changes
-- 第一个字母小写
-- 结尾不加句号（.）
+* 以动词开头， 使用第一人称现在时， 比如change, 而不是changed或changes
+* 第一个字母小写
+* 结尾不加句号（.）
 
 #### Body
 
@@ -274,7 +275,7 @@ Header部分只有一行， 包括三个字段： type(必需）、 scope(可选
 
 > 如果当前 commit 针对某个issue, 那么可以在 Footer 部分关闭这个 issue 。
 
-```bash
+``` bash
 Closes #234
 
 Closes #123, #245, #992
@@ -282,9 +283,9 @@ Closes #123, #245, #992
 
 #### Revert
 
-> 还有一种特殊情况， 如果当前 commit 用于撤销以前的 commit, 则必须以revert:开头， 后面跟着被撤销 Commit 的 Header.
+> 还有一种特殊情况， 如果当前 commit 用于撤销以前的 commit, 则必须以revert: 开头， 后面跟着被撤销 Commit 的 Header.
 
-```bash
+``` bash
 revert: feat(pencil): add 'graphiteWidth' option
 This reverts commit 667ecc1654a317a13331b17617d973392f415f02.
 ```
@@ -292,4 +293,3 @@ This reverts commit 667ecc1654a317a13331b17617d973392f415f02.
 > Body部分的格式是固定的， 必须写成This reverts commit &lt; hash>.， 其中的hash是被撤销 commit 的 SHA 标识符。
 
 如果当前 commit 与被撤销的 commit, 在同一个发布（release)里面， 那么它们都不会出现在 Change log 里面。 如果两者在不同的发布， 那么当前 commit, 会出现在 Change log 的Reverts小标题下面。
-

@@ -3,31 +3,32 @@ title: samba
 date: 2017-08-01 16:12:02
 tags: [Linux]
 categories: [Linux满汉全席]
+permalink: E1AE7294-638B-4F71-8DDB-E6E89E50273C
 ---
 
-## 安装（如果需要）
+## 安装
 
-```bash
+``` bash
 $: sudo apt-get install samba samba-common
 ```
 
-##  设置共享目录
+## 设置共享目录
 
 新建权限为777的文件夹， 用来当共享文件夹。
 
-```bash
+``` bash
 $: chmod -m 777 /home/share
 ```
 
 ## 修改samba的配置文件
 
-```bash
+``` bash
 $: vi /etc/samba/smb.conf
 ```
 
 在末尾添加如下代码
 
-```yuml
+``` yuml
 [share]
 
     path = /home/share
@@ -39,19 +40,19 @@ $: vi /etc/samba/smb.conf
 
 ## 创建samba账户
 
-```bash
+``` bash
 $: touch /etc/samba/smbpasswd
 $: sudo smbpasswd -a name
 ```
 
 ## 重启samba
 
-```bash
+``` bash
 $: /etc/init.d/smbd restart
 ```
 
 或使用service进行管理
 
-```bash
+``` bash
 $: service smbd start
 ```

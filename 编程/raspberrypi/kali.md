@@ -4,20 +4,20 @@
 
 1. 查看设备
 
-```bash
-$ diskutil list
+``` bash
+$: diskutil list
 ```
 
 2. 卸载tf卡
 
-```bash
-$ diskutil unmountDisk /dev/disk2
+``` bash
+$: diskutil unmountDisk /dev/disk2
 ```
 
 3. 烧录镜像
 
-```bash
-$ sudo dd bs=4m if=/Users/hua/Downloads/kali-linux-2018.1a-rpi3-nexmon.img of=/dev/disk2
+``` bash
+$: sudo dd bs=4m if=/Users/hua/Downloads/kali-linux-2018.1a-rpi3-nexmon.img of=/dev/disk2
 ```
 
 # kali
@@ -27,7 +27,7 @@ $ sudo dd bs=4m if=/Users/hua/Downloads/kali-linux-2018.1a-rpi3-nexmon.img of=/d
 
 4. 修改apt 源
 
-```bash
+``` bash
 vi /etc/apt/sources.list
 #阿里云
 #deb http://mirrors.aliyun.com/kali kali-rolling main non-free contrib
@@ -36,8 +36,8 @@ vi /etc/apt/sources.list
 
 4. 切换中文显示
 
-```bash
-$ dpkg-reconfigure locales
+``` bash
+$: dpkg-reconfigure locales
 ```
 
 - 选择字符编码： en_US. UTF-8、 zh_CN. GBK、 zh_CN. UTF-8
@@ -53,13 +53,13 @@ apt-get install ttf-wqy-microhei ttf-wqy-zenhei xfonts-wqy
 
 5. 安装google输入法安装
 
-```bash
-$ apt-get install fcitx-googlepinyin
+``` bash
+$: apt-get install fcitx-googlepinyin
 ```
 
 6. 创建用户
 
-```bash
+``` bash
 useradd -m -U hua
 passwd hua
 usermod -a sudo hua
@@ -69,7 +69,7 @@ usermod -a sudo hua
 - https://blog.csdn.net/richermen/article/details/48445721
 - https://www.cnblogs.com/PhoenixMY/p/5259162.html
 
-```bash
+``` bash
 apt-get install triggerhappy lua5.1  alsa-utils
 wget http://archive.raspberrypi.org/debian/pool/main/r/raspi-config/raspi-config_20180406+1_all.deb
 dpkg -i raspi-config_20180406+1_all.deb
@@ -96,7 +96,7 @@ sudo apt-get install axel
 
 ## VPN
 
-```bash
+``` bash
 sudo apt-get install network-manager-pptp network-manager-pptp-gnome
 ```
 

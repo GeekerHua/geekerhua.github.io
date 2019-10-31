@@ -2,7 +2,8 @@
 title: 从面试官的角度谈iOS面试
 date: 2015-12-07 18:57:21
 tags: [iOS, interview]
-categories: [思考]
+categories: [thinking]
+permalink: 35D57043-917E-4CB7-8857-62F004EBB503
 ---
 
 > 本来, 这篇博文应该在大约1个月前发布的, 无奈项目无节制的加班剥夺了我的时间, 一拖再拖, 直到有一天我开始管理我的时间, 才有功夫把它写完, 发布出来。

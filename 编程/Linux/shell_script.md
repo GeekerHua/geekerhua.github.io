@@ -72,7 +72,7 @@ shift | 变量的迁移，后边接数字，从开头移除指定个数参数
 
 ## 判断
 
-```bash
+``` bash
 if [ condition ];then
     command
 elif [ condition ]; then
@@ -84,7 +84,7 @@ fi
 
 ## case …… esac
 
-```bash
+``` bash
 case $var in
     "第一个变量内容" )
         command
@@ -104,7 +104,7 @@ esac
 
 ### 1. 定义
 
-```bash
+``` bash
 function xxxx() {
     command
 }
@@ -112,19 +112,19 @@ function xxxx() {
 
 ### 2.调用
 
-```bash
+``` bash
 xxxx
 ```
 
 ## loop循环
-```bash
+``` bash
 while [ condition ]
 do
     command
 done
 ```
 
-```bash
+``` bash
 until [ condition ]
 do
     command
@@ -132,14 +132,14 @@ done
 ```
 
 ## for...do...done 固定循环
-```bash
+``` bash
 for var in con1 con2 con3
 do
     command
 done
 ```
 数值处理
-```bash
+``` bash
 for ((i=1;i<=${nu};i=i+1))
 do
     command

@@ -4,7 +4,7 @@ redis-benchmark
 
 
 
-```bash
+``` bash
 #!/usr/bin/env bash
 
 get_local_ip(){
@@ -37,7 +37,7 @@ redis-benchmark -h 172.17.146.151 -p 7001 -t get -r 10000000 -n 24000000 -c 16 -
 
 
 
-```shell
+``` bash
 redis-benchmark -h 172.17.146.151 -p 7001 -t get -r 10000000 -n 24000000 -c 16 -d 32
 for port in $(seq 7001 7009)
 do
@@ -49,7 +49,7 @@ done
 
 
 
-```shell
+``` bash
 
 for port in $(seq 7001 7032)
 do
@@ -60,7 +60,7 @@ done
 
 
 
-```shell
+``` bash
 for port in $(seq 7001 7032)
 do
 	/usr/local/redis/bin/redis-benchmark -h 172.17.146.151 -p ${port} -t get -r 10000000 -n 240000000 -c 64 -d 32  > ./${port}.redis &

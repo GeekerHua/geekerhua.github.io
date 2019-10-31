@@ -1,6 +1,6 @@
 # yum源安装失败
 
-```bash
+``` bash
 One of the configured repositories failed (未知),
  and yum doesn't have enough cached data to continue. At this point the only
  safe thing yum can do is fail. There are a few ways to work "fix" this:

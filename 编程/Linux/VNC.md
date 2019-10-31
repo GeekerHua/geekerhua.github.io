@@ -32,7 +32,7 @@ ssh -f student@127.0.0.1 find / &> ~/find1. log
 ## scp
 两个常用参数 -p:保留原本档案的权限。-r:复制文件夹
 
-```bash
+``` bash
 scp [-r] file user@ip:file
 scp [-r] user@ip:file file
 ```

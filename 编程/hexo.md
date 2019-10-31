@@ -38,7 +38,7 @@ categories: [other]
 
 官网给出了相当简单了例子。
 
-```shell
+``` bash
 npm install hexo-cli -g
 hexo init blog
 cd blog

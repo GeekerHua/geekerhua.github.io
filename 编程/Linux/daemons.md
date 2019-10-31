@@ -31,14 +31,14 @@ daemon相关的文件放到哪里了？
 * 查看预设启动状态： chkconfig --list daemon
 
 ### 建立自己的服务
-```bash
+``` bash
 #!/bin/bash
 # chkconfig: 35 80 70
 # description: this is description
 echo 'Nothing'
 ```
 
-```bash
+``` bash
 chkconfig --add xxx
 chkconfig --level 2345 xxx on
 ```

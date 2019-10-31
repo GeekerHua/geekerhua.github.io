@@ -3,6 +3,7 @@ title: SSH详解
 date: 2017-08-01 16:11:54
 tags: [Linux]
 categories: [Linux满汉全席]
+permalink: 6F156727-05B6-4FF7-B80F-D10E6D45E0C3
 ---
 
 ## 功效
@@ -17,7 +18,7 @@ ssh连接默认每次连接需要输入密码， 但可以通过公钥认证进�
 
 很多系统自带有， 如果没有， 使用以下命令安装
 
-```bash
+``` bash
 # Debain系
 $: sudo apt-get install openssh-server
 # Redhat系
@@ -26,7 +27,7 @@ $: sudo yum install openssh-server
 
 ### 2. 登录
 
-```bash
+``` bash
 $: ssh user@host
 ```
 
@@ -44,7 +45,7 @@ $: ssh user@host
 
 开启sshd服务， 不同平台甚至同平台不同版本的启动方式都有所不同。 详细不同平台版本服务[Daemons](xxxxx)
 
-```bash
+``` bash
 $: systemctl satart sshd
 ```
 
@@ -58,7 +59,7 @@ $: systemctl satart sshd
 
 #### 3.2 Client端
 
-```bash
+``` bash
 $: # 生成ssh key
 $: ssh-keygen -t rsa
 $: # 拷贝ssh pub_key到远程主机~/.ssh/authorized_keys中， ssh的时候就不需要输入密码了
@@ -71,7 +72,7 @@ $: ssh-keyscan remote_servers >> ~/.ssh/known_hosts
 
 ssh使用非对称加密对传输进行加密， 因此在传输开始前需要建立加密通道。 ssh的设置文件位于 `/etc/ssh/sshd_config`
 
-### 1. ssh连接流程
+### 1.ssh连接流程
 
 1. Client向远端Server发起ssh请求
 2. Server端收到ssh请求， 将pub_key发送回Client端
@@ -105,11 +106,10 @@ ssh使用非对称加密对传输进行加密， 因此在传输开始前需要�
 
 > `cp` 是Linux下的拷贝命令， 只能进行本地拷贝操作， 想要进行远程拷贝， 在两台主机间传输文件就需要使用 `scp` 命令了， scp默认会对传输进行ssl加密， 而且命令相当简单。 `scp` 是基于 `ssh` 的命令， 因此， 使用前需要保证能够使用 `ssh` 进行通信。
 
- `scp` 的命令简单来说就是 `scp`  `src`  `des` ， `scp` 后接源文件路径， 然后接目标路径， 如果需要拷贝文件夹， 需要添加 `-r` 参数。 文件路径的表示为， 本地直接写相对或绝对路径， 远端为 `user@host:path` 。
+`scp` 的命令简单来说就是 `scp`  `src`  `des` ， `scp` 后接源文件路径， 然后接目标路径， 如果需要拷贝文件夹， 需要添加 `-r` 参数。 文件路径的表示为， 本地直接写相对或绝对路径， 远端为 `user@host:path` 。
 示例如下：
 
-- scp [-r] `user` @ `host` : `targetPath`  `localPath` # 远端targetPath拷贝到本地localPath
-- scp [-r] `localPath`  `user` @ `host` : `targetPath` # 本地localPath拷贝到远端targetPath.
+* scp [-r] `user` @ `host` : `targetPath`  `localPath` # 远端targetPath拷贝到本地localPath
+* scp [-r] `localPath`  `user` @ `host` : `targetPath` # 本地localPath拷贝到远端targetPath.
 
 > 对于mac用户， 系统进行了图形化处理， 若想作为Server, 在共享设置中， 开启远程登录功能即可。 作为Client, 使用方法相同。
-

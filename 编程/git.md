@@ -4,7 +4,7 @@
 
 新建仓库
 
-```zsh
+``` bash
 git init
 git add .
 git commit -m "xxxx"
@@ -14,7 +14,7 @@ git push -u origin master
 
 已存在的仓库
 
-```zsh
+``` bash
 git remote add origin git@github.com:phodal/github-roam.git
 git push -u origin master
 ```

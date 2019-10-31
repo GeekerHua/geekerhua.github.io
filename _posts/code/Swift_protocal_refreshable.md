@@ -3,6 +3,7 @@ title: Swift Protocal实战1(Refreshable)
 date: 2016-06-18 21:57:21
 tags: [Swift, iOS]
 categories: [Code]
+permalink: DD37F228-0378-44FB-8224-27A030439742
 ---
 
 > 在app的开发中， 出现最多的一个情况就是显示一个列表来展示数据， 就像刷微博一样， 要能够上拉加载更多， 下拉进行刷新。 但在实际开发过程中， 需要考虑的情况会更多。 我们使用 `header` 来表示下拉刷新控件， 使用 `footer` 来表示上拉加载控件。
@@ -33,7 +34,7 @@ categories: [Code]
 
 ## 控制器使用代码
 
-```Swift
+``` Swift
 class PYMyOrderListController: PYBaseViewController, Refreshable {
   internal var refreshStatus: [(page: Int, isLoading: Bool, noMoreData: Bool, noMoreTitle: String)] = [(1, false, false, "没有更多订单了“)]   // 定义每个数据源需要的四个属性， 分别是当前页码， 是否被正在加载中， 是否没有更多数据可供加载了。 没有数据可供加载的footer文字
   internal var currentIndex = 0     // 当前现实的数据源索引
@@ -82,20 +83,20 @@ class PYMyOrderListController: PYBaseViewController, Refreshable {
 ## 代码中能看到的协议中定义的内容如下
 
 * 属性
-  * refreshStatus
-  * currentInidex
-  * refreshTable
+  + refreshStatus
+  + currentInidex
+  + refreshTable
 
 * 方法
-  * refreshData(isRefresh: Bool)
-  * setupRefreshHeader()
-  * setupRefreshFooter()
-  * loadFailer(failerTuples: FailerTuples)
-  * loadSuccess(noMoreData: Bool?)
+  + refreshData(isRefresh: Bool)
+  + setupRefreshHeader()
+  + setupRefreshFooter()
+  + loadFailer(failerTuples: FailerTuples)
+  + loadSuccess(noMoreData: Bool?)
 
 ## 让我们先看看 `Refreshable` 这个协议里是怎么写的
 
-```Swift
+``` Swift
 ///  刷新协议
 protocol Refreshable {
   ///  刷新数据的方法， 必须实现， 调用这个方法来执行下拉刷新和上拉加载

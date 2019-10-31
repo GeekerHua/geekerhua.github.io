@@ -11,7 +11,7 @@ categories: [Linux满汉全席]
 > ls命令是用来列出制定路径的文件及文件夹。
 
 ## 格式
-```bash
+``` bash
 ls [-ABCFGHLOPRSTUWabcdefghiklmnopqrstuwx1] [file ...]
 ```
 

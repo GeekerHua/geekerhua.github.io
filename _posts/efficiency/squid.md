@@ -3,10 +3,8 @@ title: squid+stunnel 科学上网
 date: 2019/04/06 16:12:18
 tags: [科学上网]
 categories: [效率]
+permalink: 19E0D43D-16AA-46FB-A9B3-0C3DB0D77BD4
 ---
-
-# squid+stunnel 合理的进行科学上网
-
 
 科学上网的方法有多重，有很多第三方提供的免费方案，这些方案优缺点暂时不予讨论。实际工作生活中还是会有需要自己搭建的情况，这次介绍的是使用squid进行搭建。
 
@@ -14,16 +12,16 @@ categories: [效率]
 
 ### 优点
 
-- 搭建简单方便，能够进行更好的权限控制。
-- squid具有缓存功能，必要的时候可以提高访问速度。
-- 使用stunnel能够对通信进行加密，更加安全。
-- squid可以实现正向代理，透明代理，反向代理，能够实现多种需求。
-- 将squid搭建在网关即可实现透明代理，下边的所以机器都免配置使用，方便快捷。
+* 搭建简单方便，能够进行更好的权限控制。
+* squid具有缓存功能，必要的时候可以提高访问速度。
+* 使用stunnel能够对通信进行加密，更加安全。
+* squid可以实现正向代理，透明代理，反向代理，能够实现多种需求。
+* 将squid搭建在网关即可实现透明代理，下边的所以机器都免配置使用，方便快捷。
 
 ### 缺点
 
-- 需要使用stunnel进行通讯加密，client和server都不要启动stunnel，不是用stunnel进行加密，访问被墙的网站ip会被秒封。
-- 每个client都需要开启stunnel，就像使用shadowsocks一样。
+* 需要使用stunnel进行通讯加密，client和server都不要启动stunnel，不是用stunnel进行加密，访问被墙的网站ip会被秒封。
+* 每个client都需要开启stunnel，就像使用shadowsocks一样。
 
 ### 大概流程
 
@@ -44,7 +42,7 @@ categories: [效率]
 
 2. 修改squid配置(/etc/squid/squid.conf)， **目前没有加权限控制**
 
-    ```ini
+``` ini
     acl SSL_ports port 443
     acl CONNECT method CONNECT
     http_access deny !Safe_ports
@@ -69,15 +67,14 @@ categories: [效率]
 
 3.  启动服务
 
-    ```shel
+``` shel
     # squid -z  # 进行初始化操作
     # service squid start # 启动squid代理服务
     ```
 
-
 4. 防火墙开启3128端口，基于云计算的虚拟机直接在控制面板设置即可。
 
-至此，基于squid的代理服务器已经搭建好了，在需要使用这个代理的client上设置该主机的公网ip，及刚才指定的端口`3128`即可使用代理访问互联网。
+至此，基于squid的代理服务器已经搭建好了，在需要使用这个代理的client上设置该主机的公网ip，及刚才指定的端口 `3128` 即可使用代理访问互联网。
 
 但是，当你使用chrome进行调试的时候就会发现，第一个网页能够打开，但该网页的个别图片请求失败了。刷新下，发现彻底打不开了，提示连接被拒绝。这是因为没有加密，GFW探测到我们的请求返回的是被禁止的内容，就会把访问中断，并把我们的代理ip暂时列入黑名单，因此接下来的所有请求都会失败，这个黑名单时间大概也就几分钟。为了达到数据加密，防止辛辛苦苦搭建的服务被墙，我们接下来使用stunnel服务进行连接加密。
 
@@ -95,13 +92,13 @@ categories: [效率]
 
    > openssl req -new -x509 -days 3650 -nodes -out stunnel.pem -keyout stunnel.pem
 
-3. 将证书`stunnel.pem` copy到`/etc/stunnel/`目录下
+3. 将证书 `stunnel.pem` copy到 `/etc/stunnel/` 目录下
 
 4. 修改stunnel配置(/etc/stunnle/stunnle.conf)
 
 5. 防火墙开启3129端口，关闭3128端口。基于云计算的虚拟机直接在控制面板设置即可。
 
-    ```ini
+``` ini
     ; 设置工作目录
     ;chroot = /var/run/stunnel/
     ; 设置stunnel的pid文件路径（在chroot下）
@@ -153,15 +150,13 @@ categories: [效率]
     ;CAfile = /etc/stunnel/stunnel-client.pem
     ```
 
-
-
 ## client端
 
 1. 通server端一样安装stunnel服务。
-2. 修改stunnel配置文件，将代理的公网ip写入下列配置文件的 `connect`项中。
-3. 将在server中生成的证书文件copy到指定目录如`/etc/stunnel/`，并将路径写到配置中的`CAfile`。
+2. 修改stunnel配置文件，将代理的公网ip写入下列配置文件的 `connect` 项中。
+3. 将在server中生成的证书文件copy到指定目录如 `/etc/stunnel/` ，并将路径写到配置中的 `CAfile` 。
 
-    ```ini
+``` ini
     ; stunnel工作目录
     ;chroot = /var/run/stunnel/
     ; stunnel工作的用户组
@@ -195,11 +190,9 @@ categories: [效率]
 
     ```
 
-
-
 ## 使用代理
 
-由于没有使用权限认证，只是使用了证书认证，因此只需要在代理设置中使用`127.0.0.1`端口`3128`进行代理即可，推荐还是增加squid权限认证比较安全。
+由于没有使用权限认证，只是使用了证书认证，因此只需要在代理设置中使用 `127.0.0.1` 端口 `3128` 进行代理即可，推荐还是增加squid权限认证比较安全。
 
 ## 参考链接
 

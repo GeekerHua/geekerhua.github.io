@@ -9,7 +9,7 @@
 - master分支是hexo生成静态文件后的代码。
 - note分支为我的个人文件分支，note分支目录结构如下
 
-```bash
+``` bash
 .
 ├── LICENSE
 ├── README.md

@@ -3,13 +3,14 @@ title: 常用的shell下的工具
 date:  2019/7/6  下午11:03:07
 tags: [shell]
 categories: [Linux满汉全席]
+permalink: 39CBBCD5-E4BE-4A68-83CE-EEEE666B1CBD
 ---
 
 ## pandoc-文件转换
 
 ### 从HTML格式转换为reStructuredText格式
 
-```bash
+``` bash
 pandoc -t rst myFile.html -o myFile.rst
 ```
 
@@ -19,7 +20,7 @@ pandoc -t rst myFile.html -o myFile.rst
 
 ### 使用FFmpeg把一个AVI格式的视频文件转换为一个Ogg格式的视频文件
 
-```bash
+``` bash
 ffmpeg -i myVideo.avi myvideo.ogg
 ```
 
@@ -29,13 +30,12 @@ ffmpeg -i myVideo.avi myvideo.ogg
 
 ### 使用LibreOffice把一组幻灯片转换成PDF， 你可以使用如下命令行内容：
 
-```bash
+``` bash
 soffice --headless --convert-to pdf mySlides.odp
 ```
 
 ### 将某文件夹中所有的微软Word文档转换为LibreOffice Writer文件格式
 
-```bash
+``` bash
 soffice --headless --convert-to odt *.docx
 ```
-
