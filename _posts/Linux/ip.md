@@ -2,7 +2,7 @@
 title: IP
 date: 2017-08-01 16:12:12
 tags: [Linux]
-categories: [Linux满汉全席]
+categories: [linux]
 ---
 
 # IP绑定
@@ -35,4 +35,3 @@ $: sudo ifconfig eth0:0 110.25.*.* broadcast 110.25.*.255 netmask 255.255.255.
 ```
 
 第一种方式在你修改重启之后不会失效. 这种方式稍微操作不当, 则会造成远程无法连接。 第二种方式虽然只对当前生效, 重启之后就会失效. 但是不会因为操作不当给自己造成的不便。
-

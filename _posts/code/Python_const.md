@@ -2,7 +2,7 @@
 title: Python常量的正确写法
 date: 2017-06-12 12:45:26
 tags: [Python]
-categories: [Code]
+categories: [code]
 permalink: 7EBCDAB8-CC7C-4972-B5AA-84B453444DD1
 ---
 

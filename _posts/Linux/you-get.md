@@ -2,7 +2,7 @@
 title: you-get
 date: 2017-08-01 16:12:28
 tags: [Soft]
-categories: [Linux满汉全席]
+categories: [linux]
 permalink: E05C2C1F-9BBD-4EE0-9B05-EA8B49FE70A3
 ---
 

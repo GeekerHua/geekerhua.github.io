@@ -2,7 +2,7 @@
 title: HomeBrew
 date: 2017-08-01 16:16:45
 tags: [Soft]
-categories: [Mac工作法]
+categories: [soft]
 permalink: C1118D6D-6391-48F5-9AAB-7219D1FA4B34
 ---
 

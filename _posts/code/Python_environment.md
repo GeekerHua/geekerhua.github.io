@@ -2,7 +2,7 @@
 title:  pyenv管理多版本python
 date: 2017-02-6 13:46:28
 tags: [环境配置， Python]
-categories: [Code]
+categories: [code]
 permalink: 04A6E100-8BB8-471D-B122-B8CFC68E1B8E
 ---
 

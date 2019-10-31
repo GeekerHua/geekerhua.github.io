@@ -2,7 +2,7 @@
 title: Linux命令3：pwd
 date: 2017-10-25 15:59:43
 tags: [Linux, Shell]
-categories: [Linux满汉全席]
+categories: [linux]
 ---
 
 # pwd

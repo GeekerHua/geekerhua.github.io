@@ -2,7 +2,7 @@
 title:  Linux命令基础
 date: 2017-01-13 19:58:22
 tags: [Shell, Linux]
-categories: [Linux满汉全席]
+categories: [linux]
 ---
 
 ## 一些常用快捷键
@@ -274,4 +274,3 @@ man 手册中一共有这么几个章节
 ### info
 
 > 如果man命令显示的信息还不够， 可以用info命令。 但zsh没有这个命令
-

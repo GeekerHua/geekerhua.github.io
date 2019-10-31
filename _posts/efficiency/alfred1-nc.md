@@ -2,7 +2,7 @@
 title: Alfred手记一： 简化nc传输操作
 date: 2017-05-12 12:48:00
 tags: [Alfred]
-categories: [效率]
+categories: [soft]
 permalink: B61C8BFD-7E97-41B6-83DD-90917FF434F4
 ---
 

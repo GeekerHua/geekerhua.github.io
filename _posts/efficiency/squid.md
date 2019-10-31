@@ -2,7 +2,7 @@
 title: squid+stunnel 科学上网
 date: 2019/04/06 16:12:18
 tags: [科学上网]
-categories: [效率]
+categories: [life]
 permalink: 19E0D43D-16AA-46FB-A9B3-0C3DB0D77BD4
 ---
 

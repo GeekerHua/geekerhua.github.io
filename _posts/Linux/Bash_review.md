@@ -3,7 +3,7 @@ title: Bash拾遗
 date:  2019/5/11  9:40:43 PM
 updated:  2019/5/13  9:40:43 PM
 tags: [Shell, Linux]
-categories: [Linux满汉全席]
+categories: [linux]
 permalink: 23123123
 ---
 
@@ -99,4 +99,3 @@ command1 && command2 || command3
 * split | 文件分割
 * xargs | 参数代换
 * -减号 | 在管道命令中用来替换文件名， 省略文件名的作用
-

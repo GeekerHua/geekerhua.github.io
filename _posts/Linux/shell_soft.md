@@ -2,7 +2,7 @@
 title: 常用的shell下的工具
 date:  2019/7/6  下午11:03:07
 tags: [shell]
-categories: [Linux满汉全席]
+categories: [linux]
 permalink: 39CBBCD5-E4BE-4A68-83CE-EEEE666B1CBD
 ---
 

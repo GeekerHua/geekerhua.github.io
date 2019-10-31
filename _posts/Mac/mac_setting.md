@@ -2,7 +2,7 @@
 title: mac初始化设置
 date: 2017-08-01 16:01:09
 tags: [Soft]
-categories: [Mac工作法]
+categories: [mac]
 permalink: 10BCF576-B605-423E-A9C7-091F86EDF5CB
 ---
 
@@ -129,4 +129,3 @@ xcode-select --install
 | X                        | 正常从非macOS移动磁盘启动的情况下，会以macOS启动              |
 | T                        | 以目标磁盘模式启动                                        |
 | Command(⌘)               | 以详细模式启动                                           |
-

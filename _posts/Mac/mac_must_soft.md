@@ -2,7 +2,7 @@
 title: mac必备软件
 date:  2019/5/1  16:54:22
 tags: [mac, 环境配置]
-categories: [Mac工作法]
+categories: [soft]
 permalink: 98391BD5-0F38-4BBE-896B-F9521AE9B78B
 ---
 

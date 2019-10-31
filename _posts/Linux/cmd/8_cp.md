@@ -2,7 +2,7 @@
 title: Linux命令8：cp
 date: 2017-11-16 14:40:58
 tags: [Linux, Shell]
-categories: [Linux满汉全席]
+categories: [linux]
 ---
 
 ## cp

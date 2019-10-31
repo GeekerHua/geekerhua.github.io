@@ -2,7 +2,7 @@
 title: Alfred手记二： 管理我的GitBook电子书
 date: 2017-08-02 10:29:55
 tags: [Alfred]
-categories: [效率]
+categories: [soft]
 permalink: 63B21A0A-2A79-4C80-B40E-F4BAD5BA9698
 ---
 

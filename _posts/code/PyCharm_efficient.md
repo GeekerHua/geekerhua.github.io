@@ -2,7 +2,7 @@
 title: PyCharm_高效指南
 date: 2017-08-01 15:16:50
 tags: [Python, IDE]
-categories: [Code]
+categories: [code]
 permalink: E1B03D8A-F9C1-4A92-A109-EC7589BED168
 ---
 

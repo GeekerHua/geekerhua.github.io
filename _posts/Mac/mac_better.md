@@ -2,7 +2,7 @@
 title: mac有哪些设计比windows好
 date:  2019/5/2  11:56:31
 tags: [mac, windows]
-categories: [Mac工作法]
+categories: [mac]
 permalink: 41DBD6DF-D619-467E-8F4A-34EE392BCDC4
 ---
 

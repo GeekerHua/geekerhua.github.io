@@ -2,7 +2,7 @@
 title: GitBook
 date: 2017-08-01 16:10:16
 tags: [Soft]
-categories: [Linux满汉全席]
+categories: [linux]
 permalink: 3C750B56-1D8B-4F12-920D-4BCB31426D91
 ---
 

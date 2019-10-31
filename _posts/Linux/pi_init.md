@@ -2,7 +2,7 @@
 title: 树莓派初始化
 date:  2019/5/11  21:21:46
 tags: [Linux, 树莓派]
-categories: [Linux满汉全席]
+categories: [linux]
 permalink: 33C79E13-A298-4440-BD27-3F4A0356AF0B
 ---
 

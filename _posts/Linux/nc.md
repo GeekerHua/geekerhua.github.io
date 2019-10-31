@@ -2,7 +2,7 @@
 title: nc
 date: 2017-08-01 16:12:07
 tags: [Linux]
-categories: [Linux满汉全席]
+categories: [linux]
 permalink: 444676A1-8FC5-4414-B0DD-F8316F2538F0
 ---
 

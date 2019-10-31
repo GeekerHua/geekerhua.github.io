@@ -2,7 +2,7 @@
 title: Linux命令7：mv
 date: 2017-11-16 14:33:16
 tags: [Linux, Shell]
-categories: [Linux满汉全席]
+categories: [linux]
 ---
 
 ## mv

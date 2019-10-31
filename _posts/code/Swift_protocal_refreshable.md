@@ -2,7 +2,7 @@
 title: Swift Protocal实战1(Refreshable)
 date: 2016-06-18 21:57:21
 tags: [Swift, iOS]
-categories: [Code]
+categories: [code]
 permalink: DD37F228-0378-44FB-8224-27A030439742
 ---
 

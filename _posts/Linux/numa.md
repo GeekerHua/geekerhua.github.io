@@ -2,7 +2,7 @@
 title: NUMA
 date:  2019/4/11  13:51:06
 tags: [Linux]
-categories: [Linux满汉全席]
+categories: [linux]
 permalink: 30F154F8-C537-4002-8E6E-D15F032F587A
 ---
 

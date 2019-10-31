@@ -2,7 +2,7 @@
 title: Alfred：效率神器，没有之一
 date: 2017-08-01 15:56:38
 tags: [Soft, Alfred]
-categories: [Mac工作法]
+categories: [soft]
 permalink: 12B60FA3-958A-4EEE-A7FC-2F20EDA1918D
 ---
 

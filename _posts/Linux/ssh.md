@@ -2,7 +2,7 @@
 title: SSH详解
 date: 2017-08-01 16:11:54
 tags: [Linux]
-categories: [Linux满汉全席]
+categories: [linux]
 permalink: 6F156727-05B6-4FF7-B80F-D10E6D45E0C3
 ---
 

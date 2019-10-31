@@ -1,5 +1,5 @@
 language: node_js #设置语言
-node_js: stable #设置相应的版本
+node_js: 13 #设置相应的版本
 cache: npm
 branches:
   only:
@@ -18,10 +18,7 @@ before_install:
 install:
   - npm install #安装hexo及插件
   - git clone https://github.com/GeekerHua/jacman themes/jacman
-
-script:
-  - rm -rf source/*
-  - mkdir source
+  - rm -rf source/* ; mkdir source
   - cp -r ../hexo/about ../hexo/categories ../hexo/tags ./source
   - cp -f ../hexo/_config.yml _config.yml
   - cp -f ../hexo/404.html ./source/404.html
@@ -29,6 +26,8 @@ script:
   - echo "${BAIDU_VERIFY}" > ./source/baidu_verify_${BAIDU_VERIFY}.html
   - echo "google-site-verification:${GOOGLE_VERIFY}.html" > ./source/${GOOGLE_VERIFY}.html
   - echo "${CNAME}" > ./source/CNAME
+
+script:
   - hexo g
 
 after_script:

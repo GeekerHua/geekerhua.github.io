@@ -2,7 +2,7 @@
 title: BetterTouchTool最好的触控板增强工具，成就无限可能
 date: 2017-08-01 16:00:49
 tags: [Soft]
-categories: [Mac工作法]
+categories: [soft]
 permalink: 37B0DBCF-BC26-4FDC-8CBA-D56A4AA2DB2E
 ---
 

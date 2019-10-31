@@ -2,7 +2,7 @@
 title: autojump
 date: 2017-08-01 16:00:12
 tags: [Soft]
-categories: [Mac工作法]
+categories: [soft]
 permalink: 486EACA2-A017-441D-8179-00BF6784581C
 ---
 
@@ -42,4 +42,3 @@ jco
 j in   //自动进入权重高的
 j w in   //加个关键词呗
 ```
-

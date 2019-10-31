@@ -2,7 +2,7 @@
 title: iOS生命周期
 date:  2019/4/19  13:35:23
 tags: [iOS]
-categories: [Code]
+categories: [code]
 ---
 
 - ViewController load

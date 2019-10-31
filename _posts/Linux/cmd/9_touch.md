@@ -2,7 +2,7 @@
 title: Linux命令9：touch
 date: 2017-11-16 14:55:25
 tags: [Linux, Shell]
-categories: [Linux满汉全席]
+categories: [linux]
 ---
 
 ## touch

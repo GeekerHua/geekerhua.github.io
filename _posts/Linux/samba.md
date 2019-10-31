@@ -2,7 +2,7 @@
 title: samba
 date: 2017-08-01 16:12:02
 tags: [Linux]
-categories: [Linux满汉全席]
+categories: [linux]
 permalink: E1AE7294-638B-4F71-8DDB-E6E89E50273C
 ---
 

@@ -2,7 +2,7 @@
 title: 潜在的优质软件
 date: 2017-08-01 15:51:57
 tags: [Soft]
-categories: [效率]
+categories: [soft]
 permalink: FC8D7180-EDC6-4A63-BEDE-9D6A972BCE6C
 ---
 

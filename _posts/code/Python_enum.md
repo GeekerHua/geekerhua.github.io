@@ -2,7 +2,7 @@
 title: Python枚举的实现
 date: 2017-06-14 13:05:26
 tags: [Python]
-categories: [Code]
+categories: [code]
 permalink: 5D33E2AF-7AAB-4CD6-BC68-CC9D3A467D53
 ---
 

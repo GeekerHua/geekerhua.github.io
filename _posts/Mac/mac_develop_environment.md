@@ -2,7 +2,7 @@
 title:  mac开发环境配置
 date: 2017-01-12 20:18:28
 tags: [Shell, 环境配置]
-categories: [Mac工作法]
+categories: [soft]
 permalink: 907166B9-AA12-4192-A433-5CC666D250CF
 ---
 

@@ -2,7 +2,7 @@
 title: Yoink，临时中转站
 date: 2017-08-01 16:01:49
 tags: [Soft]
-categories: [Mac工作法]
+categories: [soft]
 permalink: E4EA66E4-AA21-4334-AA7C-C2C32AC8C692
 ---
 
