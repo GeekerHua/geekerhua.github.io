@@ -1,6 +1,6 @@
 ---
 title: 常用的shell下的工具
-date:  2019/7/6  下午11:03:07
+date:  2019/7/6 23:03:07
 tags: [shell]
 categories: [linux]
 permalink: 39CBBCD5-E4BE-4A68-83CE-EEEE666B1CBD

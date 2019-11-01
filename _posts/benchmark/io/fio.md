@@ -97,4 +97,4 @@ $: fio -filename=/dev/sdc -direct=1 -iodepth=1  -thread -rw=randrw rwmixread=70 
 
 ## 4. 结果分析
 
-![fio-result](fio/fio-result.png)
+![fio/2019-11-1-23-19-4.png](http://img.geekerhua.com/blog/fio/2019-11-1-23-19-4.png)
