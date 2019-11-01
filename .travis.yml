@@ -17,10 +17,13 @@ before_install:
 
 install:
   - npm install #安装hexo及插件
+  - npm i -g waque
   - git clone https://github.com/GeekerHua/jacman themes/jacman
   - rm -rf source/* ; mkdir source
   - cp -r ../hexo/about ../hexo/categories ../hexo/tags ./source
   - cp -f ../hexo/_config.yml _config.yml
+  - cp -f ../yuque.yml yuque.yml
+  - cp -f ../to_yuque.py to_yuque.py
   - cp -f ../hexo/404.html ./source/404.html
   - cp -r ../_posts ./source/_posts
   - echo "${BAIDU_VERIFY}" > ./source/baidu_verify_${BAIDU_VERIFY}.html
@@ -29,8 +32,10 @@ install:
 
 script:
   - hexo g
+  - python to_yuque.py
 
 after_script:
+  - waque upload -t ${YUQUE_TOKEN}
   - cp ../README.md ./public/README.md
   - cd ./public
   - git init

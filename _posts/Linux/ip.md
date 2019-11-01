@@ -5,7 +5,6 @@ tags: [Linux]
 categories: [linux]
 ---
 
-# IP绑定
 
 ## 第一种方式静态修改.
 
