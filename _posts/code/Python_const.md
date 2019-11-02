@@ -3,7 +3,7 @@ title: Python常量的正确写法
 date: 2017-06-12 12:45:26
 tags: [Python]
 categories: [code]
-permalink: 7EBCDAB8-CC7C-4972-B5AA-84B453444DD1
+permalink: python_const
 ---
 
 > Python内建的命名空间是支持小部分常量的， 例如True、 False、 None等， 但Python默认是没有提供直接定义常量的方法， 因此要想实现常量的功能需要人为实现。 一般有两种方法

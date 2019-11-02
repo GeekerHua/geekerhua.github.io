@@ -3,10 +3,8 @@ title: NUMA
 date:  2019/4/11  13:51:06
 tags: [Linux]
 categories: [linux]
-permalink: 30F154F8-C537-4002-8E6E-D15F032F587A
+permalink: numa
 ---
-
-## NUMA
 
 有两种类型计算机， 分别以不同的方法管理物理内存。
 

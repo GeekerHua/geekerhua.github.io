@@ -3,7 +3,7 @@ title: 你真的懂图表吗
 date: 2017-08-01 15:30:49
 tags: [Other]
 categories: [other]
-permalink: DA31C28B-E468-4A4F-8987-E03C7A7F71D6
+permalink: chart
 ---
 
 > [多种图表的比较](https://antv.alipay.com/vis/doc/chart/classify/compare.html)
@@ -395,4 +395,3 @@ permalink: DA31C28B-E468-4A4F-8987-E03C7A7F71D6
 [图表对象配置（chart）](https://antv.alipay.com/g2/doc/tutorial/start/chart.html)
 
 > 以上内容整理自 [AntV](https://antv.alipay.com/index.html)
-

@@ -1,11 +1,10 @@
 ---
-title: Linux命令8：cp
+title: Linux命令--cp
 date: 2017-11-16 14:40:58
 tags: [Linux, Shell]
 categories: [linux]
+permalink: shell_cp
 ---
-
-## cp
 
 > 复制文件或者文件夹
 
@@ -25,6 +24,6 @@ categories: [linux]
 | -L | --dereference |  总是跟随符号链接
 | -n | --no-clobber | 不要覆盖已存在的文件(使前面的 -i 选项失效)
 | -P | --no-dereference | 不跟随源文件中的符号链接
-| -p |  | 等于--preserve=模式,所有权,时间戳
-|  | --preserve[=属性列表 | 保持指定的属性(默认：模式,所有权,时间戳)，如果可能保持附加属性：环境、链接、xattr 等
+| -p |  | 等于--preserve=模式, 所有权, 时间戳
+|  | --preserve[=属性列表 | 保持指定的属性(默认：模式, 所有权, 时间戳)，如果可能保持附加属性：环境、链接、xattr 等
 | -R, -r | --recursive | 复制目录及目录内的所有项目

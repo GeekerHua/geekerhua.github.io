@@ -1,10 +1,9 @@
 ---
 title: Bash拾遗
-date:  2019/5/11  9:40:43 PM
-updated:  2019/5/13  9:40:43 PM
+date:  2019/5/11  21:40:43 PM
 tags: [Shell, Linux]
 categories: [linux]
-permalink: 23123123
+permalink: bash_review
 ---
 
 ## 内建指令

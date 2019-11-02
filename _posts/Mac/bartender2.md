@@ -3,7 +3,7 @@ title: Bartender2菜单栏图标收纳神器
 date: 2017-08-01 16:00:31
 tags: [Soft]
 categories: [soft]
-permalink: F7E93D49-D77E-4865-9A97-0DA4C32307AD
+permalink: bartender
 ---
 
 ## 功能定位

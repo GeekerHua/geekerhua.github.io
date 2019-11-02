@@ -3,7 +3,7 @@ title: Alfred手记五： 与Übersicht一同构建极简TodoList
 date: 2017-03-16 18:00:19
 tags: [Alfred]
 categories: [soft]
-permalink: 7A8A8447-6CDC-440E-A1AB-3E1DA17CAA66
+permalink: alfred_todolist
 ---
 
 ## 效果展示

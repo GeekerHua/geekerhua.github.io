@@ -3,7 +3,7 @@ title: Super Pi进行CPU测试
 date: 2018-07-07 13:57:27
 tags: [cpu]
 categories: [benchmark]
-permalink: 443D82A8-0C49-4FF9-B302-7674D810F6E4
+permalink: super_pi
 ---
 
 ## super pi 介绍

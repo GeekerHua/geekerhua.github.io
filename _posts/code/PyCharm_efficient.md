@@ -3,7 +3,7 @@ title: PyCharm_高效指南
 date: 2017-08-01 15:16:50
 tags: [Python, IDE]
 categories: [code]
-permalink: E1B03D8A-F9C1-4A92-A109-EC7589BED168
+permalink: pycharm_efficient
 ---
 
 Pycharm是JetBrains家族的产物， 整个JetBrains的产品风格都是统一的， 因此， 熟悉了一款产品的模式， 大体上， 整个家族其他产品也能够轻松的驾驭。
@@ -49,7 +49,7 @@ def readFile(fileName, mode='r', lines=False):
 
 ## 集成数据库
 
-PyCharm默认继承了强大好用的数据库， 支持众多中关系型数据库。
+PyCharm默认集成了强大好用的数据库， 支持众多中关系型数据库。
 默认情况下在控制界面的右侧， 点击 `Database` 即可打开数据库管理选项卡， 点击加好按钮可以添加数据库， 第一次使用需要安装插件支持。 输入必须的资料， 就可以愉快的在PyCharm中操作数据库了。
 
 ![2017811552](PyCharm_efficient指南/2017811552.png)

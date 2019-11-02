@@ -3,7 +3,7 @@ title: Python枚举的实现
 date: 2017-06-14 13:05:26
 tags: [Python]
 categories: [code]
-permalink: 5D33E2AF-7AAB-4CD6-BC68-CC9D3A467D53
+permalink: python_enum
 ---
 
 在Python3.4版本之前， 默认是没有枚举的， 我们经常使用的Python2.x的版本， 如果想实现枚举的功能该怎么办呢？ 代码是人写出来的， 这难不倒我们的， 因此利用动态语言的特性， 就出现了下面的众多中的枚举实现。

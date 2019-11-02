@@ -3,7 +3,7 @@ title: Alfred：效率神器，没有之一
 date: 2017-08-01 15:56:38
 tags: [Soft, Alfred]
 categories: [soft]
-permalink: 12B60FA3-958A-4EEE-A7FC-2F20EDA1918D
+permalink: alfred
 ---
 
 Alfred被称为Mac中的效率神器，没有之一，一点都不为过。MalTalk作者也多次推荐这款软件，少数派也有很多关于这个软件的教程及分享。可见这个软件的确有它的神器之处。
@@ -26,15 +26,13 @@ Mac下自带一个功能强大的搜索工具Spotlight，能够实现全局文�
 * 官网：<https://www.alfredapp.com>
 * 价格：软件免费，但限制高级功能，购买Powerpack可解锁全部功能。
 
-
-
 ![2017725102456](alfred/2017725102456.jpg)
 
 | 类型                     | 价格  |
 |--------------------------|-------|
-| Single Licence:单用户许可 | `£19` |
-| Family Licence:家庭许可   | `£29` |
-| Mega Licence:单用户永久许可 | `£39` |
+| Single Licence: 单用户许可 | `£19` |
+| Family Licence: 家庭许可   | `£29` |
+| Mega Licence: 单用户永久许可 | `£39` |
 
 * 平台：仅支持MacOS平台，Windows平台也有类似的软件
     - [Wox](https://github.com/Wox-launcher/Wox)

@@ -1,11 +1,10 @@
 ---
-title: Linux命令9：touch
+title: Linux命令--touch
 date: 2017-11-16 14:55:25
 tags: [Linux, Shell]
 categories: [linux]
+permalink: shell_touch
 ---
-
-## touch
 
 > 用来修改文件时间戳，或者新建一个不存在的文件
 

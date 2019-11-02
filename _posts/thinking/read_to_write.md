@@ -3,7 +3,7 @@ title: 从碎片化阅读到知识的输出
 date: 2017-03-12 17:03:18
 tags: [方法论]
 categories: [thinking]
-permalink: 64AB0349-B3E4-4ED0-B0A6-DB2B725089AE
+permalink: read_to_write
 ---
 
 > 先来一个最终的结论： ( `即刻` + `Reeder` ) -> [收趣云书签](shouqu.me) -> ( `印象笔记` + `markdown` )
@@ -100,4 +100,3 @@ permalink: 64AB0349-B3E4-4ED0-B0A6-DB2B725089AE
 ## 写作输出
 
 通过收趣云的收集、 标签与标注功能， 我们已经收集了大量的信息， 对于同类的信息， 我们可以进行整理， 在收趣云的web页面中， 将这些内容复制整理到印象笔记中， 或者以markdown的形式写成博客进行输出， 由此一个知识从输入到整理再到输出的环节就完成了。
-

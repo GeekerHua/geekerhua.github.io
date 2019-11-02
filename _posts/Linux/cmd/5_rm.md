@@ -1,11 +1,10 @@
 ---
-title: Linux命令5：rm
+title: Linux命令--rm
 date: 2017-10-25 16:39:43
 tags: [Linux, Shell]
 categories: [linux]
+permalink: shell_rm
 ---
-
-## rm
 
 > 删除文件夹或文件的命令
 

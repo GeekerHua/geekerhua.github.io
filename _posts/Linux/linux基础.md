@@ -3,6 +3,7 @@ title:  Linux命令基础
 date: 2017-01-13 19:58:22
 tags: [Shell, Linux]
 categories: [linux]
+permalink: linux_introductory
 ---
 
 ## 一些常用快捷键
@@ -38,7 +39,7 @@ categories: [linux]
 
 ## man命令
 
-> 在 Linux 环境中， 如果你遇到困难， 可以使用man 命令， 它是Manual page的缩写。
+> 在 Linux 环境中， 如果你遇到困难， 可以使用 man 命令， 它是Manual page的缩写。
 > 通常情况下， man 手册里面的内容都是英文的， 这就要求你有一定的英文基础。 man 手册的内容很多， 涉及了 Linux 使用过程中的方方面面， 为了便于查找， 是做了分册（分区段）处理的， 在Research UNIX、 BSD、 OS X 和 Linux 中， 手册通常被分为8个区段
 
 | 区段 | 说明                                     |
@@ -210,8 +211,6 @@ $: find /etc/ -name interfaces
 
 下面以-mtime参数举例：
 
-    •
-
 `-mtime n` : n 为数字， 表示为在n天之前的” 一天之内“ 修改过的文件• `-mtime +n` : 列出在n天之前（ 不包含n天本身） 被修改过的文件• `-mtime -n` : 列出在n天之内（ 包含n天本身） 被修改过的文件• `newer file` : file为一个已存在的文件， 列出比file还要新的文件名
 
 ---
@@ -234,8 +233,6 @@ $: df -h    #以大小形式显示， 而不是block块形式
 # 只查看1级目录的信息
 $: du -h -d 0 ~
 ```
-
----
 
 ## 帮助命令
 

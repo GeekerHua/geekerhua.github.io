@@ -3,7 +3,7 @@ title: HomeBrew
 date: 2017-08-01 16:16:45
 tags: [Soft]
 categories: [soft]
-permalink: C1118D6D-6391-48F5-9AAB-7219D1FA4B34
+permalink: homebrew
 ---
 
 mac是类Unix系统，拥有众多的终端工具。而类Unix系统都有属于它自己的终端工具管理软件。

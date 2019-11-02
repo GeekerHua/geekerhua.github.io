@@ -3,10 +3,10 @@ title: IP
 date: 2017-08-01 16:12:12
 tags: [Linux]
 categories: [linux]
+permalink: ip
 ---
 
-
-## 第一种方式静态修改.
+## 第一种方式静态修改
 
 进入 /etc/network/ 目录下, 修改 `interfaces` 文件。
 
@@ -25,7 +25,7 @@ gateway 110.25.*.1
 
 注释部分是自己添加的 `eth0:0类似于数组下标` 接下来想绑定多个就可以以此类推eth0:1, eth0:2, eth0:3........
 
-## 第二种方式是动态修改.
+## 第二种方式是动态修改
 
 这里直接使用 ifconfig 命令
 

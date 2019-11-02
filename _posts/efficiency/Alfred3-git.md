@@ -3,7 +3,7 @@ title: Alfred手记三： git仓库管理
 date: 2017-08-02 10:49:09
 tags: [git, Alfred]
 categories: [soft]
-permalink: 3EBE1E79-FDAE-4322-9507-D0C3D9B7517C
+permalink: alfred_git
 ---
 
 使用Alfred的workflow管理所有的git仓库， 简单又快捷， 一起行动吧！

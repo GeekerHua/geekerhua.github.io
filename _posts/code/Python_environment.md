@@ -3,7 +3,7 @@ title:  pyenv管理多版本python
 date: 2017-02-6 13:46:28
 tags: [环境配置, Python]
 categories: [code]
-permalink: 04A6E100-8BB8-471D-B122-B8CFC68E1B8E
+permalink: python_develop_environment
 ---
 
 在工作中不同项目对Python的版本有着不同的要求， Python2与Python3的差异， 是的很多时候我们要同时使用者两种环境来做对比。 众所周知， ipython的交互性设计能带来很大的方便。 最理想的状态下就是能够随时切换Python的版本， 且Python2与Python3能够并存， 并且都能拥有自己的ipython和自己的pip包管理工具。

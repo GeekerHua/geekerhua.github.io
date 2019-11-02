@@ -3,7 +3,7 @@ title: 终极Shell修行大法-不得不拥有
 date: 2015-12-10 18:57:21
 tags: [Shell, Linux]
 categories: [linux]
-permalink: C416B858-79D8-4CD4-B109-0B3D233BD485
+permalink: zsh
 ---
 
 ## [Homebrew](http://brew.sh/index_zh-cn.html)

@@ -3,7 +3,7 @@ title: Alfred手记二： 管理我的GitBook电子书
 date: 2017-08-02 10:29:55
 tags: [Alfred]
 categories: [soft]
-permalink: 63B21A0A-2A79-4C80-B40E-F4BAD5BA9698
+permalink: alfred_gitbook
 ---
 
 GitBook是基于Git的电子书写作工具， 借助于Alfred的工作流可以非常方便的管理GitBook, 包括build, export、 serve、 open等功能。 以下是成品图。

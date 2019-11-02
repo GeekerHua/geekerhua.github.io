@@ -3,7 +3,7 @@ title: Git与Git工作流
 date: 2016-06-02 18:57:21
 tags: [git]
 categories: [code]
-permalink: C4E1DCD7-0E9A-4126-A903-5143DBA1638D
+permalink: git_workflow
 ---
 
 ## Git 基础用法

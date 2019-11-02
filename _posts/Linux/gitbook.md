@@ -3,7 +3,7 @@ title: GitBook
 date: 2017-08-01 16:10:16
 tags: [Soft]
 categories: [linux]
-permalink: 3C750B56-1D8B-4F12-920D-4BCB31426D91
+permalink: bash_gitbook
 ---
 
 > gitBook是一个基于markdown和git的书写工具， 更加适合书写电子书， 因为基于markdown, 所以具有良好的书写体验与阅读体验， 还能轻松导出pdf、 epub、 mobi格式， 还能以网页形式在线阅读。 基于git进行管理能够对内容进行版本管理， 进行共享等。

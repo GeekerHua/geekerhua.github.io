@@ -3,7 +3,7 @@ title: SSH详解
 date: 2017-08-01 16:11:54
 tags: [Linux]
 categories: [linux]
-permalink: 6F156727-05B6-4FF7-B80F-D10E6D45E0C3
+permalink: server_ssh
 ---
 
 ## 功效

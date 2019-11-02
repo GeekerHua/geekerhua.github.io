@@ -1,11 +1,10 @@
 ---
-title: Linux命令6：rmdir
+title: Linux命令--rmdir
 date: 2017-11-16 14:29:04
 tags: [Linux, Shell]
 categories: [linux]
+permalink: shell_rmdir
 ---
-
-## rmdir
 
 > 删除一个目录中的一个或多个文件或目录
 

@@ -1,9 +1,9 @@
 ---
 title: mac初始化设置
 date: 2017-08-01 16:01:09
-tags: [Soft]
+tags: [Soft, mac]
 categories: [mac]
-permalink: 10BCF576-B605-423E-A9C7-091F86EDF5CB
+permalink: mac_init
 ---
 
 ## mac触摸板设置

@@ -1,11 +1,10 @@
 ---
-title: Linux命令7：mv
+title: Linux命令--mv
 date: 2017-11-16 14:33:16
 tags: [Linux, Shell]
 categories: [linux]
+permalink: shell_mv
 ---
-
-## mv
 
 > 移动或者修改文件名称
 

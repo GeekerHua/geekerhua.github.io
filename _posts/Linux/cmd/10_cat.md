@@ -1,11 +1,10 @@
 ---
-title: Linux命令10：cat
+title: Linux命令--cat
 date: 2017-11-16 15:00:56
 tags: [Linux, Shell]
 categories: [linux]
+permalink: shell_cat
 ---
-
-## cat
 
 > cat命令的用途是连接文件或标准输入并打印。这个命令常用来显示文件内容，或者将几个文件连接起来显示，或者从标准输入读取内容并显示，它常与重定向符号配合使用。
 
@@ -21,7 +20,7 @@ categories: [linux]
 | -b | --number-nonblank | 对非空输出行编号
 | -e | | 等价于 -vE
 | -E | --show-ends | 在每行结束处显示 $
-| -n | --number | 对输出的所有行编号,由1开始对所有输出的行数编号
+| -n | --number | 对输出的所有行编号, 由1开始对所有输出的行数编号
 | -s | --squeeze-blank | 有连续两行以上的空白行，就代换为一行的空白行
 | -t | | 与 -vT 等价
 | -T | --show-tabs  | 将跳格字符显示为 ^I

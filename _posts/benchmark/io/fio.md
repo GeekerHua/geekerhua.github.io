@@ -3,7 +3,7 @@ title: fio磁盘测试
 date: 2018-07-07 13:56:10
 tags: [io]
 categories: [benchmark]
-permalink: E1BB26F6-47B6-4569-AD5C-B3B4085E3FA4
+permalink: fio
 ---
 
 ## 1.fio 介绍

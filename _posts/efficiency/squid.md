@@ -3,7 +3,7 @@ title: squid+stunnel 科学上网
 date: 2019/04/06 16:12:18
 tags: [科学上网]
 categories: [life]
-permalink: 19E0D43D-16AA-46FB-A9B3-0C3DB0D77BD4
+permalink: squid
 ---
 
 科学上网的方法有多重，有很多第三方提供的免费方案，这些方案优缺点暂时不予讨论。实际工作生活中还是会有需要自己搭建的情况，这次介绍的是使用squid进行搭建。

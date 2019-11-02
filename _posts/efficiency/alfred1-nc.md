@@ -3,7 +3,7 @@ title: Alfred手记一： 简化nc传输操作
 date: 2017-05-12 12:48:00
 tags: [Alfred]
 categories: [soft]
-permalink: B61C8BFD-7E97-41B6-83DD-90917FF434F4
+permalink: alfred_nc
 ---
 
 nc是什么， nc是一个简单传输协议。 nc的具体使用在文章后边会做详细的介绍。 简单说就是， 通过nc能够在局域网中传输文件， 由于是基于TCP协议， 无论是速度还是稳定性都很可靠， 除此之外还能进行聊天。 如果说缺点， 那就是传输文件时需要在命令行指定端口号， 而且接收方还要自己输入文件名。

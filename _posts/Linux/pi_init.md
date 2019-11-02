@@ -1,9 +1,9 @@
 ---
 title: 树莓派初始化
-date:  2019/5/11  21:21:46
+date:  2019/5/11 21:21:46
 tags: [Linux, 树莓派]
 categories: [linux]
-permalink: 33C79E13-A298-4440-BD27-3F4A0356AF0B
+permalink: pi_init
 ---
 
 ## 写镜像
@@ -218,5 +218,5 @@ sudo update-rc.d tightvncserver defaults
 sudo apt-get install scim-pinyin
 ```
 
-* 接着运行 `sudo raspi-config`
-* 选择 `change_locale` ， 在Default locale for the system environment: 中选择zh_CN. UTF-8。 然后重启机器， 就发现整个环境变成中文的了。
+接着运行 `sudo raspi-config`
+选择 `change_locale` ， 在Default locale for the system environment: 中选择zh_CN. UTF-8。 然后重启机器， 就发现整个环境变成中文的了。
