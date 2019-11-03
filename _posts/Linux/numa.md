@@ -16,7 +16,7 @@ permalink: numa
 
 南北桥的结构如下：
 
-![cpumemory.4.png](numa/cpumemory.4.png)![cpumemory.6.png](numa/cpumemory.6.png)
+![numa/2019-11-3-16-30-4.png](http://img.geekerhua.com/blog/numa/2019-11-3-16-30-4.png)![numa/2019-11-3-16-30-12.png](http://img.geekerhua.com/blog/numa/2019-11-3-16-30-12.png)
 
 ​            **UMA结构**                                  **NUMA结构**
 
@@ -39,7 +39,7 @@ permalink: numa
 
 按照AMD使用模型， 节点的有效拓扑是超立方体， 它将节点数限制为2 C, 其中C是每个节点具有的互连接口数。 对于具有2 n个 CPU的所有系统， 超立方体的直径最小。
 
-![cpumemory.20.png](numa/cpumemory.20.png)
+![numa/2019-11-3-16-30-20.png](http://img.geekerhua.com/blog/numa/2019-11-3-16-30-20.png)
 
 ### OS 支持
 
@@ -55,7 +55,7 @@ permalink: numa
 
 通常来说写成本要比读的成本高。 2跳读取和写入分别比0跳读取慢30％和49％。 2跳写入比0跳写入慢32％， 比1跳写入慢17％。 处理器和内存节点的相对位置可以产生很大的不同。
 
-![cpumemory.49.png](numa/cpumemory.49.png)
+![numa/2019-11-3-16-30-26.png](http://img.geekerhua.com/blog/numa/2019-11-3-16-30-26.png)
 
 ### NUMA对大内存应用的坑（如MySQL)
 

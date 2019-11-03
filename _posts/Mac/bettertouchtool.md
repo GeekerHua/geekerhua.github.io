@@ -16,32 +16,32 @@ permalink: better_touch_tool
 * 官网：https://www.boastr.net
 * 价格：软件需要付费，但有意思的是，个人的许可不是固定价格。$6-$10都可以获得完全一样的个人许可。
 
-![2017725102843](bettertouchtool/2017725102843.jpg)
+![bettertouchtool/2019-11-3-16-33-16.jpg](http://img.geekerhua.com/blog/bettertouchtool/2019-11-3-16-33-16.jpg)
 
 * 平台：Mac + iOS。iOS版本为远程控制，从效率的角度，不推荐使用。
 * 版本：最新版本为2.02
 
 ## 最优化设置
 
-![2017725102856](bettertouchtool/2017725102856.jpg)
+![bettertouchtool/2019-11-3-16-33-21.jpg](http://img.geekerhua.com/blog/bettertouchtool/2019-11-3-16-33-21.jpg)
 
 开启snap Areas功能，能够实现类似Windows7+ 的窗口侧边停靠功能。而且更加强大，能够自定义左右分屏的比例，还能实现屏幕四个角的分屏功能。
 
-![2017725102911](bettertouchtool/2017725102911.jpg)
+![bettertouchtool/2019-11-3-16-33-26.jpg](http://img.geekerhua.com/blog/bettertouchtool/2019-11-3-16-33-26.jpg)
 
-![2017725102919](bettertouchtool/2017725102919.jpg)
+![bettertouchtool/2019-11-3-16-33-30.jpg](http://img.geekerhua.com/blog/bettertouchtool/2019-11-3-16-33-30.jpg)
 
 ## 基础功能
 
 对于Mac笔记本来说，该软件的核心功能就是触控板的增强，与snap Areas功能。
 
-![2017725102856](bettertouchtool/2017725102856-20190406233643909.jpg)
+![bettertouchtool/2019-11-3-16-33-37.jpg](http://img.geekerhua.com/blog/bettertouchtool/2019-11-3-16-33-37.jpg)
 
-![2017725103032](bettertouchtool/2017725103032.jpg)
+![bettertouchtool/2019-11-3-16-33-42.jpg](http://img.geekerhua.com/blog/bettertouchtool/2019-11-3-16-33-42.jpg)
 
 支持众多的系统功能映射
 
-![2017725103041](bettertouchtool/2017725103041.jpg)
+![bettertouchtool/2019-11-3-16-33-48.jpg](http://img.geekerhua.com/blog/bettertouchtool/2019-11-3-16-33-48.jpg)
 
 ## 相关资源
 

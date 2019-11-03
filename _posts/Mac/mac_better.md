@@ -111,7 +111,7 @@ Dock很漂亮，功能很单一，windows上有无数的软件模仿macOS的Dock
 
 Dock上的图标都是方的，这意味着，可以将Dock放到屏幕左右两侧，毫无违和感，依旧十分好看，不会像windows那样异类。屏幕都高度本身就很珍贵，省下了不少像素。MacBook的屏幕比例都是16:10，要比PC机的16:9要高一些，这么一来，mac的屏幕利用率就更高了，要知道屏幕的宽度只有在电影和网页的时候才更有意义，大部分的屏幕显示的网页左右两边都会留有空余的。高度才是决定效率的因素，想想excel，网页，word，代码，你就明白了。
 
-![mac_Exposè](mac_better/mac_Exposè.jpg)
+![mac_better/2019-11-3-16-34-7.jpg](http://img.geekerhua.com/blog/mac_better/2019-11-3-16-34-7.jpg)
 
 #### macOS的状态栏
 

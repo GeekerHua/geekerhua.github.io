@@ -10,7 +10,7 @@ Alfred被称为Mac中的效率神器，没有之一，一点都不为过。MalTa
 
 下图为我最近一段时间的使用频率，可见我已经离不开它了，真的太方便了。
 
-![2017725102433](alfred/2017725102433.jpg)
+![alfred/2019-11-3-16-32-1.jpg](http://img.geekerhua.com/blog/alfred/2019-11-3-16-32-1.jpg)
 
 ## 功能定位
 
@@ -26,7 +26,7 @@ Mac下自带一个功能强大的搜索工具Spotlight，能够实现全局文�
 * 官网：<https://www.alfredapp.com>
 * 价格：软件免费，但限制高级功能，购买Powerpack可解锁全部功能。
 
-![2017725102456](alfred/2017725102456.jpg)
+![alfred/2019-11-3-16-32-11.jpg](http://img.geekerhua.com/blog/alfred/2019-11-3-16-32-11.jpg)
 
 | 类型                     | 价格  |
 |--------------------------|-------|
@@ -48,9 +48,9 @@ Mac下自带一个功能强大的搜索工具Spotlight，能够实现全局文�
     - 开机自启动：勾选开机自启动；
     - 授权控制电脑权限，软件会运行脚本，调用系统API，因此需要权限。
 
-![2017725102511](alfred/2017725102511.jpg)
+![alfred/2019-11-3-16-32-17.jpg](http://img.geekerhua.com/blog/alfred/2019-11-3-16-32-17.jpg)
 
-![2017725102521](alfred/2017725102521.jpg)
+![alfred/2019-11-3-16-32-21.jpg](http://img.geekerhua.com/blog/alfred/2019-11-3-16-32-21.jpg)
 
 ## 基础功能
 

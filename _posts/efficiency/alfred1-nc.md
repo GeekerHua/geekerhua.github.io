@@ -20,11 +20,9 @@ $: nc -l `port` < `document`
 
 只需要指定port端口号， 和文件就行。 既然如此， 我们大可以借助Alfred自带的文件搜索功能， 调出nc发送功能。 这要比直接去Finder中进行查找文件， 或者在终端中输入常常的文件路径要高效的多。
 
-![14898397730412](alfred1-nc/14898397730412.jpg)
+![alfred1-nc/2019-11-3-16-16-47.jpg](http://img.geekerhua.com/blog/alfred1-nc/2019-11-3-16-16-47.jpg)
 
-![14898397975568](alfred1-nc/14898397975568.jpg)
-
-![14898398228729](assets/14898398228729.jpg)
+![alfred1-nc/2019-11-3-16-17-23.jpg](http://img.geekerhua.com/blog/alfred1-nc/2019-11-3-16-17-23.jpg)
 
 发送一共分三步：
 
@@ -34,7 +32,7 @@ $: nc -l `port` < `document`
 
 即启动一个终端执行发送监听模式， 等待客户端进行接收。 与此同时， 屏幕上会用大字显示出本机的局域网ip和刚才输入的端口号， 方便客户端使用。
 
-![14898400344094](alfred1-nc/14898400344094.jpg)
+![alfred1-nc/2019-11-3-16-17-59.jpg](http://img.geekerhua.com/blog/alfred1-nc/2019-11-3-16-17-59.jpg)
 
 ### 文件接收
 
@@ -46,9 +44,9 @@ $: nc -n `ip`  `port` > `document`
 
 可以看到不仅不要客户端的端口号， 还需要客户端的ip. 刚才的服务端操作已经实现了发送， 并把内网ip和端口号显示在屏幕中了。 客户端只需要借助workflow执行接收命令即可。
 
-![14898402129318](alfred1-nc/14898402129318.jpg)
+![alfred1-nc/2019-11-3-16-18-9.jpg](http://img.geekerhua.com/blog/alfred1-nc/2019-11-3-16-18-9.jpg)
 
-![14898402642075](alfred1-nc/14898402642075.jpg)
+![alfred1-nc/2019-11-3-16-18-17.jpg](http://img.geekerhua.com/blog/alfred1-nc/2019-11-3-16-18-17.jpg)
 
 接收一共两步：
 

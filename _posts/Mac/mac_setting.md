@@ -39,25 +39,25 @@ permalink: mac_init
 ### f1-f12及功能键切换
 在系统偏好设置中，选择 `键盘` ，在键盘下方会有F1-F12按键的作用，默认是mac的特殊功能，勾选则转换为F1-F12功能键。推荐不勾选，mac不像Windows对F1-F12依赖那么严重。几乎很少有会用到的情况，相反调节屏幕亮度、音量等却会经常用到。
 
-![mac_key1](mac_setting/mac_key1.jpg)
+![mac_setting/2019-11-3-16-34-34.jpg](http://img.geekerhua.com/blog/mac_setting/2019-11-3-16-34-34.jpg)
 
 ### 修改修饰键
 
 在 `键盘` 设置的右下角，能够修改 `Caps lock` , `Control` , `Option` , `Command` 四个按键的功能，比如vim党就会把 `Caps lock` 键修改为 `Control` 的功能。
 
-![mac_setting2](mac_setting/mac_setting2.jpg)
+![mac_setting/2019-11-3-16-34-39.jpg](http://img.geekerhua.com/blog/mac_setting/2019-11-3-16-34-39.jpg)
 
 ---
 
 ## 网卡顺序
 
-![mac_setting3](mac_setting/mac_setting3.jpg)
+![mac_setting/2019-11-3-16-34-45.jpg](http://img.geekerhua.com/blog/mac_setting/2019-11-3-16-34-45.jpg)
 
 ---
 
 ## 主机名设置
 
-![2017725101212](mac_setting/2017725101212.jpg)
+![mac_setting/2019-11-3-16-34-50.jpg](http://img.geekerhua.com/blog/mac_setting/2019-11-3-16-34-50.jpg)
 
 ---
 
@@ -88,7 +88,7 @@ defaults write com.apple.finder AppleShowAllFiles -bool false
 
 ## 允许任何软件来源
 
-![2017725101419](mac_setting/2017725101419.jpg)
+![mac_setting/2019-11-3-16-34-58.jpg](http://img.geekerhua.com/blog/mac_setting/2019-11-3-16-34-58.jpg)
 
 在升级到10.12后，系统默认隐藏了任何来源选项，可以通过以下方法让它显示出来。
 

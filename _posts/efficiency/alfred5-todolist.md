@@ -6,12 +6,6 @@ categories: [soft]
 permalink: alfred_todolist
 ---
 
-## 效果展示
-
-先来秀一张布置好的桌面图， 怎么样是不是很清爽简约啊！
-
-![2017-03-15 19_00_17](assets/2017-03-15%2019_00_17.gif)
-
 ## 资源下载
 
 * Alfred [官网链接](https://www.alfredapp.com)
@@ -32,9 +26,11 @@ permalink: alfred_todolist
 * 在 `Übersicht` 的桌面插件上会已灰色文字显示， 并添加中划线。
 * 在 `Alfred` 的插件中， 可以对该文本进行操作， 获取所有TODO, 添加TODO, 删除TODO, 标记为完成状态， 重置为未完成状态等操作。
 
-![](alfred5-todolist/14896526072534-4564461.jpg)
-![](alfred5-todolist/14896526569327.jpg)
-![](alfred5-todolist/14896527156078.jpg)
+![alfred5-todolist/2019-11-3-16-26-0.jpg](http://img.geekerhua.com/blog/alfred5-todolist/2019-11-3-16-26-0.jpg)
+
+![alfred5-todolist/2019-11-3-16-26-11.jpg](http://img.geekerhua.com/blog/alfred5-todolist/2019-11-3-16-26-11.jpg)
+
+![alfred5-todolist/2019-11-3-16-26-21.jpg](http://img.geekerhua.com/blog/alfred5-todolist/2019-11-3-16-26-21.jpg)
 
 `Minimal-TODO` 是一个极简todo list工具， todo任务文件放在指定的路径中， 例如“~/Documents/Alfred/todos/todo.txt"。
 
@@ -53,9 +49,11 @@ permalink: alfred_todolist
 
 #### 2. `ToDo` 的BUG处理
 
-![](alfred5-todolist/14895760187086.jpg)
+![alfred5-todolist/2019-11-3-16-26-35.jpg](http://img.geekerhua.com/blog/alfred5-todolist/2019-11-3-16-26-35.jpg)
+
 默认下载下来的代码有些bug, 会导致对于完成的TODO, 会显示两遍， 一遍是未完成的白色状态， 一遍是完成的灰色状态。 需要对代码进行修复。
-![](alfred5-todolist/14895761894277.jpg)
+
+![alfred5-todolist/2019-11-3-16-26-44.jpg](http://img.geekerhua.com/blog/alfred5-todolist/2019-11-3-16-26-44.jpg)
 
 #### 3. `Minimal-TODO` 插件的列表路径， 有默认路径
 
@@ -66,7 +64,9 @@ permalink: alfred_todolist
 ## 自定义设置
 
 `ToDo` 的主题自定义， 有序无序列表的设置。 默认是 `ul` 无序列表， 改为 `ol` 即为有序列表
-![](alfred5-todolist/14896556515833.jpg)
+
+![alfred5-todolist/2019-11-3-16-26-54.jpg](http://img.geekerhua.com/blog/alfred5-todolist/2019-11-3-16-26-54.jpg)
+
 将如图的ol改为ul, 即为无序列表。
 
 ## 关于 `Minimal-TODO` workflow的开发过程

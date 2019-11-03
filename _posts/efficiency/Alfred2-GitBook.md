@@ -8,11 +8,11 @@ permalink: alfred_gitbook
 
 GitBook是基于Git的电子书写作工具， 借助于Alfred的工作流可以非常方便的管理GitBook, 包括build, export、 serve、 open等功能。 以下是成品图。
 
-![201782102354](alfred2-GitBook/201782102354.png)
+![Alfred2-GitBook/2019-11-3-16-19-1.png](http://img.geekerhua.com/blog/Alfred2-GitBook/2019-11-3-16-19-1.png)
 
 可以实现如下功能：
 
-![201781164741](alfred2-GitBook/201781164741.png)
+![Alfred2-GitBook/2019-11-3-16-19-16.png](http://img.geekerhua.com/blog/Alfred2-GitBook/2019-11-3-16-19-16.png)
 
 01. 打开本地渲染的静态html文件， 如果没有则执行 `build` 进行渲染。
 02. 安装插件 `gitbook install plugin` 。
@@ -48,7 +48,7 @@ GitBook是基于Git的电子书写作工具， 借助于Alfred的工作流可以
 
 首先设置一个环境变量， 设置一个路径， 该路径下的每一个文件夹都会是一本GitBook电子书的路径。 如下：
 
-![20178292337](alfred2-GitBook/20178292337.png)
+![Alfred2-GitBook/2019-11-3-16-19-28.png](http://img.geekerhua.com/blog/Alfred2-GitBook/2019-11-3-16-19-28.png)
 
 在Finder中的显示如下：
 

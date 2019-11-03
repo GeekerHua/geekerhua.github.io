@@ -212,7 +212,7 @@ $: git log <last release> HEAD --grep feature
 
 > Change Log 是发布新版本时， 用来说明与上一个版本差异的文档。
 
-![bg2016010603.png](git_workflow/bg2016010603.png.png)
+![Git_workflow/2019-11-3-16-15-33.png](http://img.geekerhua.com/blog/Git_workflow/2019-11-3-16-15-33.png)
 
 ### Commit message 的格式
 
