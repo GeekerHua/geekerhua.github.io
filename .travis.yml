@@ -31,8 +31,9 @@ install:
   - echo "${CNAME}" > ./source/CNAME
 
 script:
+  - python change.py hexo
   - hexo g
-  - python to_yuque.py
+  - python change.py yuque
 
 after_script:
   - waque upload -t ${YUQUE_TOKEN}
