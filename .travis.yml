@@ -29,13 +29,13 @@ install:
   - echo "${BAIDU_VERIFY}" > ./source/baidu_verify_${BAIDU_VERIFY}.html
   - echo "google-site-verification:${GOOGLE_VERIFY}.html" > ./source/${GOOGLE_VERIFY}.html
   - echo "${CNAME}" > ./source/CNAME
+  - python change.py hexo
 
 script:
-  - python change.py hexo
   - hexo g
-  - python change.py yuque
 
 after_script:
+  - python change.py yuque
   - waque upload -t ${YUQUE_TOKEN}
   - cp ../README.md ./public/README.md
   - cd ./public
