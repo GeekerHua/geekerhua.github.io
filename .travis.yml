@@ -23,19 +23,19 @@ install:
   - cp -r ../hexo/about ../hexo/categories ../hexo/tags ./source
   - cp -f ../hexo/_config.yml _config.yml
   - cp -f ../yuque.yml yuque.yml
-  - cp -f ../to_yuque.py to_yuque.py
+  - cp -f ../change.py change.py
   - cp -f ../hexo/404.html ./source/404.html
   - cp -r ../_posts ./source/_posts
   - echo "${BAIDU_VERIFY}" > ./source/baidu_verify_${BAIDU_VERIFY}.html
   - echo "google-site-verification:${GOOGLE_VERIFY}.html" > ./source/${GOOGLE_VERIFY}.html
   - echo "${CNAME}" > ./source/CNAME
-  - python change.py hexo
 
 script:
+  - python change.py hexo
   - hexo g
+  - python change.py yuque
 
 after_script:
-  - python change.py yuque
   - waque upload -t ${YUQUE_TOKEN}
   - cp ../README.md ./public/README.md
   - cd ./public
