@@ -1,0 +1,767 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>squid+stunnel 科学上网 | GeekerHua的Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="GeekerHua">
+    
+
+    
+    <meta name="description" content="科学上网的方法有多重，有很多第三方提供的免费方案，这些方案优缺点暂时不予讨论。实际工作生活中还是会有需要自己搭建的情况，这次介绍的是使用squid进行搭建。 总结优点 搭建简单方便，能够进行更好的权限控制。 squid具有缓存功能，必要的时候可以提高访问速度。 使用stunnel能够对通信进行加密，更加安全。 squid可以实现正向代理，透明代理，反向代理，能够实现多种需求。 将squid搭建在网">
+<meta property="og:type" content="article">
+<meta property="og:title" content="squid+stunnel 科学上网">
+<meta property="og:url" content="blog.geekerhua.com/squid/index.html">
+<meta property="og:site_name" content="GeekerHua的Blog">
+<meta property="og:description" content="科学上网的方法有多重，有很多第三方提供的免费方案，这些方案优缺点暂时不予讨论。实际工作生活中还是会有需要自己搭建的情况，这次介绍的是使用squid进行搭建。 总结优点 搭建简单方便，能够进行更好的权限控制。 squid具有缓存功能，必要的时候可以提高访问速度。 使用stunnel能够对通信进行加密，更加安全。 squid可以实现正向代理，透明代理，反向代理，能够实现多种需求。 将squid搭建在网">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2019-04-06T16:12:18.000Z">
+<meta property="article:modified_time" content="2020-03-21T14:22:26.060Z">
+<meta property="article:author" content="GeekerHua">
+<meta property="article:tag" content="科学上网">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:creator" content="@GeekerHua">
+
+    
+    <link rel="alternative" href="/atom.xml" title="GeekerHua的Blog" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    
+<link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/%02.css">
+<link rel="stylesheet" href="/.css">
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.png" alt="GeekerHua的Blog" title="GeekerHua的Blog"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="GeekerHua的Blog">GeekerHua的Blog</a></h1>
+				<h2 class="blog-motto">爱技术，更爱生活</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">首页</a></li>
+					
+						<li><a href="/archives">归档</a></li>
+					
+						<li><a href="/categories">分类</a></li>
+					
+						<li><a href="/tags">标签</a></li>
+					
+						<li><a href="/about">关于我</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//www.google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="hidden" name="q" value="site:blog.geekerhua.com">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/squid/" title="squid+stunnel 科学上网" itemprop="url">squid+stunnel 科学上网</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="GeekerHua" target="_blank" itemprop="author">GeekerHua</a>
+		
+    <span id="busuanzi_container_page_pv">
+        总阅读<span id="busuanzi_value_page_pv"></span>次
+      </span>
+  <p class="article-time">
+    <time datetime="2019-04-06T16:12:18.000Z" itemprop="datePublished"> 发表于 2019-04-06</time>
+  </p>
+</header>
+
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#总结"><span class="toc-number">1.</span> <span class="toc-text">总结</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#优点"><span class="toc-number">1.1.</span> <span class="toc-text">优点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#缺点"><span class="toc-number">1.2.</span> <span class="toc-text">缺点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#大概流程"><span class="toc-number">1.3.</span> <span class="toc-text">大概流程</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#server端搭建"><span class="toc-number">2.</span> <span class="toc-text">server端搭建</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#搭建squid服务"><span class="toc-number">2.1.</span> <span class="toc-text">搭建squid服务</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#搭建stunnel服务"><span class="toc-number">2.2.</span> <span class="toc-text">搭建stunnel服务</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#client端"><span class="toc-number">3.</span> <span class="toc-text">client端</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用代理"><span class="toc-number">4.</span> <span class="toc-text">使用代理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考链接"><span class="toc-number">5.</span> <span class="toc-text">参考链接</span></a></li></ol>
+		
+		</div>
+		
+		<p>科学上网的方法有多重，有很多第三方提供的免费方案，这些方案优缺点暂时不予讨论。实际工作生活中还是会有需要自己搭建的情况，这次介绍的是使用squid进行搭建。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><h3 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h3><ul>
+<li>搭建简单方便，能够进行更好的权限控制。</li>
+<li>squid具有缓存功能，必要的时候可以提高访问速度。</li>
+<li>使用stunnel能够对通信进行加密，更加安全。</li>
+<li>squid可以实现正向代理，透明代理，反向代理，能够实现多种需求。</li>
+<li>将squid搭建在网关即可实现透明代理，下边的所以机器都免配置使用，方便快捷。</li>
+</ul>
+<h3 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h3><ul>
+<li>需要使用stunnel进行通讯加密，client和server都不要启动stunnel，不是用stunnel进行加密，访问被墙的网站ip会被秒封。</li>
+<li>每个client都需要开启stunnel，就像使用shadowsocks一样。</li>
+</ul>
+<h3 id="大概流程"><a href="#大概流程" class="headerlink" title="大概流程"></a>大概流程</h3><ol>
+<li>server端搭建squid代理服务</li>
+<li>生成TLS/SSL证书</li>
+<li>server端搭建stunnel进行加密</li>
+<li>client端搭建stunnel进行认证</li>
+<li>client使用代理</li>
+</ol>
+<h2 id="server端搭建"><a href="#server端搭建" class="headerlink" title="server端搭建"></a>server端搭建</h2><h3 id="搭建squid服务"><a href="#搭建squid服务" class="headerlink" title="搭建squid服务"></a>搭建squid服务</h3><ol>
+<li><p>安装squid服务</p>
+<blockquote>
+<p>centos: yum install -y squid<br>ubuntu: apt-get install -y squid</p>
+</blockquote>
+</li>
+<li><p>修改squid配置(/etc/squid/squid.conf)， <strong>目前没有加权限控制</strong></p>
+</li>
+</ol>
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line">acl SSL_ports port 443</span><br><span class="line">acl CONNECT method CONNECT</span><br><span class="line">http_access deny !Safe_ports</span><br><span class="line">http_access deny CONNECT !SSL_ports</span><br><span class="line">http_access allow localhost manager</span><br><span class="line">http_access deny manager</span><br><span class="line">http_access allow localnet</span><br><span class="line">http_access allow localhost</span><br><span class="line"><span class="comment"># http_access allow deny	# 注释掉这一行</span></span><br><span class="line">http_access allow all	# 这行最重要，开放所有访问</span><br><span class="line">http_port 3128	# 监听3128端口，使用312端口实现代理</span><br><span class="line">cache_dir ufs /var/spool/squid 100 16 256</span><br><span class="line">coredump_dir /var/spool/squid</span><br><span class="line">refresh_pattern ^ftp:		1440	20%	10080</span><br><span class="line">refresh_pattern ^gopher:	1440	0%	1440</span><br><span class="line">refresh_pattern -i (/cgi-bin/|\?) 0	0%	0</span><br><span class="line">refresh_pattern .		0	20%	4320</span><br><span class="line">dns_nameservers 8.8.8.8	# dns解析服务器</span><br><span class="line">cache_mem 1024 MB	# 缓存大小</span><br><span class="line">http_reply_access allow all	# 允许所有请求返回</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>启动服务</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># squid -z  # 进行初始化操作</span><br><span class="line"># service squid start # 启动squid代理服务</span><br></pre></td></tr></table></figure>
+
+<ol start="4">
+<li>防火墙开启3128端口，基于云计算的虚拟机直接在控制面板设置即可。</li>
+</ol>
+<p>至此，基于squid的代理服务器已经搭建好了，在需要使用这个代理的client上设置该主机的公网ip，及刚才指定的端口 <code>3128</code> 即可使用代理访问互联网。</p>
+<p>但是，当你使用chrome进行调试的时候就会发现，第一个网页能够打开，但该网页的个别图片请求失败了。刷新下，发现彻底打不开了，提示连接被拒绝。这是因为没有加密，GFW探测到我们的请求返回的是被禁止的内容，就会把访问中断，并把我们的代理ip暂时列入黑名单，因此接下来的所有请求都会失败，这个黑名单时间大概也就几分钟。为了达到数据加密，防止辛辛苦苦搭建的服务被墙，我们接下来使用stunnel服务进行连接加密。</p>
+<h3 id="搭建stunnel服务"><a href="#搭建stunnel服务" class="headerlink" title="搭建stunnel服务"></a>搭建stunnel服务</h3><ol>
+<li><p>安装stunnel服务</p>
+<blockquote>
+<p>centos: yum install -y squid</p>
+<p>ubuntu: apt-get install -y squid</p>
+<p>mac: brew install squid</p>
+</blockquote>
+</li>
+<li><p>生成TLS/SSL证书</p>
+<blockquote>
+<p>openssl req -new -x509 -days 3650 -nodes -out stunnel.pem -keyout stunnel.pem</p>
+</blockquote>
+</li>
+<li><p>将证书 <code>stunnel.pem</code> copy到 <code>/etc/stunnel/</code> 目录下</p>
+</li>
+<li><p>修改stunnel配置(/etc/stunnle/stunnle.conf)</p>
+</li>
+<li><p>防火墙开启3129端口，关闭3128端口。基于云计算的虚拟机直接在控制面板设置即可。</p>
+</li>
+</ol>
+<figure class="highlight ini"><table><tr><td class="code"><pre><span class="line"><span class="comment">; 设置工作目录</span></span><br><span class="line"><span class="comment">;chroot = /var/run/stunnel/</span></span><br><span class="line"><span class="comment">; 设置stunnel的pid文件路径（在chroot下）</span></span><br><span class="line"><span class="attr">pid</span> = /stunnel.pid</span><br><span class="line"><span class="comment">; 设置stunnel工作的用户（组）</span></span><br><span class="line"><span class="attr">setuid</span> = root</span><br><span class="line"><span class="attr">setgid</span> = root</span><br><span class="line"></span><br><span class="line"><span class="comment">; 开启日志等级：emerg (0), alert (1), crit (2), err (3), warning (4), notice (5), info (6), or debug (7)</span></span><br><span class="line"><span class="comment">; 默认为5</span></span><br><span class="line"><span class="attr">debug</span> = <span class="number">7</span></span><br><span class="line"><span class="comment">; 日志文件路径（我的server的版本有个bug，这个文件也被放在chroot路径下了，client的版本则是独立的=。=#）</span></span><br><span class="line"><span class="attr">output</span> = /stunnel.log</span><br><span class="line"></span><br><span class="line"><span class="comment">; 证书文件，就是在本文2.2中用openssl生成的自签名证书（server端必须设置这两项）</span></span><br><span class="line"><span class="attr">cert</span> = /etc/stunnel/stunnel.pem</span><br><span class="line"><span class="comment">; 私钥文件</span></span><br><span class="line"><span class="attr">key</span> = /etc/stunnel/stunnel.pem</span><br><span class="line"></span><br><span class="line"><span class="comment">; 设置stunnel服务，可以设置多个服务，监听同的端口，并发给不同的server。</span></span><br><span class="line"><span class="comment">; 自定义服务名squid-proxy</span></span><br><span class="line"><span class="section">[squid-proxy]</span></span><br><span class="line"><span class="comment">; 服务监听的端口，client要连接这个端口与server通信</span></span><br><span class="line"><span class="attr">accept</span> = <span class="number">3129</span></span><br><span class="line"><span class="comment">; 服务要连接的端口，连接到squid的3128端口，将数据发给squid</span></span><br><span class="line"><span class="attr">connect</span> = <span class="number">3128</span></span><br><span class="line"></span><br><span class="line"><span class="comment">; **************************************************************************</span></span><br><span class="line"><span class="comment">; * 下面这些配置我都注释掉了，但也需要了解下 *</span></span><br><span class="line"><span class="comment">; **************************************************************************</span></span><br><span class="line"></span><br><span class="line"><span class="comment">; 设置是否对传输数据进行压缩，默认不开启。</span></span><br><span class="line"><span class="comment">; 这是跟openssl相关的，如果你的openssl没有zlib，开启这个设置会导致启动失败（failed to initialize compression method）</span></span><br><span class="line"><span class="comment">;compression = zlib</span></span><br><span class="line"></span><br><span class="line"><span class="comment">; 设置ssl版本,这个也是跟安装的openssl有关的</span></span><br><span class="line"><span class="comment">;sslVersion = TLSv1</span></span><br><span class="line"></span><br><span class="line"><span class="comment">; Authentication stuff needs to be configured to prevent MITM attacks</span></span><br><span class="line"><span class="comment">; It is important to understand that this option was solely designed for access control and not for authorization</span></span><br><span class="line"><span class="comment">; It is not enabled by default!</span></span><br><span class="line"><span class="comment">; 下面这些配置用来定义是否信任对方发过来的证书。就好比浏览器访问https的时候，浏览器默认会信任那些由权威CA机构签发的证书，</span></span><br><span class="line"><span class="comment">; 对于那些自签名证书，浏览器就会弹出对话框提醒用户这个证书可能不安全，是否要信任该证书。</span></span><br><span class="line"><span class="comment">; 这是有效防止中间人攻击的手段</span></span><br><span class="line"><span class="comment">; verify 等级2表示需要验证对方发过来的证书（默认0，不需要验证，都信任）</span></span><br><span class="line"><span class="comment">; 因为这个配置是server端的，我们不需要理会client的证书（client也不会没事发证书过来啦）</span></span><br><span class="line"><span class="comment">;verify = 2</span></span><br><span class="line"><span class="comment">; CAfile 表示受信的证书文件，即如果对方发过来的证书在这个CAfile里，那么就是受信任的证书；否则不信任该证书，断开连接。</span></span><br><span class="line"><span class="comment">;CAfile = /etc/stunnel/stunnel-client.pem</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="client端"><a href="#client端" class="headerlink" title="client端"></a>client端</h2><ol>
+<li>通server端一样安装stunnel服务。</li>
+<li>修改stunnel配置文件，将代理的公网ip写入下列配置文件的 <code>connect</code> 项中。</li>
+<li>将在server中生成的证书文件copy到指定目录如 <code>/etc/stunnel/</code> ，并将路径写到配置中的 <code>CAfile</code> 。</li>
+</ol>
+<figure class="highlight ini"><table><tr><td class="code"><pre><span class="line"><span class="comment">; stunnel工作目录</span></span><br><span class="line"><span class="comment">;chroot = /var/run/stunnel/</span></span><br><span class="line"><span class="comment">; stunnel工作的用户组</span></span><br><span class="line"><span class="comment">;setuid = root</span></span><br><span class="line"><span class="comment">;setgid = root</span></span><br><span class="line"><span class="comment">; stunnel工作时候的pid</span></span><br><span class="line"><span class="attr">pid</span> = /stunnel.pid</span><br><span class="line"></span><br><span class="line"><span class="comment">; 日志等级</span></span><br><span class="line"><span class="attr">debug</span> = <span class="number">7</span></span><br><span class="line"><span class="comment">; 日志文件</span></span><br><span class="line"><span class="attr">output</span> = /var/log/stunnel/stunnel.log</span><br><span class="line"></span><br><span class="line"><span class="comment">; 表示以client模式启动stunnel，默认client = no，即server模式</span></span><br><span class="line"><span class="attr">client</span> = <span class="literal">yes</span></span><br><span class="line"></span><br><span class="line"><span class="comment">; 定义一个服务</span></span><br><span class="line"><span class="section">[squid-proxy]</span></span><br><span class="line"><span class="comment">; 监听3128端口，那么用户浏览器的代理设置就是 stunnel-client-ip:3128</span></span><br><span class="line"><span class="attr">accept</span> = <span class="number">3128</span></span><br><span class="line"><span class="comment">; 要连接到的stunnel server的ip与端口</span></span><br><span class="line"><span class="attr">connect</span> = xx.xx.xx.xx:<span class="number">3129</span></span><br><span class="line"></span><br><span class="line"><span class="comment">; 需要验证对方发过来的证书</span></span><br><span class="line"><span class="attr">verify</span> = <span class="number">2</span></span><br><span class="line"><span class="comment">; 用来进行证书验证的文件（里面有stunnel server的证书）</span></span><br><span class="line"><span class="attr">CAfile</span> = /etc/stunnel/stunnel-server.pem</span><br><span class="line"></span><br><span class="line"><span class="comment">; 客户端不需要传递自己的证书，所以注释掉</span></span><br><span class="line"><span class="comment">;cert = /etc/stunnel/stunnel.pem</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="使用代理"><a href="#使用代理" class="headerlink" title="使用代理"></a>使用代理</h2><p>由于没有使用权限认证，只是使用了证书认证，因此只需要在代理设置中使用 <code>127.0.0.1</code> 端口 <code>3128</code> 进行代理即可，推荐还是增加squid权限认证比较安全。</p>
+<h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><blockquote>
+<p><a href="https://www.hawu.me/operation/886>" target="_blank" rel="noopener">squid + stunnel &gt;&gt; 跨越长城，科学上网！</a></p>
+</blockquote>
+<blockquote>
+<p>本文作者： GeekerHua<br>本文链接： <a href="https://blog.geekerhua.com/squid/">https://blog.geekerhua.com/squid/</a><br>文章首发： 同步首发于 <a href="https://www.yuque.com/geekerhua/blog/squid" target="_blank" rel="noopener">语雀</a> 及 <a href="https://blog.geekerhua.com/squid/">GeekerHua的blog</a><br>版权声明： 本博客所有文章除特别声明外，均采用 CC BY-NC-SA 4.0 许可协议。转载请注明出处！</p>
+</blockquote>
+  
+	</div>
+		
+    <!-- css -->
+    <style type="text/css">
+        .center {
+            text-align: center;
+        }
+        .hidden {
+            display: none;
+        }
+        #donate_guide a {
+            display: inline-block;
+            text-align: center;
+        }
+        .donate_bar a.btn_donate{
+            display: inline-block;
+            width: auto;
+            height: 32px;
+        }
+
+        .donate_bar a.btn_donate:hover{ background-position: 0px -82px;}
+        .donate_bar .donate_txt {
+            display: block;
+            color: #9d9d9d;
+            font: 14px/2 "Microsoft Yahei";
+        }
+        .bold{ font-weight: bold; }
+    </style>
+    <!-- /css -->
+
+    <!-- Donate Module -->
+    <div id="donate_module">
+
+    <!-- btn_donate & tips -->
+    <div id="donate_board" class="donate_bar center">
+        <a id="btn_donate" class="btn_donate" target="_self" href="javascript:;" title="打赏支持">看都看完了，支持下啦~</a>
+        
+    </div>
+    <!-- /btn_donate & tips -->
+
+    <!-- donate guide -->
+    
+    <div id="donate_guide" class="donate_bar center hidden">
+        <a href="/img/wechat.jpg" title="用微信扫一扫哦~" class="fancybox" rel="article0">
+            <img src="/img/wechat.jpg" title="微信打赏 Donate" height="190px" width="auto" style="display:block"/>
+            用微信扫一扫哦~
+        </a>
+        
+        <a href="/img/alipay.jpg" title="用支付宝扫一扫即可~" class="fancybox" rel="article0">
+            <img src="/img/alipay.jpg" title="支付宝打赏 Donate" height="190px" width="auto" style="display:block"/>
+            用支付宝扫一扫即可~
+        </a>
+    </div>
+    <!-- /donate guide -->
+
+    <!-- donate script -->
+    <script type="text/javascript">
+        document.getElementById('btn_donate').onclick = function() {
+            $('#donate_board').addClass('hidden');
+        $('#donate_guide').removeClass('hidden');
+        }
+
+        function donate_on_web(){
+            $('#donate').submit();
+        }
+
+        var original_window_onload = window.onload;
+        window.onload = function () {
+            if (original_window_onload) {
+                original_window_onload();
+            }
+            // document.getElementById('donate_board_wdg').className = 'hidden';
+        }
+    </script>
+    <!-- /donate script -->
+</div>
+<!-- /Donate Module -->
+
+   	       
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/life/">life</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/科学上网/">科学上网</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="blog.geekerhua.com/squid/" data-title="squid+stunnel 科学上网 | GeekerHua的Blog" data-tsina="" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+
+<script>
+	(function(){
+			var bp = document.createElement('script');
+			var curProtocol = window.location.protocol.split(':')[0];
+			if (curProtocol === 'https') {
+					bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+			}
+			else {
+					bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+			}
+			var s = document.getElementsByTagName("script")[0];
+			s.parentNode.insertBefore(bp, s);
+	})();
+</script>
+</footer>
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/numa/" title="NUMA">
+  <strong>上一篇：</strong><br/>
+  <span>
+  NUMA</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/super_pi/"  title="Super Pi进行CPU测试">
+ <strong>下一篇：</strong><br/> 
+ <span>Super Pi进行CPU测试
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+
+
+  <!-- 来必力City版安装代码 -->
+  <!-- <div id="lv-container" data-id="city" data-uid="MTAyMC80MzU5Mi8yMDEzMQ=="> -->
+  <div id="lv-container" data-id="city" data-uid="MTAyMC80MzU5Mi8yMDEzMQ==">
+    <script type="text/javascript">
+    (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+
+        if (typeof LivereTower === 'function') { return; }
+
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+
+        e.parentNode.insertBefore(j, e);
+    })(document, 'script');
+    </script>
+  <noscript> 为正常使用来必力评论功能请激活JavaScript</noscript>
+  </div>
+  <!-- City版安装代码已完成 -->
+
+
+</div>  
+
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#总结"><span class="toc-number">1.</span> <span class="toc-text">总结</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#优点"><span class="toc-number">1.1.</span> <span class="toc-text">优点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#缺点"><span class="toc-number">1.2.</span> <span class="toc-text">缺点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#大概流程"><span class="toc-number">1.3.</span> <span class="toc-text">大概流程</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#server端搭建"><span class="toc-number">2.</span> <span class="toc-text">server端搭建</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#搭建squid服务"><span class="toc-number">2.1.</span> <span class="toc-text">搭建squid服务</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#搭建stunnel服务"><span class="toc-number">2.2.</span> <span class="toc-text">搭建stunnel服务</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#client端"><span class="toc-number">3.</span> <span class="toc-text">client端</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用代理"><span class="toc-number">4.</span> <span class="toc-text">使用代理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考链接"><span class="toc-number">5.</span> <span class="toc-text">参考链接</span></a></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+	<div class="category-block">
+		<h3 class="asidetitle">分类</h3>
+			 <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/benchmark/">benchmark</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/code/">code</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/life/">life</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/">linux</a><span class="category-list-count">21</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/mac/">mac</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/other/">other</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/read/">read</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/soft/">soft</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/thinking/">thinking</a><span class="category-list-count">4</span></li></ul>
+	</div>
+
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">标签</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/Linux/" title="Linux">Linux<sup>19</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Shell/" title="Shell">Shell<sup>14</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Soft/" title="Soft">Soft<sup>7</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Alfred/" title="Alfred">Alfred<sup>5</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/mac/" title="mac">mac<sup>4</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Python/" title="Python">Python<sup>4</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/git/" title="git">git<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/环境配置/" title="环境配置">环境配置<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/iOS/" title="iOS">iOS<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/成长/" title="成长">成长<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Other/" title="Other">Other<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/树莓派/" title="树莓派">树莓派<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/shell/" title="shell">shell<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/windows/" title="windows">windows<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/IDE/" title="IDE">IDE<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Swift/" title="Swift">Swift<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/科学上网/" title="科学上网">科学上网<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/读书笔记/" title="读书笔记">读书笔记<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/interview/" title="interview">interview<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/方法论/" title="方法论">方法论<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">友情链接</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="https://junstat.github.io" target="_blank" title="GeekerJun's Blog">GeekerJun的博客</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="https://swift.gg" target="_blank" title="走心的Swift翻译组">SwiftGG</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="https://scp.net.cn" target="_blank" title="西二三旗的垃圾桶">BB4BB</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
+</div>
+
+  
+  <div class="tagcloudlist">
+    <p class="asidetitle">标签云</p>
+    <div class="tagcloudlist clearfix">
+       <a href="/tags/Alfred/" style="font-size: 15.71px;">Alfred</a> <a href="/tags/IDE/" style="font-size: 10px;">IDE</a> <a href="/tags/Linux/" style="font-size: 20px;">Linux</a> <a href="/tags/Other/" style="font-size: 11.43px;">Other</a> <a href="/tags/Python/" style="font-size: 14.29px;">Python</a> <a href="/tags/Shell/" style="font-size: 18.57px;">Shell</a> <a href="/tags/Soft/" style="font-size: 17.14px;">Soft</a> <a href="/tags/Swift/" style="font-size: 10px;">Swift</a> <a href="/tags/cpu/" style="font-size: 10px;">cpu</a> <a href="/tags/git/" style="font-size: 12.86px;">git</a> <a href="/tags/iOS/" style="font-size: 12.86px;">iOS</a> <a href="/tags/interview/" style="font-size: 10px;">interview</a> <a href="/tags/io/" style="font-size: 10px;">io</a> <a href="/tags/mac/" style="font-size: 14.29px;">mac</a> <a href="/tags/shell/" style="font-size: 10px;">shell</a> <a href="/tags/windows/" style="font-size: 10px;">windows</a> <a href="/tags/%E6%88%90%E9%95%BF/" style="font-size: 12.86px;">成长</a> <a href="/tags/%E6%96%B9%E6%B3%95%E8%AE%BA/" style="font-size: 10px;">方法论</a> <a href="/tags/%E6%A0%91%E8%8E%93%E6%B4%BE/" style="font-size: 10px;">树莓派</a> <a href="/tags/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/" style="font-size: 12.86px;">环境配置</a> <a href="/tags/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/" style="font-size: 10px;">科学上网</a> <a href="/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" style="font-size: 10px;">读书笔记</a>
+    </div>
+  </div>
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> 没有梦想就没有未来 <br/>
+			Without dreams, we have no future.</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		<a href="https://weibo.com/geekerhua" target="_blank" class="icon-weibo" title="微博"></a>
+		
+		
+		<a href="https://github.com/geekerhua" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		
+		<a href="https://twitter.com/GeekerHua" target="_blank" class="icon-twitter" title="twitter"></a>
+		
+		
+		<a href="https://www.facebook.com/100014141115493" target="_blank" class="icon-facebook" title="facebook"></a>
+		
+		
+		<a href="https://www.linkedin.com/in/振华-杭-35b122126" target="_blank" class="icon-linkedin" title="linkedin"></a>
+		
+		
+		
+		<a href="https://www.zhihu.com/people/hang-zhen-hua-82" target="_blank" class="icon-zhihu" title="知乎"></a>
+		
+		
+		
+		<a href="mailto:geekerhua@sina.com" target="_blank" class="icon-email" title="Email Me"></a>
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="https://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2020 
+		
+		<a href="/about" target="_blank" title="GeekerHua">GeekerHua</a>
+		
+		
+		</p>
+</div>
+<script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+<span id="busuanzi_container_site_pv">
+	Total visits: <span id="busuanzi_value_site_pv"></span>
+</span>
+<span id="busuanzi_container_site_uv">
+	You are Visiter No.<span id="busuanzi_value_site_uv"></span>
+</span>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>

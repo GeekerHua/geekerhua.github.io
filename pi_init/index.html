@@ -1,0 +1,763 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>树莓派初始化 | GeekerHua的Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="GeekerHua">
+    
+
+    
+    <meta name="description" content="写镜像将系统写入tf卡 tf卡格式化成FAT32格式， 然后卸载  2.使用dd写入镜像 sudo dd bs&#x3D;1m if&#x3D;$&amp;#123;path_of_your_image.img&amp;#125; of&#x3D;&#x2F;dev&#x2F;$&gt; &amp;#123;diskn&amp;#125; conv&#x3D;sync  3.扩展全部存储卡 初始化1. 设置默认wifi在boot分区下， 新建文件并重命名为“wpa_supplicant.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="树莓派初始化">
+<meta property="og:url" content="blog.geekerhua.com/pi_init/index.html">
+<meta property="og:site_name" content="GeekerHua的Blog">
+<meta property="og:description" content="写镜像将系统写入tf卡 tf卡格式化成FAT32格式， 然后卸载  2.使用dd写入镜像 sudo dd bs&#x3D;1m if&#x3D;$&amp;#123;path_of_your_image.img&amp;#125; of&#x3D;&#x2F;dev&#x2F;$&gt; &amp;#123;diskn&amp;#125; conv&#x3D;sync  3.扩展全部存储卡 初始化1. 设置默认wifi在boot分区下， 新建文件并重命名为“wpa_supplicant.">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2019-05-11T21:21:46.000Z">
+<meta property="article:modified_time" content="2020-03-21T14:22:26.056Z">
+<meta property="article:author" content="GeekerHua">
+<meta property="article:tag" content="Linux">
+<meta property="article:tag" content="树莓派">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:creator" content="@GeekerHua">
+
+    
+    <link rel="alternative" href="/atom.xml" title="GeekerHua的Blog" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    
+<link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/%02.css">
+<link rel="stylesheet" href="/.css">
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.png" alt="GeekerHua的Blog" title="GeekerHua的Blog"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="GeekerHua的Blog">GeekerHua的Blog</a></h1>
+				<h2 class="blog-motto">爱技术，更爱生活</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">首页</a></li>
+					
+						<li><a href="/archives">归档</a></li>
+					
+						<li><a href="/categories">分类</a></li>
+					
+						<li><a href="/tags">标签</a></li>
+					
+						<li><a href="/about">关于我</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//www.google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="hidden" name="q" value="site:blog.geekerhua.com">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/pi_init/" title="树莓派初始化" itemprop="url">树莓派初始化</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="GeekerHua" target="_blank" itemprop="author">GeekerHua</a>
+		
+    <span id="busuanzi_container_page_pv">
+        总阅读<span id="busuanzi_value_page_pv"></span>次
+      </span>
+  <p class="article-time">
+    <time datetime="2019-05-11T21:21:46.000Z" itemprop="datePublished"> 发表于 2019-05-11</time>
+  </p>
+</header>
+
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#写镜像"><span class="toc-number">1.</span> <span class="toc-text">写镜像</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#将系统写入tf卡"><span class="toc-number">1.1.</span> <span class="toc-text">将系统写入tf卡</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#初始化"><span class="toc-number">2.</span> <span class="toc-text">初始化</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-设置默认wifi"><span class="toc-number">2.1.</span> <span class="toc-text">1. 设置默认wifi</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-默认开启ssh"><span class="toc-number">2.2.</span> <span class="toc-text">2. 默认开启ssh</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#局域网内树莓派到识别扫描"><span class="toc-number">3.</span> <span class="toc-text">局域网内树莓派到识别扫描</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-使用arp进行设备扫描"><span class="toc-number">3.1.</span> <span class="toc-text">1. 使用arp进行设备扫描</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-使用pi-oi进行扫描，-对wifi下到扫描效果很好"><span class="toc-number">3.2.</span> <span class="toc-text">2. 使用pi-oi进行扫描， 对wifi下到扫描效果很好</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#WIFI密码设置"><span class="toc-number">4.</span> <span class="toc-text">WIFI密码设置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-查看已经识别的wifi-记录ssid值"><span class="toc-number">4.1.</span> <span class="toc-text">1. 查看已经识别的wifi, 记录ssid值</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-修改网络自动连接，-etc-network-interfaces"><span class="toc-number">4.2.</span> <span class="toc-text">2. 修改网络自动连接， &#x2F;etc&#x2F;network&#x2F;interfaces</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-在-etc-wpa-supplicant-wpa-supplicant-conf-文件中添加wifi配置，-可以配置多个wifi"><span class="toc-number">4.3.</span> <span class="toc-text">3. 在 &#x2F;etc&#x2F;wpa_supplicant&#x2F;wpa_supplicant.conf 文件中添加wifi配置， 可以配置多个wifi</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-连接wifi-重启"><span class="toc-number">4.4.</span> <span class="toc-text">4. 连接wifi, 重启</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#vnc远程桌面连接"><span class="toc-number">5.</span> <span class="toc-text">vnc远程桌面连接</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-安装"><span class="toc-number">5.1.</span> <span class="toc-text">1. 安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-启动vnc服务"><span class="toc-number">5.2.</span> <span class="toc-text">2. 启动vnc服务</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-终止vnc"><span class="toc-number">5.3.</span> <span class="toc-text">3. 终止vnc</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-开机自启"><span class="toc-number">5.4.</span> <span class="toc-text">4. 开机自启</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#中文输入法"><span class="toc-number">6.</span> <span class="toc-text">中文输入法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#SCIM安装"><span class="toc-number">6.1.</span> <span class="toc-text">SCIM安装</span></a></li></ol></li></ol>
+		
+		</div>
+		
+		<h2 id="写镜像"><a href="#写镜像" class="headerlink" title="写镜像"></a>写镜像</h2><h3 id="将系统写入tf卡"><a href="#将系统写入tf卡" class="headerlink" title="将系统写入tf卡"></a>将系统写入tf卡</h3><ol>
+<li>tf卡格式化成FAT32格式， 然后卸载</li>
+</ol>
+<p>2.<a href="https://www.raspberrypi.org/documentation/installation/installing-images/mac.md" target="_blank" rel="noopener">使用dd写入镜像</a></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo dd bs=1m <span class="keyword">if</span>=<span class="variable">$&#123;path_of_your_image.img&#125;</span> of=/dev/$&gt; &#123;diskn&#125; conv=sync</span><br></pre></td></tr></table></figure>
+
+<p>3.<a href="https://www.cnrancher.com/docs/os/v1.x/en/installation/running-rancheros/server/raspberry-pi/" target="_blank" rel="noopener">扩展全部存储卡</a></p>
+<h2 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h2><h3 id="1-设置默认wifi"><a href="#1-设置默认wifi" class="headerlink" title="1. 设置默认wifi"></a>1. 设置默认wifi</h3><p>在boot分区下， 新建文件并重命名为“wpa_supplicant.conf”</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">country=CN</span><br><span class="line">ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev</span><br><span class="line">update_config=1</span><br><span class="line"></span><br><span class="line">network=&#123;</span><br><span class="line">    ssid=<span class="string">"ishangzu401a"</span></span><br><span class="line">    psk=<span class="string">"ishangzu8888"</span></span><br><span class="line">    key_mgmt=WPA-PSK</span><br><span class="line">    priority=1</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-默认开启ssh"><a href="#2-默认开启ssh" class="headerlink" title="2. 默认开启ssh"></a>2. 默认开启ssh</h3><p>在boot分区下， 新建一个文件， 并重命名为”ssh“， 不带任何后缀名</p>
+<h2 id="局域网内树莓派到识别扫描"><a href="#局域网内树莓派到识别扫描" class="headerlink" title="局域网内树莓派到识别扫描"></a>局域网内树莓派到识别扫描</h2><blockquote>
+<p>状态没有屏幕， 但有网线</p>
+</blockquote>
+<h3 id="1-使用arp进行设备扫描"><a href="#1-使用arp进行设备扫描" class="headerlink" title="1. 使用arp进行设备扫描"></a>1. 使用arp进行设备扫描</h3><blockquote>
+<p>如下图， 是使用网线直连电脑到结果， 可以直接识别hostname</p>
+</blockquote>
+<p>使用网线将树莓派与电脑进行连接， 此时两台设备处于同一个局域内。 使用arp工具扫描局域网设备</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$: arp -a</span><br><span class="line">raspberrypi.local (169.254.117.22) at b8:27:eb:42:a9:53 on en4 [ethernet]</span><br><span class="line">? (192.168.0.1) at 78:44:fd:46:32:c0 on en0 ifscope [ethernet]</span><br><span class="line">? (192.168.0.112) at f4:5c:89:9f:65:2b on en0 ifscope [ethernet]</span><br><span class="line">? (192.168.0.114) at 5c:ad:cf:e9:31:a0 on en0 ifscope [ethernet]</span><br><span class="line">? (224.0.0.251) at 1:0:5e:0:0:fb on en0 ifscope permanent [ethernet]</span><br><span class="line">? (239.255.255.250) at 1:0:5e:7f:ff:fa on en0 ifscope permanent [ethernet]</span><br><span class="line">? (239.255.255.250) at 1:0:5e:7f:ff:fa on en4 ifscope permanent [ethernet]</span><br></pre></td></tr></table></figure>
+
+<p>如上， 第一个就是树莓派。 知道ip就可以直接通过ssh进行连接。 然后手动更改wifi密码， 之后就可以连接到wifi了。</p>
+<h3 id="2-使用pi-oi进行扫描，-对wifi下到扫描效果很好"><a href="#2-使用pi-oi进行扫描，-对wifi下到扫描效果很好" class="headerlink" title="2. 使用pi-oi进行扫描， 对wifi下到扫描效果很好"></a>2. 使用<a href="http://github.com/thoqbk/pi-oi" target="_blank" rel="noopener">pi-oi</a>进行扫描， 对wifi下到扫描效果很好</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$: java -jar pi-oi.jar</span><br><span class="line"></span><br><span class="line">PI-OI is finding your Pi ...</span><br><span class="line">+-----------------------------------------------------------------------------------------+</span><br><span class="line">| Address            | Host response                          | Could be a Pi    | Time   |</span><br><span class="line">+-----------------------------------------------------------------------------------------+</span><br><span class="line">| 192.168.0.116      | SSH-2.0-OpenSSH_6.7p1 Raspbian-5deb    |                  | 19s    |</span><br><span class="line">+-----------------------------------------------------------------------------------------+</span><br><span class="line">Tho Q Luong, http://github.com/thoqbk/pi-oi</span><br></pre></td></tr></table></figure>
+
+<h2 id="WIFI密码设置"><a href="#WIFI密码设置" class="headerlink" title="WIFI密码设置"></a>WIFI密码设置</h2><blockquote>
+<ul>
+<li><a href="https://www.embbnux.com/2016/04/10/raspberry_pi_3_wifi_and_bluetooth_setting_on_console/" target="_blank" rel="noopener">树莓派3命令行配置wifi无线连接和蓝牙连接</a></li>
+<li><a href="http://ju.outofmemory.cn/entry/106824" target="_blank" rel="noopener">让你的树莓派连上WiFi</a></li>
+</ul>
+</blockquote>
+<h3 id="1-查看已经识别的wifi-记录ssid值"><a href="#1-查看已经识别的wifi-记录ssid值" class="headerlink" title="1. 查看已经识别的wifi, 记录ssid值"></a>1. 查看已经识别的wifi, 记录ssid值</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo iwlist wlan0 scan</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-修改网络自动连接，-etc-network-interfaces"><a href="#2-修改网络自动连接，-etc-network-interfaces" class="headerlink" title="2. 修改网络自动连接， /etc/network/interfaces"></a>2. 修改网络自动连接， /etc/network/interfaces</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">iface wlan0 inet dhcp</span><br><span class="line">    wpa-conf /etc/wpa_supplicant/wpa_supplicant.conf</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-在-etc-wpa-supplicant-wpa-supplicant-conf-文件中添加wifi配置，-可以配置多个wifi"><a href="#3-在-etc-wpa-supplicant-wpa-supplicant-conf-文件中添加wifi配置，-可以配置多个wifi" class="headerlink" title="3. 在 /etc/wpa_supplicant/wpa_supplicant.conf 文件中添加wifi配置， 可以配置多个wifi"></a>3. 在 <code>/etc/wpa_supplicant/wpa_supplicant.conf</code> 文件中添加wifi配置， 可以配置多个wifi</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">network=&#123;</span><br><span class="line">    ssid=<span class="string">"TMWHCM"</span></span><br><span class="line">    key_mgmt=WPA-PSK</span><br><span class="line">    psk=<span class="string">"68880961"</span></span><br><span class="line">    priority=5</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>priority 是指连接优先级， 数字越大优先级越高（不可以是负数）。</p>
+</blockquote>
+<h3 id="4-连接wifi-重启"><a href="#4-连接wifi-重启" class="headerlink" title="4. 连接wifi, 重启"></a>4. 连接wifi, 重启</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo reboot</span><br></pre></td></tr></table></figure>
+
+<h2 id="vnc远程桌面连接"><a href="#vnc远程桌面连接" class="headerlink" title="vnc远程桌面连接"></a><a href="http://shumeipai.nxez.com/2013/09/04/login-rpi-with-vnc.html" target="_blank" rel="noopener">vnc远程桌面连接</a></h2><p>能够访问网络了， 当然是要把远程桌面开开才好用了， 关键时刻很好用啊。</p>
+<h3 id="1-安装"><a href="#1-安装" class="headerlink" title="1. 安装"></a>1. 安装</h3><p>1.1 安装tightvncserver</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$: apt install tightvncserver</span><br></pre></td></tr></table></figure>
+
+<p>1.2 设置密码</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$: vncpasswd</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-启动vnc服务"><a href="#2-启动vnc服务" class="headerlink" title="2. 启动vnc服务"></a>2. 启动vnc服务</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$: tightvncserver <span class="comment">#- vncserver :1 - geometry 1280x1080-depth 24</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>指定尺寸</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">tightvncserver -geometry 800x600 :1</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-终止vnc"><a href="#3-终止vnc" class="headerlink" title="3. 终止vnc"></a>3. 终止vnc</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">tightvncserver -<span class="built_in">kill</span> :1</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-开机自启"><a href="#4-开机自启" class="headerlink" title="4. 开机自启"></a>4. 开机自启</h3><p>4.1 将下方代码添加到 <code>/etc/init.d/tightvncserver</code></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">### BEGIN INIT INFO</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Provides:          tightvncserver</span></span><br><span class="line"><span class="comment"># Required-Start:    $local_fs</span></span><br><span class="line"><span class="comment"># Required-Stop:     $local_fs</span></span><br><span class="line"><span class="comment"># Default-Start:     2 3 4 5</span></span><br><span class="line"><span class="comment"># Default-Stop:      0 1 6</span></span><br><span class="line"><span class="comment"># Short-Description: Start/stop tightvncserver</span></span><br><span class="line"></span><br><span class="line"><span class="comment">### END INIT INFO</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># More details see:</span></span><br><span class="line"><span class="comment"># http://www.penguintutor.com/linux/tightvnc</span></span><br><span class="line"></span><br><span class="line"><span class="comment">### Customize this entry</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Set the USER variable to the name of the user to start tightvncserver under</span></span><br><span class="line"><span class="built_in">export</span> USER=<span class="string">'pi'</span></span><br><span class="line"></span><br><span class="line"><span class="comment">### End customization required</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">eval</span> <span class="built_in">cd</span> ~<span class="variable">$USER</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">case</span> <span class="string">"<span class="variable">$1</span>"</span> <span class="keyword">in</span></span><br><span class="line">start)</span><br><span class="line">    <span class="comment"># 启动命令行。 此处自定义分辨率、 控制台号码或其它参数。</span></span><br><span class="line">    su <span class="variable">$USER</span> -c <span class="string">'/usr/bin/tightvncserver -depth 16 -geometry 800x600 :1'</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">"Starting TightVNC server for <span class="variable">$USER</span> "</span></span><br><span class="line">    ; ;</span><br><span class="line">stop)</span><br><span class="line">    <span class="comment"># 终止命令行。 此处控制台号码与启动一致。</span></span><br><span class="line">    su <span class="variable">$USER</span> -c <span class="string">'/usr/bin/tightvncserver -kill :1'</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">"Tightvncserver stopped"</span></span><br><span class="line">    ; ;</span><br><span class="line">*)</span><br><span class="line">    <span class="built_in">echo</span> <span class="string">"Usage: /etc/init.d/tightvncserver &#123;start|stop&#125;"</span></span><br><span class="line">    <span class="built_in">exit</span> 1</span><br><span class="line">    ; ;</span><br><span class="line"><span class="keyword">esac</span></span><br><span class="line"><span class="built_in">exit</span> 0</span><br></pre></td></tr></table></figure>
+
+<p>4.2 可以设置开机自启， 看个人需求</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo chmod 755 /etc/init.d/tightvncserver</span><br><span class="line">sudo update-rc.d tightvncserver defaults</span><br></pre></td></tr></table></figure>
+
+<h2 id="中文输入法"><a href="#中文输入法" class="headerlink" title="中文输入法"></a>中文输入法</h2><blockquote>
+<p>输入法， 一款是SCIM， 令一款是Rime(鼠须管)</p>
+</blockquote>
+<h3 id="SCIM安装"><a href="#SCIM安装" class="headerlink" title="SCIM安装"></a>SCIM安装</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo apt-get install scim-pinyin</span><br></pre></td></tr></table></figure>
+
+<p>接着运行 <code>sudo raspi-config</code><br>选择 <code>change_locale</code> ， 在Default locale for the system environment: 中选择zh_CN. UTF-8。 然后重启机器， 就发现整个环境变成中文的了。</p>
+<blockquote>
+<p>本文作者： GeekerHua<br>本文链接： <a href="https://blog.geekerhua.com/pi_init/">https://blog.geekerhua.com/pi_init/</a><br>文章首发： 同步首发于 <a href="https://www.yuque.com/geekerhua/blog/pi_init" target="_blank" rel="noopener">语雀</a> 及 <a href="https://blog.geekerhua.com/pi_init/">GeekerHua的blog</a><br>版权声明： 本博客所有文章除特别声明外，均采用 CC BY-NC-SA 4.0 许可协议。转载请注明出处！</p>
+</blockquote>
+  
+	</div>
+		
+    <!-- css -->
+    <style type="text/css">
+        .center {
+            text-align: center;
+        }
+        .hidden {
+            display: none;
+        }
+        #donate_guide a {
+            display: inline-block;
+            text-align: center;
+        }
+        .donate_bar a.btn_donate{
+            display: inline-block;
+            width: auto;
+            height: 32px;
+        }
+
+        .donate_bar a.btn_donate:hover{ background-position: 0px -82px;}
+        .donate_bar .donate_txt {
+            display: block;
+            color: #9d9d9d;
+            font: 14px/2 "Microsoft Yahei";
+        }
+        .bold{ font-weight: bold; }
+    </style>
+    <!-- /css -->
+
+    <!-- Donate Module -->
+    <div id="donate_module">
+
+    <!-- btn_donate & tips -->
+    <div id="donate_board" class="donate_bar center">
+        <a id="btn_donate" class="btn_donate" target="_self" href="javascript:;" title="打赏支持">看都看完了，支持下啦~</a>
+        
+    </div>
+    <!-- /btn_donate & tips -->
+
+    <!-- donate guide -->
+    
+    <div id="donate_guide" class="donate_bar center hidden">
+        <a href="/img/wechat.jpg" title="用微信扫一扫哦~" class="fancybox" rel="article0">
+            <img src="/img/wechat.jpg" title="微信打赏 Donate" height="190px" width="auto" style="display:block"/>
+            用微信扫一扫哦~
+        </a>
+        
+        <a href="/img/alipay.jpg" title="用支付宝扫一扫即可~" class="fancybox" rel="article0">
+            <img src="/img/alipay.jpg" title="支付宝打赏 Donate" height="190px" width="auto" style="display:block"/>
+            用支付宝扫一扫即可~
+        </a>
+    </div>
+    <!-- /donate guide -->
+
+    <!-- donate script -->
+    <script type="text/javascript">
+        document.getElementById('btn_donate').onclick = function() {
+            $('#donate_board').addClass('hidden');
+        $('#donate_guide').removeClass('hidden');
+        }
+
+        function donate_on_web(){
+            $('#donate').submit();
+        }
+
+        var original_window_onload = window.onload;
+        window.onload = function () {
+            if (original_window_onload) {
+                original_window_onload();
+            }
+            // document.getElementById('donate_board_wdg').className = 'hidden';
+        }
+    </script>
+    <!-- /donate script -->
+</div>
+<!-- /Donate Module -->
+
+   	       
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/linux/">linux</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/Linux/">Linux</a><a href="/tags/树莓派/">树莓派</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="blog.geekerhua.com/pi_init/" data-title="树莓派初始化 | GeekerHua的Blog" data-tsina="" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+
+<script>
+	(function(){
+			var bp = document.createElement('script');
+			var curProtocol = window.location.protocol.split(':')[0];
+			if (curProtocol === 'https') {
+					bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+			}
+			else {
+					bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+			}
+			var s = document.getElementsByTagName("script")[0];
+			s.parentNode.insertBefore(bp, s);
+	})();
+</script>
+</footer>
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/shell_soft/" title="常用的shell下的工具">
+  <strong>上一篇：</strong><br/>
+  <span>
+  常用的shell下的工具</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/mac_better_windows/"  title="mac有哪些设计比windows好">
+ <strong>下一篇：</strong><br/> 
+ <span>mac有哪些设计比windows好
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+
+
+  <!-- 来必力City版安装代码 -->
+  <!-- <div id="lv-container" data-id="city" data-uid="MTAyMC80MzU5Mi8yMDEzMQ=="> -->
+  <div id="lv-container" data-id="city" data-uid="MTAyMC80MzU5Mi8yMDEzMQ==">
+    <script type="text/javascript">
+    (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+
+        if (typeof LivereTower === 'function') { return; }
+
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+
+        e.parentNode.insertBefore(j, e);
+    })(document, 'script');
+    </script>
+  <noscript> 为正常使用来必力评论功能请激活JavaScript</noscript>
+  </div>
+  <!-- City版安装代码已完成 -->
+
+
+</div>  
+
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#写镜像"><span class="toc-number">1.</span> <span class="toc-text">写镜像</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#将系统写入tf卡"><span class="toc-number">1.1.</span> <span class="toc-text">将系统写入tf卡</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#初始化"><span class="toc-number">2.</span> <span class="toc-text">初始化</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-设置默认wifi"><span class="toc-number">2.1.</span> <span class="toc-text">1. 设置默认wifi</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-默认开启ssh"><span class="toc-number">2.2.</span> <span class="toc-text">2. 默认开启ssh</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#局域网内树莓派到识别扫描"><span class="toc-number">3.</span> <span class="toc-text">局域网内树莓派到识别扫描</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-使用arp进行设备扫描"><span class="toc-number">3.1.</span> <span class="toc-text">1. 使用arp进行设备扫描</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-使用pi-oi进行扫描，-对wifi下到扫描效果很好"><span class="toc-number">3.2.</span> <span class="toc-text">2. 使用pi-oi进行扫描， 对wifi下到扫描效果很好</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#WIFI密码设置"><span class="toc-number">4.</span> <span class="toc-text">WIFI密码设置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-查看已经识别的wifi-记录ssid值"><span class="toc-number">4.1.</span> <span class="toc-text">1. 查看已经识别的wifi, 记录ssid值</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-修改网络自动连接，-etc-network-interfaces"><span class="toc-number">4.2.</span> <span class="toc-text">2. 修改网络自动连接， &#x2F;etc&#x2F;network&#x2F;interfaces</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-在-etc-wpa-supplicant-wpa-supplicant-conf-文件中添加wifi配置，-可以配置多个wifi"><span class="toc-number">4.3.</span> <span class="toc-text">3. 在 &#x2F;etc&#x2F;wpa_supplicant&#x2F;wpa_supplicant.conf 文件中添加wifi配置， 可以配置多个wifi</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-连接wifi-重启"><span class="toc-number">4.4.</span> <span class="toc-text">4. 连接wifi, 重启</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#vnc远程桌面连接"><span class="toc-number">5.</span> <span class="toc-text">vnc远程桌面连接</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-安装"><span class="toc-number">5.1.</span> <span class="toc-text">1. 安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-启动vnc服务"><span class="toc-number">5.2.</span> <span class="toc-text">2. 启动vnc服务</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-终止vnc"><span class="toc-number">5.3.</span> <span class="toc-text">3. 终止vnc</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-开机自启"><span class="toc-number">5.4.</span> <span class="toc-text">4. 开机自启</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#中文输入法"><span class="toc-number">6.</span> <span class="toc-text">中文输入法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#SCIM安装"><span class="toc-number">6.1.</span> <span class="toc-text">SCIM安装</span></a></li></ol></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+	<div class="category-block">
+		<h3 class="asidetitle">分类</h3>
+			 <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/benchmark/">benchmark</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/code/">code</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/life/">life</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/">linux</a><span class="category-list-count">21</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/mac/">mac</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/other/">other</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/read/">read</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/soft/">soft</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/thinking/">thinking</a><span class="category-list-count">4</span></li></ul>
+	</div>
+
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">标签</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/Linux/" title="Linux">Linux<sup>19</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Shell/" title="Shell">Shell<sup>14</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Soft/" title="Soft">Soft<sup>7</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Alfred/" title="Alfred">Alfred<sup>5</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/mac/" title="mac">mac<sup>4</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Python/" title="Python">Python<sup>4</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/git/" title="git">git<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/环境配置/" title="环境配置">环境配置<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/iOS/" title="iOS">iOS<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/成长/" title="成长">成长<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Other/" title="Other">Other<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/树莓派/" title="树莓派">树莓派<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/shell/" title="shell">shell<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/windows/" title="windows">windows<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/IDE/" title="IDE">IDE<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Swift/" title="Swift">Swift<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/科学上网/" title="科学上网">科学上网<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/读书笔记/" title="读书笔记">读书笔记<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/interview/" title="interview">interview<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/方法论/" title="方法论">方法论<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">友情链接</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="https://junstat.github.io" target="_blank" title="GeekerJun's Blog">GeekerJun的博客</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="https://swift.gg" target="_blank" title="走心的Swift翻译组">SwiftGG</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="https://scp.net.cn" target="_blank" title="西二三旗的垃圾桶">BB4BB</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
+</div>
+
+  
+  <div class="tagcloudlist">
+    <p class="asidetitle">标签云</p>
+    <div class="tagcloudlist clearfix">
+       <a href="/tags/Alfred/" style="font-size: 15.71px;">Alfred</a> <a href="/tags/IDE/" style="font-size: 10px;">IDE</a> <a href="/tags/Linux/" style="font-size: 20px;">Linux</a> <a href="/tags/Other/" style="font-size: 11.43px;">Other</a> <a href="/tags/Python/" style="font-size: 14.29px;">Python</a> <a href="/tags/Shell/" style="font-size: 18.57px;">Shell</a> <a href="/tags/Soft/" style="font-size: 17.14px;">Soft</a> <a href="/tags/Swift/" style="font-size: 10px;">Swift</a> <a href="/tags/cpu/" style="font-size: 10px;">cpu</a> <a href="/tags/git/" style="font-size: 12.86px;">git</a> <a href="/tags/iOS/" style="font-size: 12.86px;">iOS</a> <a href="/tags/interview/" style="font-size: 10px;">interview</a> <a href="/tags/io/" style="font-size: 10px;">io</a> <a href="/tags/mac/" style="font-size: 14.29px;">mac</a> <a href="/tags/shell/" style="font-size: 10px;">shell</a> <a href="/tags/windows/" style="font-size: 10px;">windows</a> <a href="/tags/%E6%88%90%E9%95%BF/" style="font-size: 12.86px;">成长</a> <a href="/tags/%E6%96%B9%E6%B3%95%E8%AE%BA/" style="font-size: 10px;">方法论</a> <a href="/tags/%E6%A0%91%E8%8E%93%E6%B4%BE/" style="font-size: 10px;">树莓派</a> <a href="/tags/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/" style="font-size: 12.86px;">环境配置</a> <a href="/tags/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/" style="font-size: 10px;">科学上网</a> <a href="/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" style="font-size: 10px;">读书笔记</a>
+    </div>
+  </div>
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> 没有梦想就没有未来 <br/>
+			Without dreams, we have no future.</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		<a href="https://weibo.com/geekerhua" target="_blank" class="icon-weibo" title="微博"></a>
+		
+		
+		<a href="https://github.com/geekerhua" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		
+		<a href="https://twitter.com/GeekerHua" target="_blank" class="icon-twitter" title="twitter"></a>
+		
+		
+		<a href="https://www.facebook.com/100014141115493" target="_blank" class="icon-facebook" title="facebook"></a>
+		
+		
+		<a href="https://www.linkedin.com/in/振华-杭-35b122126" target="_blank" class="icon-linkedin" title="linkedin"></a>
+		
+		
+		
+		<a href="https://www.zhihu.com/people/hang-zhen-hua-82" target="_blank" class="icon-zhihu" title="知乎"></a>
+		
+		
+		
+		<a href="mailto:geekerhua@sina.com" target="_blank" class="icon-email" title="Email Me"></a>
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="https://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2020 
+		
+		<a href="/about" target="_blank" title="GeekerHua">GeekerHua</a>
+		
+		
+		</p>
+</div>
+<script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+<span id="busuanzi_container_site_pv">
+	Total visits: <span id="busuanzi_value_site_pv"></span>
+</span>
+<span id="busuanzi_container_site_uv">
+	You are Visiter No.<span id="busuanzi_value_site_uv"></span>
+</span>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>

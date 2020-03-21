@@ -1,0 +1,847 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>githug实战 | GeekerHua的Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="GeekerHua">
+    
+
+    
+    <meta name="description" content="level 1 initA new directory, git_hug , has been created; initialize an empty repository in it. $: git init  level 2 configSet up your git name and email, this is important so that your commits can be">
+<meta property="og:type" content="article">
+<meta property="og:title" content="githug实战">
+<meta property="og:url" content="blog.geekerhua.com/4E9B4D94-AC1E-4E27-AF1C-7B8A722A8B11/index.html">
+<meta property="og:site_name" content="GeekerHua的Blog">
+<meta property="og:description" content="level 1 initA new directory, git_hug , has been created; initialize an empty repository in it. $: git init  level 2 configSet up your git name and email, this is important so that your commits can be">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-03-21T17:48:28.000Z">
+<meta property="article:modified_time" content="2020-03-21T14:22:26.056Z">
+<meta property="article:author" content="GeekerHua">
+<meta property="article:tag" content="git">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:creator" content="@GeekerHua">
+
+    
+    <link rel="alternative" href="/atom.xml" title="GeekerHua的Blog" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    
+<link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/%02.css">
+<link rel="stylesheet" href="/.css">
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.png" alt="GeekerHua的Blog" title="GeekerHua的Blog"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="GeekerHua的Blog">GeekerHua的Blog</a></h1>
+				<h2 class="blog-motto">爱技术，更爱生活</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">首页</a></li>
+					
+						<li><a href="/archives">归档</a></li>
+					
+						<li><a href="/categories">分类</a></li>
+					
+						<li><a href="/tags">标签</a></li>
+					
+						<li><a href="/about">关于我</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//www.google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="hidden" name="q" value="site:blog.geekerhua.com">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/4E9B4D94-AC1E-4E27-AF1C-7B8A722A8B11/" title="githug实战" itemprop="url">githug实战</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="GeekerHua" target="_blank" itemprop="author">GeekerHua</a>
+		
+    <span id="busuanzi_container_page_pv">
+        总阅读<span id="busuanzi_value_page_pv"></span>次
+      </span>
+  <p class="article-time">
+    <time datetime="2020-03-21T17:48:28.000Z" itemprop="datePublished"> 发表于 2020-03-21</time>
+  </p>
+</header>
+
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#level-1-init"><span class="toc-number">1.</span> <span class="toc-text">level 1 init</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#level-2-config"><span class="toc-number">2.</span> <span class="toc-text">level 2 config</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#level-3-add"><span class="toc-number">3.</span> <span class="toc-text">level 3 add</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#level-4-commit"><span class="toc-number">4.</span> <span class="toc-text">level 4 commit</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#level-5-clone"><span class="toc-number">5.</span> <span class="toc-text">level 5 clone</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#level-6-clone-to-folder"><span class="toc-number">6.</span> <span class="toc-text">level 6 clone_to_folder</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#level-7-ignore"><span class="toc-number">7.</span> <span class="toc-text">level 7 ignore</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#level-8-include"><span class="toc-number">8.</span> <span class="toc-text">level 8 include</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#level-9-status"><span class="toc-number">9.</span> <span class="toc-text">level 9 status</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#level-10-status"><span class="toc-number">10.</span> <span class="toc-text">level 10 status</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#level-11-rm"><span class="toc-number">11.</span> <span class="toc-text">level 11 rm</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#level-12-rm-cached"><span class="toc-number">12.</span> <span class="toc-text">level 12 rm_cached</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#level-13-stash"><span class="toc-number">13.</span> <span class="toc-text">level 13 stash</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#level-14-rename"><span class="toc-number">14.</span> <span class="toc-text">level 14 rename</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#level-15-restructure"><span class="toc-number">15.</span> <span class="toc-text">level 15 restructure</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#level-16-log"><span class="toc-number">16.</span> <span class="toc-text">level 16 log</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#level-17-tag"><span class="toc-number">17.</span> <span class="toc-text">level 17 tag</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#level-18-push-tags"><span class="toc-number">18.</span> <span class="toc-text">level 18 push_tags</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#level-19-commit-amend"><span class="toc-number">19.</span> <span class="toc-text">level 19 commit_amend</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#level-20-commit-in-future"><span class="toc-number">20.</span> <span class="toc-text">level 20 commit_in_future</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#level-21-reset"><span class="toc-number">21.</span> <span class="toc-text">level 21 reset</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#level-22-reset-soft"><span class="toc-number">22.</span> <span class="toc-text">level 22 reset_soft</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#level-23-checkout-file"><span class="toc-number">23.</span> <span class="toc-text">level 23 checkout_file</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#level-24-remote"><span class="toc-number">24.</span> <span class="toc-text">level 24 remote</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#level-25-remote-url"><span class="toc-number">25.</span> <span class="toc-text">level 25 remote_url</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#level-26-pull"><span class="toc-number">26.</span> <span class="toc-text">level 26 pull</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#level-27-remote-add"><span class="toc-number">27.</span> <span class="toc-text">level 27 remote_add</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#level-28-push"><span class="toc-number">28.</span> <span class="toc-text">level 28 push</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#level-29-diff"><span class="toc-number">29.</span> <span class="toc-text">level 29 diff</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#level-30-blame"><span class="toc-number">30.</span> <span class="toc-text">level 30 blame</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#level-31-branch"><span class="toc-number">31.</span> <span class="toc-text">level 31 branch</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#level-32-checkout"><span class="toc-number">32.</span> <span class="toc-text">level 32 checkout</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#level-33-checkout-tag"><span class="toc-number">33.</span> <span class="toc-text">level 33 checkout_tag</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#level-34-checkout-tag-over-branch"><span class="toc-number">34.</span> <span class="toc-text">level 34 checkout_tag_over_branch</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#level-35-branch-at"><span class="toc-number">35.</span> <span class="toc-text">level 35 branch_at</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#level-36-delete-branch"><span class="toc-number">36.</span> <span class="toc-text">level 36 delete_branch</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#level-37-push-branch"><span class="toc-number">37.</span> <span class="toc-text">level 37 push_branch</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#level-38-merge"><span class="toc-number">38.</span> <span class="toc-text">level 38 merge</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#level-39-fetch"><span class="toc-number">39.</span> <span class="toc-text">level 39 fetch</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#level-40-rebase"><span class="toc-number">40.</span> <span class="toc-text">level 40 rebase</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#level-41-rebase-onto"><span class="toc-number">41.</span> <span class="toc-text">level 41 rebase_onto</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#level-42-repack"><span class="toc-number">42.</span> <span class="toc-text">level 42 repack</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#level-43-cherry-pick"><span class="toc-number">43.</span> <span class="toc-text">level 43 cherry-pick</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#level-44-grep"><span class="toc-number">44.</span> <span class="toc-text">level 44 grep</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#level-45-rename-commit"><span class="toc-number">45.</span> <span class="toc-text">level 45 rename_commit</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#level-46-squash"><span class="toc-number">46.</span> <span class="toc-text">level 46 squash</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#level-47-merge-squash"><span class="toc-number">47.</span> <span class="toc-text">level 47 merge_squash</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#level-48-reorder"><span class="toc-number">48.</span> <span class="toc-text">level 48 reorder</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#level-49-bisect"><span class="toc-number">49.</span> <span class="toc-text">level 49 bisect</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#level-50-stage-lines"><span class="toc-number">50.</span> <span class="toc-text">level 50 stage_lines</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#level-51-find-old-branch"><span class="toc-number">51.</span> <span class="toc-text">level 51 find_old_branch</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#level-52-revert"><span class="toc-number">52.</span> <span class="toc-text">level 52 revert</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#level-53-restore"><span class="toc-number">53.</span> <span class="toc-text">level 53 restore</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#level-54-conflict"><span class="toc-number">54.</span> <span class="toc-text">level 54 conflict</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#level-55-submodule"><span class="toc-number">55.</span> <span class="toc-text">level 55 submodule</span></a></li></ol>
+		
+		</div>
+		
+		<h2 id="level-1-init"><a href="#level-1-init" class="headerlink" title="level 1 init"></a>level 1 init</h2><p>A new directory, <code>git_hug</code> , has been created; initialize an empty repository in it.</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash">: git init</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="level-2-config"><a href="#level-2-config" class="headerlink" title="level 2 config"></a>level 2 config</h2><p>Set up your git name and email, this is important so that your commits can be identified.</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash">: git config user.name <span class="string">"GeekerHua"</span></span></span><br><span class="line"><span class="meta">$</span><span class="bash">: git config user.email <span class="string">"geekerhua@sina.com"</span></span></span><br></pre></td></tr></table></figure>
+
+<h2 id="level-3-add"><a href="#level-3-add" class="headerlink" title="level 3 add"></a>level 3 add</h2><p>There is a file in your folder called <code>README</code>, you should add it to your staging area<br>Note: You start each level with a new repo. Don’t look for files from the previous one.</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash">: git add README</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="level-4-commit"><a href="#level-4-commit" class="headerlink" title="level 4 commit"></a>level 4 commit</h2><p>The <code>README</code> file has been added to your staging area, now commit it.</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash">: git commit -m <span class="string">'add README'</span></span></span><br></pre></td></tr></table></figure>
+
+<h2 id="level-5-clone"><a href="#level-5-clone" class="headerlink" title="level 5 clone"></a>level 5 clone</h2><p>Clone the repository at <a href="https://github.com/Gazler/cloneme" target="_blank" rel="noopener">https://github.com/Gazler/cloneme</a>.</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash">: git <span class="built_in">clone</span> https://github.com/Gazler/cloneme</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="level-6-clone-to-folder"><a href="#level-6-clone-to-folder" class="headerlink" title="level 6 clone_to_folder"></a>level 6 clone_to_folder</h2><p>Clone the repository at <a href="https://github.com/Gazler/cloneme" target="_blank" rel="noopener">https://github.com/Gazler/cloneme</a> to <code>my_cloned_repo</code>.</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash">: git <span class="built_in">clone</span> https://github.com/Gazler/cloneme my_cloned_repo</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="level-7-ignore"><a href="#level-7-ignore" class="headerlink" title="level 7 ignore"></a>level 7 ignore</h2><p>The text editor ‘vim’ creates files ending in <code>.swp</code> (swap files) for all files that are currently open.  We don’t want them creeping into the repository.  Make this repository ignore those swap files which are ending in <code>.swp</code>.</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash">: <span class="built_in">echo</span> <span class="string">'*.swp'</span> &gt;&gt; .gitignore</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="level-8-include"><a href="#level-8-include" class="headerlink" title="level 8 include"></a>level 8 include</h2><p>Notice a few files with the ‘.a’ extension.  We want git to ignore all but the ‘lib.a’ file.</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash">: <span class="built_in">echo</span> <span class="string">'*.a'</span> &gt;&gt; .gitignore</span></span><br><span class="line"><span class="meta">$</span><span class="bash">: <span class="built_in">echo</span> <span class="string">'!lib.a'</span> &gt;&gt; .gitignore</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="level-9-status"><a href="#level-9-status" class="headerlink" title="level 9 status"></a>level 9 status</h2><p>There are some files in this repository, one of the files is untracked, which file is it?</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash">: git status</span></span><br><span class="line"><span class="meta">$</span><span class="bash">: githug</span></span><br><span class="line"><span class="meta">$</span><span class="bash">: database.yml</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="level-10-status"><a href="#level-10-status" class="headerlink" title="level 10 status"></a>level 10 status</h2><p>There are some files in this repository, how many of the files will be committed?</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash">: git status</span></span><br><span class="line"><span class="meta">$</span><span class="bash">: githug</span></span><br><span class="line"><span class="meta">$</span><span class="bash">: 2</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="level-11-rm"><a href="#level-11-rm" class="headerlink" title="level 11 rm"></a>level 11 rm</h2><p>A file has been removed from the working tree, however the file was not removed from the repository.  Find out what this file was and remove it.</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash">: git rm deleteme.rb</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="level-12-rm-cached"><a href="#level-12-rm-cached" class="headerlink" title="level 12 rm_cached"></a>level 12 rm_cached</h2><p>A file has accidentally been added to your staging area, find out which file and remove it from the staging area.  <em>NOTE</em> Do not remove the file from the file system, only from git.</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash">: git rm --cached deleteme.rb</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="level-13-stash"><a href="#level-13-stash" class="headerlink" title="level 13 stash"></a>level 13 stash</h2><p>You’ve made some changes and want to work on them later. You should save them, but don’t commit them.</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash">: git stash</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="level-14-rename"><a href="#level-14-rename" class="headerlink" title="level 14 rename"></a>level 14 rename</h2><p>We have a file called <code>oldfile.txt</code>. We want to rename it to <code>newfile.txt</code> and stage this change.</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash">: git mv oldfile.txt newfile.txt</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="level-15-restructure"><a href="#level-15-restructure" class="headerlink" title="level 15 restructure"></a>level 15 restructure</h2><p>You added some files to your repository, but now realize that your project needs to be restructured.  Make a new folder named <code>src</code> and using Git move all of the .html files into this folder.</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash">: mkdir src</span></span><br><span class="line"><span class="meta">$</span><span class="bash">: git mv *.html src</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="level-16-log"><a href="#level-16-log" class="headerlink" title="level 16 log"></a>level 16 log</h2><p>You will be asked for the hash of most recent commit.  You will need to investigate the logs of the repository for this.</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash">: git <span class="built_in">log</span></span></span><br><span class="line"><span class="meta">$</span><span class="bash">: 5fcfd97e96df4f5c57e6da9c86db7cac5a18525a</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="level-17-tag"><a href="#level-17-tag" class="headerlink" title="level 17 tag"></a>level 17 tag</h2><p>We have a git repo and we want to tag the current commit with <code>new_tag</code>.</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash">: git tag -a</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="level-18-push-tags"><a href="#level-18-push-tags" class="headerlink" title="level 18 push_tags"></a>level 18 push_tags</h2><p>There are tags in the repository that aren’t pushed into remote repository. Push them now.</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash">: git push --tags</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="level-19-commit-amend"><a href="#level-19-commit-amend" class="headerlink" title="level 19 commit_amend"></a>level 19 commit_amend</h2><p>The <code>README</code> file has been committed, but it looks like the file <code>forgotten_file.rb</code> was missing from the commit.  Add the file and amend your previous commit to include it.</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash">: git add forgotten_file.rb</span></span><br><span class="line"><span class="meta">$</span><span class="bash">: git commit --amend</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="level-20-commit-in-future"><a href="#level-20-commit-in-future" class="headerlink" title="level 20 commit_in_future"></a>level 20 commit_in_future</h2><p>Commit your changes with the future date (e.g. tomorrow).</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash">: git commit -m <span class="string">'change date'</span> --date=<span class="string">'Wed Mar 28 22:32:36 2020 +0800'</span></span></span><br></pre></td></tr></table></figure>
+
+<h2 id="level-21-reset"><a href="#level-21-reset" class="headerlink" title="level 21 reset"></a>level 21 reset</h2><p>There are two files to be committed.  The goal was to add each file as a separate commit, however both were added by accident.  Unstage the file <code>to_commit_second.rb</code> using the reset command (don’t commit anything).</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash">: git reset HEAD to_commit_second.rb</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="level-22-reset-soft"><a href="#level-22-reset-soft" class="headerlink" title="level 22 reset_soft"></a>level 22 reset_soft</h2><p>You committed too soon. Now you want to undo the last commit, while keeping the index.</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash">: git reset --soft HEAD^</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="level-23-checkout-file"><a href="#level-23-checkout-file" class="headerlink" title="level 23 checkout_file"></a>level 23 checkout_file</h2><p>A file has been modified, but you don’t want to keep the modification.  Checkout the <code>config.rb</code> file from the last commit.</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash">: git checkout -- config.rb</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="level-24-remote"><a href="#level-24-remote" class="headerlink" title="level 24 remote"></a>level 24 remote</h2><p>This project has a remote repository.  Identify it.</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash">: git remote -v</span></span><br><span class="line"><span class="meta">$</span><span class="bash">: my_remote_repo</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="level-25-remote-url"><a href="#level-25-remote-url" class="headerlink" title="level 25 remote_url"></a>level 25 remote_url</h2><p>The remote repositories have a url associated to them.  Please enter the url of remote_location.</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash">: git remote -v</span></span><br><span class="line"><span class="meta">$</span><span class="bash">: https://github.com/githug/not_a_repo</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="level-26-pull"><a href="#level-26-pull" class="headerlink" title="level 26 pull"></a>level 26 pull</h2><p>You need to pull changes from your origin repository.</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash">: git pull origin master</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="level-27-remote-add"><a href="#level-27-remote-add" class="headerlink" title="level 27 remote_add"></a>level 27 remote_add</h2><p>Add a remote repository called <code>origin</code> with the url <a href="https://github.com/githug/githug" target="_blank" rel="noopener">https://github.com/githug/githug</a></p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash">: git remote add origin https://github.com/githug/githug</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="level-28-push"><a href="#level-28-push" class="headerlink" title="level 28 push"></a>level 28 push</h2><p>Your local master branch has diverged from the remote origin/master branch. Rebase your commit onto origin/master and push it to remote.</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash">: git rebase origin/master</span></span><br><span class="line"><span class="meta">$</span><span class="bash">: git push</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="level-29-diff"><a href="#level-29-diff" class="headerlink" title="level 29 diff"></a>level 29 diff</h2><p>There have been modifications to the <code>app.rb</code> file since your last commit.  Find out which line has changed.</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash">: git diff app.rb</span></span><br><span class="line"><span class="meta">$</span><span class="bash">: 26</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="level-30-blame"><a href="#level-30-blame" class="headerlink" title="level 30 blame"></a>level 30 blame</h2><p>Someone has put a password inside the file <code>config.rb</code> find out who it was.</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash">: git blame config.rb</span></span><br><span class="line"><span class="meta">$</span><span class="bash">: Spider Man</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="level-31-branch"><a href="#level-31-branch" class="headerlink" title="level 31 branch"></a>level 31 branch</h2><p>You want to work on a piece of code that has the potential to break things, create the branch test_code.</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash">: git checkout -b test_code</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="level-32-checkout"><a href="#level-32-checkout" class="headerlink" title="level 32 checkout"></a>level 32 checkout</h2><p>Create and switch to a new branch called my_branch.  You will need to create a branch like you did in the previous level.</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash">: git checkout -b my_branch</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="level-33-checkout-tag"><a href="#level-33-checkout-tag" class="headerlink" title="level 33 checkout_tag"></a>level 33 checkout_tag</h2><p>You need to fix a bug in the version 1.2 of your app. Checkout the tag <code>v1.2</code>.</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash">: git checkout v1.2</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="level-34-checkout-tag-over-branch"><a href="#level-34-checkout-tag-over-branch" class="headerlink" title="level 34 checkout_tag_over_branch"></a>level 34 checkout_tag_over_branch</h2><p>You need to fix a bug in the version 1.2 of your app. Checkout the tag <code>v1.2</code> (Note: There is also a branch named <code>v1.2</code>).</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash">: git checkout tags/v1.2</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="level-35-branch-at"><a href="#level-35-branch-at" class="headerlink" title="level 35 branch_at"></a>level 35 branch_at</h2><p>You forgot to branch at the previous commit and made a commit on top of it. Create branch test_branch at the commit before the last.</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash">: git branch test_branch b5af165fe186c9d67eb264721247f925eb0bbbf0</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="level-36-delete-branch"><a href="#level-36-delete-branch" class="headerlink" title="level 36 delete_branch"></a>level 36 delete_branch</h2><p>You have created too many branches for your project. There is an old branch in your repo called ‘delete_me’, you should delete it.</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash">: git branch -d delete_me</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="level-37-push-branch"><a href="#level-37-push-branch" class="headerlink" title="level 37 push_branch"></a>level 37 push_branch</h2><p>You’ve made some changes to a local branch and want to share it, but aren’t yet ready to merge it with the ‘master’ branch.  Push only ‘test_branch’ to the remote repository</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash">: git checkout test_branch</span></span><br><span class="line"><span class="meta">$</span><span class="bash">: git push --<span class="built_in">set</span>-upstream origin test_branch</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="level-38-merge"><a href="#level-38-merge" class="headerlink" title="level 38 merge"></a>level 38 merge</h2><p>We have a file in the branch ‘feature’; Let’s merge it to the master branch.</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash">: git merge feature</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="level-39-fetch"><a href="#level-39-fetch" class="headerlink" title="level 39 fetch"></a>level 39 fetch</h2><p>Looks like a new branch was pushed into our remote repository. Get the changes without merging them with the local repository</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash">: git fetch</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="level-40-rebase"><a href="#level-40-rebase" class="headerlink" title="level 40 rebase"></a>level 40 rebase</h2><p>We are using a git rebase workflow and the feature branch is ready to go into master. Let’s rebase the feature branch onto our master branch.</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash">: git checkout feature</span></span><br><span class="line"><span class="meta">$</span><span class="bash">: git rebase master</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="level-41-rebase-onto"><a href="#level-41-rebase-onto" class="headerlink" title="level 41 rebase_onto"></a>level 41 rebase_onto</h2><p>You have created your branch from <code>wrong_branch</code> and already made some commits, and you realise that you needed to create your branch from <code>master</code>. Rebase your commits onto <code>master</code> branch so that you don’t have <code>wrong_branch</code> commits.</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash">: git rebase --onto=master wrong_branch readme-update</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="level-42-repack"><a href="#level-42-repack" class="headerlink" title="level 42 repack"></a>level 42 <a href="https://wiki.jikexueyuan.com/project/githug-walkthrough/level-41.html" target="_blank" rel="noopener">repack</a></h2><p>Optimise how your repository is packaged ensuring that redundant packs are removed.</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash">: git repack</span></span><br><span class="line"><span class="meta">$</span><span class="bash">: git repack -d</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="level-43-cherry-pick"><a href="#level-43-cherry-pick" class="headerlink" title="level 43 cherry-pick"></a>level 43 cherry-pick</h2><p>Your new feature isn’t worth the time and you’re going to delete it. But it has one commit that fills in <code>README</code> file, and you want this commit to be on the master as well.</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash">: git cherry-pick ca32a6d</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="level-44-grep"><a href="#level-44-grep" class="headerlink" title="level 44 grep"></a>level 44 grep</h2><p>Your project’s deadline approaches, you should evaluate how many TODOs are left in your code</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash">: git grep TODO</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="level-45-rename-commit"><a href="#level-45-rename-commit" class="headerlink" title="level 45 rename_commit"></a>level 45 rename_commit</h2><p>Correct the typo in the message of your first (non-root) commit.</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash">: git rebase -i 70f5d36</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="level-46-squash"><a href="#level-46-squash" class="headerlink" title="level 46 squash"></a>level 46 squash</h2><p>You have committed several times but would like all those changes to be one commit.</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash">: git rebase -i 156eac5</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="level-47-merge-squash"><a href="#level-47-merge-squash" class="headerlink" title="level 47 merge_squash"></a>level 47 <a href="https://wiki.jikexueyuan.com/project/githug-walkthrough/level-46.html" target="_blank" rel="noopener">merge_squash</a></h2><p>Merge all commits from the long-feature-branch as a single commit.</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash">: git merge --squash long-feature-branch</span></span><br><span class="line"><span class="meta">$</span><span class="bash">: git commit -m <span class="string">'merge_wquash from long-feature-branch'</span></span></span><br></pre></td></tr></table></figure>
+
+<h2 id="level-48-reorder"><a href="#level-48-reorder" class="headerlink" title="level 48 reorder"></a>level 48 <a href="https://wiki.jikexueyuan.com/project/githug-walkthrough/level-47.html" target="_blank" rel="noopener">reorder</a></h2><p>You have committed several times but in the wrong order. Please reorder your commits.</p>
+<h2 id="level-49-bisect"><a href="#level-49-bisect" class="headerlink" title="level 49 bisect"></a>level 49 <a href="https://wiki.jikexueyuan.com/project/githug-walkthrough/level-48.html" target="_blank" rel="noopener">bisect</a></h2><p>A bug was introduced somewhere along the way.  You know that running <code>ruby prog.rb 5</code> should output 15.  You can also run <code>make test</code>.  What are the first 7 chars of the hash of the commit that introduced the bug.</p>
+<h2 id="level-50-stage-lines"><a href="#level-50-stage-lines" class="headerlink" title="level 50 stage_lines"></a>level 50 <a href="https://wiki.jikexueyuan.com/project/githug-walkthrough/level-49.html" target="_blank" rel="noopener">stage_lines</a></h2><p>You’ve made changes within a single file that belong to two different features, but neither of the changes are yet staged. Stage only the changes belonging to the first feature.</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash">: git add feature.rb --edit</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="level-51-find-old-branch"><a href="#level-51-find-old-branch" class="headerlink" title="level 51 find_old_branch"></a>level 51 <a href="https://wiki.jikexueyuan.com/project/githug-walkthrough/level-50.html" target="_blank" rel="noopener">find_old_branch</a></h2><p>You have been working on a branch but got distracted by a major issue and forgot the name of it. Switch back to that branch.</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash">: git reflog</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="level-52-revert"><a href="#level-52-revert" class="headerlink" title="level 52 revert"></a>level 52 <a href="https://wiki.jikexueyuan.com/project/githug-walkthrough/level-51.html" target="_blank" rel="noopener">revert</a></h2><p>You have committed several times but want to undo the middle commit.<br>All commits have been pushed, so you can’t change existing history.</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash">: git revert 1fca878</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="level-53-restore"><a href="#level-53-restore" class="headerlink" title="level 53 restore"></a>level 53 <a href="https://wiki.jikexueyuan.com/project/githug-walkthrough/level-52.html" target="_blank" rel="noopener">restore</a></h2><p>You decided to delete your latest commit by running <code>git reset --hard HEAD^</code>.  (Not a smart thing to do.)  You then change your mind, and want that commit back.  Restore the deleted commit.</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash">: git reset ce90cf5 --hard</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="level-54-conflict"><a href="#level-54-conflict" class="headerlink" title="level 54 conflict"></a>level 54 <a href="https://wiki.jikexueyuan.com/project/githug-walkthrough/level-53.html" target="_blank" rel="noopener">conflict</a></h2><p>You need to merge mybranch into the current branch (master). But there may be some incorrect changes in mybranch which may cause conflicts. Solve any merge-conflicts you come across and finish the merge.</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash">: git merge mybranch</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="level-55-submodule"><a href="#level-55-submodule" class="headerlink" title="level 55 submodule"></a>level 55 <a href="https://wiki.jikexueyuan.com/project/githug-walkthrough/level-54.html" target="_blank" rel="noopener">submodule</a></h2><p>You want to include the files from the following repo: <code>https://github.com/jackmaney/githug-include-me</code> into a the folder <code>./githug-include-me</code>. Do this without manually cloning the repo or copying the files from the repo into this repo.</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash">: git submodule add https://github.com/jackmaney/githug-include-me</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>本文作者： GeekerHua<br>本文链接： <a href="https://blog.geekerhua.com/4E9B4D94-AC1E-4E27-AF1C-7B8A722A8B11/">https://blog.geekerhua.com/4E9B4D94-AC1E-4E27-AF1C-7B8A722A8B11/</a><br>文章首发： 同步首发于 <a href="https://www.yuque.com/geekerhua/blog/4E9B4D94-AC1E-4E27-AF1C-7B8A722A8B11" target="_blank" rel="noopener">语雀</a> 及 <a href="https://blog.geekerhua.com/4E9B4D94-AC1E-4E27-AF1C-7B8A722A8B11/">GeekerHua的blog</a><br>版权声明： 本博客所有文章除特别声明外，均采用 CC BY-NC-SA 4.0 许可协议。转载请注明出处！</p>
+</blockquote>
+  
+	</div>
+		
+    <!-- css -->
+    <style type="text/css">
+        .center {
+            text-align: center;
+        }
+        .hidden {
+            display: none;
+        }
+        #donate_guide a {
+            display: inline-block;
+            text-align: center;
+        }
+        .donate_bar a.btn_donate{
+            display: inline-block;
+            width: auto;
+            height: 32px;
+        }
+
+        .donate_bar a.btn_donate:hover{ background-position: 0px -82px;}
+        .donate_bar .donate_txt {
+            display: block;
+            color: #9d9d9d;
+            font: 14px/2 "Microsoft Yahei";
+        }
+        .bold{ font-weight: bold; }
+    </style>
+    <!-- /css -->
+
+    <!-- Donate Module -->
+    <div id="donate_module">
+
+    <!-- btn_donate & tips -->
+    <div id="donate_board" class="donate_bar center">
+        <a id="btn_donate" class="btn_donate" target="_self" href="javascript:;" title="打赏支持">看都看完了，支持下啦~</a>
+        
+    </div>
+    <!-- /btn_donate & tips -->
+
+    <!-- donate guide -->
+    
+    <div id="donate_guide" class="donate_bar center hidden">
+        <a href="/img/wechat.jpg" title="用微信扫一扫哦~" class="fancybox" rel="article0">
+            <img src="/img/wechat.jpg" title="微信打赏 Donate" height="190px" width="auto" style="display:block"/>
+            用微信扫一扫哦~
+        </a>
+        
+        <a href="/img/alipay.jpg" title="用支付宝扫一扫即可~" class="fancybox" rel="article0">
+            <img src="/img/alipay.jpg" title="支付宝打赏 Donate" height="190px" width="auto" style="display:block"/>
+            用支付宝扫一扫即可~
+        </a>
+    </div>
+    <!-- /donate guide -->
+
+    <!-- donate script -->
+    <script type="text/javascript">
+        document.getElementById('btn_donate').onclick = function() {
+            $('#donate_board').addClass('hidden');
+        $('#donate_guide').removeClass('hidden');
+        }
+
+        function donate_on_web(){
+            $('#donate').submit();
+        }
+
+        var original_window_onload = window.onload;
+        window.onload = function () {
+            if (original_window_onload) {
+                original_window_onload();
+            }
+            // document.getElementById('donate_board_wdg').className = 'hidden';
+        }
+    </script>
+    <!-- /donate script -->
+</div>
+<!-- /Donate Module -->
+
+   	       
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/code/">code</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/git/">git</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="blog.geekerhua.com/4E9B4D94-AC1E-4E27-AF1C-7B8A722A8B11/" data-title="githug实战 | GeekerHua的Blog" data-tsina="" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+
+<script>
+	(function(){
+			var bp = document.createElement('script');
+			var curProtocol = window.location.protocol.split(':')[0];
+			if (curProtocol === 'https') {
+					bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+			}
+			else {
+					bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+			}
+			var s = document.getElementsByTagName("script")[0];
+			s.parentNode.insertBefore(bp, s);
+	})();
+</script>
+</footer>
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+
+<div class="next">
+<a href="/bash_review/"  title="Bash拾遗">
+ <strong>下一篇：</strong><br/> 
+ <span>Bash拾遗
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+
+
+  <!-- 来必力City版安装代码 -->
+  <!-- <div id="lv-container" data-id="city" data-uid="MTAyMC80MzU5Mi8yMDEzMQ=="> -->
+  <div id="lv-container" data-id="city" data-uid="MTAyMC80MzU5Mi8yMDEzMQ==">
+    <script type="text/javascript">
+    (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+
+        if (typeof LivereTower === 'function') { return; }
+
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+
+        e.parentNode.insertBefore(j, e);
+    })(document, 'script');
+    </script>
+  <noscript> 为正常使用来必力评论功能请激活JavaScript</noscript>
+  </div>
+  <!-- City版安装代码已完成 -->
+
+
+</div>  
+
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#level-1-init"><span class="toc-number">1.</span> <span class="toc-text">level 1 init</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#level-2-config"><span class="toc-number">2.</span> <span class="toc-text">level 2 config</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#level-3-add"><span class="toc-number">3.</span> <span class="toc-text">level 3 add</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#level-4-commit"><span class="toc-number">4.</span> <span class="toc-text">level 4 commit</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#level-5-clone"><span class="toc-number">5.</span> <span class="toc-text">level 5 clone</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#level-6-clone-to-folder"><span class="toc-number">6.</span> <span class="toc-text">level 6 clone_to_folder</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#level-7-ignore"><span class="toc-number">7.</span> <span class="toc-text">level 7 ignore</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#level-8-include"><span class="toc-number">8.</span> <span class="toc-text">level 8 include</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#level-9-status"><span class="toc-number">9.</span> <span class="toc-text">level 9 status</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#level-10-status"><span class="toc-number">10.</span> <span class="toc-text">level 10 status</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#level-11-rm"><span class="toc-number">11.</span> <span class="toc-text">level 11 rm</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#level-12-rm-cached"><span class="toc-number">12.</span> <span class="toc-text">level 12 rm_cached</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#level-13-stash"><span class="toc-number">13.</span> <span class="toc-text">level 13 stash</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#level-14-rename"><span class="toc-number">14.</span> <span class="toc-text">level 14 rename</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#level-15-restructure"><span class="toc-number">15.</span> <span class="toc-text">level 15 restructure</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#level-16-log"><span class="toc-number">16.</span> <span class="toc-text">level 16 log</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#level-17-tag"><span class="toc-number">17.</span> <span class="toc-text">level 17 tag</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#level-18-push-tags"><span class="toc-number">18.</span> <span class="toc-text">level 18 push_tags</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#level-19-commit-amend"><span class="toc-number">19.</span> <span class="toc-text">level 19 commit_amend</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#level-20-commit-in-future"><span class="toc-number">20.</span> <span class="toc-text">level 20 commit_in_future</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#level-21-reset"><span class="toc-number">21.</span> <span class="toc-text">level 21 reset</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#level-22-reset-soft"><span class="toc-number">22.</span> <span class="toc-text">level 22 reset_soft</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#level-23-checkout-file"><span class="toc-number">23.</span> <span class="toc-text">level 23 checkout_file</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#level-24-remote"><span class="toc-number">24.</span> <span class="toc-text">level 24 remote</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#level-25-remote-url"><span class="toc-number">25.</span> <span class="toc-text">level 25 remote_url</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#level-26-pull"><span class="toc-number">26.</span> <span class="toc-text">level 26 pull</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#level-27-remote-add"><span class="toc-number">27.</span> <span class="toc-text">level 27 remote_add</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#level-28-push"><span class="toc-number">28.</span> <span class="toc-text">level 28 push</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#level-29-diff"><span class="toc-number">29.</span> <span class="toc-text">level 29 diff</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#level-30-blame"><span class="toc-number">30.</span> <span class="toc-text">level 30 blame</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#level-31-branch"><span class="toc-number">31.</span> <span class="toc-text">level 31 branch</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#level-32-checkout"><span class="toc-number">32.</span> <span class="toc-text">level 32 checkout</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#level-33-checkout-tag"><span class="toc-number">33.</span> <span class="toc-text">level 33 checkout_tag</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#level-34-checkout-tag-over-branch"><span class="toc-number">34.</span> <span class="toc-text">level 34 checkout_tag_over_branch</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#level-35-branch-at"><span class="toc-number">35.</span> <span class="toc-text">level 35 branch_at</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#level-36-delete-branch"><span class="toc-number">36.</span> <span class="toc-text">level 36 delete_branch</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#level-37-push-branch"><span class="toc-number">37.</span> <span class="toc-text">level 37 push_branch</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#level-38-merge"><span class="toc-number">38.</span> <span class="toc-text">level 38 merge</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#level-39-fetch"><span class="toc-number">39.</span> <span class="toc-text">level 39 fetch</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#level-40-rebase"><span class="toc-number">40.</span> <span class="toc-text">level 40 rebase</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#level-41-rebase-onto"><span class="toc-number">41.</span> <span class="toc-text">level 41 rebase_onto</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#level-42-repack"><span class="toc-number">42.</span> <span class="toc-text">level 42 repack</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#level-43-cherry-pick"><span class="toc-number">43.</span> <span class="toc-text">level 43 cherry-pick</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#level-44-grep"><span class="toc-number">44.</span> <span class="toc-text">level 44 grep</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#level-45-rename-commit"><span class="toc-number">45.</span> <span class="toc-text">level 45 rename_commit</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#level-46-squash"><span class="toc-number">46.</span> <span class="toc-text">level 46 squash</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#level-47-merge-squash"><span class="toc-number">47.</span> <span class="toc-text">level 47 merge_squash</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#level-48-reorder"><span class="toc-number">48.</span> <span class="toc-text">level 48 reorder</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#level-49-bisect"><span class="toc-number">49.</span> <span class="toc-text">level 49 bisect</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#level-50-stage-lines"><span class="toc-number">50.</span> <span class="toc-text">level 50 stage_lines</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#level-51-find-old-branch"><span class="toc-number">51.</span> <span class="toc-text">level 51 find_old_branch</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#level-52-revert"><span class="toc-number">52.</span> <span class="toc-text">level 52 revert</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#level-53-restore"><span class="toc-number">53.</span> <span class="toc-text">level 53 restore</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#level-54-conflict"><span class="toc-number">54.</span> <span class="toc-text">level 54 conflict</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#level-55-submodule"><span class="toc-number">55.</span> <span class="toc-text">level 55 submodule</span></a></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+	<div class="category-block">
+		<h3 class="asidetitle">分类</h3>
+			 <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/benchmark/">benchmark</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/code/">code</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/life/">life</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/">linux</a><span class="category-list-count">21</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/mac/">mac</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/other/">other</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/read/">read</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/soft/">soft</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/thinking/">thinking</a><span class="category-list-count">4</span></li></ul>
+	</div>
+
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">标签</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/Linux/" title="Linux">Linux<sup>19</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Shell/" title="Shell">Shell<sup>14</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Soft/" title="Soft">Soft<sup>7</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Alfred/" title="Alfred">Alfred<sup>5</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/mac/" title="mac">mac<sup>4</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Python/" title="Python">Python<sup>4</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/git/" title="git">git<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/环境配置/" title="环境配置">环境配置<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/iOS/" title="iOS">iOS<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/成长/" title="成长">成长<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Other/" title="Other">Other<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/树莓派/" title="树莓派">树莓派<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/shell/" title="shell">shell<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/windows/" title="windows">windows<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/IDE/" title="IDE">IDE<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Swift/" title="Swift">Swift<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/科学上网/" title="科学上网">科学上网<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/读书笔记/" title="读书笔记">读书笔记<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/interview/" title="interview">interview<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/方法论/" title="方法论">方法论<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">友情链接</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="https://junstat.github.io" target="_blank" title="GeekerJun's Blog">GeekerJun的博客</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="https://swift.gg" target="_blank" title="走心的Swift翻译组">SwiftGG</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="https://scp.net.cn" target="_blank" title="西二三旗的垃圾桶">BB4BB</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
+</div>
+
+  
+  <div class="tagcloudlist">
+    <p class="asidetitle">标签云</p>
+    <div class="tagcloudlist clearfix">
+       <a href="/tags/Alfred/" style="font-size: 15.71px;">Alfred</a> <a href="/tags/IDE/" style="font-size: 10px;">IDE</a> <a href="/tags/Linux/" style="font-size: 20px;">Linux</a> <a href="/tags/Other/" style="font-size: 11.43px;">Other</a> <a href="/tags/Python/" style="font-size: 14.29px;">Python</a> <a href="/tags/Shell/" style="font-size: 18.57px;">Shell</a> <a href="/tags/Soft/" style="font-size: 17.14px;">Soft</a> <a href="/tags/Swift/" style="font-size: 10px;">Swift</a> <a href="/tags/cpu/" style="font-size: 10px;">cpu</a> <a href="/tags/git/" style="font-size: 12.86px;">git</a> <a href="/tags/iOS/" style="font-size: 12.86px;">iOS</a> <a href="/tags/interview/" style="font-size: 10px;">interview</a> <a href="/tags/io/" style="font-size: 10px;">io</a> <a href="/tags/mac/" style="font-size: 14.29px;">mac</a> <a href="/tags/shell/" style="font-size: 10px;">shell</a> <a href="/tags/windows/" style="font-size: 10px;">windows</a> <a href="/tags/%E6%88%90%E9%95%BF/" style="font-size: 12.86px;">成长</a> <a href="/tags/%E6%96%B9%E6%B3%95%E8%AE%BA/" style="font-size: 10px;">方法论</a> <a href="/tags/%E6%A0%91%E8%8E%93%E6%B4%BE/" style="font-size: 10px;">树莓派</a> <a href="/tags/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/" style="font-size: 12.86px;">环境配置</a> <a href="/tags/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/" style="font-size: 10px;">科学上网</a> <a href="/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" style="font-size: 10px;">读书笔记</a>
+    </div>
+  </div>
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> 没有梦想就没有未来 <br/>
+			Without dreams, we have no future.</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		<a href="https://weibo.com/geekerhua" target="_blank" class="icon-weibo" title="微博"></a>
+		
+		
+		<a href="https://github.com/geekerhua" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		
+		<a href="https://twitter.com/GeekerHua" target="_blank" class="icon-twitter" title="twitter"></a>
+		
+		
+		<a href="https://www.facebook.com/100014141115493" target="_blank" class="icon-facebook" title="facebook"></a>
+		
+		
+		<a href="https://www.linkedin.com/in/振华-杭-35b122126" target="_blank" class="icon-linkedin" title="linkedin"></a>
+		
+		
+		
+		<a href="https://www.zhihu.com/people/hang-zhen-hua-82" target="_blank" class="icon-zhihu" title="知乎"></a>
+		
+		
+		
+		<a href="mailto:geekerhua@sina.com" target="_blank" class="icon-email" title="Email Me"></a>
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="https://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2020 
+		
+		<a href="/about" target="_blank" title="GeekerHua">GeekerHua</a>
+		
+		
+		</p>
+</div>
+<script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+<span id="busuanzi_container_site_pv">
+	Total visits: <span id="busuanzi_value_site_pv"></span>
+</span>
+<span id="busuanzi_container_site_uv">
+	You are Visiter No.<span id="busuanzi_value_site_uv"></span>
+</span>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>

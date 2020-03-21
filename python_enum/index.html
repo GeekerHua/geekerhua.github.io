@@ -1,0 +1,724 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>Python枚举的实现 | GeekerHua的Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="GeekerHua">
+    
+
+    
+    <meta name="description" content="在Python3.4版本之前， 默认是没有枚举的， 我们经常使用的Python2.x的版本， 如果想实现枚举的功能该怎么办呢？ 代码是人写出来的， 这难不倒我们的， 因此利用动态语言的特性， 就出现了下面的众多中的枚举实现。 枚举的实现1. 使用类属性&gt;&gt;&gt; class Seasons:...     Spring &#x3D; 0...     Summer &#x3D; 1...     Aut">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python枚举的实现">
+<meta property="og:url" content="blog.geekerhua.com/python_enum/index.html">
+<meta property="og:site_name" content="GeekerHua的Blog">
+<meta property="og:description" content="在Python3.4版本之前， 默认是没有枚举的， 我们经常使用的Python2.x的版本， 如果想实现枚举的功能该怎么办呢？ 代码是人写出来的， 这难不倒我们的， 因此利用动态语言的特性， 就出现了下面的众多中的枚举实现。 枚举的实现1. 使用类属性&gt;&gt;&gt; class Seasons:...     Spring &#x3D; 0...     Summer &#x3D; 1...     Aut">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2017-06-14T13:05:26.000Z">
+<meta property="article:modified_time" content="2020-03-21T14:22:26.056Z">
+<meta property="article:author" content="GeekerHua">
+<meta property="article:tag" content="Python">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:creator" content="@GeekerHua">
+
+    
+    <link rel="alternative" href="/atom.xml" title="GeekerHua的Blog" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    
+<link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/%02.css">
+<link rel="stylesheet" href="/.css">
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.png" alt="GeekerHua的Blog" title="GeekerHua的Blog"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="GeekerHua的Blog">GeekerHua的Blog</a></h1>
+				<h2 class="blog-motto">爱技术，更爱生活</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">首页</a></li>
+					
+						<li><a href="/archives">归档</a></li>
+					
+						<li><a href="/categories">分类</a></li>
+					
+						<li><a href="/tags">标签</a></li>
+					
+						<li><a href="/about">关于我</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//www.google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="hidden" name="q" value="site:blog.geekerhua.com">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/python_enum/" title="Python枚举的实现" itemprop="url">Python枚举的实现</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="GeekerHua" target="_blank" itemprop="author">GeekerHua</a>
+		
+    <span id="busuanzi_container_page_pv">
+        总阅读<span id="busuanzi_value_page_pv"></span>次
+      </span>
+  <p class="article-time">
+    <time datetime="2017-06-14T13:05:26.000Z" itemprop="datePublished"> 发表于 2017-06-14</time>
+  </p>
+</header>
+
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#枚举的实现"><span class="toc-number">1.</span> <span class="toc-text">枚举的实现</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-使用类属性"><span class="toc-number">1.1.</span> <span class="toc-text">1. 使用类属性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-借助函数"><span class="toc-number">1.2.</span> <span class="toc-text">2. 借助函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-使用-collections-namedtuple"><span class="toc-number">1.3.</span> <span class="toc-text">3. 使用 collections.namedtuple</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#枚举实现的缺陷"><span class="toc-number">2.</span> <span class="toc-text">枚举实现的缺陷</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-允许枚举值重复"><span class="toc-number">2.1.</span> <span class="toc-text">1. 允许枚举值重复</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-支持无意义的操作"><span class="toc-number">2.2.</span> <span class="toc-text">2. 支持无意义的操作</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-7后的替代方案—-flufl-enum模块（第三方）"><span class="toc-number">3.</span> <span class="toc-text">2.7后的替代方案—-flufl.enum模块（第三方）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#迟来的官方支持—-Enum-gt-3-4"><span class="toc-number">4.</span> <span class="toc-text">迟来的官方支持—-Enum(&gt;&#x3D;3.4)</span></a></li></ol>
+		
+		</div>
+		
+		<p>在Python3.4版本之前， 默认是没有枚举的， 我们经常使用的Python2.x的版本， 如果想实现枚举的功能该怎么办呢？ 代码是人写出来的， 这难不倒我们的， 因此利用动态语言的特性， 就出现了下面的众多中的枚举实现。</p>
+<h2 id="枚举的实现"><a href="#枚举的实现" class="headerlink" title="枚举的实现"></a>枚举的实现</h2><h3 id="1-使用类属性"><a href="#1-使用类属性" class="headerlink" title="1. 使用类属性"></a>1. 使用类属性</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="class"><span class="keyword">class</span> <span class="title">Seasons</span>:</span></span><br><span class="line"></span><br><span class="line"><span class="meta">... </span>    Spring = <span class="number">0</span></span><br><span class="line"><span class="meta">... </span>    Summer = <span class="number">1</span></span><br><span class="line"><span class="meta">... </span>    Autumn = <span class="number">2</span></span><br><span class="line"><span class="meta">... </span>    Winter = <span class="number">3</span></span><br><span class="line">...</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">print</span> Seasons. Spring</span><br></pre></td></tr></table></figure>
+
+<p>上边的例子可以简化成：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="class"><span class="keyword">class</span> <span class="title">Seasons</span>:</span></span><br><span class="line"></span><br><span class="line"><span class="meta">... </span>    Spring, Summer, Autumn, Winter = range(<span class="number">4</span>)</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-借助函数"><a href="#2-借助函数" class="headerlink" title="2. 借助函数"></a>2. 借助函数</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="function"><span class="keyword">def</span> <span class="title">enum</span><span class="params">(*posarg, **keysarg)</span>:</span></span><br><span class="line"></span><br><span class="line"><span class="meta">... </span>    <span class="keyword">return</span> type(<span class="string">"Enum"</span>, (object, ), dict(zip(posarg, xrange(len(posarg))), **keysarg))</span><br><span class="line">...</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>Seasons = enum(<span class="string">"Spring"</span>, <span class="string">"Summer"</span>, <span class="string">"Autumn"</span>, <span class="string">"Wunter"</span>=<span class="number">1</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>Seasons. Spring</span><br><span class="line"></span><br><span class="line"><span class="number">0</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="3-使用-collections-namedtuple"><a href="#3-使用-collections-namedtuple" class="headerlink" title="3. 使用 collections.namedtuple"></a>3. 使用 <code>collections.namedtuple</code></h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>Seasons = namedtuple(<span class="string">'Seasons'</span>, <span class="string">'Spring Summer Autumn Winter'</span>)._make(range(<span class="number">4</span>))</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">print</span> Seasons. Spring</span><br><span class="line"></span><br><span class="line"><span class="number">0</span></span><br></pre></td></tr></table></figure>
+
+<p>Python中枚举的替代方法远不止这些， 就不一一列举了。 但这些替代实现有哪些不合理的地方呢？</p>
+<h2 id="枚举实现的缺陷"><a href="#枚举实现的缺陷" class="headerlink" title="枚举实现的缺陷"></a>枚举实现的缺陷</h2><h3 id="1-允许枚举值重复"><a href="#1-允许枚举值重复" class="headerlink" title="1. 允许枚举值重复"></a>1. 允许枚举值重复</h3><p>以 <code>collections.namedtuple</code> 为例， 下面的例子中枚举值 <code>Spring</code> 与 <code>Autumn</code> 相等， 但却不会提示任何错误。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>Seasons._replace(Spring = <span class="number">2</span>)</span><br><span class="line"></span><br><span class="line">Seasons(Spring = <span class="number">2</span>, Summer = <span class="number">1</span>, Autumn = <span class="number">2</span>, Winter = <span class="number">3</span>) <span class="comment"># Spring和Autumn的值相等， 都为2</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="2-支持无意义的操作"><a href="#2-支持无意义的操作" class="headerlink" title="2. 支持无意义的操作"></a>2. 支持无意义的操作</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>Seasons. Summer + Seasons. Autumn == Seasons. Winter</span><br><span class="line"></span><br><span class="line"><span class="literal">True</span> <span class="comment"># Seasons. Summer+Seasons. Autumn相加无任何实际意义</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="2-7后的替代方案—-flufl-enum模块（第三方）"><a href="#2-7后的替代方案—-flufl-enum模块（第三方）" class="headerlink" title="2.7后的替代方案—-flufl.enum模块（第三方）"></a>2.7后的替代方案—-<a href="http://Pythonhosted.org/flufl.enum/docs/using.html" target="_blank" rel="noopener">flufl.enum</a>模块（第三方）</h2><blockquote>
+<p>它包含两种枚举类：</p>
+</blockquote>
+<ul>
+<li>一种是Enum, 只要保证枚举值唯一即可， 对值的类型没有限制；</li>
+<li>另一种是IntEnum, 其枚举值为int型</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> flufl.enum <span class="keyword">import</span> Enum</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="class"><span class="keyword">class</span> <span class="title">Seasons</span><span class="params">(Enum)</span>:</span></span><br><span class="line"></span><br><span class="line">...:     Spring = <span class="string">'Spring'</span></span><br><span class="line">...:     Summer = <span class="string">'2'</span></span><br><span class="line">...:     Autumn = <span class="number">3</span></span><br><span class="line">...:     Winter = <span class="number">4</span></span><br><span class="line">...:</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>Seasons. Autumn</span><br><span class="line"></span><br><span class="line"><span class="number">3</span></span><br><span class="line"></span><br><span class="line">&gt;&gt; &gt;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>Weak = Enum(<span class="string">'Weak'</span>, <span class="string">'Monday Wednesday'</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>Weak. Monday</span><br><span class="line"></span><br><span class="line"><span class="number">2</span></span><br></pre></td></tr></table></figure>
+
+<p>可使用 <code>value</code> 来获取枚举元素的值</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>Weak. Monday</span><br><span class="line"></span><br><span class="line"><span class="number">0</span></span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>getattr(Weak, <span class="string">'Wedsday'</span>).value</span><br><span class="line"></span><br><span class="line"><span class="number">1</span></span><br></pre></td></tr></table></figure>
+
+<p><code>flufl.enum</code> 不支持枚举元素的比较。</p>
+<h2 id="迟来的官方支持—-Enum-gt-3-4"><a href="#迟来的官方支持—-Enum-gt-3-4" class="headerlink" title="迟来的官方支持—-Enum(&gt;=3.4)"></a>迟来的官方支持—-Enum(&gt;=3.4)</h2><p>直到Python3.4版本， 官方才加入了枚举Enum. 其实现主要参考了 <code>flufl.enum</code> 。</p>
+<blockquote>
+<p>本文作者： GeekerHua<br>本文链接： <a href="https://blog.geekerhua.com/python_enum/">https://blog.geekerhua.com/python_enum/</a><br>文章首发： 同步首发于 <a href="https://www.yuque.com/geekerhua/blog/python_enum" target="_blank" rel="noopener">语雀</a> 及 <a href="https://blog.geekerhua.com/python_enum/">GeekerHua的blog</a><br>版权声明： 本博客所有文章除特别声明外，均采用 CC BY-NC-SA 4.0 许可协议。转载请注明出处！</p>
+</blockquote>
+  
+	</div>
+		
+    <!-- css -->
+    <style type="text/css">
+        .center {
+            text-align: center;
+        }
+        .hidden {
+            display: none;
+        }
+        #donate_guide a {
+            display: inline-block;
+            text-align: center;
+        }
+        .donate_bar a.btn_donate{
+            display: inline-block;
+            width: auto;
+            height: 32px;
+        }
+
+        .donate_bar a.btn_donate:hover{ background-position: 0px -82px;}
+        .donate_bar .donate_txt {
+            display: block;
+            color: #9d9d9d;
+            font: 14px/2 "Microsoft Yahei";
+        }
+        .bold{ font-weight: bold; }
+    </style>
+    <!-- /css -->
+
+    <!-- Donate Module -->
+    <div id="donate_module">
+
+    <!-- btn_donate & tips -->
+    <div id="donate_board" class="donate_bar center">
+        <a id="btn_donate" class="btn_donate" target="_self" href="javascript:;" title="打赏支持">看都看完了，支持下啦~</a>
+        
+    </div>
+    <!-- /btn_donate & tips -->
+
+    <!-- donate guide -->
+    
+    <div id="donate_guide" class="donate_bar center hidden">
+        <a href="/img/wechat.jpg" title="用微信扫一扫哦~" class="fancybox" rel="article0">
+            <img src="/img/wechat.jpg" title="微信打赏 Donate" height="190px" width="auto" style="display:block"/>
+            用微信扫一扫哦~
+        </a>
+        
+        <a href="/img/alipay.jpg" title="用支付宝扫一扫即可~" class="fancybox" rel="article0">
+            <img src="/img/alipay.jpg" title="支付宝打赏 Donate" height="190px" width="auto" style="display:block"/>
+            用支付宝扫一扫即可~
+        </a>
+    </div>
+    <!-- /donate guide -->
+
+    <!-- donate script -->
+    <script type="text/javascript">
+        document.getElementById('btn_donate').onclick = function() {
+            $('#donate_board').addClass('hidden');
+        $('#donate_guide').removeClass('hidden');
+        }
+
+        function donate_on_web(){
+            $('#donate').submit();
+        }
+
+        var original_window_onload = window.onload;
+        window.onload = function () {
+            if (original_window_onload) {
+                original_window_onload();
+            }
+            // document.getElementById('donate_board_wdg').className = 'hidden';
+        }
+    </script>
+    <!-- /donate script -->
+</div>
+<!-- /Donate Module -->
+
+   	       
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/code/">code</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/Python/">Python</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="blog.geekerhua.com/python_enum/" data-title="Python枚举的实现 | GeekerHua的Blog" data-tsina="" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+
+<script>
+	(function(){
+			var bp = document.createElement('script');
+			var curProtocol = window.location.protocol.split(':')[0];
+			if (curProtocol === 'https') {
+					bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+			}
+			else {
+					bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+			}
+			var s = document.getElementsByTagName("script")[0];
+			s.parentNode.insertBefore(bp, s);
+	})();
+</script>
+</footer>
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/pycharm_efficient/" title="PyCharm_高效指南">
+  <strong>上一篇：</strong><br/>
+  <span>
+  PyCharm_高效指南</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/python_const/"  title="Python常量的正确写法">
+ <strong>下一篇：</strong><br/> 
+ <span>Python常量的正确写法
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+
+
+  <!-- 来必力City版安装代码 -->
+  <!-- <div id="lv-container" data-id="city" data-uid="MTAyMC80MzU5Mi8yMDEzMQ=="> -->
+  <div id="lv-container" data-id="city" data-uid="MTAyMC80MzU5Mi8yMDEzMQ==">
+    <script type="text/javascript">
+    (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+
+        if (typeof LivereTower === 'function') { return; }
+
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+
+        e.parentNode.insertBefore(j, e);
+    })(document, 'script');
+    </script>
+  <noscript> 为正常使用来必力评论功能请激活JavaScript</noscript>
+  </div>
+  <!-- City版安装代码已完成 -->
+
+
+</div>  
+
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#枚举的实现"><span class="toc-number">1.</span> <span class="toc-text">枚举的实现</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-使用类属性"><span class="toc-number">1.1.</span> <span class="toc-text">1. 使用类属性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-借助函数"><span class="toc-number">1.2.</span> <span class="toc-text">2. 借助函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-使用-collections-namedtuple"><span class="toc-number">1.3.</span> <span class="toc-text">3. 使用 collections.namedtuple</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#枚举实现的缺陷"><span class="toc-number">2.</span> <span class="toc-text">枚举实现的缺陷</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-允许枚举值重复"><span class="toc-number">2.1.</span> <span class="toc-text">1. 允许枚举值重复</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-支持无意义的操作"><span class="toc-number">2.2.</span> <span class="toc-text">2. 支持无意义的操作</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-7后的替代方案—-flufl-enum模块（第三方）"><span class="toc-number">3.</span> <span class="toc-text">2.7后的替代方案—-flufl.enum模块（第三方）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#迟来的官方支持—-Enum-gt-3-4"><span class="toc-number">4.</span> <span class="toc-text">迟来的官方支持—-Enum(&gt;&#x3D;3.4)</span></a></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+	<div class="category-block">
+		<h3 class="asidetitle">分类</h3>
+			 <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/benchmark/">benchmark</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/code/">code</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/life/">life</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/">linux</a><span class="category-list-count">21</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/mac/">mac</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/other/">other</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/read/">read</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/soft/">soft</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/thinking/">thinking</a><span class="category-list-count">4</span></li></ul>
+	</div>
+
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">标签</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/Linux/" title="Linux">Linux<sup>19</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Shell/" title="Shell">Shell<sup>14</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Soft/" title="Soft">Soft<sup>7</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Alfred/" title="Alfred">Alfred<sup>5</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/mac/" title="mac">mac<sup>4</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Python/" title="Python">Python<sup>4</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/git/" title="git">git<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/环境配置/" title="环境配置">环境配置<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/iOS/" title="iOS">iOS<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/成长/" title="成长">成长<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Other/" title="Other">Other<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/树莓派/" title="树莓派">树莓派<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/shell/" title="shell">shell<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/windows/" title="windows">windows<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/IDE/" title="IDE">IDE<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Swift/" title="Swift">Swift<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/科学上网/" title="科学上网">科学上网<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/读书笔记/" title="读书笔记">读书笔记<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/interview/" title="interview">interview<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/方法论/" title="方法论">方法论<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">友情链接</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="https://junstat.github.io" target="_blank" title="GeekerJun's Blog">GeekerJun的博客</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="https://swift.gg" target="_blank" title="走心的Swift翻译组">SwiftGG</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="https://scp.net.cn" target="_blank" title="西二三旗的垃圾桶">BB4BB</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
+</div>
+
+  
+  <div class="tagcloudlist">
+    <p class="asidetitle">标签云</p>
+    <div class="tagcloudlist clearfix">
+       <a href="/tags/Alfred/" style="font-size: 15.71px;">Alfred</a> <a href="/tags/IDE/" style="font-size: 10px;">IDE</a> <a href="/tags/Linux/" style="font-size: 20px;">Linux</a> <a href="/tags/Other/" style="font-size: 11.43px;">Other</a> <a href="/tags/Python/" style="font-size: 14.29px;">Python</a> <a href="/tags/Shell/" style="font-size: 18.57px;">Shell</a> <a href="/tags/Soft/" style="font-size: 17.14px;">Soft</a> <a href="/tags/Swift/" style="font-size: 10px;">Swift</a> <a href="/tags/cpu/" style="font-size: 10px;">cpu</a> <a href="/tags/git/" style="font-size: 12.86px;">git</a> <a href="/tags/iOS/" style="font-size: 12.86px;">iOS</a> <a href="/tags/interview/" style="font-size: 10px;">interview</a> <a href="/tags/io/" style="font-size: 10px;">io</a> <a href="/tags/mac/" style="font-size: 14.29px;">mac</a> <a href="/tags/shell/" style="font-size: 10px;">shell</a> <a href="/tags/windows/" style="font-size: 10px;">windows</a> <a href="/tags/%E6%88%90%E9%95%BF/" style="font-size: 12.86px;">成长</a> <a href="/tags/%E6%96%B9%E6%B3%95%E8%AE%BA/" style="font-size: 10px;">方法论</a> <a href="/tags/%E6%A0%91%E8%8E%93%E6%B4%BE/" style="font-size: 10px;">树莓派</a> <a href="/tags/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/" style="font-size: 12.86px;">环境配置</a> <a href="/tags/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/" style="font-size: 10px;">科学上网</a> <a href="/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" style="font-size: 10px;">读书笔记</a>
+    </div>
+  </div>
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> 没有梦想就没有未来 <br/>
+			Without dreams, we have no future.</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		<a href="https://weibo.com/geekerhua" target="_blank" class="icon-weibo" title="微博"></a>
+		
+		
+		<a href="https://github.com/geekerhua" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		
+		<a href="https://twitter.com/GeekerHua" target="_blank" class="icon-twitter" title="twitter"></a>
+		
+		
+		<a href="https://www.facebook.com/100014141115493" target="_blank" class="icon-facebook" title="facebook"></a>
+		
+		
+		<a href="https://www.linkedin.com/in/振华-杭-35b122126" target="_blank" class="icon-linkedin" title="linkedin"></a>
+		
+		
+		
+		<a href="https://www.zhihu.com/people/hang-zhen-hua-82" target="_blank" class="icon-zhihu" title="知乎"></a>
+		
+		
+		
+		<a href="mailto:geekerhua@sina.com" target="_blank" class="icon-email" title="Email Me"></a>
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="https://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2020 
+		
+		<a href="/about" target="_blank" title="GeekerHua">GeekerHua</a>
+		
+		
+		</p>
+</div>
+<script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+<span id="busuanzi_container_site_pv">
+	Total visits: <span id="busuanzi_value_site_pv"></span>
+</span>
+<span id="busuanzi_container_site_uv">
+	You are Visiter No.<span id="busuanzi_value_site_uv"></span>
+</span>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>
